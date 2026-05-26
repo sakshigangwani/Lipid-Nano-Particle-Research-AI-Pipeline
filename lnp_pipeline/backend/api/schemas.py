@@ -25,10 +25,14 @@ class PrismaCounts(BaseModel):
     europepmc: int = 0
     semantic_scholar: int = 0
     crossref: int = 0
+    openalex: int = 0
+    biorxiv: int = 0
     total_raw: int = 0
     after_dedup: int = 0
     after_quant: int = 0
     after_kinetic: int = 0
+    caption_rescued: int = 0
+    llm_scored: int = 0
     final: int = 0
 
 
@@ -53,6 +57,10 @@ class PaperRecord(BaseModel):
     matched_kinetic_terms: list[str] = []
     matched_signal_phrases: list[str] = []
     score: float = 0.0
+    llm_score: Optional[float] = None
+    llm_verdict: Literal["include", "borderline", "exclude", "skipped", "error"] = "skipped"
+    llm_rationale: str = ""
+    caption_rescued: bool = False
 
 
 class RunResults(BaseModel):

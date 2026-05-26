@@ -23,12 +23,44 @@ const EMPTY_COUNTS: PrismaCounts = {
   europepmc: 0,
   semantic_scholar: 0,
   crossref: 0,
+  openalex: 0,
+  biorxiv: 0,
   total_raw: 0,
   after_dedup: 0,
   after_quant: 0,
   after_kinetic: 0,
+  caption_rescued: 0,
+  llm_scored: 0,
   final: 0,
 };
+
+type Phase = 1 | 2 | 3 | 4;
+
+function StepIndicator({ phase }: { phase: Phase }) {
+  const labels = ["Select Stage", "Search", "Results"];
+  return (
+    <div className="step-indicator">
+      {labels.map((label, i) => {
+        const idx = i + 1;
+        const cls =
+          phase > idx ? "step completed" : phase === idx ? "step active" : "step";
+        return (
+          <span key={label} style={{ display: "contents" }}>
+            <div className={cls}>
+              <div className="step-num">{idx}</div>
+              <span className="step-label">{label}</span>
+            </div>
+            {idx < labels.length && (
+              <div
+                className={`step-line ${phase > idx ? "completed" : ""}`}
+              />
+            )}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function App() {
   const [steps, setSteps] = useState<StepInfo[]>([]);
@@ -92,7 +124,7 @@ export default function App() {
       } catch (e) {
         setError(String(e));
       }
-    }, 1000);
+    }, 1500);
   }
 
   const running = state === "running";
@@ -100,93 +132,164 @@ export default function App() {
     () => steps.find((s) => s.id === selectedId) ?? null,
     [steps, selectedId]
   );
+  const hasRun = state !== "idle" || results != null;
+
+  const phase: Phase =
+    results != null ? 4 : running ? 2 : selectedId != null ? 2 : 1;
+
+  const statusLabel =
+    state === "running"
+      ? "Running search"
+      : state === "done"
+      ? "Run complete"
+      : state === "error"
+      ? "Run failed"
+      : "Pipeline ready";
 
   return (
-    <div className="app">
-      <header className="masthead">
-        <div className="masthead-left">
-          <div className="eyebrow">LNP Delivery Pipeline</div>
-          <h1>Lipid Nanoparticle Literature Pipeline</h1>
-          <p className="subtitle">
-            Systematic retrieval of quantitative and kinetic LNP literature across
-            PubMed, Europe PMC, Semantic Scholar, and CrossRef, organised along the
-            seven stages of the LNP delivery journey.
+    <>
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <div className="navbar-logo">LNP</div>
+          Lipid Nanoparticle Research Hub
+          <span className="brand-sub">v1</span>
+        </div>
+        <div className="navbar-status">
+          <div className={`status-dot ${state}`} />
+          {statusLabel}
+        </div>
+      </nav>
+
+      <div className="page-wrapper">
+        <div className="page-header">
+          <h1>LNP Literature Pipeline</h1>
+          <p>
+            Pick one of the seven LNP delivery-journey stages, search PubMed,
+            Europe PMC, CrossRef, OpenAlex, Semantic Scholar, and bioRxiv, and
+            let the agent score every paper for quantitative + time-resolved
+            evidence — including a figure-caption fallback when abstracts are
+            too terse.
           </p>
         </div>
-      </header>
 
-      {error && <div className="error-banner">Error · {error}</div>}
+        <StepIndicator phase={phase} />
 
-      <StepPicker
-        steps={steps}
-        selectedId={selectedId}
-        onSelect={setSelectedId}
-        disabled={running}
-      />
+        {error && <div className="alert-panel error">Error · {error}</div>}
 
-      <div className="panel">
-        <div className="panel-header">
-          <h2>Step 2 · Execute query</h2>
-          <span className="step-label">
-            {selectedStep ? `selected: ${selectedStep.name}` : "no stage selected"}
-          </span>
-        </div>
-        <div className="actions">
-          <RunButton
-            onRun={onRun}
-            running={running}
-            disabled={selectedId == null || running}
-          />
-          {runId && (
-            <span className="run-id">
-              <span className="k">run_id:</span> {runId}
-              {startedAt && (
-                <>
-                  <span className="k"> · started:</span> {startedAt.toLocaleTimeString()}
-                </>
-              )}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {(state !== "idle" || results) && (
-        <PrismaCountsPanel
-          counts={counts}
-          state={state === "idle" ? "done" : state}
-          message={statusMsg}
-        />
-      )}
-
-      {results && (
-        <div className="panel">
-          <div className="panel-header">
-            <h2>Step 3 · Included papers — {results.step_name}</h2>
-            <span className="step-label">
-              {results.papers.length} {results.papers.length === 1 ? "record" : "records"} · sorted by composite score
-            </span>
-          </div>
-          <div className="export-bar" style={{ marginBottom: 16 }}>
-            <span className="label">Export</span>
-            {(["csv", "json", "md"] as ExportFormat[]).map((f) => (
-              <a
-                key={f}
-                className="ghost"
-                href={exportUrl(results.run_id, f)}
+        <div className={`dashboard ${hasRun ? "dashboard-split" : ""}`}>
+          <div className="dashboard-left">
+            <div className="card">
+              <div className="card-title">Step 1 · Select an LNP stage</div>
+              <StepPicker
+                steps={steps}
+                selectedId={selectedId}
+                onSelect={setSelectedId}
+                disabled={running}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  marginTop: 18,
+                  paddingTop: 16,
+                  borderTop: "1px solid #f1f5f9",
+                  flexWrap: "wrap",
+                }}
               >
-                {f.toUpperCase()}
-              </a>
-            ))}
+                <RunButton
+                  onRun={onRun}
+                  running={running}
+                  disabled={selectedId == null || running}
+                />
+                <div
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "var(--ink-400)",
+                    fontWeight: 500,
+                  }}
+                >
+                  {selectedStep
+                    ? `Selected: ${selectedStep.name}`
+                    : "Pick a stage to enable the run"}
+                </div>
+              </div>
+              {runId && (
+                <div
+                  style={{
+                    marginTop: 12,
+                    fontSize: "0.72rem",
+                    color: "var(--ink-400)",
+                    fontFamily:
+                      "'SF Mono', ui-monospace, Menlo, Consolas, monospace",
+                  }}
+                >
+                  run_id: {runId}
+                  {startedAt && (
+                    <> &nbsp;·&nbsp; started: {startedAt.toLocaleTimeString()}</>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-          <ResultsTable papers={results.papers} />
-        </div>
-      )}
 
-      <div className="footer-note">
-        Lipid Nanoparticle Literature Pipeline
-        <span className="sep">·</span>
-        Quantitative + kinetic evidence retrieval
+          <div className="dashboard-right">
+            {(state !== "idle" || results) && (
+              <PrismaCountsPanel
+                counts={counts}
+                state={state === "idle" ? "done" : state}
+                message={statusMsg}
+              />
+            )}
+
+            {results && (
+              <div className="card">
+                <div className="progress-header">
+                  <div className="card-title" style={{ marginBottom: 0 }}>
+                    Step 3 · Included papers — {results.step_name}
+                  </div>
+                  <div className="status-badge done">
+                    {results.papers.length}{" "}
+                    {results.papers.length === 1 ? "paper" : "papers"}
+                  </div>
+                </div>
+
+                <div className="toolbar">
+                  <span
+                    style={{
+                      fontSize: "0.72rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.6px",
+                      textTransform: "uppercase",
+                      color: "var(--ink-400)",
+                    }}
+                  >
+                    Export
+                  </span>
+                  {(["csv", "json", "md"] as ExportFormat[]).map((f) => (
+                    <a
+                      key={f}
+                      className="btn-ghost"
+                      href={exportUrl(results.run_id, f)}
+                    >
+                      {f.toUpperCase()}
+                    </a>
+                  ))}
+                  <div className="spacer" />
+                </div>
+
+                <ResultsTable papers={results.papers} />
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="footer-note">
+          Lipid Nanoparticle Literature Pipeline
+          <span className="sep">·</span>
+          Quantitative + kinetic evidence retrieval
+        </div>
       </div>
-    </div>
+    </>
   );
 }

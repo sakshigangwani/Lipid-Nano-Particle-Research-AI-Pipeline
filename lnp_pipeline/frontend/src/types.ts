@@ -10,12 +10,18 @@ export interface PrismaCounts {
   europepmc: number;
   semantic_scholar: number;
   crossref: number;
+  openalex: number;
+  biorxiv: number;
   total_raw: number;
   after_dedup: number;
   after_quant: number;
   after_kinetic: number;
+  caption_rescued: number;
+  llm_scored: number;
   final: number;
 }
+
+export type LLMVerdict = "include" | "borderline" | "exclude" | "skipped" | "error";
 
 export type RunState = "running" | "done" | "error";
 
@@ -40,6 +46,10 @@ export interface PaperRecord {
   matched_kinetic_terms: string[];
   matched_signal_phrases: string[];
   score: number;
+  llm_score: number | null;
+  llm_verdict: LLMVerdict;
+  llm_rationale: string;
+  caption_rescued: boolean;
 }
 
 export interface RunResults {

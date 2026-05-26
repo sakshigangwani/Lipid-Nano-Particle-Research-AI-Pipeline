@@ -6,69 +6,120 @@ interface Props {
   message?: string | null;
 }
 
-interface DbCellProps { label: string; value: number; }
-function DbCell({ label, value }: DbCellProps) {
-  return (
-    <div className="prisma-box">
-      <div className="db-label">{label}</div>
-      <div className="db-count">{value}</div>
-    </div>
-  );
-}
-
-interface ArrowProps { label: string; }
-function Arrow({ label }: ArrowProps) {
-  return (
-    <div className="prisma-arrow">
-      <div className="arrow-label">{label}</div>
-      <div className="arrow-line" />
-      <div className="arrow-head" />
-    </div>
-  );
-}
-
-interface StageProps { count: number; label: string; final?: boolean; }
-function Stage({ count, label, final }: StageProps) {
-  return (
-    <div className={`prisma-stage ${final ? "final" : ""}`}>
-      <div className="stage-count">{count}</div>
-      <div className="stage-label">{label}</div>
-    </div>
-  );
-}
+const DBS: Array<{ key: keyof PrismaCounts; label: string }> = [
+  { key: "pubmed", label: "PubMed" },
+  { key: "europepmc", label: "Europe PMC" },
+  { key: "crossref", label: "CrossRef" },
+  { key: "openalex", label: "OpenAlex" },
+  { key: "semantic_scholar", label: "Sem. Scholar" },
+  { key: "biorxiv", label: "bioRxiv" },
+];
 
 export default function PrismaCountsPanel({ counts, state, message }: Props) {
-  const finalCount = counts.final || counts.after_kinetic;
+  const final = counts.final;
   return (
-    <div className="panel">
-      <div className="panel-header">
-        <h2>Identification · Screening · Eligibility</h2>
-        <span className="step-label">PRISMA flow</span>
-      </div>
-
-      <div className="prisma-diagram">
-        <div className="prisma-tier">
-          <DbCell label="PubMed" value={counts.pubmed} />
-          <DbCell label="Europe PMC" value={counts.europepmc} />
-          <DbCell label="Semantic Scholar" value={counts.semantic_scholar} />
-          <DbCell label="CrossRef" value={counts.crossref} />
+    <div className="card">
+      <div className="progress-header">
+        <div className="card-title" style={{ marginBottom: 0 }}>
+          Step 2 · Pipeline progress
         </div>
-
-        <div className="prisma-funnel">
-          <Arrow label="deduplication" />
-          <Stage count={counts.after_dedup} label="Unique records" />
-          <Arrow label="quantitative filter" />
-          <Stage count={counts.after_quant} label="Quantitative evidence" />
-          <Arrow label="kinetic filter" />
-          <Stage count={finalCount} label="Included" final />
+        <div className={`status-badge ${state}`}>
+          {state === "running" && <span className="spinner" />}
+          {state === "running"
+            ? "Running"
+            : state === "done"
+            ? "Complete"
+            : state === "error"
+            ? "Error"
+            : "Idle"}
         </div>
       </div>
 
-      <div className="prisma-state">
-        <span className={`state-dot ${state}`} />
-        <span>{state}</span>
-        {message && <span>· {message}</span>}
+      <div
+        style={{
+          fontSize: "0.7rem",
+          fontWeight: 700,
+          letterSpacing: "0.6px",
+          textTransform: "uppercase",
+          color: "var(--ink-400)",
+          marginBottom: 8,
+        }}
+      >
+        Databases searched
       </div>
+      <div className="db-hits">
+        {DBS.map((db) => {
+          const v = counts[db.key] as number;
+          return (
+            <div
+              key={db.key}
+              className={`db-hit-card ${v === 0 ? "zero" : ""}`}
+            >
+              <div className="db-hit-name">{db.label}</div>
+              <div className="db-hit-count">{v}</div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div
+        style={{
+          fontSize: "0.7rem",
+          fontWeight: 700,
+          letterSpacing: "0.6px",
+          textTransform: "uppercase",
+          color: "var(--ink-400)",
+          marginBottom: 8,
+        }}
+      >
+        PRISMA funnel
+      </div>
+      <div className="funnel">
+        <div className="funnel-stage">
+          <div className="v">{counts.total_raw}</div>
+          <div className="l">raw</div>
+        </div>
+        <div className="funnel-arrow">→ dedup</div>
+        <div className="funnel-stage">
+          <div className="v">{counts.after_dedup}</div>
+          <div className="l">unique</div>
+        </div>
+        <div className="funnel-arrow">→ quant</div>
+        <div className="funnel-stage">
+          <div className="v">{counts.after_quant}</div>
+          <div className="l">quant</div>
+        </div>
+        <div className="funnel-arrow">→ kinetic</div>
+        <div className="funnel-stage">
+          <div className="v">{counts.after_kinetic}</div>
+          <div className="l">kinetic</div>
+        </div>
+        <div className="funnel-arrow">
+          + captions
+          <br />({counts.caption_rescued} rescued)
+        </div>
+        <div className="funnel-stage">
+          <div className="v">{counts.llm_scored}</div>
+          <div className="l">LLM scored</div>
+        </div>
+        <div className="funnel-arrow">→ OpenAI</div>
+        <div className="funnel-stage final">
+          <div className="v">{final}</div>
+          <div className="l">included</div>
+        </div>
+      </div>
+
+      {message && (
+        <div
+          style={{
+            marginTop: 12,
+            fontSize: "0.82rem",
+            color: "var(--rose-700)",
+          }}
+        >
+          {message}
+        </div>
+      )}
     </div>
   );
 }

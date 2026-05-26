@@ -1,63 +1,123 @@
 import { useMemo, useState } from "react";
-import type { PaperRecord, SortKey } from "../types";
+import type { LLMVerdict, PaperRecord, SortKey } from "../types";
 import PaperRow from "./PaperRow";
 
 interface Props {
   papers: PaperRecord[];
 }
 
+type Filter = "all" | LLMVerdict | "rescued";
+
 export default function ResultsTable({ papers }: Props) {
   const [sortKey, setSortKey] = useState<SortKey>("score");
-  const [asc, setAsc] = useState(false);
+  const [filter, setFilter] = useState<Filter>("all");
 
-  const sorted = useMemo(() => {
-    const arr = [...papers];
+  const totals = useMemo(() => {
+    const t = {
+      all: papers.length,
+      include: 0,
+      borderline: 0,
+      exclude: 0,
+      skipped: 0,
+      error: 0,
+      rescued: 0,
+    };
+    for (const p of papers) {
+      t[p.llm_verdict] = (t[p.llm_verdict] ?? 0) + 1;
+      if (p.caption_rescued) t.rescued += 1;
+    }
+    return t;
+  }, [papers]);
+
+  const filtered = useMemo(() => {
+    let arr = [...papers];
+    if (filter === "rescued") arr = arr.filter((p) => p.caption_rescued);
+    else if (filter !== "all") arr = arr.filter((p) => p.llm_verdict === filter);
     arr.sort((a, b) => {
-      let cmp = 0;
-      if (sortKey === "score") cmp = a.score - b.score;
-      else if (sortKey === "year") cmp = (a.year ?? 0) - (b.year ?? 0);
-      else cmp = a.title.localeCompare(b.title);
-      return asc ? cmp : -cmp;
+      if (sortKey === "score") {
+        const al = a.llm_score ?? -1;
+        const bl = b.llm_score ?? -1;
+        if (bl !== al) return bl - al;
+        return b.score - a.score;
+      }
+      if (sortKey === "year") return (b.year ?? 0) - (a.year ?? 0);
+      return a.title.localeCompare(b.title);
     });
     return arr;
-  }, [papers, sortKey, asc]);
-
-  function toggle(k: SortKey) {
-    if (k === sortKey) setAsc((v) => !v);
-    else {
-      setSortKey(k);
-      setAsc(k === "title");
-    }
-  }
-
-  function arrow(k: SortKey) {
-    if (k !== sortKey) return null;
-    return <span className="arrow">{asc ? "▲" : "▼"}</span>;
-  }
+  }, [papers, filter, sortKey]);
 
   if (papers.length === 0) {
-    return <div className="empty">No papers passed the filters for this step.</div>;
+    return (
+      <div className="empty-state">
+        No papers passed the filters for this step.
+      </div>
+    );
   }
 
+  const filterBtn = (key: Filter, label: string, count: number) => (
+    <button
+      key={key}
+      className={`filter-btn ${filter === key ? "active" : ""}`}
+      onClick={() => setFilter(key)}
+    >
+      {label} · {count}
+    </button>
+  );
+
   return (
-    <div className="results-wrap">
-      <table className="results">
-        <thead>
-          <tr>
-            <th onClick={() => toggle("score")}>Score{arrow("score")}</th>
-            <th onClick={() => toggle("title")}>Title / Authors{arrow("title")}</th>
-            <th onClick={() => toggle("year")}>Year{arrow("year")}</th>
-            <th>Journal</th>
-            <th>Sources</th>
-            <th>DOI</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sorted.map((p, i) => (
-            <PaperRow key={p.doi ?? p.pmid ?? `${i}-${p.title}`} paper={p} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="results-summary">
+        <div className="stat-card">
+          <div className="stat-value blue">{papers.length}</div>
+          <div className="stat-label">Included</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-value green">{totals.include}</div>
+          <div className="stat-label">LLM: include</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-value amber">{totals.borderline}</div>
+          <div className="stat-label">LLM: borderline</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-value slate">{totals.rescued}</div>
+          <div className="stat-label">Caption rescues</div>
+        </div>
+      </div>
+
+      <div className="toolbar">
+        {filterBtn("all", "All", totals.all)}
+        {filterBtn("include", "Include", totals.include)}
+        {totals.borderline > 0 && filterBtn("borderline", "Borderline", totals.borderline)}
+        {totals.rescued > 0 && filterBtn("rescued", "Caption-rescued", totals.rescued)}
+        <div className="spacer" />
+        <label
+          style={{
+            fontSize: "0.72rem",
+            fontWeight: 700,
+            letterSpacing: "0.5px",
+            textTransform: "uppercase",
+            color: "var(--ink-400)",
+          }}
+        >
+          Sort
+        </label>
+        <select
+          className="sort-select"
+          value={sortKey}
+          onChange={(e) => setSortKey(e.target.value as SortKey)}
+        >
+          <option value="score">Score (LLM ↘)</option>
+          <option value="year">Year (newest)</option>
+          <option value="title">Title (A→Z)</option>
+        </select>
+      </div>
+
+      <div className="studies-list">
+        {filtered.map((p, i) => (
+          <PaperRow key={p.doi ?? p.pmid ?? `${i}-${p.title}`} paper={p} />
+        ))}
+      </div>
+    </>
   );
 }

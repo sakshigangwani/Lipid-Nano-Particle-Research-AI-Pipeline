@@ -1,0 +1,301 @@
+{
+  "run_id": "fe2fbaffca15",
+  "step_id": 4,
+  "step_name": "Cellular uptake",
+  "state": "done",
+  "counts": {
+    "pubmed": 9,
+    "europepmc": 200,
+    "semantic_scholar": 0,
+    "crossref": 200,
+    "total_raw": 409,
+    "after_dedup": 409,
+    "after_quant": 53,
+    "after_kinetic": 22,
+    "llm_scored": 22,
+    "final": 8
+  },
+  "papers": [
+    {
+      "title": "Lipid Nanoparticles and PEG: Time Frame of Immune Checkpoint Blockade Can Be Controlled by Adjusting the Rate of Cellular Uptake of Nanoparticles.",
+      "authors": [
+        "Choi AS",
+        "Moon TJ",
+        "Bhalotia A",
+        "Rajan A",
+        "Ogunnaike L",
+        "Hutchinson DW",
+        "Hwang I",
+        "Gokhale A",
+        "Kim JN",
+        "Ma T",
+        "Karathanasis E."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acs.molpharmaceut.4c01039",
+      "pmid": "40035231",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The engineerability of lipid nanoparticles (LNPs) and their ability to deliver nucleic acids make LNPs attractive tools for cancer immunotherapy. LNP-based gene delivery can be employed for various approaches in cancer immunotherapy, including encoding tumor-associated antigens and silencing of negative immune checkpoint proteins. For example, LNPs carrying small interfering RNAs can offer several advantages, including sustained and durable inhibition of an immune checkpoint protein. Due to their tunable design, modifying the lipid composition of LNPs can regulate the rate of their uptake by immune cells and the rate of gene silencing. Controlling the kinetics of LNP uptake provides additional flexibility and strategies to generate appropriate immunomodulation in the tumor microenvironment. Here, we evaluated the effects of polyethylene glycol (PEG) content ranging from 0.5 to 6 mol % on the cellular uptake of LNPs by immune cells and gene silencing of PD-L1 after intratumoral administration. We evaluated the cellular uptake and PD-L1 blockade in vitro in cell studies and in vivo using the YUMM1.7 melanoma tumor model. Cell studies showed that the rate of cell uptake was inversely correlated to an increasing mol % of PEG in a linear relationship. In the in vivo studies, 0.5% PEG LNP initiated an immediate effect in the tumor with a significant decrease in the PD-L1 expression of immune cells observed within 24 h. In comparison, the gene silencing effect of 6% PEG LNP was delayed, with a significant decrease of PD-L1 expression in immune cell subsets being observed 72 h after administration. Notably, performance of the 6% PEG LNP at 72 h was comparable to that of the 0.5% PEG LNP at 24 h. Overall, this study suggests that PEG modifications and intratumoral administration of LNPs can be a promising strategy for an effective antitumor immune response.",
+      "matched_quant_terms": [
+        "0.5%",
+        "6%"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics",
+        "24 h",
+        "72 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The study evaluates the rate of cellular uptake of LNPs with varying PEG content, providing quantitative data on uptake rates and time courses (24h and 72h) related to PD-L1 expression."
+    },
+    {
+      "title": "Intracellular trafficking kinetics of nucleic acid escape from lipid nanoparticles via fluorescence imaging.",
+      "authors": [
+        "Christina M Bailey-Hytholt",
+        "Gregory Ulinski",
+        "Julia Dugas",
+        "Mohammed Haines",
+        "Mihael Lazebnik",
+        "Peter Piepenhagen",
+        "Isidro E Zarraga",
+        "Amey Bandekar"
+      ],
+      "year": 2023,
+      "journal": "Current pharmaceutical biotechnology",
+      "doi": "10.2174/1389201024666230403094238",
+      "pmid": "37016519",
+      "source_dbs": [
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are one of the most clinically advanced candidates for delivering nucleic acids to target cell populations, such as hepatocytes. Once LNPs are endocytosed, they must release their nucleic acid cargo into the cell cytoplasm. For delivering messenger RNA (mRNA), delivery into the cytosol is sufficient; however, for delivering DNA, there is an added diffusional barrier needed to facilitate nuclear uptake for transcription and therapeutic effect. Here, we use fluorescence microscopy to investigate the intracellular fate of different LNP formulations to determine the kinetics of localization to endosomes and lysosomes. LNPs used in the studies were prepared via self-assembly using a NanoAssemblr for microfluidic mixing. As the content of polyethylene glycol (PEG) within the LNP formulation influences cellular uptake by hepatocyte cells, the content and hydrocarbon chain length within the formulation were assessed for their impact on intracellular trafficking. Standard LNPs were then formed using three commercially available ionizable lipids, Dlin-MC3-DMA (MC3), Dlin-KC2-DMA (KC2), and SS-OP. Plasmid DNA (pDNA) and mRNA were used, more specifically with a mixture of Cyanine 3 (Cy3)-labeled and green fluorescence protein (GFP) producing plasmid DNA (pDNA) as well as Cy5-labeled GFP producing mRNA. After formulation, LNPs were characterized for the encapsulation efficiency of the nucleic acid, hydrodynamic diameter, polydispersity, and zeta potential. All standard LNPs were ~100 nm in diameter and had neutral surface charge. All LNPs resulted in encapsulation efficiency greater than 70%. Confocal fluorescence microscopy was used for the intracellular trafficking studies, where LNPs were incubated with HuH-7 hepatocyte cells at times ranging from 0-48 h. The cells were antibody-stained for subcellular components, including nuclei, endosomes, and lysosomes. Analysis was performed to quantify localization of pDNA to the endosomes and lysosomes. LNPs with 1.5 mol% PEG and a hydrocarbon chain C14 resulted in optimal endosomal escape and GFP production. Results from this study demonstrate that a higher percentage of C14 PEG leads to smaller LNPs with limited available phospholipid binding area for ApoE, resulting in decreased cellular uptake. We observed differences in the localization kinetics depending on the LNP formulation type for SS-OP, KC2, and MC3 ionizable lipids. The results also demonstrate the technique across different nucleic acid types, where mRNA resulted in more rapid and uniform GFP production compared to pDNA delivery. Here, we demonstrated the ability to track uptake and the sub-cellular fate of LNPs containing pDNA and mRNA, enabling improved screening prior to in vivo studies which would aid in formulation optimization.",
+      "matched_quant_terms": [
+        "70%",
+        "100 nm"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics",
+        "48 h"
+      ],
+      "matched_signal_phrases": [
+        "intracellular trafficking"
+      ],
+      "score": 0.315,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study investigates the kinetics of LNP uptake and intracellular trafficking using fluorescence microscopy over a time course of 0-48 h, providing quantitative data on localization to endosomes and lysosomes."
+    },
+    {
+      "title": "Investigating Hybrid PLGA-Lipid Nanoparticles as an Innovative Delivery Tool for Palmitoylethanolamide to Muscle Cells.",
+      "authors": [
+        "Maretti E",
+        "Molinari S",
+        "Partel S",
+        "Recchia B",
+        "Rustichelli C",
+        "Leo E."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.3390/pharmaceutics17111412",
+      "pmid": "41304749",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "<b>Background/Objectives:</b> Palmitoylethanolamide (PEA) is an endogenous lipid mediator with endocannabinoid-like activity. Despite its therapeutic potential in muscle-related inflammatory disorders, including sarcopenia, its clinical use is limited by poor solubility and bioavailability. To overcome these issues, we developed hybrid nanoparticles combining poly(lactic-co-glycolic acid) (PLGA) and lipids to enhance PEA encapsulation and ok delivery. <b>Methods</b>: PEA-loaded hybrid nanoparticles (PEA-Hyb-np) were produced via a modified single-emulsion solvent evaporation method using stearic acid and Gelucire<sup>®</sup> 50/13 as lipid components. Characterization included particle size, morphology, PDI, and zeta potential, as well as DSC, FT-IR, and XRD analyses. For the biological evaluation in a C2C12 myoblasts cell culture, coumarin-6-labeled nanoparticles were employed. <b>Results</b>: PEA-Hyb-np showed mean particle sizes of ~150 nm, with internal lipid-polymer phase separation. This structure enabled high encapsulation efficiency (79%) and drug loading (44.2 mg/g). Drug release in physiological and non-physiological media was enhanced due to drug amorphization, confirmed by DSC, FT-IR, and XRD analyses. Cytocompatibility studies showed no toxicity and improved cell viability compared to unloaded nanoparticles. Cellular uptake studies by confocal microscopy and flow cytometry demonstrated efficient and time-dependent internalization. <b>Conclusions</b>: PEA-Hyb-np represent a promising delivery platform to improve the solubility, bioavailability, and therapeutic efficacy of PEA for muscle-targeted applications.",
+      "matched_quant_terms": [
+        "79%",
+        "150 nm",
+        "44.2 mg"
+      ],
+      "matched_kinetic_terms": [
+        "time-dependent"
+      ],
+      "matched_signal_phrases": [
+        "confocal microscopy"
+      ],
+      "score": 0.315,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (PEA-Hyb-np) and includes time-dependent cellular uptake data via confocal microscopy and flow cytometry, indicating efficient internalization."
+    },
+    {
+      "title": "Rationally designed sodium thiosulfate-loaded solid lipid nanoparticles for inner ear delivery and prevention of medication-induced ototoxicity.",
+      "authors": [
+        "Chakrabarty B",
+        "Thakur NS",
+        "Joshi AD",
+        "Agrahari V."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1039/d5tb01324k",
+      "pmid": "41140199",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Medication-induced ototoxicity (MIO) results from treatment regimens such as aminoglycosides and platinum-based drugs, leading to sensory hair cell damage in the inner ear, which is responsible for converting mechanical sound vibrations to the electrical signals for hearing. Our study aims to develop biomaterial-based localized drug delivery systems of therapeutics for the protection of cochlear hair cells. In this study, we developed sodium-thiosulfate (STS)-loaded solid-lipid-nanoparticles (SLNs) and tested them against cisplatin (CisPt)-induced ototoxicity. STS-SLNs were synthesized by the double emulsion evaporation technique followed by characterization using dynamic light scattering (DLS), nanoparticle tracking analysis (NTA), and transmission electron microscopy (TEM). The optimized nanoparticles exhibited optimal physicochemical properties, and stability, including particle size (∼92.3 ± 0.8 nm), polydispersity index (<0.3), zeta potential (-13.23 ± 2.07 mV), and encapsulation efficiency (45.48 ± 5.87). TEM analysis confirmed the STS-SLNs spherical morphology. The STS-SLNs showed sustained release of STS from SLNs with an <i>n</i> value of 0.09 (Fickian diffusion) determined using the Korsmeyer-Peppas model. Cellular uptake studies with House Ear Institute-Organ of Corti (HEI-OC1) cells using Coumarin-6-tagged STS-SLNs showed a maximum uptake at 1 hour <i>via</i> clathrin-mediated endocytosis. The STS-SLNs displayed antioxidant potential in reactive oxygen species (ROS) scavenging assays, and enhanced cell viability in live/dead assays compared to CisPt treatment alone. The molecular signaling pathways were investigated by assessing the expression of STAT3 and Nrf2 pathways in HEI-OC1 cells. STS-SLNs significantly reduced STAT3 and P-STAT3 expression compared to the CisPt-treated group, suggesting a protective effect against CisPt-induced oxidative stress <i>via</i> the STAT3 pathway. STS-SLNs effectively mitigated medication-induced (CisPt) cell damage in auditory cells, highlighting their therapeutic potential for local delivery to the inner ear.",
+      "matched_quant_terms": [
+        "0.8 nm",
+        "92.3 ± 0.8",
+        "13.23 ± 2.07",
+        "45.48 ± 5.87"
+      ],
+      "matched_kinetic_terms": [
+        "1 hour"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on sodium-thiosulfate-loaded solid lipid nanoparticles (STS-SLNs) and reports cellular uptake at 1 hour, indicating a time-resolved measurement. It includes quantitative metrics on uptake and characterization of the nanoparticles."
+    },
+    {
+      "title": "Development of novel solid lipid nanoparticles for delivery of astrakurkurone with increasing anti-cancer efficacy against non-small cell lung cancer cells.",
+      "authors": [
+        "Dipanjan Ghosh",
+        "Adhiraj Dasgupta",
+        "Gouranga Dutta",
+        "Soudipta Pramanik",
+        "Krishnendu Acharya",
+        "Gopal Chakrabarti"
+      ],
+      "year": 2026,
+      "journal": "Colloids and surfaces. B, Biointerfaces",
+      "doi": "10.1016/j.colsurfb.2025.115222",
+      "pmid": "41161215",
+      "source_dbs": [
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are a highly effective tool for combating cancer by delivering anti-cancer drug molecules specifically to tumor sites while avoiding healthy cells. Alcohol dehydrogenase (ADH) is over-expressed in cancer cells compared to non-cancerous cells. To leverage this difference, we developed a novel formulation, astrakurkurone encapsulated in PEGylated lipid nanoparticles (Astra SLNP), derived from fatty alcohol that serve as substrates for ADH leading to preferential uptake and metabolism by cancer cells, which then release astrakurkurone into the cellular matrix. Astrakurkurone, a sesquiterpenoid derived from Astraeus hygrometricus, a wild edible mushroom, has been established in numerous studies to possess potent anti-cancer properties by inducing apoptosis and inhibiting cancer cell proliferation. Our study indicated that the novel Astra-SLNP (98.89 ± 20.86 nm in size, with a negatively charged surface [zeta-potential: -10 mV]) exhibited significantly 10-fold higher anti-cancer efficacy compared to free astrakurkurone against lung cancer A549 cells. Moreover, MTT assays confirmed that Astra-SLNP showed no significant cytotoxicity towards non-cancerous cells (human embryonic kidney, HEK293 cells).The morphological changes in apoptotic cells were investigated using phase-contrast, bright-field, scanning electron microscopy (SEM), field emission scanning electron microscopy (FESEM) and fluorescence microscopy with AnnexinV-FITC/PI staining protocol. Cellular uptake and degradation of lipid nanoparticles studies demonstrated dose-dependent uptake and time-dependent cellular degradation. In addition, scratch assay, colony formation assay, and the evaluation of mitochondrial membrane potential further suggested that Astra-SLNP possessed better anti-cancer potency than free astrakurkurone.",
+      "matched_quant_terms": [
+        "20.86 nm",
+        "10-fold",
+        "98.89 ± 20.86"
+      ],
+      "matched_kinetic_terms": [
+        "time-dependent"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.24,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study mentions 'time-dependent cellular degradation' and 'dose-dependent uptake', but lacks specific quantitative metrics or time-course data for LNP uptake. It does not provide explicit time-resolved measurements."
+    },
+    {
+      "title": "Effects of Serum Incubation on Lipid Nanoparticle PEG Shedding, mRNA Retention, and Membrane Interactions.",
+      "authors": [
+        "Niederkofler S",
+        "Parkkila P",
+        "Aliakbarinodehi N",
+        "Sasanian N",
+        "Emilsson G",
+        "Ulkoski D",
+        "Ferreira CJO",
+        "Galenkamp NS",
+        "Silva BFB",
+        "Lundberg D",
+        "Jing Y",
+        "Lindfors L",
+        "Agnarsson B",
+        "Höök F."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acsami.5c17052",
+      "pmid": "41234148",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used for RNA delivery, but their efficiency remains limited, largely due to poor endosomal escape. Upon administration, proteins bind to the surface of the LNPs, influencing cellular uptake and potentially altering their interfacial properties. Such alterations may also affect their interaction with endosomal membranes, thus influencing the critical endosomal escape step. Using fluorescence microscopy imaging with single-LNP resolution, this study investigates how incubation in 10% fetal bovine serum alters the PEG modification and mRNA content of LNPs, as well as how serum incubation-induced alterations influence the interaction between LNPs and an anionic supported lipid bilayer (SLB), serving as a simplistic mimic for the anionic lipid membrane of late endosomes. We demonstrate that serum incubation leads to the desorption of PEG-modified lipids and a significant release of mRNA cargo from the LNPs. PEG shedding occurred consistently with a half-life time of around 10 min, while mRNA release displayed higher variability between individual LNPs. We also observed that serum preincubation enhanced attractive interactions between tethered LNPs and the anionic SLB at physiological pH 7.4, and fusion of LNPs with the anionic SLB upon pH reduction was more efficient for serum-preincubated LNPs than for their pristine counterparts, particularly during moderate acidification from pH 6.5 to 6.0. This enhanced fusion efficiency may be attributed to a reduced steric hindrance from PEG-lipids following serum preincubation. The findings highlight that serum-induced modifications enhance LNP fusion efficiency with an endosomal membrane mimic while potentially compromising mRNA retention, thus balancing the overall efficacy of LNP-assisted mRNA delivery.",
+      "matched_quant_terms": [
+        "10%"
+      ],
+      "matched_kinetic_terms": [
+        "half-life",
+        "10 min"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.8,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and includes quantitative measurements, such as a half-life of PEG shedding around 10 min, which relates to cellular uptake dynamics."
+    },
+    {
+      "title": "Quantitation of physiological and biochemical barriers to siRNA liver delivery via lipid nanoparticle platform.",
+      "authors": [
+        "Yan Xu",
+        "Mei Ou",
+        "Ed Keough",
+        "Jeff Roberts",
+        "Ken Koeplinger",
+        "Mike Lyman",
+        "Scott Fauty",
+        "Ed Carlini",
+        "Melissa Stern",
+        "Rena Zhang",
+        "Suzie Yeh",
+        "Elizabeth Mahan",
+        "Yi Wang",
+        "Don Slaughter",
+        "Marian Gindy",
+        "Conrad Raab",
+        "Charles Thompson",
+        "Jerome Hochman"
+      ],
+      "year": 2014,
+      "journal": "Molecular pharmaceutics",
+      "doi": "10.1021/mp400584h",
+      "pmid": "24588618",
+      "source_dbs": [
+        "PubMed"
+      ],
+      "abstract": "Effective delivery of small interfering RNA (siRNA) requires efficient cellular uptake and release into cytosol where it forms an active complex with RNAi induced silencing complex (RISC). Despite rapid developments in RNAi therapeutics, improvements in delivery efficiency of siRNA are needed to realize the full potential of this modality in broad therapeutic applications. We evaluated potential physiological and biochemical barrier(s) to the effective liver delivery of siRNA formulated in lipid nanoparticle (LNP) delivery vehicles. The comparative siRNA delivery performance of three LNPs was investigated in rats. They were assembled with either C14- or C18-anchored PEG-lipid(s), cationic lipid(s), and various helper lipid(s) and contained the same siRNA duplex. These LNPs demonstrated differentiated potency with ED50's ranging from 0.02 to 0.25 mg/kg. The two C14-PEG-LNPs had comparable siRNA exposure in plasma and liver, while the C18-PEG-LNP demonstrated a higher plasma siRNA exposure and a slower but sustained liver uptake. RISC bound siRNA within the liver, a more proximal measure of the pharmacologically active siRNA species, displayed loading kinetics that paralleled the target mRNA knockdown profile, with greater RISC loading associated with more potent LNPs. Liver perfusion and hepatocyte isolation experiments were performed following treatment of rats with LNPs containing VivoTag-fluorescently labeled siRNA. One hour after dosing a majority of the siRNA within the liver was associated with hepatocytes and was internalized (within small subcellular vesicles) with no significant cell surface association, indicating good liver tissue penetration, hepatocellular distribution, and internalization. Comparison of siRNA amounts in hepatocytes and subcellular fractions of the three LNPs suggests that endosomal escape is a significant barrier to siRNA delivery where cationic lipid seems to have a great impact. Quantitation of Ago-2 associated siRNA revealed that after endosomal escape further loss of siRNA occurs prior to RISC loading. This quantitative assessment of LNP-mediated siRNA delivery has highlighted potential barriers with respect to endosomal escape and incomplete RISC loading for delivery optimization efforts.",
+      "matched_quant_terms": [
+        "0.25 mg"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study evaluates LNP uptake in liver cells and provides quantitative data on siRNA exposure and loading kinetics. However, it lacks explicit time-resolved measurements for cellular uptake rates."
+    },
+    {
+      "title": "LNP-Mediated CF10 Delivery Selectively Enhances Potency to Colorectal Cancer Cells and Preserves the TS/Top1 Dual Targeting Mechanism.",
+      "authors": [
+        "Sarkar S",
+        "Behl A",
+        "Gmeiner WH."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1021/acsabm.5c01892",
+      "pmid": "41631794",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are extensively utilized in nucleic acid delivery for therapeutic applications because of their biocompatibility and protection of the nucleic acid cargo from degradation during in vivo transport. The nanoscale DNA-based fluoropyrimidine polymer CF10 shows strong efficacy advantages relative to conventional fluoropyrimidine drugs such as 5-fluorouracil (5-FU). In principle, LNP-mediated delivery of CF10 could further enhance its efficacy advantage relative to 5-FU by increasing plasma stability and promoting cell uptake. However, the anticancer activity of CF10 relies on the release of active nucleotides, and it is not clear that LNP-mediated delivery of CF10 preserves dual targeting of thymidylate synthase (TS) and DNA topoisomerase 1 (Top1). This study proposes the incorporation of CF10 into LNPs using chaotic mixing of lipid compositions in a microfluidic chip. Biophysical characterization revealed homogeneous LNP formation with size 80-200 nm in diameter and a zeta-potential of -15 mV, dependent on CF10 concentration. LNPs were stable (tested in PBS) over 4 weeks. In vitro studies showed that LNP formulation increased CF10 uptake specifically into cancer cells, while an immortalized nonmalignant intestinal cell line did not show increased uptake of CF10:LNPs. CF10:LNPs initially colocalized with endosomes, followed by primarily lysosome colocalization at 48 h. CF10:LNPs displayed increased cytotoxicity to cancer cells relative to free CF10, proportional to increased cell uptake. Potent inhibition of TS was achieved consistently with nuclease-mediated release of FdUMP from CF10 in lysosomes. CF10:LNPs also efficiently induced Top1 cleavage complex formation, consistent with perturbation of cellular dNTP pools similar to free CF10. These findings indicate that CF10:LNPs display enhanced anticancer activity relative to free CF10 and preserve CF10's unique TS/Top1 dual targeting mechanism.",
+      "matched_quant_terms": [
+        "200 nm"
+      ],
+      "matched_kinetic_terms": [
+        "48 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study discusses LNP uptake in cancer cells but lacks explicit quantitative metrics on uptake rates or time-resolved data. It mentions colocalization at 48h but does not provide a time course or kinetic measurements."
+    }
+  ],
+  "message": null,
+  "updated_at": "2026-05-26T19:59:05.784735Z"
+}

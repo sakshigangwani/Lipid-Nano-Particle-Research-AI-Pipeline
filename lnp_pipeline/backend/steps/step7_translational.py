@@ -66,5 +66,7 @@ async def run_search(progress_cb: ProgressCb | None = None) -> list[dict]:
         kinetic_keywords=KINETIC_FILTERS,
         signal_phrases=SIGNAL_PHRASES,
         strict_kinetic=STEP_META["strict_kinetic"],
+        step_name=STEP_META["name"],
+        step_description=STEP_META["description"],
         progress_cb=progress_cb,
     )

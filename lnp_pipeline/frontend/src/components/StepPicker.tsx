@@ -9,39 +9,38 @@ interface Props {
 
 const ROMAN = ["", "I", "II", "III", "IV", "V", "VI", "VII"];
 
-export default function StepPicker({ steps, selectedId, onSelect, disabled }: Props) {
+export default function StepPicker({
+  steps,
+  selectedId,
+  onSelect,
+  disabled,
+}: Props) {
   return (
-    <div className="panel">
-      <div className="panel-header">
-        <h2>Step 1 · Select an LNP journey stage</h2>
-        <span className="step-label">single-select per run</span>
-      </div>
-      <div className="steps">
-        {steps.map((s) => {
-          const selected = s.id === selectedId;
-          return (
-            <label
-              key={s.id}
-              className={`step ${selected ? "selected" : ""}`}
-              onClick={() => !disabled && onSelect(s.id)}
-            >
-              <input
-                type="radio"
-                name="step"
-                checked={selected}
-                onChange={() => onSelect(s.id)}
-                disabled={disabled}
-              />
-              <div>
-                <div className="name">
-                  <span className="step-number">{ROMAN[s.id]}.</span> {s.name}
-                </div>
-                <div className="desc">{s.description}</div>
+    <div className="lnp-step-grid">
+      {steps.map((s) => {
+        const selected = s.id === selectedId;
+        return (
+          <div
+            key={s.id}
+            className={`lnp-step ${selected ? "selected" : ""}`}
+            onClick={() => !disabled && onSelect(s.id)}
+            role="radio"
+            aria-checked={selected}
+          >
+            <div className="step-radio" aria-hidden />
+            <div className="step-body">
+              <div className="step-name">
+                <span className="step-num-tag">Stage {ROMAN[s.id]}</span>
+                {s.name}
+                {s.strict_kinetic && (
+                  <span className="kinetic-tag">kinetic required</span>
+                )}
               </div>
-            </label>
-          );
-        })}
-      </div>
+              <div className="step-desc">{s.description}</div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
