@@ -1,0 +1,766 @@
+{
+  "run_id": "08c6613fd4fd",
+  "step_id": 5,
+  "step_name": "Endosomal escape",
+  "state": "done",
+  "counts": {
+    "pubmed": 132,
+    "europepmc": 200,
+    "semantic_scholar": 0,
+    "crossref": 200,
+    "openalex": 200,
+    "biorxiv": 27,
+    "total_raw": 759,
+    "after_dedup": 636,
+    "after_quant": 114,
+    "after_kinetic": 37,
+    "caption_rescued": 20,
+    "llm_scored": 37,
+    "final": 17
+  },
+  "papers": [
+    {
+      "title": "mRNA-Based FRET-FLIM Imaging Platform for Quantifying Lipid Nanoparticle Endosomal Escape and Membrane Damage.",
+      "authors": [
+        "Yian Fang",
+        "Bin Ma",
+        "Zhiqiang Zhao",
+        "Ziyan Xuan",
+        "Yu Wang",
+        "Chuping Huang",
+        "Mi Zhang",
+        "Lei Zhou",
+        "Feng Yao",
+        "Kailong Li",
+        "Wei You",
+        "Xinglin Yang",
+        "Jiajia Guo",
+        "Yifan Ge",
+        "Chenzhong Liao",
+        "Yiguang Wang",
+        "Lei Miao"
+      ],
+      "year": 2025,
+      "journal": "Journal of the American Chemical Society",
+      "doi": "10.1021/jacs.5c07897",
+      "pmid": "40814995",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Efficient endosomal escape and membrane damage are crucial for mRNA-lipid nanoparticle (LNPs) delivery but remain challenging to quantify. Here, we develop FRET-lifetime imaging for mRNA-LNP tracking (FLINT), an intramolecular FRET-FLIM platform to dynamically monitor mRNA release kinetics and endosomal damage in live cells. Capitalizing on the 50- to 100-fold higher concentration of glutathione (GSH) in the cytosol relative to endocytic vesicles, the FLINT employs disulfide-linked fluorophores conjugated to mRNA uridines, enabling precise tracking of cytosolic mRNA via GSH-activated signal amplification (20-50×). Using FLINT, we find that LNPs with escape-favorable lipid compositions (e.g., C12-200) exhibit rapid FRET signal diffusion, while uptake-driven LNPs (e.g., MC3) accumulate in endosomes with limited release. FLINT further reveals GSH influx during endosomal damage and correlates membrane rupture patterns with mRNA expression. Additionally, FLINT uncovers the influence of lipid organization within LNPs─in addition to endosomal membrane damages─on mRNA delivery efficiency. This FLINT platform decouples uptake, escape, and structural determinants of delivery efficiency, offering a transformative tool for LNP optimization and mechanistic studies both in vivo and in vitro.",
+      "matched_quant_terms": [
+        "100-fold"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics",
+        "kinetic"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.2467,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper focuses on lipid nanoparticles and quantifies endosomal escape using FRET-FLIM imaging. It provides kinetic data on mRNA release and endosomal damage, indicating rapid FRET signal diffusion and correlating it with lipid composition.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Cellular and biophysical barriers to lipid nanoparticle mediated delivery of RNA to the cytosol.",
+      "authors": [
+        "Johanna M Johansson",
+        "Hampus Du Rietz",
+        "Hampus Hedlund",
+        "Hanna C Eriksson",
+        "Erik Oude Blenke",
+        "Aditya Pote",
+        "Said Harun",
+        "Pontus Nordenfelt",
+        "Lennart Lindfors",
+        "Anders Wittrup"
+      ],
+      "year": 2025,
+      "journal": "Nature communications",
+      "doi": "10.1038/s41467-025-60959-z",
+      "pmid": "40595685",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are clinically approved for mRNA-based vaccines and liver-targeted siRNA delivery. However, poor nucleic acid delivery efficiency limits their application in extrahepatic tissues and tumors. Here, using live-cell and super-resolution microscopy, we identify multiple distinct steps of inefficiencies in the cytosolic delivery of both siRNA and mRNA cargoes. Membrane damages marked by galectin recruitment are conducive to cytosolic RNA release, whereas membrane perturbations recruiting the ESCRT machinery do not permit endosomal escape. Notably, only a small fraction of RNA is released from galectin-marked endosomes and, unexpectedly, many damaged endosomes contain no detectable RNA cargo. Using LNPs with both fluorescently labeled ionizable lipid and RNA, we show that these components segregate during endosomal sorting - both within single endosomes and across endosomal compartments. Finally, we visualize localized ionizable lipid enrichment in endosomal membranes and membrane damage in direct proximity to siRNA-LNPs tethered to luminal vesicle membranes. Taken together, our findings reveal multiple mechanistic barriers limiting intracellular RNA delivery by LNPs.",
+      "matched_quant_terms": [
+        "95%",
+        "1%",
+        "25%",
+        "100 nM",
+        "1.5 µg",
+        "50 nM",
+        "0.75 µg",
+        "0.5 µg",
+        "500 nm",
+        "525 nm"
+      ],
+      "matched_kinetic_terms": [
+        "100 min",
+        "8 h",
+        "30 min",
+        "10 s",
+        "75 min",
+        "120 min",
+        "90 min",
+        "4 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.6667,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and includes kinetic data, such as the number of galectin-9 foci per cell evaluated during 8 hours of LNP incubation, indicating time-resolved measurements relevant to endosomal escape.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Engineered internal architecture of core-shell lipid nanoparticles promotes efficient mRNA endosomal release.",
+      "authors": [
+        "Tianyao Li",
+        "Jingxin Zhang",
+        "Jing Guo",
+        "Bohong Sun",
+        "Yuxuan Han",
+        "Hu Xu",
+        "Yi Weng",
+        "Qinghao Cao",
+        "Min Li",
+        "Guangyu Zhao",
+        "Lin Liu",
+        "Xingfa Gao",
+        "Lianpan Dai",
+        "Daming Wang",
+        "Yuhong Cao"
+      ],
+      "year": 2026,
+      "journal": "Nature communications",
+      "doi": "10.1038/s41467-026-69017-8",
+      "pmid": "41617719",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Messenger RNA (mRNA) therapeutics rely on lipid nanoparticles (LNPs) for delivery, yet inefficient endosomal escape remains a major bottleneck, with only a small fraction of internalized cargo reaching the cytoplasm. Conventional LNPs encapsulate mRNA in amorphous lipid cores, where partial charge neutralization and lack of structural order limit protonation-driven membrane disruption. Here, we present an architectural strategy that engineers LNP internal structure using ionizable lipid-coated gold nanoparticles (IC-AuNPs) as rigid, pH-responsive cores. The Au cores template the formation of radially ordered core-shell architectures that stabilize particles at physiological pH while amplifying charge segregation and curvature stress under acidic endosomal conditions. As a result, Au-LNPs achieve a twofold increase in endosomal escape and ~100-fold greater cytoplasmic mRNA diffusion compared to conventional LNPs. Functionally, Au-LNPs enhance mRNA expression in vitro, increases in vivo protein production up to sevenfold, boost antibody responses to SARS-CoV-2 vaccines, and improve therapeutic efficacy in a triple-negative breast cancer model.",
+      "matched_quant_terms": [
+        "100-fold",
+        "fold increase"
+      ],
+      "matched_kinetic_terms": [
+        "6 h",
+        "24 h",
+        "12 h",
+        "4 h",
+        "14 days",
+        "7 days",
+        "16 days"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.4867,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses engineered lipid nanoparticles (LNPs) for mRNA delivery and reports a twofold increase in endosomal escape, providing quantitative data on cytoplasmic mRNA diffusion and expression, indicating kinetic measurements.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Time-Resolved Inspection of Ionizable Lipid-Facilitated Lipid Nanoparticle Disintegration and Cargo Release at an Early Endosomal Membrane Mimic.",
+      "authors": [
+        "Nima Aliakbarinodehi",
+        "Simon Niederkofler",
+        "Gustav Emilsson",
+        "Petteri Parkkila",
+        "Erik Olsén",
+        "Yujia Jing",
+        "Mattias Sjöberg",
+        "Björn Agnarsson",
+        "Lennart Lindfors",
+        "Fredrik Höök"
+      ],
+      "year": 2024,
+      "journal": "ACS nano",
+      "doi": "10.1021/acsnano.4c04519",
+      "pmid": "39133894",
+      "source_dbs": [
+        "CrossRef",
+        "Europe PMC",
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Advances in lipid nanoparticle (LNP) design have contributed notably to the emergence of the current clinically approved mRNA-based vaccines and are of high relevance for delivering mRNA to combat diseases where therapeutic alternatives are sparse. LNP-assisted mRNA delivery utilizes ionizable lipid-mediated cargo translocation across the endosomal membrane driven by the acidification of the endosomal environment. However, this process occurs at a low efficiency, a few percent at the best. Utilizing surface-sensitive fluorescence microscopy with a single LNP and mRNA resolution, we have investigated pH-controlled interactions between individual LNPs and a planar anionic supported lipid bilayer (SLB) formed on nanoporous silica, mimicking the electrostatic conditions of the early endosomal membrane. For LNPs with an average diameter of 140 nm, fusion with the anionic SLB preferentially occurred when the pH was reduced from 6.6 to 6.0. Furthermore, there was a delay in the onset of LNP fusion after the pH drop, and upon fusion, a significant fraction (>70%) of mRNA was released into the acidic solution representing the endosomal lumen, while a fraction of mRNA remained bound to the SLB even after reversing the pH to neutral cytosolic conditions. Finally, a comparison of the fusion efficiency of two LNP formulations with different surface concentrations of gel-forming lipids correlated with differences in the protein translation efficiency previously observed in human primary cell transfection studies. Together, these findings emphasize the relevance of biophysical investigations of ionizable lipid-containing LNP-assisted mRNA delivery mechanisms while potentially also offering means to optimize the design of LNPs with enhanced endosomal escape capabilities.",
+      "matched_quant_terms": [
+        "70%",
+        "140 nm"
+      ],
+      "matched_kinetic_terms": [
+        "Time-Resolved",
+        "onset"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.34,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and provides quantitative data on mRNA release (>70%) and fusion efficiency under varying pH conditions, indicating endosomal escape kinetics.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Intracellular trafficking kinetics of nucleic acid escape from lipid nanoparticles via fluorescence imaging.",
+      "authors": [
+        "Christina M Bailey-Hytholt",
+        "Gregory Ulinski",
+        "Julia Dugas",
+        "Mohammed Haines",
+        "Mihael Lazebnik",
+        "Peter Piepenhagen",
+        "Isidro E Zarraga",
+        "Amey Bandekar"
+      ],
+      "year": 2023,
+      "journal": "Current pharmaceutical biotechnology",
+      "doi": "10.2174/1389201024666230403094238",
+      "pmid": "37016519",
+      "source_dbs": [
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are one of the most clinically advanced candidates for delivering nucleic acids to target cell populations, such as hepatocytes. Once LNPs are endocytosed, they must release their nucleic acid cargo into the cell cytoplasm. For delivering messenger RNA (mRNA), delivery into the cytosol is sufficient; however, for delivering DNA, there is an added diffusional barrier needed to facilitate nuclear uptake for transcription and therapeutic effect. Here, we use fluorescence microscopy to investigate the intracellular fate of different LNP formulations to determine the kinetics of localization to endosomes and lysosomes. LNPs used in the studies were prepared via self-assembly using a NanoAssemblr for microfluidic mixing. As the content of polyethylene glycol (PEG) within the LNP formulation influences cellular uptake by hepatocyte cells, the content and hydrocarbon chain length within the formulation were assessed for their impact on intracellular trafficking. Standard LNPs were then formed using three commercially available ionizable lipids, Dlin-MC3-DMA (MC3), Dlin-KC2-DMA (KC2), and SS-OP. Plasmid DNA (pDNA) and mRNA were used, more specifically with a mixture of Cyanine 3 (Cy3)-labeled and green fluorescence protein (GFP) producing plasmid DNA (pDNA) as well as Cy5-labeled GFP producing mRNA. After formulation, LNPs were characterized for the encapsulation efficiency of the nucleic acid, hydrodynamic diameter, polydispersity, and zeta potential. All standard LNPs were ~100 nm in diameter and had neutral surface charge. All LNPs resulted in encapsulation efficiency greater than 70%. Confocal fluorescence microscopy was used for the intracellular trafficking studies, where LNPs were incubated with HuH-7 hepatocyte cells at times ranging from 0-48 h. The cells were antibody-stained for subcellular components, including nuclei, endosomes, and lysosomes. Analysis was performed to quantify localization of pDNA to the endosomes and lysosomes. LNPs with 1.5 mol% PEG and a hydrocarbon chain C14 resulted in optimal endosomal escape and GFP production. Results from this study demonstrate that a higher percentage of C14 PEG leads to smaller LNPs with limited available phospholipid binding area for ApoE, resulting in decreased cellular uptake. We observed differences in the localization kinetics depending on the LNP formulation type for SS-OP, KC2, and MC3 ionizable lipids. The results also demonstrate the technique across different nucleic acid types, where mRNA resulted in more rapid and uniform GFP production compared to pDNA delivery. Here, we demonstrated the ability to track uptake and the sub-cellular fate of LNPs containing pDNA and mRNA, enabling improved screening prior to in vivo studies which would aid in formulation optimization.",
+      "matched_quant_terms": [
+        "70%",
+        "100 nm"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics",
+        "48 h",
+        "kinetic"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study investigates endosomal escape of LNPs with quantitative measurements of localization kinetics over time (0-48 h) and assesses the impact of LNP formulation on escape efficiency, fulfilling all inclusion criteria.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid nanoparticles containing zwitterionic lipids versatilely enhance the efficiency of mRNA delivery.",
+      "authors": [
+        "Yuichi Suzuki",
+        "Yuma Yamada",
+        "Hideyoshi Harashima",
+        "Yusuke Sato"
+      ],
+      "year": 2026,
+      "journal": "Journal of controlled release : official journal of the Controlled Release Society",
+      "doi": "10.1016/j.jconrel.2026.114709",
+      "pmid": "41666942",
+      "source_dbs": [
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Ionizable lipids enable lipid nanoparticles (LNPs) to deliver nucleic acids, including mRNA, to target cells. However, the efficiency of the endosomal escape of conventional LNPs remains limited to a small percentage. Lipid components that actively interact with net-neutral phospholipids in endosomal membranes and promote membrane fusion potentially enhance the efficiency of endosomal escape and further improve functional mRNA delivery. In this study, we developed a zwitterionic tri-oleoyl-Tris (zTOT) library and used it to enhance mRNA delivery by replacing the widely used helper lipid 1,2-distearoyl-sn-glycero-3-phosphocholine (DSPC) in LNPs with zTOT. LNPs containing TOT-15, an example of zTOT, demonstrated a 5-fold higher gene expression compared with that of DSPC-LNPs. TOT-15-LNPs composed of commercially available ionizable lipids showed enhanced gene expression compared with that of DSPC-LNPs. The TOT-15-LNPs also showed almost 100% gene knockout efficiency with no toxicity. The TOT-15 system interacts with 1-palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine (POPC) and induces a non-lamellar structure. Pharmacokinetic calculation revealed that endosomal escape efficiency of the TOT-15-LNPs was more than 9.6%. In summary, the results of this study demonstrate that the zTOT system enhances the efficiency of both endosomal escape and functional mRNA delivery.",
+      "matched_quant_terms": [
+        "100%",
+        "9.6%",
+        "5-fold",
+        "escape efficiency"
+      ],
+      "matched_kinetic_terms": [
+        "kinetic"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and provides quantitative data on endosomal escape efficiency (9.6%). It discusses the enhancement of endosomal escape, fulfilling the criteria for kinetic data.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid Nanoparticle-Enabled Intracellular Delivery of Prime Editors.",
+      "authors": [
+        "Marco Herrera-Barrera",
+        "Milan Gautam",
+        "Abhijeet Lokras",
+        "Kseniia Vlasova",
+        "Camilla Foged",
+        "Gaurav Sahay"
+      ],
+      "year": 2023,
+      "journal": "The AAPS journal",
+      "doi": "10.1208/s12248-023-00833-2",
+      "pmid": "37380935",
+      "source_dbs": [
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Prime editing is an advanced gene editing platform with potential to correct almost any disease-causing mutation. As genome editors have evolved, their size and complexity have increased, hindering delivery technologies with low-carrying capacity and endosomal escape. We formulated an array of lipid nanoparticles (LNPs) containing prime editors (PEs). We were able to encapsulate PEs in LNPs and confirmed the presence of PE mRNA and two different guide RNAs using HPLC. In addition, we developed a novel reporter cell line for rapid identification of LNPs suited for prime editing. A 54% prime editing rate was observed with enhanced LNPs (eLNPs) containing the cholesterol analog β-sitosterol at optimal ratios of RNA cargoes. eLNPs displayed a polyhedral morphology and a more fluid membrane state that led to improved endosomal escape, eventually causing onset of editing within 9 h and reaching maximum efficiency after 24 h. Hence, PEs delivered using LNPs can propel a new wave of therapies for many additional targets potentially enabling a range of new applications.",
+      "matched_quant_terms": [
+        "54%"
+      ],
+      "matched_kinetic_terms": [
+        "9 h",
+        "24 h",
+        "onset"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.2733,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) for gene editing and provides quantitative data, including a 54% editing rate and time courses (9 h onset, 24 h max efficiency) related to endosomal escape.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Effects of Serum Incubation on Lipid Nanoparticle PEG Shedding, mRNA Retention, and Membrane Interactions.",
+      "authors": [
+        "Simon Niederkofler",
+        "Petteri Parkkila",
+        "Nima Aliakbarinodehi",
+        "Nima Sasanian",
+        "Gustav Emilsson",
+        "David Ulkoski",
+        "Celso J O Ferreira",
+        "Nicole Stéphanie Galenkamp",
+        "Bruno F B Silva",
+        "Dan Lundberg",
+        "Yujia Jing",
+        "Lennart Lindfors",
+        "Björn Agnarsson",
+        "Fredrik Höök"
+      ],
+      "year": 2025,
+      "journal": "ACS applied materials & interfaces",
+      "doi": "10.1021/acsami.5c17052",
+      "pmid": "41234148",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used for RNA delivery, but their efficiency remains limited, largely due to poor endosomal escape. Upon administration, proteins bind to the surface of the LNPs, influencing cellular uptake and potentially altering their interfacial properties. Such alterations may also affect their interaction with endosomal membranes, thus influencing the critical endosomal escape step. Using fluorescence microscopy imaging with single-LNP resolution, this study investigates how incubation in 10% fetal bovine serum alters the PEG modification and mRNA content of LNPs, as well as how serum incubation-induced alterations influence the interaction between LNPs and an anionic supported lipid bilayer (SLB), serving as a simplistic mimic for the anionic lipid membrane of late endosomes. We demonstrate that serum incubation leads to the desorption of PEG-modified lipids and a significant release of mRNA cargo from the LNPs. PEG shedding occurred consistently with a half-life time of around 10 min, while mRNA release displayed higher variability between individual LNPs. We also observed that serum preincubation enhanced attractive interactions between tethered LNPs and the anionic SLB at physiological pH 7.4, and fusion of LNPs with the anionic SLB upon pH reduction was more efficient for serum-preincubated LNPs than for their pristine counterparts, particularly during moderate acidification from pH 6.5 to 6.0. This enhanced fusion efficiency may be attributed to a reduced steric hindrance from PEG-lipids following serum preincubation. The findings highlight that serum-induced modifications enhance LNP fusion efficiency with an endosomal membrane mimic while potentially compromising mRNA retention, thus balancing the overall efficacy of LNP-assisted mRNA delivery.",
+      "matched_quant_terms": [
+        "10%"
+      ],
+      "matched_kinetic_terms": [
+        "half-life",
+        "10 min"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.2467,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and includes kinetic data, such as a PEG shedding half-life of around 10 min. It discusses endosomal escape through interactions with anionic membranes, relevant to the LNP journey.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Magnetic Resonance Imaging-Based Quantification of Endosomal Escape Using Iron Oxide Nanoparticle-Loaded Lipid Nanoparticles.",
+      "authors": [
+        "Lee S",
+        "Park J",
+        "Jung HN",
+        "Li S",
+        "Lin Z",
+        "Im HJ."
+      ],
+      "year": 2025,
+      "journal": "Advanced Healthcare Materials",
+      "doi": "10.1002/adhm.202503055",
+      "pmid": "40761024",
+      "source_dbs": [
+        "CrossRef",
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are considered promising and advanced nucleic acid-based therapeutic delivery platforms. The therapeutic efficacy of LNP-based drugs depends heavily on endosomal escape. However, few methods are available for quantifying the efficiency of endosomal escape in vivo. Herein, a novel method for quantifying endosomal escape efficiency using magnetic resonance imaging (MRI) is presented. In this method, ultrasmall iron oxide nanoparticles (IONPs) are synthesized and incorporated into LNPs, generating IONPs-loaded LNPs (IO@LNPs). After cellular internalization of IO@LNPs, the R<sub>2</sub> relaxation rate is reduced over time, suggesting the dispersal of free IONPs owing to endosomal escape. Data from electron microscopy further corroborated this finding, showing a strong correlation between the R<sub>2</sub> value and the number of intracellular endosomes harboring intact IO@LNPs. In vivo MRI from mice demonstrated a gradual decrease in R<sub>2</sub> signals at the tissue site where IO@LNPs are injected, indicating the potential application of the proposed method in vivo. These findings can advance LNP-based nucleic acid delivery research by enhancing the understanding of endosomal escape in vivo.",
+      "matched_quant_terms": [
+        "escape efficiency"
+      ],
+      "matched_kinetic_terms": [
+        "over time"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.1533,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and quantifies endosomal escape using MRI, providing kinetic data through the R<sub>2</sub> relaxation rate changes over time, indicating escape efficiency.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Branched endosomal disruptor (BEND) lipids mediate delivery of mRNA and CRISPR-Cas9 ribonucleoprotein complex for hepatic gene editing and T cell engineering.",
+      "authors": [
+        "Marshall S Padilla",
+        "Kaitlin Mrksich",
+        "Yiming Wang",
+        "Rebecca M Haley",
+        "Jacqueline J Li",
+        "Emily L Han",
+        "Rakan El-Mayta",
+        "Emily H Kim",
+        "Sofia Dias",
+        "Ningqiang Gong",
+        "Sridatta V Teerdhala",
+        "Xuexiang Han",
+        "Vivek Chowdhary",
+        "Lulu Xue",
+        "Zain Siddiqui",
+        "Hannah M Yamagata",
+        "Dongyoon Kim",
+        "Il-Chul Yoon",
+        "James M Wilson",
+        "Ravi Radhakrishnan",
+        "Michael J Mitchell"
+      ],
+      "year": 2025,
+      "journal": "Nature communications",
+      "doi": "10.1038/s41467-024-55137-6",
+      "pmid": "39856035",
+      "source_dbs": [
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are the preeminent non-viral drug delivery vehicle for mRNA-based therapies. Immense effort has been placed on optimizing the ionizable lipid (IL) structure, which contains an amine core conjugated to lipid tails, as small molecular adjustments can result in substantial changes in the overall efficacy of the resulting LNPs. However, despite some advancements, a major barrier for LNP delivery is endosomal escape. Here, we develop a platform for synthesizing a class of branched ILs that improve endosomal escape. These compounds incorporate terminally branched groups that increase hepatic mRNA and ribonucleoprotein complex delivery and gene editing efficiency as well as T cell transfection compared to non-branched lipids. Through an array of complementary experiments, we determine that our lipid architecture induces greater endosomal penetration and disruption. This work provides a scheme to generate a class of ILs for both mRNA and protein delivery.",
+      "matched_quant_terms": [
+        "0.1 mg",
+        "1 mg",
+        "1.0 mg",
+        "520 nm",
+        "0.15 mg",
+        "625 ng"
+      ],
+      "matched_kinetic_terms": [
+        "12 h",
+        "24 h",
+        "36 h",
+        "4 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.5733,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses endosomal escape of LNPs and mentions improvements in delivery efficiency, but lacks explicit kinetic data on endosomal escape rates or time courses.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Increased PIP3 activity blocks nanoparticle mRNA delivery.",
+      "authors": [
+        "Kalina Paunovska",
+        "Alejandro Da Silva Sanchez",
+        "Matthew T Foster",
+        "David Loughrey",
+        "Emmeline L Blanchard",
+        "Fatima Z Islam",
+        "Zubao Gan",
+        "Athanasios Mantalaris",
+        "Philip J Santangelo",
+        "James E Dahlman"
+      ],
+      "year": 2020,
+      "journal": "Science advances",
+      "doi": "10.1126/sciadv.aba5672",
+      "pmid": "32743074",
+      "source_dbs": [
+        "PubMed"
+      ],
+      "abstract": "The biological pathways that affect drug delivery in vivo remain poorly understood. We hypothesized that altering cell metabolism with phosphatidylinositol (3,4,5)-triphosphate (PIP3), a bioactive lipid upstream of the metabolic pathway PI3K (phosphatidylinositol 3-kinase)/AKT/ mTOR (mammalian target of rapamycin) would transiently increase protein translated by nanoparticle-delivered messenger RNA (mRNA) since these pathways increase growth and proliferation. Instead, we found that PIP3 blocked delivery of clinically-relevant lipid nanoparticles (LNPs) across multiple cell types in vitro and in vivo. PIP3-driven reductions in LNP delivery were not caused by toxicity, cell uptake, or endosomal escape. Interestingly, RNA sequencing and metabolomics analyses suggested an increase in basal metabolic rate. Higher transcriptional activity and mitochondrial expansion led us to formulate two competing hypotheses that explain the reductions in LNP-mediated mRNA delivery. First, PIP3 induced consumption of limited cellular resources, \"drowning out\" exogenously-delivered mRNA. Second, PIP3 triggers a catabolic response that leads to protein degradation and decreased translation.",
+      "matched_quant_terms": [
+        "50 ng",
+        "400 ng",
+        "150 ng",
+        "10 mg",
+        "1 mg",
+        "0.3 mg",
+        "P < 0.0332",
+        "P < 0.0021",
+        "P < 0.0002",
+        "P < 0.0001"
+      ],
+      "matched_kinetic_terms": [
+        "24 hours",
+        "6 hours",
+        "30 min",
+        "over time"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.54,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs and their endosomal escape but focuses on PIP3's inhibitory effects rather than providing explicit kinetic data on endosomal escape. It mentions time points (6h, 24h) but lacks detailed quantitative measurements of escape rates.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Membrane-destabilizing ionizable lipid empowered imaging-guided siRNA delivery and cancer treatment.",
+      "authors": [
+        "Shuai Guo",
+        "Kun Li",
+        "Bo Hu",
+        "Chunhui Li",
+        "Mengjie Zhang",
+        "Abid Hussain",
+        "Xiaoxia Wang",
+        "Qiang Cheng",
+        "Feng Yang",
+        "Kun Ge",
+        "Jinchao Zhang",
+        "Jin Chang",
+        "Xing-Jie Liang",
+        "Yuhua Weng",
+        "Yuanyu Huang"
+      ],
+      "year": 2021,
+      "journal": "Exploration (Beijing, China)",
+      "doi": "10.1002/exp.20210008",
+      "pmid": "37366466",
+      "source_dbs": [
+        "PubMed"
+      ],
+      "abstract": "One of the imperative medical requirements for cancer treatment is how to establish an imaging-guided nanocarrier that combines therapeutic and imaging agents into one system. siRNA therapeutics have shown promising prospects in controlling life-threatening diseases. However, it is still challenging to develop siRNA formulations with excellent cellular entry capability, efficient endosomal escape, and simultaneous visualization. Herein, we fabricated multifunctional ionizable lipid nanoparticles (iLNPs) for targeted delivery of siRNA and MRI contrast agent. The iLNPs comprises DSPC, cholesterol, PEGylated lipid, contrast agent DTPA-BSA (Gd), and ionizable lipid termed iBL0104. siRNA-loaded iLNPs (iLNPs/siRNA) could be decorated with a tumor targeting cyclic peptide (c(GRGDSPKC)) (termed GARP), or without targeting modification (termed GAP). Data revealed that GARP/siRNA iLNPs exhibited significantly higher cellular entry efficiency than GAP/siRNA iLNPs. GARP/siRNA iLNPs rapidly and effectively escaped from endosome and lysosome after internalization. Compared with GAP/siPLK1, GARP/siPLK1 exhibited better tumor inhibition efficacy in both cell-line derived xenograft and liver cancer patient derived xenograft murine models. In addition, GARP formulation displayed ideal MRI effect in tumor-bearing mice, and was well tolerated by testing animals. Therefore, this study provides an excellent example for achieving imaging-guided and tumor-targeted siRNA delivery and cancer treatment, highlighting its promising potential for translational medicine application.",
+      "matched_quant_terms": [
+        "150 nM",
+        "50 nM",
+        "P < 0.01",
+        "P < 0.001",
+        "P < 0.0001",
+        "P < 0.05"
+      ],
+      "matched_kinetic_terms": [
+        "4 h",
+        "24 h",
+        "10 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.48,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses endosomal escape of iLNPs but lacks explicit kinetic data such as rates or time courses. It mentions rapid escape but does not provide quantitative measurements over time.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Design and synthesis of novel ionizable lipids enables highly efficient mRNA delivery via lipid nanoparticles.",
+      "authors": [
+        "Wenhao Dai",
+        "Hongliang Li",
+        "Lirong Zhao",
+        "Yue Chen",
+        "Quan Liu",
+        "Huiting Liu",
+        "Guozhen Xing",
+        "He Fu",
+        "Yu Liu"
+      ],
+      "year": 2026,
+      "journal": "Bioorganic chemistry",
+      "doi": "10.1016/j.bioorg.2026.109526",
+      "pmid": "41621179",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "This study systematically combined eight types of headgroups with two tail chain variants to design and synthesize sixteen ionizable lipids featuring symmetric dual-tail structures, which were subsequently formulated into corresponding lipid nanoparticles (LNPs). The aim was to investigate their structure-performance relationships and develop efficient mRNA delivery vectors. Comprehensive characterization revealed that LNPs with alkane tails generally exhibited smaller particle sizes (mostly within 100-150 nm), uniform distribution (PDI < 0.2), and encapsulation efficiencies exceeding 80%. The apparent pKa of these LNPs was co-modulated by the protonation capability of the headgroup and the particle size. In terms of cytotoxicity, at concentrations up to 200 μM, alkane-tailed LNPs showed no significant toxicity toward HepG2 cells, whereas some olefin-tailed LNPs displayed toxicity at higher concentrations. In A549 cells, all tested LNPs inhibited cell proliferation, and the positive control DLin-MC3-DMA (MC3) exhibited reduced toxicity at elevated concentrations. In Huh-7 cells, MC3 promoted proliferation, while compounds 4 and 5 demonstrated significant toxicity at 400 μM. During the evaluation of mRNA delivery performance, small-sized LNPs - particularly compounds 4 and 5 - showed excellent cellular uptake in HepG2 cells. The transfection efficiency of compound 5 reached 67.80%, slightly exceeding that of the positive control MC3 (53.16%). Further investigation of intracellular trafficking indicated that after internalization of LNP-mRNA complexes, compound 5 led to partial premature release and degradation of mRNA during the endosomal acidification stage, whereas MC3 mainly released mRNA into the cytoplasm following proton sponge-triggered endosomal escape. This difference resulted in distinct kinetics of EGFP expression. The study systematically elucidates the combined effects of tail structure, headgroup basicity, particle size, and other key factors on the delivery efficiency and safety of LNPs, providing a rational basis and experimental support for the design of highly efficient and low-toxicity mRNA lipid nanoparticles.",
+      "matched_quant_terms": [
+        "80%",
+        "67.80%",
+        "53.16%",
+        "150 nm"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics",
+        "kinetic"
+      ],
+      "matched_signal_phrases": [
+        "endosomal acidification"
+      ],
+      "score": 0.4683,
+      "llm_score": 0.8,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses lipid nanoparticles (LNPs) and their endosomal escape mechanisms, noting distinct kinetics of EGFP expression. However, it lacks explicit time-resolved data on endosomal escape rates.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid-siRNA Organization Modulates the Intracellular Dynamics of Lipid Nanoparticles.",
+      "authors": [
+        "Yulin Mo",
+        "Alexander F A Keszei",
+        "Shagun Kothari",
+        "Heyi Liu",
+        "Anni Pan",
+        "Paige Kim",
+        "Jiachuan Bu",
+        "Albert Kamanzi",
+        "David L Dai",
+        "Mohammad T Mazhab-Jafari",
+        "Juan Chen",
+        "Sabrina Leslie",
+        "Gang Zheng"
+      ],
+      "year": 2025,
+      "journal": "Journal of the American Chemical Society",
+      "doi": "10.1021/jacs.4c18308",
+      "pmid": "40068204",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used for delivering therapeutic nucleic acids, yet the relationship between their internal structure and intracellular behavior, particularly before RNA release, remains unclear. Here, we elucidate how lipid-siRNA organization within LNPs can modulate their intracellular delivery dynamics. We use cryo-electron microscopy and photochemical assays to reveal that increased siRNA loading can reduce helper lipids' distribution to the LNP surface, while siRNA consistently localizes near the surface. These alterations in lipid-siRNA organization affect LNP membrane fluidity, enhancing LNP fusion with cellular membranes and promoting cytosolic siRNA delivery, primarily via macropinocytosis. Using photosensitive lipids and live cell imaging, we demonstrate that lipid-siRNA organization regulates LNP responsiveness to external stimuli, significantly affecting siRNA endosomal escape efficiency upon light activation. We further confirm this observation using convex lens-induced confinement microscopy and single-particle imaging. Overall, our findings provide critical insights into how lipid-siRNA organization shapes LNP intracellular dynamics, offering rational design principles for optimizing LNP-based RNA therapeutics.",
+      "matched_quant_terms": [
+        "escape efficiency"
+      ],
+      "matched_kinetic_terms": [
+        "Timelapse",
+        "6 h",
+        "1 h",
+        "5 h",
+        "24 h",
+        "30s",
+        "1 min",
+        "40 s"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3933,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses endosomal escape efficiency and intracellular dynamics of LNPs, but lacks explicit time-resolved kinetic data on endosomal escape. It mentions modulation of escape efficiency but does not provide quantitative time-dependent measurements.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Mechanistic insights into mRNA-LNP interactions: role of ionizable lipid content in regulating mRNA intracellular release and translation.",
+      "authors": [
+        "Hoang Quan Truong",
+        "Urmila Kafle",
+        "Cao Thuy Giang Nguyen",
+        "Yanghao Li",
+        "Fanfei Meng"
+      ],
+      "year": 2026,
+      "journal": "Journal of nanobiotechnology",
+      "doi": "10.1186/s12951-026-04383-5",
+      "pmid": "41965690",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "Messenger RNA (mRNA) therapeutics rely on lipid nanoparticles (LNPs) for effective intracellular delivery, yet the intracellular release of mRNA from these carriers remains an underexplored barrier to translation. In this study, we investigate how the ionizable lipids within clinically relevant LNP formulations influence mRNA delivery and translation. By systematically varying the molar ratio of ionizable lipids (SM-102 and ALC-0315) while maintaining other lipid components constant, we found that LNPs containing lower ionizable lipid levels (~ 30 mol%) achieved significantly higher in vitro transfection efficiency and in vivo mRNA expression compared to standard clinical formulations (50 mol% for Moderna; 46.3 mol% for Pfizer/BioNTech). Notably, this enhancement occurred despite similar cellular uptake and endosomal escape, implicating intracellular mRNA-LNP dissociation as a previously underappreciated determinant of translational efficiency. Fluorescence colocalization analyses confirmed greater cytosolic mRNA release from LNPs with reduced ionizable lipid content. Moreover, these optimized formulations elicited stronger antigen-specific humoral and cellular immune responses in mice, highlighting their potential for improved mRNA performance. Collectively, these findings identify intracellular mRNA dissociation-rather than endosomal escape alone-as a key bottleneck in LNP-mediated delivery and demonstrate that fine-tuning ionizable lipid composition can substantially enhance mRNA performance.",
+      "matched_quant_terms": [
+        "0.4 µg",
+        "0.25 µg",
+        "2 µg",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [
+        "6 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3933,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study investigates mRNA-LNP interactions and intracellular release, but lacks explicit time-resolved kinetic data on endosomal escape. It discusses mRNA dissociation and transfection efficiency, but does not provide time-dependent measurements.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Endosomal disruption by co-encapsulating gentamicin in lipid nanoparticles for efficient siRNA delivery and cancer therapy.",
+      "authors": [
+        "Ning Yang",
+        "Qi Sun",
+        "Yaoqi Wang",
+        "Dong Mei",
+        "Xiaoling Wang",
+        "Jie Zhang",
+        "Danni Liu",
+        "Ran Huo",
+        "Yang Tian",
+        "Yan Su",
+        "Shuang Zhang",
+        "Chunying Cui"
+      ],
+      "year": 2025,
+      "journal": "Asian journal of pharmaceutical sciences",
+      "doi": "10.1016/j.ajps.2024.101011",
+      "pmid": "40487122",
+      "source_dbs": [
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Efficient siRNA delivery is highly desirable for disease treatment. However, the application of conventional nanoparticles is limited by the inability to escape from endo-lysosomes. Herein, we report a strategy using small-molecule drugs to enhance siRNA endo-lysosomal release,addressing this challenge. We encapsulated gentamicin(GM) into the marketed Onpattro® formulation to establish LNP-siRNA/GM nanoparticles that promote siRNA endo-lysosomal escape through endosomal disruption, mechanistically exhibiting unique functionality and synergistic effects of LNP-siRNA/GM to improve cancer therapy. Besides, GM induced reactive oxygen species (ROS) and phospholipids accumulation in endo-lysosomes, as well as the physical characteristics of lipid nanoparticles (LNPs) were preserved. We also revealed that GM causes endo-lysosomal swelling and disrupts the endosomal membrane to enable siRNA release, as confirmed by Galectin 3 recruitment and acridine orange release. This approach achieved ∼81% mRNA-EGFR silencing, which is more than LNP-siEGFR (∼56.23%) by enhancing siRNA endo-lysosomal escape efficiency. Meanwhile, LNP-siEGFR/GM exhibited significant biological activities in HepG2 cells, driven by the synergistic effects of siEGFR and GM with the VEGF and CXCL12 downregulation of, and ROS and phospholipids upregulation. Furthermore, tumor growth was notably suppressed after intravenous injection of LNP-siEGFR/GM in tumor-bearing nude mice. The combination of EGFR-siRNA and GM could also greatly inhibit angiogenesis, be antiproliferative, and induce tumor cells apoptosis. Therefore, this GM and siRNA co-delivery system would provide an efficient strategy for siRNA endosomal escape, significantly improving knockdown in various LNPs based siRNA delivery systems and efficiently enhancing cancer therapy.",
+      "matched_quant_terms": [
+        "81%",
+        "56.23%",
+        "escape efficiency"
+      ],
+      "matched_kinetic_terms": [
+        "12 h",
+        "36 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses endosomal escape of LNPs with gentamicin but lacks explicit kinetic data on the escape process. It mentions enhanced siRNA release and efficiency but does not provide time-resolved measurements.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Quantitation of physiological and biochemical barriers to siRNA liver delivery via lipid nanoparticle platform.",
+      "authors": [
+        "Yan Xu",
+        "Mei Ou",
+        "Ed Keough",
+        "Jeff Roberts",
+        "Ken Koeplinger",
+        "Mike Lyman",
+        "Scott Fauty",
+        "Ed Carlini",
+        "Melissa Stern",
+        "Rena Zhang",
+        "Suzie Yeh",
+        "Elizabeth Mahan",
+        "Yi Wang",
+        "Don Slaughter",
+        "Marian Gindy",
+        "Conrad Raab",
+        "Charles Thompson",
+        "Jerome Hochman"
+      ],
+      "year": 2014,
+      "journal": "Molecular pharmaceutics",
+      "doi": "10.1021/mp400584h",
+      "pmid": "24588618",
+      "source_dbs": [
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Effective delivery of small interfering RNA (siRNA) requires efficient cellular uptake and release into cytosol where it forms an active complex with RNAi induced silencing complex (RISC). Despite rapid developments in RNAi therapeutics, improvements in delivery efficiency of siRNA are needed to realize the full potential of this modality in broad therapeutic applications. We evaluated potential physiological and biochemical barrier(s) to the effective liver delivery of siRNA formulated in lipid nanoparticle (LNP) delivery vehicles. The comparative siRNA delivery performance of three LNPs was investigated in rats. They were assembled with either C14- or C18-anchored PEG-lipid(s), cationic lipid(s), and various helper lipid(s) and contained the same siRNA duplex. These LNPs demonstrated differentiated potency with ED50's ranging from 0.02 to 0.25 mg/kg. The two C14-PEG-LNPs had comparable siRNA exposure in plasma and liver, while the C18-PEG-LNP demonstrated a higher plasma siRNA exposure and a slower but sustained liver uptake. RISC bound siRNA within the liver, a more proximal measure of the pharmacologically active siRNA species, displayed loading kinetics that paralleled the target mRNA knockdown profile, with greater RISC loading associated with more potent LNPs. Liver perfusion and hepatocyte isolation experiments were performed following treatment of rats with LNPs containing VivoTag-fluorescently labeled siRNA. One hour after dosing a majority of the siRNA within the liver was associated with hepatocytes and was internalized (within small subcellular vesicles) with no significant cell surface association, indicating good liver tissue penetration, hepatocellular distribution, and internalization. Comparison of siRNA amounts in hepatocytes and subcellular fractions of the three LNPs suggests that endosomal escape is a significant barrier to siRNA delivery where cationic lipid seems to have a great impact. Quantitation of Ago-2 associated siRNA revealed that after endosomal escape further loss of siRNA occurs prior to RISC loading. This quantitative assessment of LNP-mediated siRNA delivery has highlighted potential barriers with respect to endosomal escape and incomplete RISC loading for delivery optimization efforts.",
+      "matched_quant_terms": [
+        "0.25 mg"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics",
+        "kinetic"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.2133,
+      "llm_score": 0.8,
+      "llm_verdict": "include",
+      "llm_rationale": "The study evaluates LNPs for siRNA delivery, providing quantitative data (ED50's 0.02-0.25 mg/kg) and discusses endosomal escape as a barrier, but lacks explicit time-resolved kinetic data.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    }
+  ],
+  "message": null,
+  "updated_at": "2026-05-28T20:10:10.718770Z"
+}

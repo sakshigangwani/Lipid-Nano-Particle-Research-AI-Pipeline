@@ -632,6 +632,12 @@ html, body {
   cursor: help;
 }
 
+.fig-badge.suppl {
+  background: #ede4f7;
+  color: #4c2a85;
+  border-color: #cab5e6;
+}
+
 .study-meta {
   display: flex;
   flex-wrap: wrap;

@@ -61,6 +61,7 @@ class PaperRecord(BaseModel):
     llm_verdict: Literal["include", "borderline", "exclude", "skipped", "error"] = "skipped"
     llm_rationale: str = ""
     caption_rescued: bool = False
+    supplementary_rescued: bool = False
 
 
 class RunResults(BaseModel):

@@ -1,14 +1,19 @@
-"""Fetch figure + table captions from Europe PMC full text as a fallback when
-the abstract alone doesn't contain enough quantitative/kinetic evidence.
+"""Fetch figure/table captions and supplementary-material text from Europe PMC
+full text as a fallback when the abstract alone doesn't contain enough
+quantitative/kinetic evidence.
 
 Workflow per paper:
   1. Resolve a PMCID via Europe PMC's search endpoint (by DOI, falling back to PMID).
-  2. Hit `/{PMCID}/fullTextXML` and parse <fig>/<table-wrap> <caption> blocks.
-  3. Return the concatenated caption text.
+  2. Hit `/{PMCID}/fullTextXML` and parse <fig>/<table-wrap> <caption> blocks
+     and <supplementary-material> blocks.
+  3. Return both bundles separately so downstream can attribute the rescue.
 
-Both lookups are cached on disk under storage/cache/fulltext/* so re-runs are
+Both lookups are cached on disk under storage/cache/fulltext_v2/* so re-runs are
 free. Anything that fails (closed-access paper, no PMCID, parse error) returns
-an empty string — the pipeline simply doesn't get a rescue for that paper.
+empty strings — the pipeline simply doesn't get a rescue for that paper.
+
+Note: Europe PMC's fullTextXML endpoint only serves papers with a PMCID.
+Strictly closed-access papers with no PMC mirror remain abstract-only.
 """
 
 from __future__ import annotations
@@ -88,15 +93,23 @@ async def _resolve_pmcid(
     return pmcid or None
 
 
-def _extract_captions(xml_text: str) -> str:
+def _extract_from_xml(xml_text: str) -> dict[str, str]:
+    """Pull figure/table captions and supplementary-material text out of a
+    JATS full-text XML document.
+
+    Returns {"captions": ..., "supplementary": ...}. Either side can be an
+    empty string. Kept separate so the pipeline can attribute *which* type
+    of evidence rescued a given paper.
+    """
+    empty = {"captions": "", "supplementary": ""}
     if not xml_text:
-        return ""
+        return empty
     try:
-        # Strip any namespace prefixes so simple findall paths work.
         root = ET.fromstring(xml_text)
     except ET.ParseError:
-        return ""
-    parts: list[str] = []
+        return empty
+
+    caption_parts: list[str] = []
     for tag in ("fig", "table-wrap"):
         for el in root.iter(tag):
             cap = None
@@ -107,10 +120,29 @@ def _extract_captions(xml_text: str) -> str:
                 continue
             text = " ".join("".join(cap.itertext()).split())
             if text:
-                # Prefix so downstream regex/LLM knows this came from a figure.
                 tag_label = "Figure" if tag == "fig" else "Table"
-                parts.append(f"{tag_label} caption: {text}")
-    return "\n\n".join(parts)
+                caption_parts.append(f"{tag_label} caption: {text}")
+
+    suppl_parts: list[str] = []
+    for el in root.iter("supplementary-material"):
+        # Grab label, caption, and any inline <p> bodies — publishers vary
+        # on what they include, so be permissive.
+        chunks: list[str] = []
+        for sub_tag in ("label", "caption", "p"):
+            for sub in el.iter(sub_tag):
+                text = " ".join("".join(sub.itertext()).split())
+                if text:
+                    chunks.append(text)
+        if chunks:
+            # Deduplicate adjacent repeats (caption often nests <p>).
+            seen: set[str] = set()
+            uniq = [c for c in chunks if not (c in seen or seen.add(c))]
+            suppl_parts.append("Supplementary material: " + " | ".join(uniq))
+
+    return {
+        "captions": "\n\n".join(caption_parts),
+        "supplementary": "\n\n".join(suppl_parts),
+    }
 
 
 async def _fetch_one(
@@ -118,31 +150,36 @@ async def _fetch_one(
     sem: asyncio.Semaphore,
     doi: str | None,
     pmid: str | None,
-) -> str:
+) -> dict[str, str]:
     cache_key = {"doi": (doi or "").lower(), "pmid": pmid or ""}
-    cached = cache.load("fulltext", cache_key)
-    if cached is not None:
-        return cached if isinstance(cached, str) else ""
+    cached = cache.load("fulltext_v2", cache_key)
+    if isinstance(cached, dict) and "captions" in cached and "supplementary" in cached:
+        return {
+            "captions": cached.get("captions") or "",
+            "supplementary": cached.get("supplementary") or "",
+        }
 
+    result = {"captions": "", "supplementary": ""}
     async with sem:
         try:
             pmcid = await _resolve_pmcid(client, doi, pmid)
-            if not pmcid:
-                cache.save("fulltext", cache_key, "")
-                return ""
-            xml_text = await _get_text(client, FULLTEXT_URL.format(pmcid=pmcid))
-            captions = _extract_captions(xml_text)
+            if pmcid:
+                xml_text = await _get_text(client, FULLTEXT_URL.format(pmcid=pmcid))
+                result = _extract_from_xml(xml_text)
         except Exception:  # noqa: BLE001
-            captions = ""
-    cache.save("fulltext", cache_key, captions)
-    return captions
+            result = {"captions": "", "supplementary": ""}
+    cache.save("fulltext_v2", cache_key, result)
+    return result
 
 
-async def fetch_captions_for(papers: list[dict[str, Any]]) -> dict[str, str]:
-    """Returns {paper_key: caption_text} for up to MAX_CAPTION_FETCHES papers.
+async def fetch_captions_for(
+    papers: list[dict[str, Any]],
+) -> dict[str, dict[str, str]]:
+    """Returns {paper_key: {"captions": ..., "supplementary": ...}} for up to
+    MAX_CAPTION_FETCHES papers. Either side of the inner dict can be empty.
 
     The key matches the value returned by `paper_key(p)` below; callers look
-    captions up via that helper so the keying logic stays in one place.
+    results up via that helper so the keying logic stays in one place.
     """
     if not papers:
         return {}
@@ -153,11 +190,13 @@ async def fetch_captions_for(papers: list[dict[str, Any]]) -> dict[str, str]:
     ) as client:
         tasks = [_fetch_one(client, sem, p.get("doi"), p.get("pmid")) for p in selected]
         results = await asyncio.gather(*tasks, return_exceptions=True)
-    out: dict[str, str] = {}
+    out: dict[str, dict[str, str]] = {}
     for p, r in zip(selected, results):
         if isinstance(r, Exception):
             continue
-        if r:
+        if not isinstance(r, dict):
+            continue
+        if r.get("captions") or r.get("supplementary"):
             out[paper_key(p)] = r
     return out
 

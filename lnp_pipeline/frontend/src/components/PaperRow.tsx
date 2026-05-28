@@ -71,6 +71,14 @@ export default function PaperRow({ paper }: Props) {
               fig
             </span>
           )}
+          {paper.supplementary_rescued && (
+            <span
+              className="fig-badge suppl"
+              title="Rescued by supplementary material — abstract didn't have the quant/kinetic match, but the paper's supplementary file content did"
+            >
+              suppl
+            </span>
+          )}
           <span className={verdictClass(paper.llm_verdict)}>
             {paper.llm_verdict}
             {paper.llm_score != null ? ` · ${paper.llm_score.toFixed(2)}` : ""}

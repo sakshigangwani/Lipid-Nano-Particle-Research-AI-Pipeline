@@ -95,7 +95,10 @@ async def run_step_search(
         p["_matched_kinetic"] = find_kinetic_matches(text, kinetic_keywords)
         lnp_focused.append(p)
 
-    # ─── Pass 2: caption-fallback for papers that failed quant OR kinetic ───
+    # ─── Pass 2: full-text fallback for papers that failed quant OR kinetic ───
+    # We try figure/table captions first (cheap to attribute), then layer in
+    # supplementary-material text. Each rescue is attributed so the UI can
+    # tell the user *why* a paper survived.
     needs_captions = [
         p for p in lnp_focused
         if not p["_matched_quant"] or (strict_kinetic and not p["_matched_kinetic"])
@@ -103,25 +106,50 @@ async def run_step_search(
     captions_map = await fetch_captions_for(needs_captions)
     rescued = 0
     for p in needs_captions:
-        caps = captions_map.get(paper_key(p))
-        if not caps:
+        bundle = captions_map.get(paper_key(p))
+        if not bundle:
             continue
-        combined_text = p["_haystack_abstract"] + "\n\n" + caps
+        caps = bundle.get("captions") or ""
+        suppl = bundle.get("supplementary") or ""
+        if not caps and not suppl:
+            continue
+
         rescued_this_paper = False
-        if not p["_matched_quant"]:
-            new_q = find_quant_matches(combined_text, quant_keywords)
-            if new_q:
-                p["_matched_quant"] = new_q
-                p["_caption_rescued_quant"] = True
+        rescue_text_parts: list[str] = []
+
+        def _try_rescue(extra: str, source_label: str) -> bool:
+            """Try the regex gates with `extra` text appended; if anything new
+            matches, persist it and tag `p` with which source rescued which gate.
+            Returns True if this source contributed any new match.
+            """
+            nonlocal rescued_this_paper
+            if not extra:
+                return False
+            combined = p["_haystack_abstract"] + "\n\n" + extra
+            contributed = False
+            if not p["_matched_quant"]:
+                new_q = find_quant_matches(combined, quant_keywords)
+                if new_q:
+                    p["_matched_quant"] = new_q
+                    p[f"_{source_label}_rescued_quant"] = True
+                    contributed = True
+            if strict_kinetic and not p["_matched_kinetic"]:
+                new_k = find_kinetic_matches(combined, kinetic_keywords)
+                if new_k:
+                    p["_matched_kinetic"] = new_k
+                    p[f"_{source_label}_rescued_kinetic"] = True
+                    contributed = True
+            if contributed:
                 rescued_this_paper = True
-        if strict_kinetic and not p["_matched_kinetic"]:
-            new_k = find_kinetic_matches(combined_text, kinetic_keywords)
-            if new_k:
-                p["_matched_kinetic"] = new_k
-                p["_caption_rescued_kinetic"] = True
-                rescued_this_paper = True
+                rescue_text_parts.append(extra)
+            return contributed
+
+        # Try captions first (cheaper signal), then supplementary if still short.
+        _try_rescue(caps, "caption")
+        _try_rescue(suppl, "supplementary")
+
         if rescued_this_paper:
-            p["_caption_text"] = caps
+            p["_caption_text"] = "\n\n".join(rescue_text_parts)
             rescued += 1
     counts["caption_rescued"] = rescued
     await _emit(progress_cb, dict(counts))
@@ -187,6 +215,10 @@ async def run_step_search(
             "llm_rationale": llm.get("llm_rationale", ""),
             "caption_rescued": bool(
                 p.get("_caption_rescued_quant") or p.get("_caption_rescued_kinetic")
+            ),
+            "supplementary_rescued": bool(
+                p.get("_supplementary_rescued_quant")
+                or p.get("_supplementary_rescued_kinetic")
             ),
         }
         final.append(record)

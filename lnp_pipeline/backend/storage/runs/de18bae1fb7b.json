@@ -1,0 +1,1163 @@
+{
+  "run_id": "de18bae1fb7b",
+  "step_id": 1,
+  "step_name": "Protein corona",
+  "state": "done",
+  "counts": {
+    "pubmed": 16,
+    "europepmc": 200,
+    "semantic_scholar": 0,
+    "crossref": 200,
+    "openalex": 200,
+    "biorxiv": 12,
+    "total_raw": 628,
+    "after_dedup": 591,
+    "after_quant": 83,
+    "after_kinetic": 83,
+    "caption_rescued": 48,
+    "llm_scored": 83,
+    "final": 29
+  },
+  "papers": [
+    {
+      "title": "Protein corona formed on lipid nanoparticles compromises delivery efficiency of mRNA cargo.",
+      "authors": [
+        "Elizabeth Voke",
+        "Mariah L Arral",
+        "Henry J Squire",
+        "Teng-Jui Lin",
+        "Lining Zheng",
+        "Roxana Coreas",
+        "Alison Lui",
+        "Anthony T Iavarone",
+        "Rebecca L Pinals",
+        "Kathryn A Whitehead",
+        "Markita P Landry"
+      ],
+      "year": 2025,
+      "journal": "Nature communications",
+      "doi": "10.1038/s41467-025-63726-2",
+      "pmid": "41027853",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are the most clinically advanced nonviral RNA-delivery vehicles, though challenges remain in fully understanding how LNPs interact with biological systems. In vivo, proteins form an associated corona on LNPs that redefines their physicochemical properties and influences delivery outcomes. Despite its importance, the LNP protein corona is challenging to study owing to the technical difficulty of selectively recovering soft nanoparticles from biological samples. Herein, we develop a quantitative, label-free mass spectrometry-based proteomics approach to characterize the protein corona on LNPs. Critically, this protein corona isolation workflow avoids artifacts introduced by the presence of endogenous nanoparticles in human biofluids. We apply continuous density gradient ultracentrifugation for protein-LNP complex isolation, with mass spectrometry for protein identification normalized to protein composition in the biofluid alone. With this approach, we quantify proteins consistently enriched in the LNP corona including vitronectin, C-reactive protein, and alpha-2-macroglobulin. We explore the impact of these corona proteins on cell uptake and mRNA expression in HepG2 human liver cells, and find that, surprisingly, increased levels of cell uptake do not correlate with increased mRNA expression in part due to protein corona-induced lysosomal trafficking of LNPs. Our results underscore the need to consider the protein corona in the design of LNP-based therapeutics.",
+      "matched_quant_terms": [
+        "30%",
+        "25%",
+        "20%",
+        "15%",
+        "10%",
+        "5%",
+        "580 nm",
+        "0.05 ng",
+        "1 ng",
+        "100 ng"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3667,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper focuses on lipid nanoparticles and quantitatively measures the protein corona using mass spectrometry. It discusses how the protein corona affects delivery efficiency, aligning with the 'Protein corona' step of the LNP journey.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lung-selective mRNA delivery of synthetic lipid nanoparticles for the treatment of pulmonary lymphangioleiomyomatosis.",
+      "authors": [
+        "Min Qiu",
+        "Yan Tang",
+        "Jinjin Chen",
+        "Rachel Muriph",
+        "Zhongfeng Ye",
+        "Changfeng Huang",
+        "Jason Evans",
+        "Elizabeth P Henske",
+        "Qiaobing Xu"
+      ],
+      "year": 2022,
+      "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+      "doi": "10.1073/pnas.2116271119",
+      "pmid": "35173043",
+      "source_dbs": [
+        "PubMed"
+      ],
+      "abstract": "Safe and efficacious systemic delivery of messenger RNA (mRNA) to specific organs and cells in vivo remains the major challenge in the development of mRNA-based therapeutics. Targeting of systemically administered lipid nanoparticles (LNPs) coformulated with mRNA has largely been confined to the liver and spleen. Using a library screening approach, we identified that N-series LNPs (containing an amide bond in the tail) are capable of selectively delivering mRNA to the mouse lung, in contrast to our previous discovery that O-series LNPs (containing an ester bond in the tail) that tend to deliver mRNA to the liver. We analyzed the protein corona on the liver- and lung-targeted LNPs using liquid chromatography-mass spectrometry and identified a group of unique plasma proteins specifically absorbed onto the surface that may contribute to the targetability of these LNPs. Different pulmonary cell types can also be targeted by simply tuning the headgroup structure of N-series LNPs. Importantly, we demonstrate here the success of LNP-based RNA therapy in a preclinical model of lymphangioleiomyomatosis (LAM), a destructive lung disease caused by loss-of-function mutations in the",
+      "matched_quant_terms": [
+        "0.5 mg",
+        "0.75 mg",
+        "1.67 mg",
+        "P < 0.05",
+        "P < 0.01",
+        "P < 0.001",
+        "P < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The study analyzes the protein corona on LNPs using quantitative methods (liquid chromatography-mass spectrometry) and identifies unique plasma proteins absorbed on LNPs, directly addressing the 'Protein corona' step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Impact of Protein Coronas on Lipid Nanoparticle Uptake and Endocytic Pathways in Cells.",
+      "authors": [
+        "Rui Wang",
+        "Jing He",
+        "Yuhong Xu",
+        "Baowei Peng"
+      ],
+      "year": 2024,
+      "journal": "Molecules (Basel, Switzerland)",
+      "doi": "10.3390/molecules29204818",
+      "pmid": "39459187",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs), widely used in disease diagnosis and drug delivery, face the challenge of being surrounded by biological macromolecules such as proteins upon entering the human body. These molecules compete for binding sites on the nanoparticle surfaces, forming a protein corona. The impact of different types of protein coronas on LNP delivery remains unclear. In this study, we employed a newly developed, highly sensitive LNP labeling platform and analyzed the endocytosis of HeLa cells under different nutritional conditions using proteomics to address this critical issue. Our research found that under conditions of complete medium and amino acid starvation, most DNA-FITC vesicles in HeLa cells were located in the perinuclear region 4 h after transfection. In contrast, under serum starvation conditions, only a small portion of DNA-FITC vesicles were in the perinuclear region. On the other hand, through proteomics, we discovered that cells that were enriched in amino acids and complete medium contained more proteins, whereas those under serum starvation had relatively fewer enriched proteins. Through KEGG pathway enrichment analysis, we identified the phagosome and endocytosis pathways as particularly important. Lastly, differential analysis of proteins in these pathways revealed that proteins such as F-actin, Coronin, vATPase, TUBA, TUBB, MHCII, and TSP may have significant impacts on cellular endocytosis. Our research findings indicate that it is necessary to regulate cellular endocytosis based on different protein coronas to achieve optimal cytoplasmic release.",
+      "matched_quant_terms": [
+        "2.5 µg",
+        "p < 0.01"
+      ],
+      "matched_kinetic_terms": [
+        "4 h"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.2133,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and their interaction with protein coronas, providing quantitative data on protein composition and endocytosis under various conditions, fulfilling all inclusion criteria.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid Nanoparticle (LNP) Chemistry Can Endow Unique <i>In Vivo</i> RNA Delivery Fates within the Liver That Alter Therapeutic Outcomes in a Cancer Model.",
+      "authors": [
+        "Johnson LT",
+        "Zhang D",
+        "Zhou K",
+        "Lee SM",
+        "Liu S",
+        "Dilliard SA",
+        "Farbiak L",
+        "Chatterjee S",
+        "Lin YH",
+        "Siegwart DJ."
+      ],
+      "year": 2022,
+      "journal": null,
+      "doi": "10.1021/acs.molpharmaceut.2c00442",
+      "pmid": "36154076",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Within the field of lipid nanoparticles (LNPs) for RNA delivery, the focus has been mainly placed on organ level delivery, which can mask cellular level effects consequential to therapeutic applications. Here, we studied a pair of LNPs with similar physical properties and discovered how the chemistry of the ionizable amino lipid can control the endogenous LNP identity, affecting cellular uptake in the liver and altering therapeutic outcomes in a model of liver cancer. Although most LNPs accumulate in the liver after intravenous administration (suggesting that liver delivery is straightforward), we observed an unexpected behavior when comparing two similar LNP formulations (5A2-SC8 and 3A5-SC14 LNPs) that resulted in distinct RNA delivery within the organ. Despite both LNPs possessing similar physical properties, ability to silence gene expression <i>in vitro</i>, strong accumulation within the liver, and a shared p<i>K</i><sub>a</sub> of 6.5, only 5A2-SC8 LNPs were able to functionally deliver RNA to hepatocytes. Factor VII (FVII) activity was reduced by 87%, with 5A2-SC8 LNPs carrying FVII siRNA (siFVII), while 3A5-SC14 LNPs carrying siFVII produced baseline FVII activity levels comparable to the nontreatment control at a dosage of 0.5 mg/kg. Protein corona analysis indicated that 5A2-SC8 LNPs bind apolipoprotein E (ApoE), which can drive LDL-R receptor-mediated endocytosis in hepatocytes. In contrast, the surface of 3A5-SC14 LNPs was enriched in albumin but depleted in ApoE, which likely led to Kupffer cell delivery and detargeting of hepatocytes. In an aggressive MYC-driven liver cancer model relevant to hepatocytes, 5A2-SC8 LNPs carrying let-7g miRNA were able to significantly extend survival up to 121 days. Since disease targets exist in an organ- and cell-specific manner, the clinical development of RNA LNP therapeutics will require an improved understanding of LNP cellular tropism within organs. The results from our work illustrate the importance of understanding the cellular localization of RNA delivery and incorporating further checkpoints when choosing nanoparticles beyond biochemical and physical characterization, as small changes in the chemical composition of LNPs can have an impact on both the biofate of LNPs and therapeutic outcomes.",
+      "matched_quant_terms": [
+        "87%",
+        "0.5 mg"
+      ],
+      "matched_kinetic_terms": [
+        "121 days"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and includes quantitative measurements, such as 87% reduction in FVII activity and specific binding of proteins like ApoE. It directly analyzes the protein corona's impact on LNP behavior.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "A rapid and reliable strategy for identification of LNP and protein corona in vitro and in vivo.",
+      "authors": [
+        "Rui Wang",
+        "Hui Wang",
+        "Ting Li",
+        "Guanghui Zi",
+        "Zhenyu Yang",
+        "Yuhong Xu",
+        "Baowei Peng"
+      ],
+      "year": 2026,
+      "journal": "International journal of pharmaceutics: X",
+      "doi": "10.1016/j.ijpx.2026.100519",
+      "pmid": "41909168",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "This study develops an integrated analytical method for visual verification and subsequent analysis of lipids and protein coronas of lipid nanoparticles (LNPs) in vitro and in vivo. In this strategy, SDS-PAGE combined with Coomassie brilliant blue (CBB) staining enabled rapid and reliable visual verification and semi-quantification of LNPs/lipids in solutions, yielding a linear standard curve of R",
+      "matched_quant_terms": [
+        "p < 0.01"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.0933,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and quantitatively analyzes the protein corona formed in vitro and in vivo using SDS-PAGE and mass spectrometry, providing specific measurements and methods for detection.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Structural Change of ApoE-Lipid Nanoparticles Alters Receptor-Mediated Endocytosis and Induces Endosomal Disruption.",
+      "authors": [
+        "Mo Y",
+        "Liu H",
+        "Keszei AFA",
+        "Dai DL",
+        "Makky A",
+        "Ding L",
+        "Pan A",
+        "Bu J",
+        "Mazhab-Jafari MT",
+        "Chen J",
+        "Zheng G."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1021/jacs.5c16025",
+      "pmid": "41711348",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Apolipoprotein E (ApoE) is a key regulator of lipid metabolism that binds to lipid nanoparticle (LNP) surfaces to mediate cellular interactions. However, the ApoE-LNP behavior is highly dependent on the LNP composition, and the underlying mechanisms remain unclear. Here, we show that subtle alterations in LNP surface lipids profoundly reshape the ApoE-LNP structure and intracellular trafficking. Using cryogenic electron microscopy and live-cell imaging, we demonstrate that replacing 10 mol % 1,2-distearoyl-<i>sn</i>-glycero-3-phosphocholine (DSPC) with a porphyrin-lipid conjugate induces highly faceted, irregular LNP membrane morphologies upon ApoE binding. These structural transitions alter receptor-mediated uptake, enhance endosomal disruption, promote cytosolic siRNA release, and ultimately trigger cell apoptosis. Through fluorescence lifetime imaging, we also demonstrate that ApoE promotes LNP intracellular disassembly. Overall, our findings identify lipid-driven structural remodeling of ApoE-LNPs as a critical determinant of their intracellular fate, offering mechanistic insights for the rational design of LNPs and new perspectives on ApoE's role in disease pathogenesis.",
+      "matched_quant_terms": [
+        "2%",
+        "1000 nM",
+        "488 nm",
+        "580 nm",
+        "25 nm",
+        "10 nm",
+        "0.75 mg",
+        "1 mg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "ApoE binding"
+      ],
+      "score": 0.375,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on ApoE-LNPs, detailing how ApoE binding alters LNP structure and function. It includes quantitative measurements of lipid concentrations (10 mol %, 30 μM) and cellular uptake, relevant to protein corona formation.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Multiomics analysis of naturally efficacious lipid nanoparticle coronas reveals high-density lipoprotein is necessary for their function.",
+      "authors": [
+        "Liu K",
+        "Nilsson R",
+        "Lázaro-Ibáñez E",
+        "Duàn H",
+        "Miliotis T",
+        "Strimfors M",
+        "Lerche M",
+        "Salgado Ribeiro AR",
+        "Ulander J",
+        "Lindén D",
+        "Salvati A",
+        "Sabirsh A."
+      ],
+      "year": 2023,
+      "journal": null,
+      "doi": "10.1038/s41467-023-39768-9",
+      "pmid": "37414857",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "In terms of lipid nanoparticle (LNP) engineering, the relationship between particle composition, delivery efficacy, and the composition of the biocoronas that form around LNPs, is poorly understood. To explore this we analyze naturally efficacious biocorona compositions using an unbiased screening workflow. First, LNPs are complexed with plasma samples, from individual lean or obese male rats, and then functionally evaluated in vitro. Then, a fast, automated, and miniaturized method retrieves the LNPs with intact biocoronas, and multiomics analysis of the LNP-corona complexes reveals the particle corona content arising from each individual plasma sample. We find that the most efficacious LNP-corona complexes were enriched with high-density lipoprotein (HDL) and, compared to the commonly used corona-biomarker Apolipoprotein E, corona HDL content was a superior predictor of in-vivo activity. Using technically challenging and clinically relevant lipid nanoparticles, these methods reveal a previously unreported role for HDL as a source of ApoE and, form a framework for improving LNP therapeutic efficacy by controlling corona composition.",
+      "matched_quant_terms": [
+        "10%",
+        "1%",
+        "0.1%",
+        "400 ng",
+        "50 ng",
+        "200 ng",
+        "0.1 mg",
+        "P < 0.001",
+        "P < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "corona composition"
+      ],
+      "score": 0.375,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and quantitatively analyzes the protein corona formed from plasma samples, specifically highlighting HDL's role in LNP efficacy. It includes measurements of mRNA doses and plasma concentrations.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "A magnetic separation method for isolating and characterizing the biomolecular corona of lipid nanoparticles.",
+      "authors": [
+        "Francia V",
+        "Zhang Y",
+        "Cheng MHY",
+        "Schiffelers RM",
+        "Witzigmann D",
+        "Cullis PR."
+      ],
+      "year": 2024,
+      "journal": "Proceedings of the National Academy of Sciences",
+      "doi": "10.1073/pnas.2307803120",
+      "pmid": "38437542",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "Lipid nanoparticle (LNP) formulations are a proven method for the delivery of nucleic acids for gene therapy as exemplified by the worldwide rollout of LNP-based RNAi therapeutics and mRNA vaccines. However, targeting specific tissues or cells is still a major challenge. After LNP administration, LNPs interact with biological fluids (i.e., blood), components of which adsorb onto the LNP surface forming a layer of biomolecules termed the \"biomolecular corona (BMC)\" which affects LNP stability, biodistribution, and tissue tropism. The mechanisms by which the BMC influences tissue- and cell-specific targeting remains largely unknown, due to the technical challenges in isolating LNPs and their corona from complex biological media. In this study, we present a new technique that utilizes magnetic LNPs to isolate LNP-corona complexes from unbound proteins present in human serum. First, we developed a magnetic LNP formulation, containing >40 superparamagnetic iron oxide nanoparticles (IONPs)/LNP, the resulting LNPs containing iron oxide nanoparticles (IOLNPs) displayed a similar particle size and morphology as LNPs loaded with nucleic acids. We further demonstrated the isolation of the IOLNPs and their corresponding BMC from unbound proteins using a magnetic separation (MS) system. The BMC profile of LNP from the MS system was compared to size exclusion column chromatography and further analyzed via mass spectrometry, revealing differences in protein abundances. This new approach enabled a mild and versatile isolation of LNPs and its corona, while maintaining its structural integrity. The identification of the BMC associated with an intact LNP provides further insight into LNP interactions with biological fluids.",
+      "matched_quant_terms": [
+        "35%",
+        "80%",
+        "1%",
+        "10%",
+        "50 nm",
+        "P < 0.05",
+        "P < 0.01"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and quantitatively measures the biomolecular corona (BMC) using mass spectrometry. It discusses the impact of the BMC on LNP interactions with biological fluids, fulfilling all inclusion criteria.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "High-Throughput In Vivo Screening Using Barcoded mRNA Identifies Lipid Nanoparticles With Extrahepatic Tropism for In Situ Immunoengineering.",
+      "authors": [
+        "Hamilton AG",
+        "Thatte AS",
+        "Xu J",
+        "Luo Z",
+        "Safford HC",
+        "Swingle KL",
+        "Muscat-Rivera J",
+        "Kegel M",
+        "Han X",
+        "Joseph RA",
+        "Murray AM",
+        "Geisler HC",
+        "Whitaker RC",
+        "Xue L",
+        "Spektor R",
+        "Melamed JR",
+        "Weissman D",
+        "Mitchell MJ."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1002/adma.202514370",
+      "pmid": "41603124",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Interest continues to grow in the use of mRNA vaccines and therapeutics. While effective for immunization against infectious diseases, lipid nanoparticle (LNP) formulations used for other mRNA delivery applications suffer from off-target accumulation, poor immune transfection, and reactogenicity, limiting their application to immunoengineering. Development of new mRNA LNPs is severely bottlenecked by the LNP discovery process, which is historically low-throughput due to reliance on low-plex measurements. Here, we develop a high-throughput in vivo mRNA LNP screening platform based on barcoded mRNA (b-mRNA). Using this b-mRNA screening platform to simultaneously evaluate 122 LNPs, we identify novel LNP formulations capable of potent hepatic and extrahepatic transfection. We evaluate a lead LNP candidate for in situ immune modulation in a syngeneic mouse model of melanoma and demonstrate a significant reduction in tumor burden and extended survival compared to mice treated with a gold standard mRNA LNP formulation. We employ novel biochemical characterization techniques to analyze nanoparticle protein corona formation with single-particle resolution and gain insight into the influence of protein adsorption on hepatic and splenic transfection. Together, our results demonstrate the value of advanced LNP screening and characterization techniques for the development of next-generation mRNA LNPs for immunoengineering.",
+      "matched_quant_terms": [
+        "20%",
+        "0.1 mg",
+        "0.6 mg",
+        "p<0.05",
+        "p<0.01",
+        "p<0.001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses lipid nanoparticles (LNPs) and includes quantitative measurements of protein corona formation with single-particle resolution, indicating a focus on the protein corona step in the LNP journey.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Self-degradable \"gemini-like\" ionizable lipid-mediated delivery of siRNA for subcellular-specific gene therapy of hepatic diseases.",
+      "authors": [
+        "Wang Q",
+        "Wan B",
+        "Feng Y",
+        "Yang Z",
+        "Li D",
+        "Liu F",
+        "Gao Y",
+        "Li C",
+        "Liu Y",
+        "Sun Y",
+        "He Z",
+        "Luo C",
+        "Sun J",
+        "Jiang Q."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.apsb.2025.04.003",
+      "pmid": "40654340",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Tailored lipid nanoparticles (LNPs)-mediated small interfering RNA (siRNA) nanomedicines show promise in treating liver disease, such as acute liver injury (ALI) and non-alcoholic steatohepatitis (NASH). However, constructing LNPs that address biosafety concerns, ensure efficient delivery, and target specific hepatic subcellular fractions has been challenging. To evade above obstacles, we develop three novel self-degradable \"gemini-like\" ionizable lipids (SS-MA, SS-DC, SS-MH) by incorporating disulfide bonds and modifying the length of ester bond and tertiary amino head. Our findings reveal that the disulfide-bond-bridged LNPs exhibit reduction-responsive drug release, improving both biosafety and siRNA delivery efficiency. Furthermore, the distance of ester bond and tertiary amino head significantly influences the LNPs' p<i>K</i> <sub>a</sub>, thereby affecting endosomal escape, hemolytic efficiency, absorption capacity of ApoE, uptake efficiency of hepatocytes and liver accumulation. We also develop the modified-mannose LNPs (M-LNP) to target liver macrophages specifically. The optimized M-MH_LNP@TNF<i>α</i> exhibits potential in preventing ALI by decreasing tumor necrosis factor <i>α</i> (TNF<i>α</i>) levels in the macrophages, while MH_LNP@DGAT2 could treat NASH by selectively degrading diacylglycerol <i>O</i>-acyltransferase 2 (DGAT2) in the hepatocytes. Our findings provide new insights into developing novel highly effective and low-toxic \"gemini-like\" ionizable lipids for constructing LNPs, potentially achieving more effective treatment for hepatic diseases.",
+      "matched_quant_terms": [
+        "100 nm",
+        "0.75 mg",
+        "1 mg",
+        "10 mg",
+        "P < 0.05",
+        "P < 0.01",
+        "P < 0.001",
+        "P < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses the protein corona formation on LNPs, providing quantitative data on the top 20 most abundant corona proteins identified by LC–MS/MS. It focuses on lipid nanoparticles and includes relevant measurements.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Apolipoprotein Fusion Enables Spontaneous Functionalization of mRNA Lipid Nanoparticles with Antibody for Targeted Cancer Therapy.",
+      "authors": [
+        "Park W",
+        "Choi J",
+        "Hwang J",
+        "Kim S",
+        "Kim Y",
+        "Shim MK",
+        "Park W",
+        "Yu S",
+        "Jung S",
+        "Yang Y",
+        "Kweon DH."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acsnano.4c16562",
+      "pmid": "39908463",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The mRNA-lipid nanoparticles (mRNA@LNPs) offer a novel opportunity to treat targets previously considered undruggable. Although antibody conjugation is crucial for enhancing the specificity, delivery efficiency, and minimizing the toxicity of mRNA therapeutics, current chemical conjugation methods are complex and produce heterogeneous particles with misoriented antibodies. In this work, we introduce a chemical-free approach to functionalize mRNA@LNPs with antibodies, mimicking protein corona formation for targeted mRNA delivery. By fusing apolipoprotein to the Fc domain of a targeting antibody, we enabled the antibody to spontaneously display on the surface of mRNA@LNPs without altering the existing LNP process or employing complex chemical conjugation techniques. We demonstrated precise protein expression using trastuzumab-bound mRNA@LNPs, facilitating specific mRNA expression in HER2-positive cancer cells. mRNA was efficiently delivered to the tumor site after intravenous administration. While the control LNPs lacking targeting antibodies caused acute liver toxicity, trastuzumab-displayed LNPs showed no systemic toxicity. The tumor-specific delivery of p53 tumor suppressor mRNA led to the complete regression of cancer cells. Thus, apolipoprotein fusion enables a straightforward and scalable production of antibody-functionalized mRNA@LNPs, offering significant therapeutic potential in gene therapy.",
+      "matched_quant_terms": [
+        "50%",
+        "100 nm",
+        "5 mg",
+        "P < 0.0001",
+        "P > 0.05",
+        "P < 0.05",
+        "P < 0.01",
+        "P < 0.001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses mRNA lipid nanoparticles (mRNA@LNPs) and their functionalization with antibodies, mimicking protein corona formation. It includes quantitative measurements of protein incorporation and LNP characteristics, aligning with the 'Protein corona' step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lung-Specific mRNA Delivery by Ionizable Lipids with Defined Structure-Function Relationship and Unique Protein Corona Feature.",
+      "authors": [
+        "He X",
+        "Wang R",
+        "Cao Y",
+        "Ding Y",
+        "Chang Y",
+        "Dong H",
+        "Xie R",
+        "Zhong G",
+        "Yang H",
+        "Li J."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1002/advs.202416525",
+      "pmid": "39965058",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Targeted delivery of mRNA with lipid nanoparticles (LNPs) holds great potential for treating pulmonary diseases. However, the lack of rational design principles for efficient lung-homing lipids hinders the prevalence of mRNA therapeutics in this organ. Herein, the combinatorial screening with structure-function analysis is applied to rationalize the design strategy for nonpermanently charged lung-targeted ionizable lipids. It is discovered that lipids carrying N-methyl and secondary amine groups in the heads, and three tails originated from epoxyalkanes, exhibiting superior pulmonary selectivity and efficiency. Representative ionizable lipids with systematically variation in chemical structures are selected to study the well-known but still puzzling \"protein corona\" adsorbed on the surface of LNPs. In addition to the commonly used corona-biomarker vitronectin, other arginine-glycine-aspartic acid (RGD)-rich proteins usually involved in collagen-containing extracellular matrix, such as fibrinogen and fibronectin have also been identified to have a strong correlation with lung tropism. This work provides insight into the rational design of lung-targeting ionizable lipids and reveals a previously unreported potential function of RGD-rich proteins in the protein corona of lung-homing LNPs.",
+      "matched_quant_terms": [
+        "0.1%",
+        "0.2 mg",
+        "0.5 mg",
+        "0.8 mg",
+        "5 mg",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper focuses on lipid nanoparticles (LNPs) and studies the protein corona formed on their surface, identifying specific proteins and their correlation with lung targeting. It includes quantitative data on mRNA expression ratios and statistical analysis.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid nanoparticles from &lt;i&gt;L. meyenii&lt;/i&gt; Walp mitigate sepsis through multimodal protein corona formation.",
+      "authors": [
+        "Sung JJ",
+        "Shaw JR",
+        "Rezende JD",
+        "Dharmaraj S",
+        "Cottingham AL",
+        "Weldemariam MM",
+        "Jones JW",
+        "Kane MA",
+        "Pearson RM."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.omtm.2025.101491",
+      "pmid": "40496000",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Plant-derived lipid nanoparticles (PDNPs) are nano-sized particles isolated from various edible plants that contain bioactive components involved in regulating biological responses. Here, we isolated maca-derived lipid nanoparticles (MDNPs) from <i>Lepidium meyenii</i> Walp (maca), evaluated their therapeutic effects using two representative lethal models of sepsis, and determined their multimodal anti-inflammatory mechanism that relied on broad sequestration and neutralization of multiple pro-inflammatory cytokines and acute phase proteins (APPs) through formation of a protein corona. Lipidomics of MDNPs revealed triacylglycerols and phytoceramides as major constituents. <i>In vitro</i> studies showed that MDNPs were non-toxic, reduced macrophage activation, and sequestered lipopolysaccharide (LPS)-induced pro-inflammatory cytokines, while mitigating nuclear factor kappa B (NF-κB) activity. In a pre-established LPS-induced endotoxemia model, MDNP treatment significantly reduced systemic pro-inflammatory cytokines, reduced organ damage, and increased survival. Untargeted proteomics and bioinformatics analysis identified an enrichment in APPs present in MDNP protein coronas and corresponding inflammatory pathways modulated. The efficacy of MDNPs were further tested using a lethal polymicrobial sepsis model, where treatment significantly improved survival even in the absence of antibiotics. This study identifies MDNPs as an effective strategy capable of inducing potent anti-inflammatory responses, offering significant therapeutic potential for diseases such as sepsis, while informing the future design of synthetic lipid nanoparticles.",
+      "matched_quant_terms": [
+        "174.5 nm",
+        "1 mg",
+        "20 mg",
+        "2 mg",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (MDNPs) and discusses protein corona formation with quantitative measurements of APPs and cytokines. It also highlights the therapeutic effects and mechanisms related to the protein corona in sepsis.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "A novel dual-targeting strategy of nanobody-driven protein corona modulation for glioma therapy.",
+      "authors": [
+        "Zhang Y",
+        "Qin S",
+        "Song T",
+        "Huang Z",
+        "Lv Z",
+        "Zhao Y",
+        "Jiao X",
+        "Sun M",
+        "Zhang Y",
+        "Xie G",
+        "Chen Y",
+        "Ruan X",
+        "Liu R",
+        "Shi H",
+        "Yang C",
+        "Zhao S",
+        "He Z",
+        "Huang H",
+        "Song X."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.apsb.2025.07.014",
+      "pmid": "41049733",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Glioma represents the most prevalent malignant tumor of the central nervous system, with chemotherapy serving as an essential adjunctive treatment. However, most chemotherapeutic agents exhibit limited ability to penetrate the blood-brain barrier (BBB). This study introduced a novel dual-targeting strategy for glioma therapy by modulating the formation of nanobody-driven protein coronas to enhance the brain and tumor-targeting efficiency of hydrophobic cisplatin prodrug-loaded lipid nanoparticles (C8Pt-Ls). Specifically, nanobodies (Nbs) with fibrinogen-binding capabilities were conjugated to the surface of C8Pt-Ls, resulting in the generation of Nb-C8Pt-Ls. Within the bloodstream, Nb-C8Pt-Ls could bound more fibrinogen, forming the protein corona that specifically interacted with LRP-1, a receptor highly expressed on the BBB. This interaction enabled a \"Hitchhiking Effect\" mechanism, facilitating efficient <i>trans</i>-BBB transport and promoting effective brain targeting. Additionally, the protein corona interacted with LRP-1, which is also overexpressed in glioma cells, achieving precise tumor targeting. Computational simulations and SPR detection clarified the molecular interaction mechanism of the Nb-fibrinogen-(LRP-1) complex, confirming its binding specificity and stability. Our results demonstrated that this strategy significantly enhanced C8Pt accumulation in brain tissues and tumors, induced apoptosis in glioma cells, and improved therapeutic efficacy. This study provides a novel framework for glioma therapy and underscores the potential of protein corona modulation-based dual-targeting strategies in advancing treatments for brain tumors.",
+      "matched_quant_terms": [
+        "Kd",
+        "P < 0.001",
+        "P < 0.05",
+        "P < 0.01"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.24,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (C8Pt-Ls) and quantitatively measures protein corona formation with specific affinity for fibrinogen. It discusses the impact of the protein corona on BBB penetration and glioma targeting, aligning with the 'Protein corona' step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Predictive Lung- and Spleen-Targeted mRNA Delivery with Biodegradable Ionizable Lipids in Four-Component LNPs.",
+      "authors": [
+        "Juan Heredero",
+        "Álvaro Peña",
+        "Esther Broset",
+        "Beatriz Blandín",
+        "Diego de Miguel",
+        "Teresa Alejo",
+        "Alfonso Toro",
+        "Elena Mata",
+        "Alexandre López-Gavín",
+        "Ana Gallego-Lleyda",
+        "Diego Casabona",
+        "Verónica Lampaya",
+        "Ana Larraga",
+        "Esther Pérez-Herrán",
+        "David Luna",
+        "Irene Orera",
+        "Eduardo Romanos",
+        "Alba García",
+        "Juan Martínez-Oliván",
+        "Javier Giménez-Warren"
+      ],
+      "year": 2025,
+      "journal": "Pharmaceutics",
+      "doi": "10.3390/pharmaceutics17040459",
+      "pmid": "40284454",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex",
+        "PubMed"
+      ],
+      "abstract": "<b>Background/Objectives</b>: Lipid nanoparticles (LNPs) are leading mRNA delivery vehicles, with ionizable lipids (ILs) as their key component. However, the relationship between the IL structure and LNP endogenous organ-targeting is not well understood. In this study, we developed a novel library of biodegradable ILs featuring beta-propionate linkers, which, when incorporated into a four-component LNP formulation, show excellent extrahepatic selectivity and high protein expression. <b>Methods</b>: We explored the impact of structural modifications in the hydrophobic chains and polar-head groups in the ILs while keeping the linkers unchanged. In vivo results were evaluated to examine how structural changes influence the biodistribution to spleen or lungs. LNP formulations were assessed for their protein expression levels and organ-specific targeting. Additionally, protein corona formation by the best-performing LNPs was examined to provide further mechanistic insights. <b>Results</b>: Organ targeting was significantly influenced by structural changes in the ILs, allowing for precise control of the biodistribution between the spleen and lungs. Branched hydrophobic chains demonstrated a higher propensity for spleen targeting, while modifications in the polar-head group could drastically shift biodistribution from the lung to the spleen. This led to the identification of LNPs' zeta potential as a key determinant of their extrahepatic targeting properties. Notably, ionizable lipid A3T2C7, also known as CP-LC-1495, displayed strong lung selectivity (97%) and high protein expression in lung tissue (1.21 × 10<sup>8</sup> p/s). Similarly, several promising candidates for spleen-targeting LNPs displayed protein expression levels exceeding 1 × 10<sup>7</sup> p/s (selectivity >80%). <b>Conclusions</b>: This study elucidates the structure-function relationships of ILs in passive organ-specific mRNA delivery, highlighting how the fine-tuning of hydrophobic chains, polar-head groups, and surface charge (zeta potential) allows for the precise control of LNP endogenous biodistribution, a mechanism influenced by protein corona formation. These findings enable the rational design of targeted LNP systems, enhancing their therapeutic potential for specific organs, such as the spleen and lungs.",
+      "matched_quant_terms": [
+        "97%",
+        "80%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.1867,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and examines protein corona formation, providing quantitative data on protein expression levels (1.21 × 10^8 p/s) and selectivity (>80%). It explores how structural changes influence biodistribution, relevant to the protein corona step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Effects of Serum Incubation on Lipid Nanoparticle PEG Shedding, mRNA Retention, and Membrane Interactions.",
+      "authors": [
+        "Niederkofler S",
+        "Parkkila P",
+        "Aliakbarinodehi N",
+        "Sasanian N",
+        "Emilsson G",
+        "Ulkoski D",
+        "Ferreira CJO",
+        "Galenkamp NS",
+        "Silva BFB",
+        "Lundberg D",
+        "Jing Y",
+        "Lindfors L",
+        "Agnarsson B",
+        "Höök F."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acsami.5c17052",
+      "pmid": "41234148",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used for RNA delivery, but their efficiency remains limited, largely due to poor endosomal escape. Upon administration, proteins bind to the surface of the LNPs, influencing cellular uptake and potentially altering their interfacial properties. Such alterations may also affect their interaction with endosomal membranes, thus influencing the critical endosomal escape step. Using fluorescence microscopy imaging with single-LNP resolution, this study investigates how incubation in 10% fetal bovine serum alters the PEG modification and mRNA content of LNPs, as well as how serum incubation-induced alterations influence the interaction between LNPs and an anionic supported lipid bilayer (SLB), serving as a simplistic mimic for the anionic lipid membrane of late endosomes. We demonstrate that serum incubation leads to the desorption of PEG-modified lipids and a significant release of mRNA cargo from the LNPs. PEG shedding occurred consistently with a half-life time of around 10 min, while mRNA release displayed higher variability between individual LNPs. We also observed that serum preincubation enhanced attractive interactions between tethered LNPs and the anionic SLB at physiological pH 7.4, and fusion of LNPs with the anionic SLB upon pH reduction was more efficient for serum-preincubated LNPs than for their pristine counterparts, particularly during moderate acidification from pH 6.5 to 6.0. This enhanced fusion efficiency may be attributed to a reduced steric hindrance from PEG-lipids following serum preincubation. The findings highlight that serum-induced modifications enhance LNP fusion efficiency with an endosomal membrane mimic while potentially compromising mRNA retention, thus balancing the overall efficacy of LNP-assisted mRNA delivery.",
+      "matched_quant_terms": [
+        "10%"
+      ],
+      "matched_kinetic_terms": [
+        "half-life",
+        "10 min"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and their interaction with serum proteins, specifically addressing protein corona effects. It provides quantitative data on PEG shedding (half-life ~10 min) and mRNA release, relevant to the protein corona step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Therapeutic Implications of Biomolecular Corona on Lipid Nanoparticle-Based Gene Delivery Systems.",
+      "authors": [
+        "Greco A",
+        "Corbo C."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1002/smsc.202500206",
+      "pmid": "40917404",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used in drug delivery due to their low toxicity, excellent biocompatibility, and ability to facilitate endosomal escape. A critical factor influencing the in vivo behavior of LNPs is the formation of a biomolecular corona (BC) on their surface. This layer of biomolecules affects key biological processes such as targeting, absorption, distribution, metabolism, and clearance. Gaining a deeper understanding of the BC formation mechanisms is essential for predicting and optimizing the therapeutic efficacy of LNPs. In this perspective, we present recent advances in the characterization, isolation, and functional implications of the BC. We explore how BC formation affects the stability, biodistribution, and targeting capacity of LNPs, and discuss how harnessing this phenomenon could offer a powerful strategy to improve the precision and effectiveness of targeted drug delivery.",
+      "matched_quant_terms": [
+        "5 nm"
+      ],
+      "matched_kinetic_terms": [
+        "clearance"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses the formation of a biomolecular corona on lipid nanoparticles, detailing its effects on stability and targeting. It includes quantitative methods for analyzing protein interactions, fulfilling the criteria for the 'Protein corona' step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "The impact of lipid compositions on siRNA and mRNA lipid nanoparticle performance for pulmonary delivery.",
+      "authors": [
+        "Stina Rademacker",
+        "Simone Pinto Carneiro",
+        "Müge Molbay",
+        "Federica Catapano",
+        "Ignasi Forné",
+        "Axel Imhof",
+        "Richard Wibel",
+        "Christoph Heidecke",
+        "Peter Hölig",
+        "Olivia M Merkel"
+      ],
+      "year": 2025,
+      "journal": "European journal of pharmaceutical sciences : official journal of the European Federation for Pharmaceutical Sciences",
+      "doi": "10.1016/j.ejps.2025.107182",
+      "pmid": "40571267",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are of significant interest as delivery systems for various RNA therapeutics, not least due to their outstanding success in applications including the COVID-19 vaccines and the siRNA therapeutic Onpattro®. As LNPs consist of different lipids, the lipid composition determines key properties of these particles. This study examines how lipid composition, especially helper and PEG-lipids, and RNA cargo (siRNA and mRNA) affect LNP performance in pulmonary delivery. By comparing two different helper and two different PEG-lipids, we assessed the impact on fusogenicity and endosomal escape, in vitro transfection efficiency, and subsequently protein corona formation. Their in vitro performance was assessed in the air-liquid interface (ALI) cell culture model, a sophisticated in vitro model of the lungs. Our results demonstrated that transfection efficiency and stability differ between the helper lipids DOPE and DSPC, depending on the RNA cargo. These differences can be attributed to the structural differences of the lipids and the different properties of the RNA molecules. Our investigations further demonstrated successful mucus penetration of all LNPs and 24-42 % gene silencing in vitro. We also explored mucus proteins/LNP interactions in human lung mucus, finding distinct protein corona formation for DSPC- and DOPE-containing LNPs. This comprehensive analysis highlights the critical role of helper lipids in combination with RNA cargo in determining LNP properties, efficiency, and in vitro performance, providing valuable insights for optimizing RNA delivery systems.",
+      "matched_quant_terms": [
+        "42 %"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.0933,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and examines protein corona formation, providing quantitative data on gene silencing (24-42%). It specifically investigates how lipid composition affects LNP performance, aligning with the 'Protein corona' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "A protein corona-enabled blood test for early cancer detection",
+      "authors": [
+        "Damiano Caputo",
+        "Massimiliano Papi",
+        "Roberto Coppola",
+        "Sara Palchetti",
+        "Luca Digiacomo",
+        "Giulio Caracciolo",
+        "Daniela Pozzi"
+      ],
+      "year": 2016,
+      "journal": "Nanoscale",
+      "doi": "10.1039/c6nr05609a",
+      "pmid": "27924334",
+      "source_dbs": [
+        "OpenAlex"
+      ],
+      "abstract": "Pancreatic cancer is a very aggressive malignancy that is often diagnosed in the advanced stages, with the implication that long-term survivors are extremely rare. Thus, developing new methods for the early detection of pancreatic cancer is an urgent task for current research. To date, nanotechnology offers unprecedented opportunities for cancer therapeutics and diagnosis. The aim of this study is the development of a new pancreatic cancer diagnostic technology based on the exploitation of the nano-bio-interactions between nanoparticles and blood samples. In this study, blood samples from 20 pancreatic cancer patients and 5 patients without malignancy were allowed to interact with designed lipid nanoparticles, leading to the formation of a hard \"protein corona\" at the nanoparticle surface. After isolation, the protein patterns were characterized by sodium dodecyl sulphate polyacrylamide gel electrophoresis (SDS PAGE). We found that the protein corona of pancreatic cancer patients was much more enriched than that of healthy individuals. Statistical analysis of SDS-PAGE results allowed us to discriminate between healthy and pancreatic cancer patients with a total discriminate correctness rate of 88%.",
+      "matched_quant_terms": [
+        "88%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and their interaction with blood samples, specifically examining the protein corona formation. It includes quantitative measurements of protein patterns and discrimination rates, aligning with the 'Protein corona' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Mechanistic Studies of an Automated Lipid Nanoparticle Reveal Critical Pharmaceutical Properties Associated with Enhanced mRNA Functional Delivery In Vitro and In Vivo",
+      "authors": [
+        "Lili Cui",
+        "Morag R. Hunter",
+        "Silvia Sonzini",
+        "Sara Pereira",
+        "Steven M. Romanelli",
+        "Kai Liu",
+        "Weimin Li",
+        "Lihuan Liang",
+        "Bin Yang",
+        "Najet Mahmoudi",
+        "Arpan S. Desai"
+      ],
+      "year": 2021,
+      "journal": "Small",
+      "doi": "10.1002/smll.202105832",
+      "pmid": "34914866",
+      "source_dbs": [
+        "OpenAlex"
+      ],
+      "abstract": "Recently, lipid nanoparticles (LNPs) have attracted attention due to their emergent use for COVID-19 mRNA vaccines. The success of LNPs can be attributed to ionizable lipids, which enable functional intracellular delivery. Previously, the authors established an automated high-throughput platform to screen ionizable lipids and identified that the LNPs generated using this automated technique show comparable or increased mRNA functional delivery in vitro as compared to LNPs prepared using traditional microfluidics techniques. In this study, the authors choose one benchmark lipid, DLin-MC3-DMA (MC3), and investigate whether the automated formulation technique can enhance mRNA functional delivery in vivo. Interestingly, a 4.5-fold improvement in mRNA functional delivery in vivo by automated LNPs as compared to LNPs formulated by conventional microfluidics techniques, is observed. Mechanistic studies reveal that particles with large size accommodate more mRNA per LNP, possess more hydrophobic surface, are more hemolytic, bind a larger protein corona, and tend to accumulate more in macropinocytosomes, which may quantitatively benefit mRNA cytosolic delivery. These data suggest that mRNA loading per particle is a critical factor that accounts for the enhanced mRNA functional delivery of automated LNPs. These mechanistic findings provide valuable insight underlying the enhanced mRNA functional delivery to accelerate future mRNA LNP product development.",
+      "matched_quant_terms": [
+        "4.5-fold"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and discusses the binding of a larger protein corona, providing quantitative insights into mRNA delivery improvements. It meets all inclusion criteria.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Spleen-targeted mRNA delivery via long-chain PEGylated lipids at low molar ratio enhances antitumor immunity against melanoma.",
+      "authors": [
+        "Liu S",
+        "Zhang L",
+        "Wu W",
+        "Chen MY",
+        "Qian F."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1016/j.omtn.2025.102803",
+      "pmid": "41541271",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are pivotal for mRNA delivery, yet predominant hepatic accumulation limits their therapeutic application in immunologically active sites like the spleen. Engineering LNPs for splenic mRNA delivery is therefore essential for advancing mRNA-based immunotherapies. Here, we rationally designed a series of LNPs by modulating the alkyl chain length of PEGylated lipids (fast-shedding C14 DMG-PEG vs. slow-shedding C18 DSG-PEG) and their molar ratios (0.75% and 1.5%). This systematic variation precisely controlled nanoparticle physicochemical properties and protein corona composition. Among these formulations, DSG-PEG LNPs at 0.75% mol exhibited the largest size (∼170 nm by DLS; ∼60 nm core by cryo-EM) and a distinct protein corona. Notably, this DSG-PEG 0.75% mol formulation demonstrated significantly enhanced selective spleen accumulation and efficient mRNA delivery <i>in vivo</i>. Furthermore, the optimized LNP potently activated dendritic cells, expanded antigen-specific CD4<sup>+</sup> T cell populations, and significantly inhibited tumor growth in a B16-ovalbumin (OVA) melanoma model. Collectively, our results establish a rational strategy via precise PEGylated lipid engineering to redirect LNP biodistribution from the liver to the spleen. These findings validate the spleen as a critical target for mRNA vaccines and provide a versatile platform for next-generation cancer immunotherapies.",
+      "matched_quant_terms": [
+        "0.75%",
+        "1.5%",
+        "170 nm",
+        "60 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "corona composition"
+      ],
+      "score": 0.315,
+      "llm_score": 0.8,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and discusses the protein corona composition in relation to different formulations. It provides quantitative measurements of LNP size and molar ratios, relevant to the protein corona step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Programmable Lipid Functionalization of Nucleic Acid Nanoparticles Modulates Liver Cell-Type Targeting.",
+      "authors": [
+        "Kim HM",
+        "Omer M",
+        "Knappe GA",
+        "McMullen P",
+        "Le DA",
+        "Pasupathy A",
+        "Anderson DG",
+        "Bathe M."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1021/acsami.5c24581",
+      "pmid": "41881029",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Nucleic acid nanoparticles (NANPs) fabricated by using DNA origami are an emerging delivery vector for nucleic acid therapeutics. Despite their advantages over other nanomaterials that include controlled spatial presentation of targeting ligands such as lipids and sugars, understanding their cell targeting and uptake mechanisms remains limited. Here, we investigated NANP cellular targeting, uptake, and delivery of small interfering RNAs (siRNAs) to liver and neuronal cell models <i>in vitro</i>. Using a rational design approach, we targeted NANPs to two clinically validated receptors, the asialoglycoprotein receptor (ASGPR) and the low-density lipoprotein receptor (LDLR), respectively, using GalNAc and lipidation. We systematically evaluated how the ligand valency, interligand spacing, linker length, and ligand chemistry affected NANP association with on- and off-target liver cell types, revealing the relative roles of the biomolecular corona, receptor engagement, and endocytosis in these targeting strategies. We found that lipidation enhanced NANP uptake into HepG2 cells, a model cell line for hepatocytes, by promoting apolipoprotein recruitment, LDLR engagement, and clathrin-mediated endocytosis and also increased association with nonparenchymal cells. HepG2 uptake was further improved by conjugating NANPs to lipids with higher valency provided that lipids were adequately displayed away from the surface of NANP edges with more lipophilic lipids yielding greater cell association. We then benchmarked the potential for NANPs to deliver siRNAs to HepG2 cells in comparison with lipid nanoparticle and conjugate technologies and explored lipid functionalization as a strategy for nonhepatic NANP targeting to model neuronal cells. Overall, this study advances the foundational understanding of how clinically relevant targeting ligands mediate NANP interactions with both on- and off-target liver cell types <i>in vitro</i>, offering insights into potential design criteria for nucleic acid therapeutic delivery.",
+      "matched_quant_terms": [
+        "55%",
+        "50 nm",
+        "100 nm",
+        "14 nm",
+        "1 nm",
+        "7 nm",
+        "200 nM"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study discusses biomolecular corona formation on nucleic acid nanoparticles (NANPs) but focuses on their targeting and uptake rather than quantitatively measuring the protein corona on LNPs specifically.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Why do lipid nanoparticles target the liver? Understanding of biodistribution and liver-specific tropism.",
+      "authors": [
+        "Hosseini-Kharat M",
+        "Bremmell KE",
+        "Prestidge CA."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.omtm.2025.101436",
+      "pmid": "40104152",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are now highly effective transporters of nucleic acids to the liver. This liver-specificity is largely due to their association with certain serum proteins, most notably apolipoprotein E (ApoE), which directs them to liver cells by binding to the low-density lipoprotein (LDL) receptors on hepatocytes. The liver's distinct anatomy, with its various specialized cell types, also influences how LNPs are taken up from the circulation, cleared, and how effective they are in delivering treatments. In this review, we consider factors that facilitate LNP's effective liver targeting and explore the latest advances in liver-targeted LNP technologies. Understanding how LNPs are targeted to the liver can help for effective design and optimization of nanoparticle-based therapies. Comprehension of the cellular interaction and biodistribution of LNPs not only leads to better treatments for liver diseases but also delivers insight for directing nanoparticles to other tissues, potentially broadening their range of therapeutic applications.",
+      "matched_quant_terms": [
+        "p < 0.05"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "corona composition"
+      ],
+      "score": 0.135,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs and their interaction with serum proteins like ApoE, which relates to the protein corona. However, it lacks specific quantitative measurements of the protein corona itself, focusing more on biodistribution and targeting.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Microfluidic Device Type Improves Heart mRNA Delivery <i>In Vivo</i>.",
+      "authors": [
+        "Schrader Echeverri E",
+        "Kim H",
+        "Jang B",
+        "Shakked A",
+        "Park C",
+        "Baek KI",
+        "Choi L",
+        "Kang DW",
+        "Hung RC",
+        "Jeong K",
+        "Peck HE",
+        "Podilapu AR",
+        "Tiegreen KE",
+        "Santangelo PJ",
+        "Jo H",
+        "Dahlman JE."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acs.langmuir.5c02612",
+      "pmid": "41037471",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "To improve lipid nanoparticle (LNP)-mediated delivery to nonliver tissues, scientists modify LNP chemistry or add targeting ligands. One underexplored alternative is to change the formulation process that creates the LNP. Here, we report that an LNP formulated with a herringbone mixer led to 2-fold more heart delivery than the same LNP formulated with a bifurcating mixer. The two LNPs had similar biophysical traits, yet they adsorbed different protein coronas, suggesting that the effect was driven by systemic physiology. By using spatial transcriptomics to track LNP delivery in a mouse model of atherosclerosis, we found that the improved LNP delivered mRNA to diseased regions and cardiomyocytes after an intravenous injection. These data suggest that it is possible to increase heart delivery <i>via</i> nanoparticle processing.",
+      "matched_quant_terms": [
+        "2-fold"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.8,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and discusses the formation of different protein coronas based on formulation methods, indicating a direct link to the 'Protein corona' step. It mentions comparative data on delivery efficiency.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Structuring lipid nanoparticles, DNA, and protein corona into stealth bionanoarchitectures for in vivo gene delivery.",
+      "authors": [
+        "Renzi S",
+        "Digiacomo L",
+        "Pozzi D",
+        "Quagliarini E",
+        "Vulpis E",
+        "Giuli MV",
+        "Mancusi A",
+        "Natiello B",
+        "Pignataro MG",
+        "Canettieri G",
+        "Di Magno L",
+        "Pesce L",
+        "De Lorenzi V",
+        "Ghignoli S",
+        "Loconte L",
+        "Montone CM",
+        "Laura Capriotti A",
+        "Laganà A",
+        "Nicoletti C",
+        "Amenitsch H",
+        "Rossi M",
+        "Mura F",
+        "Parisi G",
+        "Cardarelli F",
+        "Zingoni A",
+        "Checquolo S",
+        "Caracciolo G."
+      ],
+      "year": 2024,
+      "journal": "Nature Communications",
+      "doi": "10.1038/s41467-024-53569-8",
+      "pmid": "39438484",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) play a crucial role in addressing genetic disorders, and cancer, and combating pandemics such as COVID-19 and its variants. Yet, the ability of LNPs to effectively encapsulate large-size DNA molecules remains elusive. This is a significant limitation, as the successful delivery of large-size DNA holds immense potential for gene therapy. To address this gap, the present study focuses on the design of PEGylated LNPs, incorporating large-sized DNA, departing from traditional RNA and ionizable lipids. The resultant LNPs demonstrate a unique particle morphology. These particles were further engineered with a DNA coating and plasma proteins. This multicomponent bionanoconstruct exhibits enhanced transfection efficiency and safety in controlled laboratory settings and improved immune system evasion in in vivo tests. These findings provide valuable insights for the design and development of bionanoarchitectures for large-size DNA delivery, opening new avenues for transformative gene therapies.",
+      "matched_quant_terms": [
+        "5%",
+        "10%",
+        "25%",
+        "50%",
+        "0%",
+        "0.1 mg",
+        "0.2 mg",
+        "0.3 mg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "corona composition"
+      ],
+      "score": 0.4083,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study involves lipid nanoparticles and includes quantitative measurements of DNA concentrations and transfection efficiency. However, it does not explicitly focus on the protein corona formation on LNPs, which is a key aspect of the requested step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid self-assembling nanoparticles as a novel platform for mRNA-based vaccination.",
+      "authors": [
+        "Arianna De Chiara",
+        "Valeria Nele",
+        "Alessia Angelillo",
+        "Virginia Campani",
+        "Andrea Campanile",
+        "Guendalina Froechlich",
+        "Annagiulia Scognamiglio",
+        "Emilio Pellino",
+        "Antonietta Greco",
+        "Clizia Chinello",
+        "Lisa Pagani",
+        "Remo Eugster",
+        "Paola Luciani",
+        "Claudia Corbo",
+        "Alfredo Nicosia",
+        "Emanuele Sasso",
+        "Giuseppe De Rosa"
+      ],
+      "year": 2026,
+      "journal": "Molecular therapy. Nucleic acids",
+      "doi": "10.1016/j.omtn.2026.102851",
+      "pmid": "41736889",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "Synthetic messenger RNA (mRNA) formulated in lipid nanoparticles (mRNA-LNPs) is a promising candidate for next-generation gene therapy and genetic vaccines. However, mRNA-LNP formulations require low-temperature storage to ensure proper transport and distribution. Here, we introduce a lipid self-assembling nanoparticle (SANP) technology to address the stability challenges of mRNA-based therapeutics. SANP formulations can be prepared by simply mixing the components immediately before use, allowing mRNA vaccines to be stored and transported at 4°C without freezing, thereby enhancing their stability. SANPs loaded with mRNA (mRNA-SANPs) exhibited a sub-200 nm size, high mRNA encapsulation efficiency, colloidal stability post-assembly and in human plasma, and low hemolytic activity. Intramuscular (IM) and intravenous (IV) administration of mRNA-SANPs encoding a reporter gene in mice resulted in high levels of transgene expression, with no observed renal or hepatic toxicity and no release of pro-inflammatory cytokines. Additionally, protein fingerprint analysis of mRNA-SANPs in serum identified specific nanoparticle-protein interactions that correlated with",
+      "matched_quant_terms": [
+        "200 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.0933,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study discusses protein interactions with mRNA-SANPs but does not provide quantitative measurements of the protein corona. It focuses on stability and transgene expression rather than detailed protein corona analysis.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Artificial intelligence-guided design of lipid nanoparticles for mRNA delivery.",
+      "authors": [
+        "Su K",
+        "Qiu J",
+        "Xu T",
+        "Liu S."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1016/j.apsb.2025.11.029",
+      "pmid": "41685167",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) hold significant potential for mRNA-based therapeutics, as evidenced by their successful use in SARS-CoV-2 mRNA vaccines. LNPs effectively protect and transport mRNA to target sites, thereby ensuring its stability and efficient transfection. Despite the progress, some challenges remain in the development of mRNA-LNP delivery systems, such as limited targeting specificity, the complexity of formulations, and the time-consuming and high-throughput screening process. Artificial intelligence (AI) has emerged as a powerful tool to address these challenges, accelerating the design and optimization process of LNPs. AI-guided approaches can improve the efficiency of lipid structure and formulation screening by rapidly identifying key design parameters and employing predictive modeling to optimize LNP properties. The combination of AI and LNP technology offers significant advantages, including enabling the design of more personalized and precise delivery systems, streamlining the development process, and reducing the cost. This review discusses recent advancements in AI-guided mRNA-LNP delivery systems and highlights their potential to revolutionize mRNA therapeutics.",
+      "matched_quant_terms": [
+        "0.5 mg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "corona composition"
+      ],
+      "score": 0.135,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs and mentions 'protein corona datasets', but lacks quantitative measurements or specific data on protein corona formation. It focuses more on AI-guided design rather than the protein corona step itself.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Liposomal lipid nanoparticles for extrahepatic delivery of mRNA.",
+      "authors": [
+        "Cheng MHY",
+        "Zhang Y",
+        "Fox K",
+        "Leung J",
+        "Strong C",
+        "Kang E",
+        "Chen Y",
+        "Tong M",
+        "Bommadevara H",
+        "Jan E",
+        "Ip OYL",
+        "Rodríguez-Rodríguez C",
+        "Saatchi K",
+        "Häfeli UO",
+        "Abdolahzadeh A",
+        "Witzigmann D",
+        "Cullis PR."
+      ],
+      "year": 2025,
+      "journal": "Nature Communications",
+      "doi": "10.1038/s41467-025-58523-w",
+      "pmid": "40319025",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "Long-circulating, transfection-competent lipid nanoparticle (LNP)-mRNA delivery systems are critical for achieving efficient transfection in extrahepatic tissues. Here we investigate the properties of LNP mRNA systems containing high proportions of bilayer forming lipids, using equimolar egg sphingomyelin and cholesterol as the bilayer-forming components. We show that LNP mRNA systems prepared at bilayer lipid to ionizable lipid molar ratios of 4-0.67 exhibit high mRNA encapsulation efficiencies (90-100%) and excellent transfection potencies in vitro. Systems with bilayer lipid to ionizable lipid molar ratios equating to 4 exhibit a liposomal morphology with a solid core suspended in an aqueous interior surrounded by a lipid bilayer. These liposomal LNPs exhibit longer circulation lifetimes than LNP systems with Onpattro-like lipid compositions and have enhanced extrahepatic transfection properties. The prolonged blood circulation lifetime is attributed to reduced plasma protein adsorption. The transfection competency of liposomal LNP systems is attributed to export of the solid core containing mRNA from the LNP as the endosomal pH is lowered.",
+      "matched_quant_terms": [
+        "100%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.0933,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses lipid nanoparticles and their properties, but it does not provide quantitative measurements related to protein corona formation or specific data on protein adsorption.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Engineering branched ionizable lipid for hepatic delivery of clustered regularly interspaced short palindromic repeat-Cas9 ribonucleoproteins.",
+      "authors": [
+        "Onuma H",
+        "Shimizu R",
+        "Suzuki Y",
+        "Sato M",
+        "Harashima H",
+        "Sato Y."
+      ],
+      "year": 2024,
+      "journal": null,
+      "doi": "10.1016/j.isci.2024.110928",
+      "pmid": "39381750",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The delivery of the CRISPR/Cas ribonucleoprotein (RNP) has received attention for clinical applications owing to its high efficiency with few off-target effects. Lipid nanoparticles (LNPs) are potential non-viral vectors for the delivery of RNPs. Herein, we report the engineering of a branched scaffold structure of ionizable lipids for the hepatic delivery of RNPs. Both the total carbon number and branching position were critical for the functional delivery of RNPs. The optimal ionizable lipid exhibited a more than 98% reduction in transthyretin protein after a single dose with no obvious signs of toxicity. The mechanistic study has revealed that optimal LNPs have a unique \"flower-like structure\" that depends on both the lipid structure and the payload and that these LNPs accumulate in hepatocytes in an apolipoprotein E-independent manner. These results represent a major step toward the realization of <i>in vivo</i> genome editing therapy via RNP delivery using chemically synthesizable LNP formulations.",
+      "matched_quant_terms": [
+        "98%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses lipid nanoparticles (LNPs) but does not specifically address the formation of a protein corona on their surface. It mentions protein reduction but lacks quantitative measurements related to the protein corona.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    }
+  ],
+  "message": null,
+  "updated_at": "2026-05-28T20:08:19.106145Z"
+}

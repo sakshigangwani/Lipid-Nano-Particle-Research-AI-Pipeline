@@ -50,6 +50,7 @@ export interface PaperRecord {
   llm_verdict: LLMVerdict;
   llm_rationale: string;
   caption_rescued: boolean;
+  supplementary_rescued: boolean;
 }
 
 export interface RunResults {
