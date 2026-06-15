@@ -58,8 +58,13 @@ export interface RunResults {
   step_id: number;
   step_name: string;
   counts: PrismaCounts;
+  // LLM-included set (the funnel's "final" count).
   papers: PaperRecord[];
+  // Every paper sent to the LLM (pre-LLM-scored set), including LLM-excluded ones.
+  candidates: PaperRecord[];
 }
+
+export type ResultTab = "included" | "candidates";
 
 export type SortKey = "score" | "year" | "title";
 export type ExportFormat = "csv" | "json" | "md";

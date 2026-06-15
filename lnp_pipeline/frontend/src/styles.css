@@ -860,6 +860,27 @@ html, body {
   border: 1px solid #fecaca;
 }
 
+/* ─── Result tabs (Included vs Candidates) ─── */
+.result-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 12px;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+.tab-hint {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-500);
+  background: #f8fafc;
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--ink-300);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
 /* ─── Export / filter row ─── */
 .toolbar {
   display: flex;

@@ -13,6 +13,7 @@ import StepPicker from "./components/StepPicker";
 import type {
   ExportFormat,
   PrismaCounts,
+  ResultTab,
   RunResults,
   RunState,
   StepInfo,
@@ -72,6 +73,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<Date | null>(null);
+  const [activeTab, setActiveTab] = useState<ResultTab>("included");
   const pollRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -92,6 +94,7 @@ export default function App() {
     setResults(null);
     setCounts(EMPTY_COUNTS);
     setStatusMsg(null);
+    setActiveTab("included");
     setState("running");
     setStartedAt(new Date());
     try {
@@ -242,45 +245,95 @@ export default function App() {
               />
             )}
 
-            {results && (
-              <div className="card">
-                <div className="progress-header">
-                  <div className="card-title" style={{ marginBottom: 0 }}>
-                    Step 3 · Included papers — {results.step_name}
-                  </div>
-                  <div className="status-badge done">
-                    {results.papers.length}{" "}
-                    {results.papers.length === 1 ? "paper" : "papers"}
-                  </div>
-                </div>
+            {results &&
+              (() => {
+                const tabPapers =
+                  activeTab === "candidates"
+                    ? results.candidates
+                    : results.papers;
+                const tabTitle =
+                  activeTab === "candidates"
+                    ? "Candidates (pre-LLM)"
+                    : "Included papers";
+                return (
+                  <div className="card">
+                    <div className="progress-header">
+                      <div className="card-title" style={{ marginBottom: 0 }}>
+                        Step 3 · {tabTitle} — {results.step_name}
+                      </div>
+                      <div className="status-badge done">
+                        {tabPapers.length}{" "}
+                        {tabPapers.length === 1 ? "paper" : "papers"}
+                      </div>
+                    </div>
 
-                <div className="toolbar">
-                  <span
-                    style={{
-                      fontSize: "0.72rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.6px",
-                      textTransform: "uppercase",
-                      color: "var(--ink-400)",
-                    }}
-                  >
-                    Export
-                  </span>
-                  {(["csv", "json", "md"] as ExportFormat[]).map((f) => (
-                    <a
-                      key={f}
-                      className="btn-ghost"
-                      href={exportUrl(results.run_id, f)}
-                    >
-                      {f.toUpperCase()}
-                    </a>
-                  ))}
-                  <div className="spacer" />
-                </div>
+                    <div className="result-tabs">
+                      <button
+                        className={`filter-btn ${
+                          activeTab === "included" ? "active" : ""
+                        }`}
+                        onClick={() => setActiveTab("included")}
+                      >
+                        Included · {results.papers.length}
+                      </button>
+                      <button
+                        className={`filter-btn ${
+                          activeTab === "candidates" ? "active" : ""
+                        }`}
+                        onClick={() => setActiveTab("candidates")}
+                      >
+                        Candidates (pre-LLM) · {results.candidates.length}
+                      </button>
+                    </div>
 
-                <ResultsTable papers={results.papers} />
-              </div>
-            )}
+                    {activeTab === "candidates" && (
+                      <div className="tab-hint">
+                        Every paper that passed the keyword / quantitative /
+                        kinetic filters and was sent to the LLM — including the
+                        ones the LLM later marked <em>exclude</em>. This is the
+                        full set for your manual search, before LLM scoring
+                        narrowed it down.
+                      </div>
+                    )}
+
+                    <div className="toolbar">
+                      <span
+                        style={{
+                          fontSize: "0.72rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.6px",
+                          textTransform: "uppercase",
+                          color: "var(--ink-400)",
+                        }}
+                      >
+                        Export
+                      </span>
+                      {(["csv", "json", "md"] as ExportFormat[]).map((f) => (
+                        <a
+                          key={f}
+                          className="btn-ghost"
+                          href={exportUrl(results.run_id, f, activeTab)}
+                        >
+                          {f.toUpperCase()}
+                        </a>
+                      ))}
+                      <div className="spacer" />
+                    </div>
+
+                    <ResultsTable
+                      papers={tabPapers}
+                      primaryLabel={
+                        activeTab === "candidates" ? "Candidates" : "Included"
+                      }
+                      emptyMessage={
+                        activeTab === "candidates"
+                          ? "No papers reached the LLM-scoring stage for this step."
+                          : "No papers passed the filters for this step."
+                      }
+                    />
+                  </div>
+                );
+              })()}
           </div>
         </div>
 

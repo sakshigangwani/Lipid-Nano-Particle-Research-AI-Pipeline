@@ -69,4 +69,8 @@ class RunResults(BaseModel):
     step_id: int
     step_name: str
     counts: PrismaCounts
+    # `papers` is the LLM-included set (the funnel's "final" count). `candidates`
+    # is every paper sent to the LLM — the pre-LLM-scored set, including those
+    # the LLM later marked 'exclude' — surfaced as a separate tab for manual review.
     papers: list[PaperRecord]
+    candidates: list[PaperRecord] = []

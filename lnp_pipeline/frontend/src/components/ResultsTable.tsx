@@ -4,11 +4,18 @@ import PaperRow from "./PaperRow";
 
 interface Props {
   papers: PaperRecord[];
+  // Label + colour for the first summary card. Defaults to the "Included" view.
+  primaryLabel?: string;
+  emptyMessage?: string;
 }
 
 type Filter = "all" | LLMVerdict | "rescued";
 
-export default function ResultsTable({ papers }: Props) {
+export default function ResultsTable({
+  papers,
+  primaryLabel = "Included",
+  emptyMessage = "No papers passed the filters for this step.",
+}: Props) {
   const [sortKey, setSortKey] = useState<SortKey>("score");
   const [filter, setFilter] = useState<Filter>("all");
 
@@ -47,11 +54,7 @@ export default function ResultsTable({ papers }: Props) {
   }, [papers, filter, sortKey]);
 
   if (papers.length === 0) {
-    return (
-      <div className="empty-state">
-        No papers passed the filters for this step.
-      </div>
-    );
+    return <div className="empty-state">{emptyMessage}</div>;
   }
 
   const filterBtn = (key: Filter, label: string, count: number) => (
@@ -69,7 +72,7 @@ export default function ResultsTable({ papers }: Props) {
       <div className="results-summary">
         <div className="stat-card">
           <div className="stat-value blue">{papers.length}</div>
-          <div className="stat-label">Included</div>
+          <div className="stat-label">{primaryLabel}</div>
         </div>
         <div className="stat-card">
           <div className="stat-value green">{totals.include}</div>
@@ -80,8 +83,17 @@ export default function ResultsTable({ papers }: Props) {
           <div className="stat-label">LLM: borderline</div>
         </div>
         <div className="stat-card">
-          <div className="stat-value slate">{totals.rescued}</div>
-          <div className="stat-label">Caption rescues</div>
+          {totals.exclude > 0 ? (
+            <>
+              <div className="stat-value slate">{totals.exclude}</div>
+              <div className="stat-label">LLM: excluded</div>
+            </>
+          ) : (
+            <>
+              <div className="stat-value slate">{totals.rescued}</div>
+              <div className="stat-label">Caption rescues</div>
+            </>
+          )}
         </div>
       </div>
 
@@ -89,6 +101,7 @@ export default function ResultsTable({ papers }: Props) {
         {filterBtn("all", "All", totals.all)}
         {filterBtn("include", "Include", totals.include)}
         {totals.borderline > 0 && filterBtn("borderline", "Borderline", totals.borderline)}
+        {totals.exclude > 0 && filterBtn("exclude", "Excluded", totals.exclude)}
         {totals.rescued > 0 && filterBtn("rescued", "Caption-rescued", totals.rescued)}
         <div className="spacer" />
         <label

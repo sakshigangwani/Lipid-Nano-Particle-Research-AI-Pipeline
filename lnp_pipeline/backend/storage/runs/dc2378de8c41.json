@@ -1,0 +1,2371 @@
+{
+  "run_id": "dc2378de8c41",
+  "step_id": 6,
+  "step_name": "Cargo release",
+  "state": "done",
+  "counts": {
+    "pubmed": 2,
+    "europepmc": 200,
+    "semantic_scholar": 0,
+    "crossref": 200,
+    "openalex": 34,
+    "biorxiv": 4,
+    "total_raw": 440,
+    "after_dedup": 423,
+    "after_quant": 124,
+    "after_kinetic": 124,
+    "caption_rescued": 60,
+    "llm_scored": 124,
+    "final": 62
+  },
+  "papers": [
+    {
+      "title": "Mechanistic insights into mRNA-LNP interactions: role of ionizable lipid content in regulating mRNA intracellular release and translation.",
+      "authors": [
+        "Truong HQ",
+        "Kafle U",
+        "Nguyen CTG",
+        "Li Y",
+        "Meng F."
+      ],
+      "year": 2026,
+      "journal": "Journal of Nanobiotechnology",
+      "doi": "10.1186/s12951-026-04383-5",
+      "pmid": "41965690",
+      "source_dbs": [
+        "CrossRef",
+        "Europe PMC"
+      ],
+      "abstract": "Messenger RNA (mRNA) therapeutics rely on lipid nanoparticles (LNPs) for effective intracellular delivery, yet the intracellular release of mRNA from these carriers remains an underexplored barrier to translation. In this study, we investigate how the ionizable lipids within clinically relevant LNP formulations influence mRNA delivery and translation. By systematically varying the molar ratio of ionizable lipids (SM-102 and ALC-0315) while maintaining other lipid components constant, we found that LNPs containing lower ionizable lipid levels (~ 30 mol%) achieved significantly higher in vitro transfection efficiency and in vivo mRNA expression compared to standard clinical formulations (50 mol% for Moderna; 46.3 mol% for Pfizer/BioNTech). Notably, this enhancement occurred despite similar cellular uptake and endosomal escape, implicating intracellular mRNA-LNP dissociation as a previously underappreciated determinant of translational efficiency. Fluorescence colocalization analyses confirmed greater cytosolic mRNA release from LNPs with reduced ionizable lipid content. Moreover, these optimized formulations elicited stronger antigen-specific humoral and cellular immune responses in mice, highlighting their potential for improved mRNA performance. Collectively, these findings identify intracellular mRNA dissociation-rather than endosomal escape alone-as a key bottleneck in LNP-mediated delivery and demonstrate that fine-tuning ionizable lipid composition can substantially enhance mRNA performance.",
+      "matched_quant_terms": [
+        "0.4 µg",
+        "0.25 µg",
+        "2 µg",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and quantitatively measures mRNA release from LNPs, showing that lower ionizable lipid content enhances mRNA dissociation. It provides specific data on mRNA release percentages and transfection efficiency.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Time-Resolved Inspection of Ionizable Lipid-Facilitated Lipid Nanoparticle Disintegration and Cargo Release at an Early Endosomal Membrane Mimic.",
+      "authors": [
+        "Aliakbarinodehi N",
+        "Niederkofler S",
+        "Emilsson G",
+        "Parkkila P",
+        "Olsén E",
+        "Jing Y",
+        "Sjöberg M",
+        "Agnarsson B",
+        "Lindfors L",
+        "Höök F."
+      ],
+      "year": 2024,
+      "journal": "ACS Nano",
+      "doi": "10.1021/acsnano.4c04519",
+      "pmid": "39133894",
+      "source_dbs": [
+        "CrossRef",
+        "Europe PMC"
+      ],
+      "abstract": "Advances in lipid nanoparticle (LNP) design have contributed notably to the emergence of the current clinically approved mRNA-based vaccines and are of high relevance for delivering mRNA to combat diseases where therapeutic alternatives are sparse. LNP-assisted mRNA delivery utilizes ionizable lipid-mediated cargo translocation across the endosomal membrane driven by the acidification of the endosomal environment. However, this process occurs at a low efficiency, a few percent at the best. Utilizing surface-sensitive fluorescence microscopy with a single LNP and mRNA resolution, we have investigated pH-controlled interactions between individual LNPs and a planar anionic supported lipid bilayer (SLB) formed on nanoporous silica, mimicking the electrostatic conditions of the early endosomal membrane. For LNPs with an average diameter of 140 nm, fusion with the anionic SLB preferentially occurred when the pH was reduced from 6.6 to 6.0. Furthermore, there was a delay in the onset of LNP fusion after the pH drop, and upon fusion, a significant fraction (>70%) of mRNA was released into the acidic solution representing the endosomal lumen, while a fraction of mRNA remained bound to the SLB even after reversing the pH to neutral cytosolic conditions. Finally, a comparison of the fusion efficiency of two LNP formulations with different surface concentrations of gel-forming lipids correlated with differences in the protein translation efficiency previously observed in human primary cell transfection studies. Together, these findings emphasize the relevance of biophysical investigations of ionizable lipid-containing LNP-assisted mRNA delivery mechanisms while potentially also offering means to optimize the design of LNPs with enhanced endosomal escape capabilities.",
+      "matched_quant_terms": [
+        "70%",
+        "140 nm"
+      ],
+      "matched_kinetic_terms": [
+        "Time-Resolved"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.2133,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and quantitatively measures cargo release, reporting >70% mRNA release upon fusion with a model endosomal membrane. It also discusses the efficiency of LNP fusion and cargo translocation.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Dynamically covalent lipid nanoparticles mediate CRISPR-Cas9 genome editing against choroidal neovascularization in mice.",
+      "authors": [
+        "Cao D",
+        "Zhu J",
+        "Guo Y",
+        "Zhou Y",
+        "Zeng J",
+        "Tu Y",
+        "Zhao Z",
+        "Xie L",
+        "Song E",
+        "Zhu M",
+        "Yin L."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1126/sciadv.adj0006",
+      "pmid": "40644543",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "As an important modality for choroidal neovascularization (CNV) treatment, intravitreal injection of vascular endothelial growth factor A (VEGFA) inhibitors suffers from undesired response rate, low patient compliance, and ocular damage. Here, dynamically covalent lipid nanoparticles (LNPs) were engineered to mediate <i>VEGFA</i> gene editing and CNV treatment by codelivering Cas9 mRNA (mCas9) and single guide RNA (sgRNA) targeting <i>VEGFA</i> (sgVEGFA). A library of lipidoids bearing iminoboronate ester linkage was developed via facile \"one-pot\" synthesis, and the top-performing lipidoid-A<sub>4</sub>B<sub>3</sub>C<sub>7</sub> was formulated into LNP-A<sub>4</sub>B<sub>3</sub>C<sub>7</sub> with the highest mRNA transfection efficiency. Inside the diseased retinal pigment epithelial cells, LNPs were dissociated upon H<sub>2</sub>O<sub>2</sub>-triggered lipidoid degradation, facilitating mRNA/sgRNA release to potentiate the gene editing efficiency. In laser-induced CNV mice, mCas9/sgVEGFA@LNP-A<sub>4</sub>B<sub>3</sub>C<sub>7</sub> after single intravitreal injection led to pronounced <i>VEGFA</i> disruption and CNV area reduction, outperforming the clinical anti-VEGF drug in eliciting sustained therapeutic effect. This study establishes a robust nonviral platform for mRNA delivery and genome editing and renders a promising strategy for CNV treatment.",
+      "matched_quant_terms": [
+        "100%",
+        "0.1%",
+        "100 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses dynamically covalent lipid nanoparticles (LNPs) that release mRNA upon H2O2-triggered degradation, providing quantitative data on mRNA release and transfection efficiency, fulfilling all inclusion criteria.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Engineered internal architecture of core-shell lipid nanoparticles promotes efficient mRNA endosomal release.",
+      "authors": [
+        "Li T",
+        "Zhang J",
+        "Guo J",
+        "Sun B",
+        "Han Y",
+        "Xu H",
+        "Weng Y",
+        "Cao Q",
+        "Li M",
+        "Zhao G",
+        "Liu L",
+        "Gao X",
+        "Dai L",
+        "Wang D",
+        "Cao Y."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1038/s41467-026-69017-8",
+      "pmid": "41617719",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Messenger RNA (mRNA) therapeutics rely on lipid nanoparticles (LNPs) for delivery, yet inefficient endosomal escape remains a major bottleneck, with only a small fraction of internalized cargo reaching the cytoplasm. Conventional LNPs encapsulate mRNA in amorphous lipid cores, where partial charge neutralization and lack of structural order limit protonation-driven membrane disruption. Here, we present an architectural strategy that engineers LNP internal structure using ionizable lipid-coated gold nanoparticles (IC-AuNPs) as rigid, pH-responsive cores. The Au cores template the formation of radially ordered core-shell architectures that stabilize particles at physiological pH while amplifying charge segregation and curvature stress under acidic endosomal conditions. As a result, Au-LNPs achieve a twofold increase in endosomal escape and ~100-fold greater cytoplasmic mRNA diffusion compared to conventional LNPs. Functionally, Au-LNPs enhance mRNA expression in vitro, increases in vivo protein production up to sevenfold, boost antibody responses to SARS-CoV-2 vaccines, and improve therapeutic efficacy in a triple-negative breast cancer model.",
+      "matched_quant_terms": [
+        "100-fold",
+        "fold increase"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 1.0,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper focuses on lipid nanoparticles and quantitatively measures endosomal escape and cytoplasmic mRNA diffusion, reporting a twofold increase and ~100-fold greater diffusion, which directly relates to cargo release.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Silicon Ether Ionizable Lipids Enable Potent mRNA Lipid Nanoparticles with Rapid Tissue Clearance.",
+      "authors": [
+        "Holland R",
+        "Lam K",
+        "Jeng S",
+        "McClintock K",
+        "Palmer L",
+        "Schreiner P",
+        "Wood M",
+        "Zhao W",
+        "Heyes J."
+      ],
+      "year": 2024,
+      "journal": "ACS Nano",
+      "doi": "10.1021/acsnano.3c09028",
+      "pmid": "38567845",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "The advent of mRNA for nucleic acid (NA) therapeutics has unlocked many diverse areas of research and clinical investigation. However, the shorter intracellular half-life of mRNA compared with other NAs may necessitate more frequent dosing regimens. Because lipid nanoparticles (LNPs) are the principal delivery system used for mRNA, this could lead to tolerability challenges associated with an accumulated lipid burden. This can be addressed by introducing enzymatically cleaved carboxylic esters into the hydrophobic domains of lipid components, notably, the ionizable lipid. However, enzymatic activity can vary significantly with age, disease state, and species, potentially limiting the application in humans. Here we report an alternative approach to ionizable lipid degradability that relies on nonenzymatic hydrolysis, leading to a controlled and highly efficient lipid clearance profile. We identify highly potent examples and demonstrate their exceptional tolerability in multiple preclinical species, including multidosing in nonhuman primates (NHP).",
+      "matched_quant_terms": [
+        "0.5 mg",
+        "6 mg",
+        "1 mg",
+        "0.25 mg",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [
+        "half-life",
+        "Clearance"
+      ],
+      "matched_signal_phrases": [
+        "RiboGreen assay"
+      ],
+      "score": 0.5283,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) for mRNA delivery, detailing cargo release through endosomal escape and measuring mRNA levels quantitatively (e.g., protein levels by ELISA, lipid clearance by LC-MS). It provides time-resolved data on lipid and mRNA dynamics.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "High-Throughput Quantification and Characterization of Dual Payload mRNA/LNP Cargo via Deformulating Size Exclusion and Ion Pairing Reversed Phase Assays.",
+      "authors": [
+        "Imiołek M",
+        "Cojocaru R",
+        "Fekete S",
+        "Le Huray J",
+        "Lauber M."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acs.analchem.4c06296",
+      "pmid": "39883007",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Therapeutic drugs and multivalent vaccines based on the delivery of mRNA via lipid nanoparticle (LNP) technologies are expected to dominate the biopharmaceutical industry landscape in the coming years. Many of these innovative therapies include several nucleic acid components (e.g., nuclease mRNA and guide RNA) posing unique analytical challenges when monitoring the quantity and quality of each individual payload substance in the formulated LNP. Current methods were optimized for single payload analysis and often lack resolving power needed to investigate nucleic acid mixtures. Ion pairing reversed phase (IP-RP) and size exclusion chromatography (SEC) are increasingly being used to characterize nucleic acids. Here, we studied their application for payload quantification in formulated LNP drug-like products. Using a detergent to disrupt the LNPs, the liberated payloads can be separated on an octadecyl RP column using a fast gradient. Reproducible results were obtained as lipids, and surfactants were efficiently eluted using a high organic solvent wash protocol. Alternatively, we also established an online SEC disruption analysis of the mRNA/LNPs wherein an alcohol and detergent containing a mobile phase was applied. Such conditions universally deformulated all tested LNP samples, indicating that a 5 min-long SEC separation can be used as a high-throughput platform method. In both approaches, the measurements facilitate a multiattribute analysis. Apart from quantitation, the characterization of specific impurities is achieved: IP-RP reveals mRNA-lipid adducts, while SEC informs on size variants, which in turn reduces a laboratory's analytical workload. These easy-to-adopt LC-based assays are expected to fortify the analytical toolbox for emerging gene therapeutics.",
+      "matched_quant_terms": [
+        "0.2%",
+        "20%",
+        "260 nm",
+        "230 nm",
+        "100 ng"
+      ],
+      "matched_kinetic_terms": [
+        "5 min"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.36,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper focuses on lipid nanoparticles (LNPs) and discusses methods for quantifying mRNA cargo release using deformulating assays. It provides quantitative data on payload separation and characterization, fulfilling the criteria for the 'Cargo release' step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Rational design and modular synthesis of biodegradable ionizable lipids via the Passerini reaction for mRNA delivery.",
+      "authors": [
+        "Xu Y",
+        "Gong F",
+        "Golubovic A",
+        "Strilchuk A",
+        "Chen J",
+        "Zhou M",
+        "Dong S",
+        "Seto B",
+        "Li B."
+      ],
+      "year": 2025,
+      "journal": "Proceedings of the National Academy of Sciences",
+      "doi": "10.1073/pnas.2409572122",
+      "pmid": "39883839",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "The ionizable lipid component of lipid nanoparticle (LNP) formulations is essential for mRNA delivery by facilitating endosomal escape. Conventionally, these lipids are synthesized through complex, multistep chemical processes that are both time-consuming and require significant engineering. Furthermore, the development of new ionizable lipids is hindered by a limited understanding of the structure-activity relationships essential for effective mRNA delivery. In this work, we have developed a modular platform utilizing the Passerini reaction to rapidly generate large, chemically diverse libraries of biodegradable ionizable lipids. This high-throughput approach enables the systematic exploration of various lipid components-head groups, tails, and spacers-and their impacts on mRNA delivery efficiency. By investigating the hydrogen bonding potential between the lipid's head groups and the mRNA's ribose phosphate complex, we found that optimizing the methylene units between the lipid's head groups and linkages could enhance endosomal escape and, consequently, mRNA delivery efficiencies. Leveraging this insight, our platform has led to the identification of the biodegradable ionizable lipid A4B4-S3, which outperforms the current clinical benchmark, SM-102, in gene editing efficacy in mouse liver following systemic administration and demonstrates the promise for repeat-dose protein replacement treatments. This work not only offers a rapid, scalable method for ionizable lipid synthesis but also deepens our understanding of their structure-activity relationships, paving the way for more effective mRNA therapeutics.",
+      "matched_quant_terms": [
+        "0.32 mg",
+        "0.08 mg",
+        "0.05 mg",
+        "488 nm",
+        "520 nm",
+        "0.5 mg",
+        "0.25 mg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses the role of ionizable lipids in mRNA delivery and includes quantitative measurements of mRNA delivery efficiency (e.g., 0.32 mg kg−1 mLuc). It also explores lipid-mediated mRNA release mechanisms, aligning with the 'Cargo release' step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Development of siRNA-probes for studying intracellular trafficking of siRNA nanoparticles.",
+      "authors": [
+        "Christopher A Alabi",
+        "Gaurav Sahay",
+        "Robert Langer",
+        "Daniel G Anderson"
+      ],
+      "year": 2013,
+      "journal": "Integrative biology : quantitative biosciences from nano to macro",
+      "doi": "10.1039/c2ib20155k",
+      "pmid": "23014672",
+      "source_dbs": [
+        "PubMed"
+      ],
+      "abstract": "One important barrier facing the delivery of short interfering RNAs (siRNAs) via synthetic nanoparticles is the rate of nanoparticle disassembly. However, our ability to optimize the release kinetics of siRNAs from nanoparticles for maximum efficacy is limited by the lack of methods to track their intracellular disassembly. Towards this end, we describe the design of two different siRNA-based fluorescent probes whose fluorescence emission changes in response to the assembly state of the nanoparticle. The first probe design involves a redox-sensitive fluorescence-quenched probe that fluoresces only when the nanoparticle is disassembled in a reductive environment. The second probe design is based on a FRET-labeled siRNA pair that fluoresces due to the proximity of the siRNA pair when the nanoparticle is intact. In both approaches, the delivery vehicle need not be labeled. The utility of these probes was investigated with a lipidoid nanoparticle (LNP) as proof-of-concept in both extracellular and intracellular environments. Fluorescence kinetic data from both probes were fit to a two-phase release and decay curve and subsequently quantified to give intracellular disassembly rate constants. Quantitative analysis revealed that the rate constant of siRNA release measured via the fluorescence-quenched probe was almost identical to the rate constant for nanoparticle disassembly measured via the FRET-labeled probes. Furthermore, these probes were utilized to determine subcellular localization of LNPs with the use of automated high-resolution microscopy as they undergo dissociation. Interestingly, this work shows that large amounts of siRNA remain inside vesicular compartments. Altogether, we have developed new siRNA probes that can be utilized with multiple nanocarriers for quantitative and qualitative analysis of nanoparticle dissociation that may serve as a design tool for future delivery systems.",
+      "matched_quant_terms": [
+        "ng RNA"
+      ],
+      "matched_kinetic_terms": [
+        "rate constant",
+        "kinetics",
+        "kinetic",
+        "release kinetics"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and provides quantitative measurements of siRNA release kinetics, including rate constants for disassembly, which aligns with the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Structural Change of ApoE-Lipid Nanoparticles Alters Receptor-Mediated Endocytosis and Induces Endosomal Disruption.",
+      "authors": [
+        "Mo Y",
+        "Liu H",
+        "Keszei AFA",
+        "Dai DL",
+        "Makky A",
+        "Ding L",
+        "Pan A",
+        "Bu J",
+        "Mazhab-Jafari MT",
+        "Chen J",
+        "Zheng G."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1021/jacs.5c16025",
+      "pmid": "41711348",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Apolipoprotein E (ApoE) is a key regulator of lipid metabolism that binds to lipid nanoparticle (LNP) surfaces to mediate cellular interactions. However, the ApoE-LNP behavior is highly dependent on the LNP composition, and the underlying mechanisms remain unclear. Here, we show that subtle alterations in LNP surface lipids profoundly reshape the ApoE-LNP structure and intracellular trafficking. Using cryogenic electron microscopy and live-cell imaging, we demonstrate that replacing 10 mol % 1,2-distearoyl-<i>sn</i>-glycero-3-phosphocholine (DSPC) with a porphyrin-lipid conjugate induces highly faceted, irregular LNP membrane morphologies upon ApoE binding. These structural transitions alter receptor-mediated uptake, enhance endosomal disruption, promote cytosolic siRNA release, and ultimately trigger cell apoptosis. Through fluorescence lifetime imaging, we also demonstrate that ApoE promotes LNP intracellular disassembly. Overall, our findings identify lipid-driven structural remodeling of ApoE-LNPs as a critical determinant of their intracellular fate, offering mechanistic insights for the rational design of LNPs and new perspectives on ApoE's role in disease pathogenesis.",
+      "matched_quant_terms": [
+        "2%",
+        "1000 nM",
+        "488 nm",
+        "580 nm",
+        "25 nm",
+        "10 nm",
+        "0.75 mg",
+        "1 mg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on ApoE-LNPs and their structural changes affecting siRNA release. It includes quantitative measurements of lipid concentrations and fluorescence intensity, and discusses endosomal disruption and cytosolic siRNA release, key aspects of cargo release.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Cellular and biophysical barriers to lipid nanoparticle mediated delivery of RNA to the cytosol.",
+      "authors": [
+        "Johansson JM",
+        "Du Rietz H",
+        "Hedlund H",
+        "Eriksson HC",
+        "Oude Blenke E",
+        "Pote A",
+        "Harun S",
+        "Nordenfelt P",
+        "Lindfors L",
+        "Wittrup A."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1038/s41467-025-60959-z",
+      "pmid": "40595685",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are clinically approved for mRNA-based vaccines and liver-targeted siRNA delivery. However, poor nucleic acid delivery efficiency limits their application in extrahepatic tissues and tumors. Here, using live-cell and super-resolution microscopy, we identify multiple distinct steps of inefficiencies in the cytosolic delivery of both siRNA and mRNA cargoes. Membrane damages marked by galectin recruitment are conducive to cytosolic RNA release, whereas membrane perturbations recruiting the ESCRT machinery do not permit endosomal escape. Notably, only a small fraction of RNA is released from galectin-marked endosomes and, unexpectedly, many damaged endosomes contain no detectable RNA cargo. Using LNPs with both fluorescently labeled ionizable lipid and RNA, we show that these components segregate during endosomal sorting - both within single endosomes and across endosomal compartments. Finally, we visualize localized ionizable lipid enrichment in endosomal membranes and membrane damage in direct proximity to siRNA-LNPs tethered to luminal vesicle membranes. Taken together, our findings reveal multiple mechanistic barriers limiting intracellular RNA delivery by LNPs.",
+      "matched_quant_terms": [
+        "95%",
+        "1%",
+        "25%",
+        "100 nM",
+        "1.5 µg",
+        "50 nM",
+        "0.75 µg",
+        "0.5 µg",
+        "500 nm",
+        "525 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and quantitatively measures RNA release efficiency from endosomes, detailing the fraction of damaged vesicles with detectable RNA. It provides specific concentrations and time-resolved data on RNA-LNP interactions.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Thioester-Containing Ionizable Lipids with Enhanced Endosomal Escape and Biodegradability for mRNA and tRNA Delivery.",
+      "authors": [
+        "Peña Á",
+        "Broset E",
+        "Lucia E",
+        "García-Latorre L",
+        "Navarro V",
+        "Matute C",
+        "Gallego-Lleyda A",
+        "Alejo T",
+        "Romanos E",
+        "García A",
+        "Martínez-Oliván J",
+        "Giménez-Warren J."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.3390/pharmaceutics18040472",
+      "pmid": "42076124",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "<b>Background/Objectives</b>: Lipid nanoparticles (LNPs) containing ionizable lipids represent the most advanced non-viral delivery vehicles and have become state-of-the-art carriers for RNA therapeutics. However, further improvements in endosomal escape efficiency and biodegradability are still needed, especially for nucleic acids with transient activity such as messenger RNA (mRNA) and transfer RNA (tRNA). <b>Methods</b>: In this study, a novel library of highly biodegradable ionizable lipids featuring thioester groups within the linker region was designed and synthesized, thereby expanding the chemical linker toolbox for future ionizable lipid development. <b>Results</b>: Comprehensive in vivo structure-activity relationship studies led to the identification of CP-LC-1272 as a lead candidate that markedly enhances endosomal escape and exhibits superior in vivo biodegradability, attributed to the high acid-lability of thioester bonds. LNPs containing CP-LC-1272 maintained in vivo activity after six months of storage in lyophilized form and demonstrated superior in vivo efficiency compared to SM-102 in mRNA expression studies, as well as similar protein restoration in a tRNA delivery model targeting premature stop-codon mutations. <b>Conclusions</b>: The rapid biodegradability of these thioester-activated ionizable lipids (TAILs) suggests a reduced risk of accumulation, with the potential to enable safe repeated dosing or high-dosage RNA therapies, positioning TAILs as a versatile and safe platform for next-generation RNA therapeutics.",
+      "matched_quant_terms": [
+        "25%",
+        "0.1%",
+        "0.05 mg",
+        "0.8 µg",
+        "1.25 µg",
+        "1.25 mg",
+        "2.5 mg",
+        "50 µg",
+        "p < 0.01",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) with ionizable lipids for mRNA delivery, emphasizing endosomal escape and cargo release via thioester bond cleavage under acidic conditions, with quantitative data on mRNA expression.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Ionizable guanidine-based lipid nanoparticle for targeted mRNA delivery and cancer immunotherapy.",
+      "authors": [
+        "Zhang H",
+        "Liu D",
+        "Yang K",
+        "Liang Z",
+        "Li M."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1126/sciadv.adx5970",
+      "pmid": "41134881",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The development of lipid nanoparticle (LNP) systems has largely advanced RNA therapeutics, particularly mRNA-based cancer immunotherapy. Conventional amine-LNPs, designed for hepatic RNA delivery, face challenges in targeting lymphoid organs effectively and maximize antigen presentation. In this study, we present the development of pH-responsive ionizable guanidine-LNPs (G-LNPs). Our cholesterol-free G-LNP system enables efficient delivery of mRNA to the spleen following intravenous administration. Notably, while both amine-LNPs and G-LNPs can deliver mRNA to the spleen, G-LNPs exhibit a unique ability to preferentially target antigen-presenting cells, leading to significantly enhanced antigen presentation and robust T cell activation. mRNA vaccines formulated with G-LNPs elicited strong and antigen-specific immune responses, providing complete protection against tumor progression. In addition, intraperitoneal administration of G-LNPs enabled selective mRNA expression in the pancreas, showcasing the versatility of this delivery platform. These findings underscore the potential of guanidine-LNPs as a highly promising platform for organ-targeted mRNA delivery and cancer immunotherapy.",
+      "matched_quant_terms": [
+        "150 ng",
+        "0.2 mg",
+        "P > 0.05",
+        "P < 0.05",
+        "P < 0.01",
+        "P < 0.001",
+        "P < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on guanidine-based LNPs for mRNA delivery, detailing endosomal escape and cargo release via ANTS assays, with quantitative data on mRNA expression levels and lipid properties, fulfilling all inclusion criteria.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Engineered lipid nanoparticles with synergistic dendritic cell targeting and enhanced endosomal escape for boosted mRNA cancer vaccines.",
+      "authors": [
+        "Wang S",
+        "Zheng J",
+        "Zhou J",
+        "Jiang W",
+        "Chen Z",
+        "Wu X",
+        "Guo B",
+        "Wu Y",
+        "Yang F."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.mtbio.2025.102107",
+      "pmid": "40740252",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) have emerged as a pivotal carriers for enhancing mRNA therapeutics, particularly in antitumor therapy. However, achieving robust antigen expression remains a major challenge due to limitations in precise targeted delivery and inefficient endosomal escape. In this study, we constructed an ambidextrous LNP to achieve robust tumor-specific antigen expression through targeted cell delivery and enhanced endosomal escape of mRNA-LNPs. To improve endosomal escape, we synthesized a novel pH-responsive PEGylated lipid designed to synergistically enhance membrane fusion effect with ionizable lipids, thereby optimizing the translation of the desired antigen. This is accomplished by promoting the early endosomal escape and endosomal recycling transport. For precise delivery of mRNA-LNPs to dendritic cells, we employed a mannose-modified PEGylated lipid that targets mannose receptors. Our results demonstrated that the combination of mannose-directed targeting and pH-mediated endosomal escape significantly enhances antigen translation and expression, leading to a vigorous immune response, as validated by both in vitro and in vivo experiments. This ambidextrous strategy advances the formulation of LNPs for precise mRNA delivery and effective antigen encoding, facilitating the development of mRNA vaccines in the field of antitumor immunology.",
+      "matched_quant_terms": [
+        "100 nm",
+        "600 ng",
+        "200 mg",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and includes quantitative measurements of endosomal escape efficiency and transfection rates of mRNA. It specifically addresses cargo release through enhanced endosomal escape mechanisms.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "A BCMA-mRNA vaccine is a promising therapeutic for multiple myeloma.",
+      "authors": [
+        "Dutta D",
+        "Liu J",
+        "Wen K",
+        "Ray A",
+        "Salatino A",
+        "Liu X",
+        "Gulla A",
+        "Hideshima T",
+        "Song Y",
+        "Anderson KC."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1182/blood.2025028597",
+      "pmid": "40700574",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "<h4>Abstract</h4>Cancer vaccines are emerging as promising therapies to not only prevent cancer but to treat cancer. Here, we developed a therapeutic vaccine for multiple myeloma (MM) using B-cell maturation antigen (BCMA) protein as a target. Given the remarkable efficacy of COVID-19 messenger RNA (mRNA) vaccines, we first packaged sequence- and base-optimized BCMA mRNA into lipid nanoparticles (LNPs) using next-generation ionizable lipid, enhancing their accumulation in the spleen. A toll-like receptor 3 agonist, polyinosinic:polycytidylic acid [poly(I:C)], was also encapsulated in LNPs to further elicit BCMA-specific immune response. BCMA-mRNA LNPs were internalized by dendritic cells (DCs) in vitro, triggering proliferation and activation of BCMA-specific CD8+ cytolytic T cells (CTLs). Importantly, these CTLs lysed BCMA+ U266 MM cells and CD138+ patient MM cells, without affecting BCMA-knockout U266 or CD138- patient-derived bone marrow cells. Vaccination of C57BL/6J mice with BCMA-mRNA LNPs activated splenic DCs and induced BCMA-specific CTLs, assessed by tetramer staining, which selectively killed murine 5TGM1 BCMA overexpressing MM cells. Finally, vaccination of C57BL/KaLwRijHsd mice bearing BCMA-overexpressing 5TGM1 cells inhibited tumor growth associated with BCMA-specific CD8+ T-cell responses. The combination treatment with poly(I:C) further triggered the immune response induced by BCMA-mRNA LNPs in all instances. Our findings provide the framework for clinical evaluation of BCMA-mRNA LNP vaccines to improve patient outcome in MM.",
+      "matched_quant_terms": [
+        "6.75 nm",
+        "5.86 nm",
+        "P < .05",
+        "82.3 ± 6.75",
+        "117.6 ± 5.86"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on BCMA-mRNA packaged in lipid nanoparticles, with quantitative measurements of particle size (82.3 ± 6.75 nm) and loading percentage. It discusses endosomal escape, indicating cargo release from LNPs.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Reformulating lipid nanoparticles for organ-targeted mRNA accumulation and translation.",
+      "authors": [
+        "Su K",
+        "Shi L",
+        "Sheng T",
+        "Yan X",
+        "Lin L",
+        "Meng C",
+        "Wu S",
+        "Chen Y",
+        "Zhang Y",
+        "Wang C",
+        "Wang Z",
+        "Qiu J",
+        "Zhao J",
+        "Xu T",
+        "Ping Y",
+        "Gu Z",
+        "Liu S."
+      ],
+      "year": 2024,
+      "journal": null,
+      "doi": "10.1038/s41467-024-50093-7",
+      "pmid": "38969646",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Fully targeted mRNA therapeutics necessitate simultaneous organ-specific accumulation and effective translation. Despite some progress, delivery systems are still unable to fully achieve this. Here, we reformulate lipid nanoparticles (LNPs) through adjustments in lipid material structures and compositions to systematically achieve the pulmonary and hepatic (respectively) targeted mRNA distribution and expression. A combinatorial library of degradable-core based ionizable cationic lipids is designed, following by optimisation of LNP compositions. Contrary to current LNP paradigms, our findings demonstrate that cholesterol and phospholipid are dispensable for LNP functionality. Specifically, cholesterol-removal addresses the persistent challenge of preventing nanoparticle accumulation in hepatic tissues. By modulating and simplifying intrinsic LNP components, concurrent mRNA accumulation and translation is achieved in the lung and liver, respectively. This targeting strategy is applicable to existing LNP systems with potential to expand the progress of precise mRNA therapy for diverse diseases.",
+      "matched_quant_terms": [
+        "0.25 mg",
+        "25 ng",
+        "P < 0.0001",
+        "P < 0.001",
+        "P < 0.01",
+        "P < 0.05"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses lipid nanoparticles (LNPs) and includes quantitative measurements of mRNA delivery and translation (e.g., 0.25 mg kg−1 mRNA). It also addresses cargo release functionalities, particularly endosomal escape and mRNA release.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Machine Learning–Guided Structure–Activity Discovery of Polymer Configurations in Lipid Nanoparticles for Kiss-and-Run Endosomal Escape",
+      "authors": [
+        "Jiamin Wu",
+        "Xia Qin",
+        "Po-Yu Chou",
+        "Trần Quang Bình",
+        "Isaiah O. Betinol",
+        "Alex Birkenshaw",
+        "Hussain Haider",
+        "Ethan Curtis",
+        "Natalie Jones",
+        "Jolene P. Reid",
+        "Colin J.D. Ross",
+        "Shyh‐Dar Li"
+      ],
+      "year": 2025,
+      "journal": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "doi": "10.1101/2025.08.13.670120",
+      "pmid": null,
+      "source_dbs": [
+        "OpenAlex"
+      ],
+      "abstract": "Abstract Endosomal escape remains a major barrier to effective nucleic acid delivery via lipid nanoparticles (LNPs). Here, we address this challenge by incorporating a pH-sensitive polymer, polyhistidine, into LNPs (pLNPs) to facilitate endosomal escape, with a focus on optimizing the polymer’s molecular weight (MW) and configuration—parameters that remain largely unexplored. Through systematic engineering, we designed linear and branched polyhistidine architectures with varied MWs and configurations. In vivo screening identified an optimized pLNP formulation incorporating a symmetrical bis-lysine histidine dendron with a MW of ∼1800 g/mol, which achieved a 266-fold increase in liver bioluminescence following intravenous delivery of luciferase mRNA compared to standard LNPs at an equivalent RNA dose. Mechanistic studies revealed that polymer configuration within pLNPs is critical for eliciting the proton sponge effect, leading to osmotic swelling and endosomal rupture. This configuration also promoted rapid endosomal membrane destabilization via a kiss-and-run mechanism, enabling efficient cytosolic release. When delivering base editor mRNA and single-guide RNA, the optimized pLNPs achieved 8% gene editing efficiency in the mouse liver at a low dose of 0.1 mg/kg, compared to 1% with standard LNPs. To accelerate discovery and address macromolecular design challenges, we developed a machine learning (ML) framework based on amino acid-level graph neural networks (GNNs). This approach identified branched, dendritic configurations with densely arranged histidine residues on a multivalent core as key determinants of delivery performance. The top ML-predicted candidate, NS535, achieved a 705-fold increase in liver bioluminescence over standard LNPs, validating our data-driven design strategy. Together, these findings establish a closed-loop platform integrating rational design, mechanistic validation, and ML-guided optimization to advance RNA delivery. By elucidating structure-activity relationships for polyhistidine carriers and demonstrating efficient, low-dose genome editing, this work provides a blueprint for next-generation nucleic acid therapeutics.",
+      "matched_quant_terms": [
+        "8%",
+        "1%",
+        "0.1 mg",
+        "266-fold",
+        "705-fold",
+        "fold increase"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles (LNPs) and quantitatively measures liver bioluminescence increases (266-fold) and gene editing efficiency (8%). It discusses cargo release via endosomal escape mechanisms, aligning with the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "mRNA-laden LNP-enabled in situ CAR-macrophage alleviates liver fibrosis via inhibiting activated HSCs and modulating the immune microenvironment.",
+      "authors": [
+        "Huang X",
+        "Hao J",
+        "Wang S",
+        "Deng B",
+        "Wang P",
+        "Zhao Q",
+        "Liu H",
+        "Wang J."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1073/pnas.2534673123",
+      "pmid": "42213756",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Liver fibrosis, marked by an abnormal buildup of extracellular matrix (ECM), poses a major health threat. Myofibroblasts, predominantly derived from hepatic stellate cells (HSCs) and portal fibroblasts, are the primary drivers of ECM synthesis. Fibroblast activation protein (FAP), highly expressed by activated HSCs, is a pivotal player in the pathogenesis of liver fibrosis. Delineating the mechanisms underlying HSC activation and devising strategies to curb their hyperactivity are paramount for the management and prevention of liver fibrosis. In this study, we explored a pioneering therapeutic approach leveraging CD163 antibody-conjugated liposomal nanoparticles (LNPs) encapsulating FAP-specific chimeric antigen receptor macrophage (CAR-M) mRNA (αCD163/LNP-FAPCAR). These LNPs are designed to selectively transduce liver macrophages, facilitating the in situ generation of FAP-specific CAR-modified macrophages (FAPCAR-M). Our findings revealed that these LNPs efficiently transduced macrophages, augmenting their phagocytic capabilities toward target cells. This resulted in a significant reduction of ECM and a concomitant enhancement of liver fibrosis resolution. The overarching goal is to precisely target and neutralize hyperactive fibroblasts, offering a promising avenue for treating liver fibrosis.",
+      "matched_quant_terms": [
+        "200 nm",
+        "P < 0.01",
+        "P > 0.05"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "RiboGreen assay"
+      ],
+      "score": 0.255,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on LNPs specifically, detailing mRNA encapsulation and release over 28 days using RiboGreen assay, which provides quantitative measurements. It also discusses the functional outcomes of mRNA release in macrophages.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "mRNA-Based FRET-FLIM Imaging Platform for Quantifying Lipid Nanoparticle Endosomal Escape and Membrane Damage.",
+      "authors": [
+        "Yian Fang",
+        "Bin Ma",
+        "Zhiqiang Zhao",
+        "Ziyan Xuan",
+        "Yu Wang",
+        "Chuping Huang",
+        "Mi Zhang",
+        "Lei Zhou",
+        "Feng Yao",
+        "Kailong Li",
+        "Wei You",
+        "Xinglin Yang",
+        "Jiajia Guo",
+        "Yifan Ge",
+        "Chenzhong Liao",
+        "Yiguang Wang",
+        "Lei Miao"
+      ],
+      "year": 2025,
+      "journal": "Journal of the American Chemical Society",
+      "doi": "10.1021/jacs.5c07897",
+      "pmid": "40814995",
+      "source_dbs": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "abstract": "Efficient endosomal escape and membrane damage are crucial for mRNA-lipid nanoparticle (LNPs) delivery but remain challenging to quantify. Here, we develop FRET-lifetime imaging for mRNA-LNP tracking (FLINT), an intramolecular FRET-FLIM platform to dynamically monitor mRNA release kinetics and endosomal damage in live cells. Capitalizing on the 50- to 100-fold higher concentration of glutathione (GSH) in the cytosol relative to endocytic vesicles, the FLINT employs disulfide-linked fluorophores conjugated to mRNA uridines, enabling precise tracking of cytosolic mRNA via GSH-activated signal amplification (20-50×). Using FLINT, we find that LNPs with escape-favorable lipid compositions (e.g., C12-200) exhibit rapid FRET signal diffusion, while uptake-driven LNPs (e.g., MC3) accumulate in endosomes with limited release. FLINT further reveals GSH influx during endosomal damage and correlates membrane rupture patterns with mRNA expression. Additionally, FLINT uncovers the influence of lipid organization within LNPs─in addition to endosomal membrane damages─on mRNA delivery efficiency. This FLINT platform decouples uptake, escape, and structural determinants of delivery efficiency, offering a transformative tool for LNP optimization and mechanistic studies both in vivo and in vitro.",
+      "matched_quant_terms": [
+        "100-fold"
+      ],
+      "matched_kinetic_terms": [
+        "kinetics",
+        "release kinetics"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.2133,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on mRNA-LNPs and quantifies mRNA release kinetics using a novel imaging platform. It provides quantitative data on GSH-activated signal amplification (20-50×) and discusses lipid composition effects on release.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Effects of Serum Incubation on Lipid Nanoparticle PEG Shedding, mRNA Retention, and Membrane Interactions.",
+      "authors": [
+        "Niederkofler S",
+        "Parkkila P",
+        "Aliakbarinodehi N",
+        "Sasanian N",
+        "Emilsson G",
+        "Ulkoski D",
+        "Ferreira CJO",
+        "Galenkamp NS",
+        "Silva BFB",
+        "Lundberg D",
+        "Jing Y",
+        "Lindfors L",
+        "Agnarsson B",
+        "Höök F."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acsami.5c17052",
+      "pmid": "41234148",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used for RNA delivery, but their efficiency remains limited, largely due to poor endosomal escape. Upon administration, proteins bind to the surface of the LNPs, influencing cellular uptake and potentially altering their interfacial properties. Such alterations may also affect their interaction with endosomal membranes, thus influencing the critical endosomal escape step. Using fluorescence microscopy imaging with single-LNP resolution, this study investigates how incubation in 10% fetal bovine serum alters the PEG modification and mRNA content of LNPs, as well as how serum incubation-induced alterations influence the interaction between LNPs and an anionic supported lipid bilayer (SLB), serving as a simplistic mimic for the anionic lipid membrane of late endosomes. We demonstrate that serum incubation leads to the desorption of PEG-modified lipids and a significant release of mRNA cargo from the LNPs. PEG shedding occurred consistently with a half-life time of around 10 min, while mRNA release displayed higher variability between individual LNPs. We also observed that serum preincubation enhanced attractive interactions between tethered LNPs and the anionic SLB at physiological pH 7.4, and fusion of LNPs with the anionic SLB upon pH reduction was more efficient for serum-preincubated LNPs than for their pristine counterparts, particularly during moderate acidification from pH 6.5 to 6.0. This enhanced fusion efficiency may be attributed to a reduced steric hindrance from PEG-lipids following serum preincubation. The findings highlight that serum-induced modifications enhance LNP fusion efficiency with an endosomal membrane mimic while potentially compromising mRNA retention, thus balancing the overall efficacy of LNP-assisted mRNA delivery.",
+      "matched_quant_terms": [
+        "10%"
+      ],
+      "matched_kinetic_terms": [
+        "half-life",
+        "10 min"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and quantitatively measures mRNA release and PEG shedding, noting a half-life of 10 min for PEG and variability in mRNA release, directly addressing the cargo release step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Capturing the dynamic integrity of carbocyanine fluorophore-based lipid nanoparticles using the FRET technique.",
+      "authors": [
+        "Long S",
+        "Turner DA",
+        "Hamill KJ",
+        "Natrajan LS",
+        "McDonald TO."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1039/d4tb02653e",
+      "pmid": "39886899",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Nanoparticles capable of dynamically reporting their structural integrity in real-time are a powerful tool to guide the design of drug delivery technologies. Lipid nanoparticles (LNPs) offer multiple important advantages for drug delivery, including stability, protection of active substances, and sustained release capabilities. However, tracking their structural integrity and dynamic behaviour in complex biological environments remains challenging. Here, we report the development of a Förster resonance energy transfer (FRET)-enabled LNP platform that achieves unprecedented sensitivity and precision in monitoring nanoparticle disintegration. The FRET-based LNPs were prepared using nanoprecipitation, encapsulating high levels of 3,3'-dioctadecyloxacarbocyanine perchlorate (DiO) and 1,1'-dioctadecyl-3,3,3',3'-tetramethylindocarbocyanine perchlorate (DiI) fluorophores as the donor and acceptors, respectively. The resulting LNPs had a mean diameter of 114 ± 19 nm with a distinct FRET signal. An optimal energy transfer efficiency of 0.98 and an emission quantum yield of 0.13 were achieved at 11.1% fluorophore loading in the LNPs, balancing efficient energy transfer and minimal aggregation-induced quenching. Using the FRET reporting, three dissociation stages of FRET LNPs were observed: solvation, indicated by an increased emission intensity; swelling and partial dissolution, evidenced by changes in emission maxima and mean size; and complete dissociation, confirmed by emission solely from DiO and the absence of particles. Testing the nanoparticles in live cells (telomerase-immortalised human corneal epithelial cells, hTCEpi cells) revealed a direct link to the disappearance of the FRET signal with the dissociation of FRET NPs. The nanoparticles initially exhibited a strong extracellular FRET signal, which diminished after cellular internalisation. This suggests that the LNPs disintegrate after entering the cells. These findings establish FRET-based LNPs as a robust tool for real-time nanoparticle tracking, offering insights into their integrity and release mechanisms, with potential applications in advanced drug delivery and diagnostics.",
+      "matched_quant_terms": [
+        "11.1%",
+        "19 nm",
+        "114 ± 19"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and their disintegration, providing quantitative data on FRET efficiency and nanoparticle size changes during cargo release. It discusses the release mechanism after cellular internalization, aligning with the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Payload distribution and capacity of mRNA lipid nanoparticles.",
+      "authors": [
+        "Li S",
+        "Hu Y",
+        "Li A",
+        "Lin J",
+        "Hsieh K",
+        "Schneiderman Z",
+        "Zhang P",
+        "Zhu Y",
+        "Qiu C",
+        "Kokkoli E",
+        "Wang TH",
+        "Mao HQ."
+      ],
+      "year": 2022,
+      "journal": "Nature Communications",
+      "doi": "10.1038/s41467-022-33157-4",
+      "pmid": "36151112",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are effective vehicles to deliver mRNA vaccines and therapeutics. It has been challenging to assess mRNA packaging characteristics in LNPs, including payload distribution and capacity, which are critical to understanding structure-property-function relationships for further carrier development. Here, we report a method based on the multi-laser cylindrical illumination confocal spectroscopy (CICS) technique to examine mRNA and lipid contents in LNP formulations at the single-nanoparticle level. By differentiating unencapsulated mRNAs, empty LNPs and mRNA-loaded LNPs via coincidence analysis of fluorescent tags on different LNP components, and quantitatively resolving single-mRNA fluorescence, we reveal that a commonly referenced benchmark formulation using DLin-MC3 as the ionizable lipid contains mostly 2 mRNAs per loaded LNP with a presence of 40%-80% empty LNPs depending on the assembly conditions. Systematic analysis of different formulations with control variables reveals a kinetically controlled assembly mechanism that governs the payload distribution and capacity in LNPs. These results form the foundation for a holistic understanding of the molecular assembly of mRNA LNPs.",
+      "matched_quant_terms": [
+        "40%",
+        "80%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.1533,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper focuses on lipid nanoparticles and quantitatively measures mRNA loading, revealing 2 mRNAs per LNP and 40%-80% empty LNPs, which relates to cargo release dynamics.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Development of a Library of Disulfide Bond-Containing Cationic Lipids for mRNA Delivery.",
+      "authors": [
+        "Shen Z",
+        "Liu C",
+        "Wang Z",
+        "Xie F",
+        "Liu X",
+        "Dong L",
+        "Pan X",
+        "Zeng C",
+        "Wang PG."
+      ],
+      "year": 2023,
+      "journal": null,
+      "doi": "10.3390/pharmaceutics15020477",
+      "pmid": "36839799",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are the commonly used delivery tools for messenger RNA (mRNA) therapy and play an indispensable role in the success of COVID-19 mRNA vaccines. Ionizable cationic lipids are the most important component in LNPs. Herein, we developed a series of new ionizable lipids featuring bioreducible disulfide bonds, and constructed a library of lipids derived from dimercaprol. LNPs prepared from these ionizable lipids could be stored at 4 °C for a long term and are non-toxic toward HepG2 and 293T cells. In vivo experiments demonstrated that the best C4S18A formulations, which embody linoleoyl tails, show strong firefly luciferase (Fluc) mRNA expression in the liver and spleen via intravenous (IV) injection, or at the local injection site via intramuscular injection (IM). The newly designed ionizable lipids can be potentially safe and high-efficiency nanomaterials for mRNA therapy.",
+      "matched_quant_terms": [
+        "0.5 mg",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses lipid nanoparticles (LNPs) for mRNA delivery, focusing on cargo release via disulfide bonds. It includes quantitative data on encapsulation efficiency and luciferase expression, indicating cargo release measurements.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Activatable NIR‐II Photothermal Lipid Nanoparticles for Improved Messenger RNA Delivery",
+      "authors": [
+        "Benhao Li",
+        "Mengyao Zhao",
+        "Weiping Lai",
+        "Xuanbo Zhang",
+        "Bowei Yang",
+        "Xiaoyuan Chen",
+        "Qianqian Ni"
+      ],
+      "year": 2023,
+      "journal": "Angewandte Chemie International Edition",
+      "doi": "10.1002/anie.202302676",
+      "pmid": "37074038",
+      "source_dbs": [
+        "OpenAlex"
+      ],
+      "abstract": "Endosomal escape remains a central issue limiting the high protein expression of mRNA therapeutics. Here, we present second near-infrared (NIR-II) lipid nanoparticles (LNPs) containing pH activatable NIR-II dye conjugated lipid (Cy-lipid) for potentiating mRNA delivery efficiency via a stimulus-responsive photothermal-promoted endosomal escape delivery (SPEED) strategy. In acidic endosomal microenvironment, Cy-lipid is protonated and turns on NIR-II absorption for light-to-heat transduction mediated by 1064 nm laser irradiation. Then, the heat-promoted LNPs morphology change triggers rapid escape of NIR-II LNPs from the endosome, allowing about 3-fold enhancement of enhanced green fluorescent protein (eGFP) encoding mRNA translation capacity compared to the NIR-II light free group. In addition, the bioluminescence intensity induced by delivered luciferase encoding mRNA in the mouse liver region shows positive correlation with incremental radiation dose, indicating the validity of the SPEED strategy.",
+      "matched_quant_terms": [
+        "1064 nm",
+        "3-fold"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and quantitatively measures mRNA delivery efficiency, showing a 3-fold enhancement in translation capacity. It discusses cargo release via endosomal escape, aligning with the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Influence of ionizable lipid tail length on lipid nanoparticle delivery of mRNA of varying length.",
+      "authors": [
+        "Mrksich K",
+        "Padilla MS",
+        "Joseph RA",
+        "Han EL",
+        "Kim D",
+        "Palanki R",
+        "Xu J",
+        "Mitchell MJ."
+      ],
+      "year": 2024,
+      "journal": "Journal of Biomedical Materials Research Part A",
+      "doi": "10.1002/jbm.a.37705",
+      "pmid": "38487970",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "RNA-based therapeutics have gained traction for the prevention and treatment of a variety of diseases. However, their fragility and immunogenicity necessitate a drug carrier. Lipid nanoparticles (LNPs) have emerged as the predominant delivery vehicle for RNA therapeutics. An important component of LNPs is the ionizable lipid (IL), which is protonated in the acidic environment of the endosome, prompting cargo release into the cytosol. Currently, there is growing evidence that the structure of IL lipid tails significantly impacts the efficacy of LNP-mediated mRNA translation. Here, we optimized IL tail length for LNP-mediated delivery of three different mRNA cargos. Using C12-200, a gold standard IL, as a model, we designed a library of ILs with varying tail lengths and evaluated their potency in vivo. We demonstrated that small changes in lipophilicity can drastically increase or decrease mRNA translation. We identified that LNPs formulated with firefly luciferase mRNA (1929 base pairs) and C10-200, an IL with shorter tail lengths than C12-200, enhance liver transfection by over 10-fold. Furthermore, different IL tail lengths were found to be ideal for transfection of LNPs encapsulating mRNA cargos of varying sizes. LNPs formulated with erythropoietin (EPO), responsible for stimulating red blood cell production, mRNA (858 base pairs), and the C13-200 IL led to EPO translation at levels similar to the C12-200 LNP. The LNPs formulated with Cas9 mRNA (4521 base pairs) and the C9-200 IL induced over three times the quantity of indels compared with the C12-200 LNP. Our findings suggest that shorter IL tails may lead to higher transfection of LNPs encapsulating larger mRNAs, and that longer IL tails may be more efficacious for delivering smaller mRNA cargos. We envision that the results of this project can be utilized as future design criteria for the next generation of LNP delivery systems for RNA therapeutics.",
+      "matched_quant_terms": [
+        "10-fold"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.0933,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and their cargo release mechanism, specifically how ionizable lipid tail length affects mRNA delivery. It includes quantitative data on mRNA translation levels and transfection efficiency.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Buffer Specificity of Ionizable Lipid Nanoparticle Transfection Efficiency and Bulk Phase Transition.",
+      "authors": [
+        "Carucci C",
+        "Philipp J",
+        "Müller JA",
+        "Sudarsan A",
+        "Kostyurina E",
+        "Blanchet CE",
+        "Schwierz N",
+        "Parsons DF",
+        "Salis A",
+        "Rädler JO."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acsnano.4c14098",
+      "pmid": "40074542",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are efficient and safe carriers for mRNA vaccines based on advanced ionizable lipids. It is understood that the pH-dependent structural transition of the mesoscopic LNP core phase plays a key role in mRNA transfer. However, buffer-specific variations in transfection efficiency remain obscure. Here we analyze the effect of the buffer type on the transfection efficiency of LNPs. We find that LNPs formulated with the cationic ionizable lipids DLin-MC3-DMA (MC3), SM-102, and ALC-315 in citrate compared to phosphate and acetate buffers exhibit earlier onset and stronger mRNA-GFP expression in vitro. Using synchrotron small-angle X-ray scattering (SAXS) we determine the buffer specificity of the pH-dependent structure of ionizable lipid/cholesterol/water mesophases that serve as model systems for the LNP core phase. The results show that the phase transition from inverse micellar to inverse hexagonal with decreasing pH is shifted to a lower transition pH for acetate and phosphate compared with citrate buffer. Based on continuum theory and ion-specific adsorption obtained from all-atom MD simulations, we propose a mechanism for buffer specificity. Citrate stabilizes the inverse hexagonal phase thus shifting the formation of H<sub>II</sub> to a higher pH. By contrast, phosphate and acetate stabilize L<sub>II</sub>. It stands to reason that the inverse micellar to inverse hexagonal transition, which is facilitated in citrate buffer, enables a sensitized pH response of the LNP core phase. This, in turn, enhances endosomal release efficiency and accounts for the earlier onset of gene expression observed in LNPs prepared with citrate buffer.",
+      "matched_quant_terms": [
+        "release efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on lipid nanoparticles and their mRNA delivery efficiency, specifically analyzing how buffer type affects endosomal release efficiency, which is crucial for cargo release.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Liposomal lipid nanoparticles for extrahepatic delivery of mRNA.",
+      "authors": [
+        "Cheng MHY",
+        "Zhang Y",
+        "Fox K",
+        "Leung J",
+        "Strong C",
+        "Kang E",
+        "Chen Y",
+        "Tong M",
+        "Bommadevara H",
+        "Jan E",
+        "Ip OYL",
+        "Rodríguez-Rodríguez C",
+        "Saatchi K",
+        "Häfeli UO",
+        "Abdolahzadeh A",
+        "Witzigmann D",
+        "Cullis PR."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1038/s41467-025-58523-w",
+      "pmid": "40319025",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Long-circulating, transfection-competent lipid nanoparticle (LNP)-mRNA delivery systems are critical for achieving efficient transfection in extrahepatic tissues. Here we investigate the properties of LNP mRNA systems containing high proportions of bilayer forming lipids, using equimolar egg sphingomyelin and cholesterol as the bilayer-forming components. We show that LNP mRNA systems prepared at bilayer lipid to ionizable lipid molar ratios of 4-0.67 exhibit high mRNA encapsulation efficiencies (90-100%) and excellent transfection potencies in vitro. Systems with bilayer lipid to ionizable lipid molar ratios equating to 4 exhibit a liposomal morphology with a solid core suspended in an aqueous interior surrounded by a lipid bilayer. These liposomal LNPs exhibit longer circulation lifetimes than LNP systems with Onpattro-like lipid compositions and have enhanced extrahepatic transfection properties. The prolonged blood circulation lifetime is attributed to reduced plasma protein adsorption. The transfection competency of liposomal LNP systems is attributed to export of the solid core containing mRNA from the LNP as the endosomal pH is lowered.",
+      "matched_quant_terms": [
+        "100%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses lipid nanoparticles specifically, reports mRNA encapsulation efficiencies (90-100%), and describes cargo release mechanisms related to endosomal pH changes, which aligns with the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Targeting Recycling Endosomes to Potentiate mRNA Lipid Nanoparticles.",
+      "authors": [
+        "Shin J",
+        "Douglas CJ",
+        "Zhang S",
+        "Seath CP",
+        "Bao H."
+      ],
+      "year": 2024,
+      "journal": null,
+      "doi": "10.1021/acs.nanolett.3c04415",
+      "pmid": "38640421",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "mRNA lipid nanoparticles (LNPs) have emerged as powerful modalities for gene therapies to control cancer and infectious and immune diseases. Despite the escalating interest in mRNA-LNPs over the past few decades, endosomal entrapment of delivered mRNAs vastly impedes therapeutic developments. In addition, the molecular mechanism of LNP-mediated mRNA delivery is poorly understood to guide further improvement through rational design. To tackle these challenges, we characterized LNP-mediated mRNA delivery using a library of small molecules targeting endosomal trafficking. We found that the expression of delivered mRNAs is greatly enhanced via inhibition of endocytic recycling in cells and in live mice. One of the most potent small molecules, endosidine 5 (ES5), interferes with recycling endosomes through Annexin A6, thereby promoting the release and expression of mRNA into the cytoplasm. Together, these findings suggest that targeting endosomal trafficking with small molecules is a viable strategy to potentiate the efficacy of mRNA-LNPs.",
+      "matched_quant_terms": [
+        "p < 0.05"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on mRNA lipid nanoparticles and quantitatively assesses the impact of small molecules on mRNA release from endosomes, providing specific concentrations (1.6 μM NAV, 6.3 μM ES5) and normalized data.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "pH-dependent structural transitions in cationic ionizable lipid mesophases are critical for lipid nanoparticle function.",
+      "authors": [
+        "Philipp J",
+        "Dabkowska A",
+        "Reiser A",
+        "Frank K",
+        "Krzysztoń R",
+        "Brummer C",
+        "Nickel B",
+        "Blanchet CE",
+        "Sudarsan A",
+        "Ibrahim M",
+        "Johansson S",
+        "Skantze P",
+        "Skantze U",
+        "Östman S",
+        "Johansson M",
+        "Henderson N",
+        "Elvevold K",
+        "Smedsrød B",
+        "Schwierz N",
+        "Lindfors L",
+        "Rädler JO."
+      ],
+      "year": 2023,
+      "journal": null,
+      "doi": "10.1073/pnas.2310491120",
+      "pmid": "38055742",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are advanced core-shell particles for messenger RNA (mRNA) based therapies that are made of polyethylene glycol (PEG) lipid, distearoylphosphatidylcholine (DSPC), cationic ionizable lipid (CIL), cholesterol (chol), and mRNA. Yet the mechanism of pH-dependent response that is believed to cause endosomal release of LNPs is not well understood. Here, we show that eGFP (enhanced green fluorescent protein) protein expression in the mouse liver mediated by the ionizable lipids DLin-MC3-DMA (MC3), DLin-KC2-DMA (KC2), and DLinDMA (DD) ranks MC3 ≥ KC2 > DD despite similar delivery of mRNA per cell in all cell fractions isolated. We hypothesize that the three CIL-LNPs react differently to pH changes and hence study the structure of CIL/chol bulk phases in water. Using synchrotron X-ray scattering a sequence of ordered CIL/chol mesophases with lowering pH values are observed. These phases show isotropic inverse micellar, cubic Fd3m inverse micellar, inverse hexagonal [Formula: see text] and bicontinuous cubic Pn3m symmetry. If polyadenylic acid, as mRNA surrogate, is added to CIL/chol, excess lipid coexists with a condensed nucleic acid lipid [Formula: see text] phase. The next-neighbor distance in the excess phase shows a discontinuity at the Fd3m inverse micellar to inverse hexagonal [Formula: see text] transition occurring at pH 6 with distinctly larger spacing and hydration for DD vs. MC3 and KC2. In mRNA LNPs, DD showed larger internal spacing, as well as retarded onset and reduced level of DD-LNP-mediated eGFP expression in vitro compared to MC3 and KC2. Our data suggest that the pH-driven Fd3m-[Formula: see text] transition in bulk phases is a hallmark of CIL-specific differences in mRNA LNP efficacy.",
+      "matched_quant_terms": [
+        "0.5 mg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.9,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses pH-dependent cargo release mechanisms of LNPs, specifically focusing on mRNA delivery. It provides quantitative data on lipid interactions and mRNA expression levels, indicating the role of pH in cargo release.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid nanoparticle-mediated mRNA delivery in lung fibrosis.",
+      "authors": [
+        "Massaro M",
+        "Wu S",
+        "Baudo G",
+        "Liu H",
+        "Collum S",
+        "Lee H",
+        "Stigliano C",
+        "Segura-Ibarra V",
+        "Karmouty-Quintana H",
+        "Blanco E."
+      ],
+      "year": 2023,
+      "journal": null,
+      "doi": "10.1016/j.ejps.2023.106370",
+      "pmid": "36642345",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "mRNA delivery enables the specific synthesis of proteins with therapeutic potential, representing a powerful strategy in diseases lacking efficacious pharmacotherapies. Idiopathic pulmonary fibrosis (IPF) is a chronic lung disease characterized by excessive extracellular matrix (ECM) deposition and subsequent alveolar remodeling. Alveolar epithelial type 2 cells (AEC2) and fibroblasts represent important targets in IPF given their role in initiating and driving aberrant wound healing responses that lead to excessive ECM deposition. Our objective was to examine a lipid nanoparticle (LNP)-based mRNA construct as a viable strategy to target alveolar epithelial cells and fibroblasts in IPF. mRNA-containing LNPs measuring ∼34 nm had high encapsulation efficiency, protected mRNA from degradation, and exhibited sustained release kinetics. eGFP mRNA LNP transfection in human primary cells proved dose- and time-dependent in vitro. In a bleomycin mouse model of lung fibrosis, luciferase mRNA LNPs administered intratracheally led to site-specific lung accumulation. Importantly, bioluminescence signal was detected in lungs as early as 2 h after delivery, with signal still evident at 48 h. Of note, LNPs were found associated with AEC2 and fibroblasts in vivo. Findings highlight the potential for pulmonary delivery of mRNA in IPF, opening therapeutic avenues aimed at halting and potentially reversing disease progression.",
+      "matched_quant_terms": [
+        "34 nm",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [
+        "time-dependent",
+        "kinetics",
+        "2 h",
+        "48 h",
+        "release kinetics"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.42,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study discusses sustained release kinetics of mRNA from LNPs and provides some quantitative data on bioluminescence signal over time, but lacks detailed quantitative measurements specifically on cargo release.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Magnetic Resonance Imaging-Based Quantification of Endosomal Escape Using Iron Oxide Nanoparticle-Loaded Lipid Nanoparticles.",
+      "authors": [
+        "Lee S",
+        "Park J",
+        "Jung HN",
+        "Li S",
+        "Lin Z",
+        "Im HJ."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1002/adhm.202503055",
+      "pmid": "40761024",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are considered promising and advanced nucleic acid-based therapeutic delivery platforms. The therapeutic efficacy of LNP-based drugs depends heavily on endosomal escape. However, few methods are available for quantifying the efficiency of endosomal escape in vivo. Herein, a novel method for quantifying endosomal escape efficiency using magnetic resonance imaging (MRI) is presented. In this method, ultrasmall iron oxide nanoparticles (IONPs) are synthesized and incorporated into LNPs, generating IONPs-loaded LNPs (IO@LNPs). After cellular internalization of IO@LNPs, the R<sub>2</sub> relaxation rate is reduced over time, suggesting the dispersal of free IONPs owing to endosomal escape. Data from electron microscopy further corroborated this finding, showing a strong correlation between the R<sub>2</sub> value and the number of intracellular endosomes harboring intact IO@LNPs. In vivo MRI from mice demonstrated a gradual decrease in R<sub>2</sub> signals at the tissue site where IO@LNPs are injected, indicating the potential application of the proposed method in vivo. These findings can advance LNP-based nucleic acid delivery research by enhancing the understanding of endosomal escape in vivo.",
+      "matched_quant_terms": [
+        "50%",
+        "0 mg",
+        "4.33 mg",
+        "065 mg",
+        "955 mg",
+        "786 mg",
+        "2.59 mg",
+        "p < 0.001",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [
+        "over time"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.36,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses endosomal escape of LNPs, which is related to cargo release, but focuses on quantifying escape efficiency rather than direct measurements of mRNA release. It includes quantitative MRI data, but the primary focus is on the escape mechanism.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid Nanoparticle Library Screen Reveals Lymphatic Endothelial Cell-Targeting Lipid Nanoparticle for Delivering Vascular Endothelial Growth Factor C mRNA after Lymphatic Injury.",
+      "authors": [
+        "Michalaki E",
+        "Jeong K",
+        "Chin R",
+        "Qi Z",
+        "Liebman L",
+        "González-Vargas Y",
+        "Echeverri ES",
+        "Paunovska K",
+        "Muramatsu H",
+        "Pardi N",
+        "Tamburini BJ",
+        "Jakus Z",
+        "Dahlman JE",
+        "Dixon JB."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acsnano.5c12080",
+      "pmid": "41269090",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Dysfunction of the lymphatic system following injury, disease, or cancer treatment can lead to lymphedema, a debilitating condition with no cure. Advances in targeted therapy have shown promise for treating diseases where conventional therapies, including broad-spectrum chemotherapy, surgical interventions, and palliative care, have often failed to achieve durable responses. As lymphatic vessels have recently emerged as a therapeutic target, nucleic acid delivery via nanoparticles to lymphatic endothelial cells (LECs) has been studied utilizing lymphatic drainage; however, there are no approaches to modulate the chemical compositions of lipid nanoparticles (LNPs) to optimize LEC specificity. To identify an LNP that effectively delivers mRNA to LECs after intradermal (ID) injection, we screened a library of 150 LNPs in total spread out over 3 screening rounds. The 150 formulations had a variety of chemical compositions and were assessed for both self-assembly and delivery <i>in vivo</i> to LECs. We identified and validated several LNP formulations optimized for high LEC uptake when administered ID and compared their efficacy for delivery of functional mRNA with that of free mRNA and mRNA delivered with a commercially available MC3-based LNP (Onpattro). The lead LEC-LNP was then loaded with VEGFC mRNA to test the therapeutic advantage of this LEC enrichment (namely, LNP7) for treating a mouse tail lymphatic injury model. A single dose of VEGFC mRNA delivered via LNP7 resulted in enhanced LEC proliferation at the site of injury and an increase in lymphatic function up to 14 days postsurgery. Our results suggest a therapeutic potential of VEGFC mRNA using lymphatic-enriched LNP delivery for alleviating lymphatic dysfunction observed during lymphatic injury and could provide a promising approach for targeted and transient lymphangiogenic therapy.",
+      "matched_quant_terms": [
+        "200 nm",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001",
+        "p < 0.0332",
+        "p < 0.0021",
+        "p < 0.005"
+      ],
+      "matched_kinetic_terms": [
+        "14 days"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.36,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study focuses on LNPs delivering mRNA to lymphatic endothelial cells, but it lacks specific quantitative measurements of cargo release from the LNPs. It discusses efficacy and uptake but does not provide direct data on mRNA release.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Effect of mRNA-LNP components of two globally-marketed COVID-19 vaccines on efficacy and stability.",
+      "authors": [
+        "Zhang L",
+        "More KR",
+        "Ojha A",
+        "Jackson CB",
+        "Quinlan BD",
+        "Li H",
+        "He W",
+        "Farzan M",
+        "Pardi N",
+        "Choe H."
+      ],
+      "year": 2023,
+      "journal": "npj Vaccines",
+      "doi": "10.1038/s41541-023-00751-6",
+      "pmid": "37821446",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "During the COVID-19 pandemic, Pfizer-BioNTech and Moderna successfully developed nucleoside-modified mRNA lipid nanoparticle (LNP) vaccines. SARS-CoV-2 spike protein expressed by those vaccines are identical in amino acid sequence, but several key components are distinct. Here, we compared the effect of ionizable lipids, untranslated regions (UTRs), and nucleotide composition of the two vaccines, focusing on mRNA delivery, antibody generation, and long-term stability. We found that the ionizable lipid, SM-102, in Moderna's vaccine performs better than ALC-0315 in Pfizer-BioNTech's vaccine for intramuscular delivery of mRNA and antibody production in mice and long-term stability at 4 °C. Moreover, Pfizer-BioNTech's 5' UTR and Moderna's 3' UTR outperform their counterparts in their contribution to transgene expression in mice. We further found that varying N1-methylpseudouridine content at the wobble position of mRNA has little effect on vaccine efficacy. These findings may contribute to the further improvement of nucleoside-modified mRNA-LNP vaccines and therapeutics.",
+      "matched_quant_terms": [
+        "100%",
+        "50%",
+        "10%",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses mRNA-LNP vaccines and includes quantitative data on encapsulation efficiency and antibody production. However, it focuses more on delivery and stability rather than the specific release of cargo from LNPs.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Bipolar CD4-targeted dual-DARPin-55/57 lipid nanoparticle enables efficient CRISPR/Cas-mediated HIV-1 DNA excision and reactivation blockade in latent CD4 T cell lines.",
+      "authors": [
+        "Mandal S",
+        "Baloch AR",
+        "Yuan X",
+        "Chen J",
+        "Saribas AS",
+        "Zhu Y",
+        "Zhang D",
+        "Jaijyan D",
+        "Xu J",
+        "Hossain R",
+        "Sisto I",
+        "Wang H",
+        "Yang X",
+        "Li Q",
+        "Hu W."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1016/j.mtbio.2026.102939",
+      "pmid": "41769381",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The persistence of HIV-1 latent reservoirs remains the principal barrier to a cure, as viral rebound occurs upon interruption of antiretroviral therapy. CRISPR/Cas genome editing offers a promising strategy to excise proviruses from host genome; however, the absence of a targeted and clinically viable delivery platform has hindered its translational application. Here, we report a chemistry-driven, CD4-targeted lipid nanoparticle (LNP) delivery platform employing a unique bipolar conjugation strategy to decorate dual CD4-targeted Designed Ankyrin Repeat Proteins (DARPins-55 and -57) on LNP (dual-DARPin-LNP). The N- and C-terminally modified DARPin-55/57 was thiolated stepwise, then bipolar maleimide-thiol coupling conjugated the thiolates to the maleimide-functionalized LNP surface. This coupling strategy ensured DARPin proper orientation on the LNP surface for efficient uptake by resting CD4 T cells. This dual-DARPin-LNP system was engineered for selective and efficient co-delivery of spCas9-GFP mRNA (Sp9m) and HIV-1-specific single-guide RNAs (sgRNAs) targeting LTR and Gag (LGsg) into HIV-1 latently infected CD4 T cells. In widely used HIV-1 latency models with defined proviral modifications (J-Lat 10.6 and 2D10 cell lines), dual-DARPin-LNP loaded with Sp9m/LGsg efficiently excised integrated HIV-1 proviral DNA, as confirmed by standard PCR genotyping, absolute digital PCR quantification, confocal microscopy, and flow cytometry. Importantly, proviral excision functionally blocked HIV-1 reactivation following stimulation with latency-reversing agents suberoylanilide hydroxamic acid (SAHA) and TNFα. Together, these findings establish a modular, non-viral, receptor-guided delivery platform for CD4 T cell targeting and provide proof-of-concept for precise HIV-1 DNA excision and reactivation blockade in established latency models. This new strategy represents a step toward next-generation curative interventions against persistent HIV-1 infection.",
+      "matched_quant_terms": [
+        "80.6%",
+        "4.9%",
+        "18.4%",
+        "81.9%",
+        "10 ng",
+        "p < 0.05",
+        "p < 0.001",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses a CD4-targeted LNP for mRNA delivery and includes quantitative data on particle size and concentration. However, it lacks direct measurements of cargo release from the LNP, focusing instead on the efficacy of mRNA delivery and proviral excision.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Decoding pH-Driven Phase Transition of Lipid Nanoparticles.",
+      "authors": [
+        "Trollmann MFW",
+        "Böckmann RA."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1002/smll.202511381",
+      "pmid": "41546530",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The functionality of lipid nanoparticles (LNPs) as delivery systems in mRNA-based therapeutics is intricately linked to the protonation behavior of their aminolipid components. This study employs large-scale constant-pH molecular dynamics (CpHMD) simulations to decode the environment-dependent pKa${\\rm pK}_{\\text{a}}$ of aminolipids in the Comirnaty lipid formulation, providing a detailed view of their pH-dependent structural dynamics. Our results reveal a significant shift in the apparent pKa${\\rm pK}_{\\text{a}}$ of the aminolipid ALC-0315, from an intrinsic value of 9.3 in water to 4.9 within the LNP environment. This shift arises from the interplay between lipid reorganization and local electrostatic interactions, resulting in distinct protonation states across the LNP core and surface. At low pH, protonated aminolipids dominate the LNP surface, promoting efficient mRNA encapsulation, whereas at neutral pH, deprotonated aminolipids migrate to the hydrophobic core, driving structural stabilization. Notably, the localized pKa${\\rm pK}_{\\text{a}}$ of aminolipids varies significantly with their position, decreasing from near-surface regions (7 to 8) to the hydrophobic core ( ≤$\\le$ 4). These findings elucidate the molecular mechanisms underpinning LNP phase transitions and highlight the key role of pKa${\\rm pK}_{\\text{a}}$ shifts for the design of aminolipids and for optimizing LNP compositions for enhanced therapeutic delivery. This study bridges experimental observations with molecular-level insights, advancing the rational development of next-generation lipid-based nanocarriers.",
+      "matched_quant_terms": [
+        "95%",
+        "50%",
+        "99%",
+        "1.8 nm",
+        "0.25 nm",
+        "1.2 nm",
+        "0.2 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study focuses on pH-driven phase transitions in LNPs and their impact on mRNA encapsulation, but it lacks direct quantitative measurements of cargo release. It discusses pKa shifts and structural dynamics, which are relevant but not explicitly about cargo release.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "SDF-1α mRNA therapy in peripheral artery disease.",
+      "authors": [
+        "Zhang T",
+        "Zhu B",
+        "Deng S",
+        "Qin J",
+        "Zhang J",
+        "Meng S."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1007/s10456-025-09979-3",
+      "pmid": "40314870",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Stromal cell-derived factor-1 alpha (SDF-1α) is a promising target for therapeutic angiogenesis in ischemic diseases such as peripheral artery disease (PAD). However, the clinical application of SDF-1α protein or plasmid-based gene therapy is unsuccessful. mRNA therapy has shown great promise in protein replacement. Here, we developed DOPE-lipid nanoparticles (LNPs) encapsulating SDF-1α mRNA (LNP@SDF-1α) for efficient gene delivery. In vitro, LNP@SDF-1α treatment of human umbilical vein endothelial cells (HUVECs) significantly enhanced endothelial migration, tube formation, and increased monocyte adhesion, demonstrating robust pro-angiogenic activity. In vivo, LNP@SDF-1α transfected HUVECs showed enhanced angiogenic capacity in a murine Matrigel plug model. Furthermore, in a mouse hindlimb ischemia model, intramuscular injection of LNP@SDF-1α into ischemic limbs accelerated blood flow recovery, as assessed by laser speckle contrast imaging. Immunofluorescence staining revealed a marked increase in capillary and arteriole densities in treated tissues. Angiogenic protein profiling demonstrated an upregulation of pro-angiogenic factors, including VEGF and Ang-1, and a downregulation of anti-angiogenic factors. No significant toxicity was observed in major organs, indicating the safety of this approach. Our study demonstrates that SDF-1α mRNA therapy, delivered via DOPE-LNPs, significantly promotes vascular regeneration in ischemic tissues by enhancing angiogenesis and arteriogenesis, thereby restoring blood perfusion. This approach presents a promising therapeutic option for PAD and suggests broader applications of mRNA-based therapies for ischemic diseases.",
+      "matched_quant_terms": [
+        "50 nm",
+        "0.4 µg",
+        "10 µM",
+        "P < 0.05",
+        "p < 0.01",
+        "P < 0.001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs for mRNA delivery and includes quantitative data on mRNA levels and cellular effects. However, it lacks direct measurements of cargo release from LNPs, focusing instead on biological outcomes post-delivery.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Artificial intelligence-driven rational design of ionizable lipids for mRNA delivery.",
+      "authors": [
+        "Wang W",
+        "Chen K",
+        "Jiang T",
+        "Wu Y",
+        "Wu Z",
+        "Ying H",
+        "Yu H",
+        "Lu J",
+        "Lin J",
+        "Ouyang D."
+      ],
+      "year": 2024,
+      "journal": null,
+      "doi": "10.1038/s41467-024-55072-6",
+      "pmid": "39738043",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) have proven effective in mRNA delivery, as evidenced by COVID-19 vaccines. Its key ingredient, ionizable lipids, is traditionally optimized by inefficient and costly experimental screening. This study leverages artificial intelligence (AI) and virtual screening to facilitate the rational design of ionizable lipids by predicting two key properties of LNPs, apparent pKa and mRNA delivery efficiency. Nearly 20 million ionizable lipids were evaluated through two iterations of AI-driven generation and screening, yielding three and six new molecules, respectively. In mouse test validation, one lipid from the initial iteration, featuring a benzene ring, demonstrated performance comparable to the control DLin-MC3-DMA (MC3). Notably, all six lipids from the second iteration equaled or outperformed MC3, with one exhibiting efficacy akin to a superior control lipid SM-102. Furthermore, the AI model is interpretable in structure-activity relationships.",
+      "matched_quant_terms": [
+        "2-fold",
+        "p < 0.0332",
+        "p < 0.0021",
+        "p < 0.0002",
+        "p < 0.0001",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study involves LNPs and mRNA delivery, with quantitative data on luminescence after mRNA injection. However, it primarily focuses on lipid design rather than the specific release mechanism of cargo from LNPs.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Replacing cholesterol and PEGylated lipids with zwitterionic ionizable lipids in LNPs for spleen-specific mRNA translation.",
+      "authors": [
+        "Zhao Y",
+        "Tian Z",
+        "Wang J",
+        "Cui M",
+        "Cao Z",
+        "Liu P",
+        "Li R",
+        "Cai S",
+        "Hu Y",
+        "Ma Y",
+        "Wagner E",
+        "Laflin A",
+        "Gu W",
+        "Cui Y",
+        "Tang C",
+        "Fountain H",
+        "Wang R",
+        "Jiang S."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1126/sciadv.ady6460",
+      "pmid": "41061074",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The spleen is emerging as a key vaccination target. However, existing lipid nanoparticles (LNPs) primarily accumulate in the liver, limiting their efficacy in vaccine therapy. The cholesterol in current LNP formulations promotes their uptake by hepatocytes, while the polyethylene glycol-modified (PEGylated) lipids induce PEG immunogenicity, further reducing the efficacy in the setting of repeated administrations. We develop a three-component (ThrCo) LNP by replacing cholesterol and PEGylated lipids in Pfizer-BioNTech LNPs with zwitterionic pyridine carboxybetaine (PyCB) ionizable lipids (ILs), achieving ~70% lower liver accumulation and a 4.5-fold increase in spleen-specific mRNA translation. PyCB ILs enhance LNP hydrophilicity, stabilizing the outer membrane to compensate for cholesterol removal. PyCB groups also exhibit strong protonation at endosomal pH, facilitating mRNA translation. The zwitterionic surface of ThrCo LNP reduces protein adsorption, thereby preventing the accelerated blood clearance effect caused by PEGylated lipids following repeated administrations. Thus, ThrCo LNP-based vaccines efficiently deliver mRNA to splenic antigen-presenting cells, boosting immune responses and improving therapeutic outcomes.",
+      "matched_quant_terms": [
+        "70%",
+        "4.5-fold",
+        "fold increase"
+      ],
+      "matched_kinetic_terms": [
+        "clearance"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.24,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs and their mRNA delivery but lacks specific quantitative measurements of cargo release. It mentions a 4.5-fold increase in mRNA translation, but does not provide direct data on the release of mRNA from the LNP.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Interaction Kinetics of Individual mRNA-Containing Lipid Nanoparticles with an Endosomal Membrane Mimic: Dependence on pH, Protein Corona Formation, and Lipoprotein Depletion.",
+      "authors": [
+        "Aliakbarinodehi N",
+        "Gallud A",
+        "Mapar M",
+        "Wesén E",
+        "Heydari S",
+        "Jing Y",
+        "Emilsson G",
+        "Liu K",
+        "Sabirsh A",
+        "Zhdanov VP",
+        "Lindfors L",
+        "Esbjörner EK",
+        "Höök F."
+      ],
+      "year": 2022,
+      "journal": null,
+      "doi": "10.1021/acsnano.2c04829",
+      "pmid": "36511601",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) have emerged as potent carriers for mRNA delivery, but several challenges remain before this approach can offer broad clinical translation of mRNA therapeutics. To improve their efficacy, a better understanding is required regarding how LNPs are trapped and processed at the anionic endosomal membrane prior to mRNA release. We used surface-sensitive fluorescence microscopy with single LNP resolution to investigate the pH dependency of the binding kinetics of ionizable lipid-containing LNPs to a supported endosomal model membrane. A sharp increase of LNP binding was observed when the pH was lowered from 6 to 5, accompanied by stepwise large-scale LNP disintegration. For LNPs preincubated in serum, protein corona formation shifted the onset of LNP binding and subsequent disintegration to lower pH, an effect that was less pronounced for lipoprotein-depleted serum. The LNP binding to the endosomal membrane mimic was observed to eventually become severely limited by suppression of the driving force for the formation of multivalent bonds during LNP attachment or, more specifically, by charge neutralization of anionic lipids in the model membrane due to their association with cationic lipids from earlier attached LNPs upon their disintegration. Cell uptake experiments demonstrated marginal differences in LNP uptake in untreated and lipoprotein-depleted serum, whereas lipoprotein-depleted serum increased mRNA-controlled protein (eGFP) production substantially. This complies with model membrane data and suggests that protein corona formation on the surface of the LNPs influences the nature of the interaction between LNPs and endosomal membranes.",
+      "matched_quant_terms": [
+        "10%",
+        "p < 0.05",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [
+        "Kinetics"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.24,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study investigates LNP binding and disintegration at endosomal membranes, suggesting mRNA release dynamics. However, it lacks direct quantitative measurements of mRNA release itself, focusing instead on binding kinetics and conditions affecting LNP behavior.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Single-Particle Analysis of Cargo-Dependent Deformation in Lipid Nanoparticles Using Resistive Pulse Sensing: Implications for Formulation Optimization and Quality Control of mRNA Nanomedicine.",
+      "authors": [
+        "Manawasinghe J",
+        "Khatri S",
+        "Thyashan N",
+        "Wu T",
+        "Alameh MG",
+        "Kim MJ."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1021/acsanm.6c00530",
+      "pmid": "42136959",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used for mRNA delivery and gene therapy, with their functional performance and therapeutic efficacy closely linked to nanoscale mechanical properties and formulation consistency. Nanopore-based technique offers a label-free platform to resolve LNP size, translocation dynamics, and confinement-induced deformation. Here, we investigate three LNP formulations with defined mRNA cargo loading: empty LNPs (eLNP), partially loaded LNPs containing an average of approximately 7 mRNA copies (LNP1), and fully loaded LNPs containing an average of approximately 32 mRNA copies (LNP2), using nanopipette-based resistive pulse sensing. By systematically tuning the nanopipette diameter, we demonstrate that geometric confinement critically governs sensitivity to cargo-dependent LNP deformation. Nanopipettes with 350 nm pores provide weaker confinement and limited discrimination between LNP subpopulations, whereas stronger confinement with 250 nm pores markedly enhances sensitivity to deformation. Under increased electric-field strength in the smaller nanopipettes, eLNPs exhibit pronounced reductions in relative current blockade (Δ<i>I</i>/<i>I</i> <sub>0</sub>), consistent with enhanced deformation, whereas mRNA-loaded LNPs display progressively reduced deformability with increasing cargo content. To enable automated, multivariate discrimination of LNP populations, we implemented a multilayer perceptron neural network trained on 25 translocation-derived features. The model achieved balanced classification accuracies of approximately 81% across multiple voltage biases for the 250 nm nanopipette, reliably distinguishing three cargo formulations, eLNP, LNP1, and LNP2, based on their deformation signatures. Nanopipette-based resistive pulse sensing thus provides a single-particle approach for quantifying cargo-dependent viscoelastic heterogeneity in LNP populations and enables biophysical metrics to inform formulation screening and batch-release criteria in mRNA therapeutics.",
+      "matched_quant_terms": [
+        "81%",
+        "350 nm",
+        "250 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study focuses on LNPs and includes quantitative measurements of mRNA cargo loading. However, it primarily discusses deformation rather than direct cargo release from LNPs, making it less directly relevant to the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Endo/Lysosomal-Escapable Lipid Nanoparticle Platforms for Enhancing mRNA Delivery in Cancer Therapy.",
+      "authors": [
+        "Wang J",
+        "Chen R",
+        "Xie Y",
+        "Qin X",
+        "Zhou Y",
+        "Xu C."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.3390/pharmaceutics17070803",
+      "pmid": "40733013",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "mRNA-based drug development is revolutionizing tumor therapies by enabling precise cancer immunotherapy, tumor suppressor gene restoration, and genome editing. However, the success of mRNA therapies hinges on efficient delivery systems that can protect mRNA from degradation and facilitate its release into the cytoplasm for translation. Despite the emergence of lipid nanoparticles (LNPs) as a clinically advanced platform for mRNA delivery, the efficiency of endo/lysosomal escape still represents a substantial bottleneck. Here, we summarize the intracellular fate of mRNA-loaded LNPs, focusing on their internalization pathways and processing within the endo-lysosomal system. We also discuss the impact of endo-lysosomal processes on mRNA delivery and explore potential strategies to improve mRNA escape from endo-lysosomal compartments. This review focuses on molecular engineering strategies to enhance LNP-mediated endo/lysosomal escape by optimizing lipid composition, including ionizable lipids, helper lipids, cholesterol, and PEGylated lipids. Additionally, ancillary enhancement strategies such as surface coating and shape management are discussed. By comprehensively integrating mechanistic insights into the journey of LNPs within the endo-lysosome system and recent advances in lipid chemistry, this review offers valuable inspiration for advancing mRNA-based cancer therapies by enabling robust protein expression.",
+      "matched_quant_terms": [
+        "25%",
+        "50%",
+        "100 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses endo/lysosomal escape of LNPs and their mRNA delivery, but lacks specific quantitative measurements of cargo release. It focuses on mechanisms rather than direct release data.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Spatiotemporally controlled restoration of GAS6 signaling via mRNA therapy promotes scarless healing in preclinical models.",
+      "authors": [
+        "He Y",
+        "Ye K",
+        "Zhang Y",
+        "Chen Z",
+        "Sun H",
+        "Cui G",
+        "Ghanad P",
+        "Mao Z",
+        "Yang H",
+        "Ren Z",
+        "Yi C."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1038/s41467-026-69540-8",
+      "pmid": "41741452",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Deep cutaneous injuries in adult mammals often lead to fibrotic scarring, a process exacerbated by inflammatory fibroblasts that amplify immune recruitment. Early modulation of immune-fibroblast crosstalk represents a promising therapeutic strategy. Here we show that GAS6 is a key regulator of this interaction and can be therapeutically targeted using a spatiotemporally controlled lipid nanoparticle (LNP)-mRNA hydrogel platform. We engineer LNP-GAS6 mRNA to enhance macrophage efferocytosis and suppress inflammatory fibroblasts, then encapsulate it in a thermosensitive hydrogel for localized delivery. In murine, rabbit ear, and Bama minipig wound models, this treatment significantly accelerates wound closure and reduces fibrotic scarring. These results demonstrate that restoring GAS6 signaling via mRNA-based delivery promotes scarless healing and offers an effective therapeutic approach for fibrotic skin disorders.",
+      "matched_quant_terms": [
+        "200 nm",
+        "50 nm",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNP-GAS6 mRNA but focuses more on therapeutic effects rather than direct cargo release measurements. It mentions encapsulation efficiency and mRNA concentration, but lacks explicit cargo release data.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Freezing induced incorporation of betaine in lipid nanoparticles enhances mRNA delivery.",
+      "authors": [
+        "Cheng X",
+        "Zheng X",
+        "Tao K",
+        "Huo H",
+        "Liu Z",
+        "Lu X",
+        "Wang J."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1038/s41467-025-60040-9",
+      "pmid": "40394015",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are key non-viral carriers for mRNA vaccines and therapeutics, but the inherent instability of mRNA necessitates sub-zero storage with cryoprotectants (CPAs) to prevent freeze-induced LNP aggregation and compromised mRNA delivery. Here we show that ice formation during freezing concentrates CPAs with LNPs in the remaining liquid-a phenomenon known as freeze concentration. This creates a steep concentration gradient of CPAs across the lipid membrane that drives passive CPAs diffusion into LNPs. By leveraging this process, we developed betaine-based CPAs that both preserve the stability of LNP and enter LNP during freeze-thaw. The incorporated betaine enhances endosomal escape and boosts mRNA delivery of LNP. In female mice, betaine-loaded LNPs elicit stronger humoral and cellular immune responses, providing dose-sparing advantages. These findings highlight freeze concentration as a promising LNP formulation strategy and underscore the role of CPA as active modulators of LNP structure and function.",
+      "matched_quant_terms": [
+        "100 nm",
+        "0.1 µg",
+        "1 µg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses mRNA delivery via LNPs and mentions enhanced endosomal escape, but it lacks direct quantitative measurements of cargo release from LNPs. It focuses more on formulation and stability rather than the specific release mechanism.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Anion Exchange Chromatography to Determine mRNA Encapsulation in Lipid Nanoparticles.",
+      "authors": [
+        "Tsalmpouris A",
+        "Mahjoubi S",
+        "Malburet C",
+        "Daher-Hassan C",
+        "François-Heude M",
+        "Cotte JF",
+        "Guillarme D",
+        "Maurer J."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acs.analchem.5c03299",
+      "pmid": "40846315",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Encapsulation efficiency (EE) of mRNA-based therapeutics and vaccines is defined as the percentage of total mRNA that is efficiently protected by the delivery vehicle from nuclease degradation. As a critical quality attribute, EE must be assessed to ensure that sufficient mRNA evades enzymatic degradation and traverses biological barriers to reach the cellular machinery for translation, without triggering unwanted immune responses caused by free mRNA. In this study, we developed a strategy based on anion exchange chromatography (AEX) to separate lipid nanoparticles (LNPs) and free mRNA based on their charge differences. Carryover issues were mitigated by using a washing step with surfactant, high pH, and high salt concentration. EE was determined by analyzing undiluted samples for free mRNA and measuring total mRNA after LNP disruption using surfactants. The method was successfully applied to the analysis of 30 different mRNA-LNP samples to determine EE. The results were compared to those obtained with the RiboGreen assay, one of the reference methods to assess EE. Our results revealed significant discrepancies between the two techniques that could be explained by the structural information obtained under AEX conditions. Indeed, while the RiboGreen assay provides information on the quantification of mRNA accessible to the fluorescent dye, AEX allows relative quantification of mRNA dissociated from LNPs and information on the presence of surface-localized mRNA as well as transmembrane mRNA. These findings establish AEX as a reliable EE assay, providing information on mRNA distribution within LNPs and advancing the fundamental understanding of LNP structure-function relationships. Based on these features, it offers critical guidance for the rational design of next-generation mRNA therapeutics.",
+      "matched_quant_terms": [
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "RiboGreen assay"
+      ],
+      "score": 0.135,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study focuses on mRNA encapsulation efficiency in LNPs, providing quantitative data on mRNA release after LNP disruption. However, it primarily assesses encapsulation rather than direct cargo release dynamics.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Challenges in Measuring In Vitro Activity of LNP-mRNA Therapeutics.",
+      "authors": [
+        "Guerrini G",
+        "Scaccabarozzi D",
+        "Mehn D",
+        "Sarracino A",
+        "Gioria S",
+        "Calzolai L."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.3390/ijms26178152",
+      "pmid": "40943082",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "MRNA-based therapeutics and vaccines represent a rapidly expanding frontier in biomedical innovation, with lipid nanoparticles (LNPs) serving as a clinically validated delivery platform. This study explores critical quality attributes of LNP-mRNA formulations, with a particular focus on in vitro biological activity, a key quality attribute of vaccine activity and batch-to-batch consistency. We discuss the importance of optimizing both LNP components and mRNA structure, highlighting recent advances in formulation strategies. Furthermore, we examine the influence of factors such as cell-line selection, experimental design, storage conditions, and targeted cellular delivery on transduction efficiency. Our findings underscore the need for standardized in vitro assays and process-integrated monitoring to support the scalable development and regulatory assessment of mRNA-based therapies.",
+      "matched_quant_terms": [
+        "3.2 ng",
+        "0.08 ng"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.8,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNP-mRNA formulations and includes quantitative measurements of luciferase activity across various mRNA doses. However, it primarily focuses on in vitro activity rather than directly on cargo release from LNPs.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Deconvolution of cargo delivery and immunogenicity following intranasal delivery of mRNA lipid nanoparticle vaccines.",
+      "authors": [
+        "Vu MN",
+        "Pilapitiya D",
+        "Kelly A",
+        "Koutsakos M",
+        "Kent SJ",
+        "Juno JA",
+        "Tan HX",
+        "Wheatley AK."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.omtn.2025.102547",
+      "pmid": "40474942",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Intranasal vaccination aims to elicit mucosal immunity in the respiratory tract to better protect against respiratory infections (e.g., SARS-CoV-2 and influenza). Most vaccines, including recent COVID-19 mRNA lipid nanoparticles (LNPs), are optimized for intramuscular (i.m.) administration and typically perform poorly when delivered intranasally. Here, we prepared mRNA-LNPs using clinically approved ionizable lipids (ALC-0315, SM-102, and DLin-MC3-DMA) with or without a permanent cationic lipid (1,2-dioleoyl-3-trimethylammonium-propane [DOTAP]) to deliver a model immunogen (ovalbumin [OVA]) and CRE recombinase reporter mRNA. Using wild-type C57BL/6 and Ai14 reporter mouse models, we deconvoluted the effects of LNP formulation on mRNA cargo delivery and immunogenicity following i.m. or intranasal (i.n.) administration. After i.m. vaccination, mRNA-LNPs demonstrated transfection of muscle and immune cells <i>in vivo</i>, and consequently robust humoral immune responses. In contrast, mRNA-LNP delivery to the respiratory mucosa was poorly immunogenic, both in naive animals and in those with post-infection inflammation. Encouragingly, mRNA-LNPs efficiently transfected epithelial and immune cells within the lungs and expressed mRNA cargo could efficiently recall immunity in draining secondary lymphoid tissues. The addition of DOTAP led to enhanced recall responses. Decoding interplays of LNP formulations and their performance <i>in vivo</i> within specific tissue compartments will provide principles that can guide the rational design of mRNA-LNPs for maximal protection against respiratory diseases.",
+      "matched_quant_terms": [
+        "50%",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.8,
+      "llm_verdict": "include",
+      "llm_rationale": "The study focuses on mRNA-LNPs and their cargo delivery, specifically measuring transfection efficiency in lung cells post-intranasal administration. It includes quantitative data on mRNA uptake and immune responses, fulfilling the criteria for cargo release.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Enhancing Cytoplasmic Expression of Exogenous mRNA Through Dynamic Mechanical Stimulation.",
+      "authors": [
+        "Chen J",
+        "Patel A",
+        "Mir M",
+        "Hudock MR",
+        "Pinezich MR",
+        "Guenthart B",
+        "Bacchetta M",
+        "Vunjak-Novakovic G",
+        "Kim J."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1002/adhm.202401918",
+      "pmid": "39440644",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Ionizable lipid nanoparticles (LNPs) are pivotal in combating COVID-19, and numerous preclinical and clinical studies have highlighted their potential in nucleic acid-based therapies and vaccines. However, the effectiveness of endosomal escape for the nucleic acid cargos encapsulated in LNPs is still low, leading to suboptimal treatment outcomes and side effects. Hence, improving endosomal escape is crucial for enhancing the efficacy of nucleic acid delivery using LNPs. Here, a mechanical oscillation (frequency: 65 Hz) is utilized to prompt the LNP-mediated endosomal escape. The results reveal this mechanical oscillation can induce the combination and fusion between LNPs with opposite surface charges, enhance endosomal escape of mRNA, and increase the transfection efficiency of mRNA. Additionally, cell viability remains high at 99.3% after treatment with oscillation, which is comparable to that of untreated cells. Furthermore, there is no obvious damage to mitochondrial membrane potential and Golgi apparatus integrity. Thus, this work presents a user-friendly and safe approach to enhancing endosomal escape of mRNA and boosting gene expression. As a result, this work can be potentially utilized in both research and clinical fields to facilitate LNP-based delivery by enabling more effective release of LNP-encapsulated cargos from endosomes.",
+      "matched_quant_terms": [
+        "99.3%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.8,
+      "llm_verdict": "include",
+      "llm_rationale": "The paper discusses enhancing endosomal escape of mRNA from LNPs, which relates to cargo release. It provides quantitative data on cell viability (99.3%) and mentions mechanical oscillation (65 Hz) to improve release efficiency.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Efficiency and immunogenicity of lipid nanoparticle-mediated cardiac mRNA delivery are lipid composition-dependent.",
+      "authors": [
+        "Labonia MCI",
+        "Martinez de Castilla PE",
+        "van der Kraak PH",
+        "Brans MAD",
+        "Yang Q",
+        "Lei Z",
+        "de Jager SCA",
+        "de Voogt WS",
+        "Schiffelers RM",
+        "Sluijter JPG",
+        "Vader P."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1016/j.omtn.2026.102939",
+      "pmid": "42181694",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The efficiency and safety of modified messenger RNA (modRNA) delivery into the heart using lipid nanoparticles (LNPs) remain undetermined. We previously demonstrated that modRNA encapsulated in C12-200 LNPs outperforms current state-of-the-art intramyocardial modRNA delivery methods. Surprisingly, C12-200 LNPs triggered robust local immune cell activation 5 days post-injection, which was not evident on day 1. To investigate whether this immune response is driven by LNP composition or modRNA transfection efficiency, we systematically compared cardiac transfection efficiency, off-target biodistribution, and immunogenicity of modRNA formulated with clinically validated LNPs from Onpattro, BNT162b2/Comirnaty, and mRNA-1273/Spikevax. All tested formulations outperformed C12-200 in cardiac delivery, with mRNA-1273 and Onpattro showing markedly reduced off-target accumulation in the liver and spleen. Histopathological analysis revealed formulation-dependent immune cell infiltration, most pronounced with C12-200. C12-200 significantly elevated cytokine levels in both serum and heart tissue, whereas Onpattro increased cytokine levels mainly locally. In contrast, cytokine levels in animals treated with BNT162b2 and mRNA-1273 were comparable to those in PBS-treated controls. Importantly, cardiac transfection efficiency did not correlate with cytokine induction or histopathological changes, indicating that LNP-driven immunogenicity is independent of transfection efficacy. These findings provide a foundation for refining LNP formulations to optimize cardiac modRNA delivery while minimizing immune-related adverse effects.",
+      "matched_quant_terms": [
+        "40%",
+        "43.5%",
+        "15%",
+        "1.5%",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [
+        "5 days"
+      ],
+      "matched_signal_phrases": [],
+      "score": 0.36,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study involves LNPs and provides quantitative data on cardiac transfection efficiency and immune responses. However, it does not explicitly focus on the release of mRNA from LNPs, which is crucial for the 'Cargo release' step.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Toward understanding lipid reorganization in RNA lipid nanoparticles in acidic environments.",
+      "authors": [
+        "Garaizar A",
+        "Díaz-Oviedo D",
+        "Zablowsky N",
+        "Rissanen S",
+        "Köbberling J",
+        "Sun J",
+        "Steiger C",
+        "Steigemann P",
+        "Mann FA",
+        "Meier K."
+      ],
+      "year": 2024,
+      "journal": "Proceedings of the National Academy of Sciences",
+      "doi": "10.1073/pnas.2404555121",
+      "pmid": "39475644",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "The use of lipid nanoparticles (LNPs) for therapeutic RNA delivery has gained significant interest, particularly highlighted by recent milestones such as the approval of Onpattro and two mRNA-based SARS-CoV-2 vaccines. However, despite substantial advancements in this field, our understanding of the structure and internal organization of RNA-LNPs -and their relationship to efficacy, both in vitro and in vivo- remains limited. In this study, we present a coarse-grained molecular dynamics (MD) approach that allows for the simulations of full-size LNPs. By analyzing MD-derived structural characteristics in conjunction with cellular experiments, we investigate the effect of critical parameters, such as pH and composition, on LNP structure and potency. Additionally, we examine the mobility and chemical environment within LNPs at a molecular level. Our findings highlight the significant impact that LNP composition and internal molecular mobility can have on key stages of LNP-based intracellular RNA delivery.",
+      "matched_quant_terms": [
+        "7%",
+        "0.7%",
+        "1 nm",
+        "0.33 nm",
+        "1 µg"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3333,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study investigates LNP structure and internal mobility affecting RNA delivery, but it lacks explicit quantitative measurements of cargo release. It discusses pH effects and cellular experiments, which are relevant but not directly focused on cargo release.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid-siRNA Organization Modulates the Intracellular Dynamics of Lipid Nanoparticles.",
+      "authors": [
+        "Mo Y",
+        "Keszei AFA",
+        "Kothari S",
+        "Liu H",
+        "Pan A",
+        "Kim P",
+        "Bu J",
+        "Kamanzi A",
+        "Dai DL",
+        "Mazhab-Jafari MT",
+        "Chen J",
+        "Leslie S",
+        "Zheng G."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/jacs.4c18308",
+      "pmid": "40068204",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are widely used for delivering therapeutic nucleic acids, yet the relationship between their internal structure and intracellular behavior, particularly before RNA release, remains unclear. Here, we elucidate how lipid-siRNA organization within LNPs can modulate their intracellular delivery dynamics. We use cryo-electron microscopy and photochemical assays to reveal that increased siRNA loading can reduce helper lipids' distribution to the LNP surface, while siRNA consistently localizes near the surface. These alterations in lipid-siRNA organization affect LNP membrane fluidity, enhancing LNP fusion with cellular membranes and promoting cytosolic siRNA delivery, primarily via macropinocytosis. Using photosensitive lipids and live cell imaging, we demonstrate that lipid-siRNA organization regulates LNP responsiveness to external stimuli, significantly affecting siRNA endosomal escape efficiency upon light activation. We further confirm this observation using convex lens-induced confinement microscopy and single-particle imaging. Overall, our findings provide critical insights into how lipid-siRNA organization shapes LNP intracellular dynamics, offering rational design principles for optimizing LNP-based RNA therapeutics.",
+      "matched_quant_terms": [
+        "1%",
+        "10%",
+        "25 nm",
+        "522 nm",
+        "570 nm",
+        "200 nM",
+        "660 nm",
+        "647 nm",
+        "p < 0.0001",
+        "p < 0.05",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses lipid-siRNA organization and its effects on LNP dynamics, but it focuses more on intracellular behavior before RNA release rather than the actual release process itself. It includes quantitative data on siRNA encapsulation efficiency and membrane fluidity.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Combined cancer immunotherapy with lipid nanoparticle delivery of oligo-based cGAS-agonistic adjuvant and peptide or mRNA vaccines.",
+      "authors": [
+        "Zhou S",
+        "Liang Y",
+        "Hao Y",
+        "Wang Q",
+        "Xu Y",
+        "Su T",
+        "Cheng F",
+        "Zhu G."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.omtn.2025.102623",
+      "pmid": "40704024",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Therapeutic vaccines are promising for cancer immunotherapy in combination with immune checkpoint blockade (ICB). Though lipid nanoparticles (LNPs) hold great potential to deliver cancer therapeutic vaccines, LNPs delivering peptide or mRNA vaccines often induce suboptimal T cell responses. Type I interferon (IFN-I) responses can enhance antigen presentation and potentiate T cell responses. Here, we report LNP codelivery of peptide or mRNA vaccines with a cyclic GMP-AMP synthase (cGAS) agonist that can specifically induce IFN-I responses to potentiate anticancer T cell responses for robust ICB combination immunotherapy of tumors. Svg3, an oligonucleotide-based cGAS agonist, can be efficiently coloaded with antigenic peptides or antigen-encoding mRNAs into LNPs and codelivered to mouse draining lymph nodes and antigen-presenting cells (APCs). Svg3 promoted the antigen presentation and antigen-specific CD8<sup>+</sup> T cell responses in mice. The combination of LNP-delivered Svg3 with peptide or mRNA encoding antigens promotes anti-tumor responses, reduces immune suppression, and enhances tumor therapeutic efficacy when combined with ICB.",
+      "matched_quant_terms": [
+        "p > 0.05",
+        "p < 0.05",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs delivering mRNA and includes quantitative data on T cell responses and antigen presentation. However, it lacks direct measurements of cargo release from LNPs, focusing instead on immune responses.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Formulation-Driven Optimization of PEG-Lipid Content in Lipid Nanoparticles for Enhanced mRNA Delivery In Vitro and In Vivo.",
+      "authors": [
+        "Liu W",
+        "Zhang M",
+        "Lv H",
+        "Yang C."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.3390/pharmaceutics17080950",
+      "pmid": "40870973",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "<b>Background</b>: Lipid nanoparticles (LNPs) represent one of the most effective non-viral vectors for nucleic acid delivery and have demonstrated clinical success in siRNA therapies and mRNA vaccines. While considerable research has focused on optimizing ionizable lipids and helper lipids, the impact of PEGylated lipid content on LNP-mediated mRNA delivery, especially in terms of in vitro transfection efficiency and in vivo performance, remains insufficiently understood. <b>Methods</b>: In this study, LNPs were formulated using a self-synthesized ionizable lipid and varying molar ratios of DMG-PEG2000. Nanoparticles were prepared via nanoprecipitation, and their physicochemical properties, mRNA encapsulation efficiency, cellular uptake, and transfection efficiency were evaluated in HeLa and DC2.4 cells. In vivo delivery efficiency and organ distribution were assessed in mice following intravenous administration. <b>Results</b>: The PEGylated lipid content exerted a significant influence on both the in vitro and in vivo performance of LNPs. A bell-shaped relationship between PEG content and transfection efficiency was observed: 1.5% DMG-PEG2000 yielded optimal mRNA transfection in vitro, while 5% DMG-PEG2000 resulted in the highest transgene expression in vivo. This discrepancy in optimal PEG content may be attributed to the trade-off between cellular uptake and systemic circulation: lower PEG levels enhance cellular internalization, whereas higher PEG levels improve stability and in vivo bioavailability at the expense of cellular entry. Furthermore, varying the PEG-lipid content enabled the partial modulation of organ distribution, offering a formulation-based strategy to influence biodistribution without altering the ionizable lipid structure. <b>Conclusions</b>: This study highlights the critical role of PEGylated lipid content in balancing nanoparticle stability, cellular uptake, and in vivo delivery performance. Our findings provide valuable mechanistic insights and suggest a straightforward formulation-based strategy to optimize LNP/mRNA systems for therapeutic applications.",
+      "matched_quant_terms": [
+        "1.5%",
+        "5%",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.18,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses mRNA encapsulation efficiency and transfection but lacks direct quantitative measurements of cargo release from LNPs. It focuses more on formulation optimization than on the release mechanism itself.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Tomatine as a versatile adjuvant boosts mRNA vaccine responses.",
+      "authors": [
+        "Xiao W",
+        "Qin S",
+        "Li X",
+        "Jin X",
+        "Zhu A",
+        "He X",
+        "Duan X",
+        "Chen Y",
+        "Zhang Y",
+        "Fan N",
+        "Zheng Q",
+        "Li G",
+        "He Z",
+        "Chen K",
+        "Huang H",
+        "Wei X",
+        "Moog C",
+        "Su B",
+        "Song X."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.mtbio.2025.102360",
+      "pmid": "41089727",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The potent adaptive immune response of mRNA vaccines requires that sufficient antigens translated from mRNA cargos and highly efficient activation of innate immunity. However, it remains unclear if simple introduction of an adjuvant can help mRNA vaccines achieve these functions. In this study, a nature product, tomatine, was experimentally incorporated into the widely used nanocarriers, serving a multi-functional adjuvant to improve mRNA expression efficiency and activate innate immunity. Tomatine based liposome (T-LPX) exhibited elevated uptake in dendritic cells (DCs) via caveolin-mediated endocytosis and improved mRNA translation via the increased expression of DExH-box helicase 29 mediated by tomatine, leading to a marked increase in mRNA expression efficiency and ensuring highly efficient antigen presentation. Additionally, tomatine was shown to activate nucleotide-binding oligomerization domain (NOD)-like receptor pathway, thereby promoting the secretion of IFN-<i>γ</i> and upregulating the co-stimulatory molecules (CD80 and CD86) in DCs. Finally, T-LPX loaded with a tumor antigen-encoding mRNA was investigated and found to elicit potent immune responses against the E.G7-OVA murine tumor. Furthermore, such versatile adjuvant effect of tomatine was also demonstrated to equally apply to the other nanocarrier (lipid nanoparticle) and antigen. The tomatine-based LNP-mRNA vaccine against SARS-CoV-2 presented enduring humoral and cellular immune responses. These findings underscore tomatine's potential as a versatile adjuvant for mRNA nano-vaccines, with promising applications in both cancer therapy and infectious disease prevention.",
+      "matched_quant_terms": [
+        "200 nm",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.12,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study discusses mRNA delivery via lipid nanoparticles and their enhanced expression efficiency, but it lacks specific quantitative measurements of cargo release from LNPs, focusing more on immune response and translation efficiency.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "IL7 increases targeted lipid nanoparticle-mediated mRNA expression in T cells in vitro and in vivo by enhancing T cell protein translation.",
+      "authors": [
+        "Tilsed CM",
+        "Sadiq BA",
+        "Papp TE",
+        "Areesawangkit P",
+        "Kimura K",
+        "Noguera-Ortega E",
+        "Scholler J",
+        "Cerda N",
+        "Aghajanian H",
+        "Bot A",
+        "Mui B",
+        "Tam Y",
+        "Weissman D",
+        "June CH",
+        "Albelda SM",
+        "Parhiz H."
+      ],
+      "year": 2024,
+      "journal": null,
+      "doi": "10.1073/pnas.2319856121",
+      "pmid": "38513098",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The use of lipid nanoparticles (LNP) to encapsulate and deliver mRNA has become an important therapeutic advance. In addition to vaccines, LNP-mRNA can be used in many other applications. For example, targeting the LNP with anti-CD5 antibodies (CD5/tLNP) can allow for efficient delivery of mRNA payloads to T cells to express protein. As the percentage of protein expressing T cells induced by an intravenous injection of CD5/tLNP is relatively low (4-20%), our goal was to find ways to increase mRNA-induced translation efficiency. We showed that T cell activation using an anti-CD3 antibody improved protein expression after CD5/tLNP transfection in vitro but not in vivo. T cell health and activation can be increased with cytokines, therefore, using mCherry mRNA as a reporter, we found that culturing either mouse or human T cells with the cytokine IL7 significantly improved protein expression of delivered mRNA in both CD4<sup>+</sup> and CD8<sup>+</sup> T cells in vitro. By pre-treating mice with systemic IL7 followed by tLNP administration, we observed significantly increased mCherry protein expression by T cells in vivo. Transcriptomic analysis of mouse T cells treated with IL7 in vitro revealed enhanced genomic pathways associated with protein translation. Improved translational ability was demonstrated by showing increased levels of protein expression after electroporation with mCherry mRNA in T cells cultured in the presence of IL7, but not with IL2 or IL15. These data show that IL7 selectively increases protein translation in T cells, and this property can be used to improve expression of tLNP-delivered mRNA in vivo.",
+      "matched_quant_terms": [
+        "20%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.7,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses lipid nanoparticles and their role in mRNA delivery, but it focuses more on enhancing protein expression rather than directly measuring cargo release from LNPs. Quantitative data on protein expression is provided, but not specifically on mRNA release.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Apolipoprotein Fusion Enables Spontaneous Functionalization of mRNA Lipid Nanoparticles with Antibody for Targeted Cancer Therapy.",
+      "authors": [
+        "Park W",
+        "Choi J",
+        "Hwang J",
+        "Kim S",
+        "Kim Y",
+        "Shim MK",
+        "Park W",
+        "Yu S",
+        "Jung S",
+        "Yang Y",
+        "Kweon DH."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1021/acsnano.4c16562",
+      "pmid": "39908463",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "The mRNA-lipid nanoparticles (mRNA@LNPs) offer a novel opportunity to treat targets previously considered undruggable. Although antibody conjugation is crucial for enhancing the specificity, delivery efficiency, and minimizing the toxicity of mRNA therapeutics, current chemical conjugation methods are complex and produce heterogeneous particles with misoriented antibodies. In this work, we introduce a chemical-free approach to functionalize mRNA@LNPs with antibodies, mimicking protein corona formation for targeted mRNA delivery. By fusing apolipoprotein to the Fc domain of a targeting antibody, we enabled the antibody to spontaneously display on the surface of mRNA@LNPs without altering the existing LNP process or employing complex chemical conjugation techniques. We demonstrated precise protein expression using trastuzumab-bound mRNA@LNPs, facilitating specific mRNA expression in HER2-positive cancer cells. mRNA was efficiently delivered to the tumor site after intravenous administration. While the control LNPs lacking targeting antibodies caused acute liver toxicity, trastuzumab-displayed LNPs showed no systemic toxicity. The tumor-specific delivery of p53 tumor suppressor mRNA led to the complete regression of cancer cells. Thus, apolipoprotein fusion enables a straightforward and scalable production of antibody-functionalized mRNA@LNPs, offering significant therapeutic potential in gene therapy.",
+      "matched_quant_terms": [
+        "50%",
+        "100 nm",
+        "5 mg",
+        "P < 0.0001",
+        "P > 0.05",
+        "P < 0.05",
+        "P < 0.01",
+        "P < 0.001",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "RiboGreen assay"
+      ],
+      "score": 0.375,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses mRNA@LNPs and their functionalization with antibodies, but it does not provide quantitative measurements of cargo release from the LNPs. It focuses more on delivery and targeting rather than the specific release of mRNA.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Role of size, surface charge, and PEGylated lipids of lipid nanoparticles (LNPs) on intramuscular delivery of mRNA.",
+      "authors": [
+        "Kong W",
+        "Wei Y",
+        "Dong Z",
+        "Liu W",
+        "Zhao J",
+        "Huang Y",
+        "Yang J",
+        "Wu W",
+        "He H",
+        "Qi J."
+      ],
+      "year": 2024,
+      "journal": null,
+      "doi": "10.1186/s12951-024-02812-x",
+      "pmid": "39261807",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are currently the most commonly used non-viral gene delivery system. Their physiochemical attributes, encompassing size, charge and surface modifications, significantly affect their behaviors both in vivo and in vitro. Nevertheless, the effects of these properties on the transfection and distribution of LNPs after intramuscular injection remain elusive. In this study, LNPs with varying sizes, lipid-based charges and PEGylated lipids were formulated to study their transfection and in vivo distribution. Luciferase mRNA (mLuc) was entraped in LNPs as a model nucleic acid molecule. Results indicated that smaller-sized LNPs and those with neutral potential presented superior transfection efficiency after intramuscular injection. Surprisingly, the sizes and charges did not exert a notable influence on the in vivo distribution of the LNPs. Furthermore, PEGylated lipids with shorter acyl chains contributed to enhanced transfection efficiency due to their superior cellular uptake and lysosomal escape capabilities. Notably, the mechanisms underlying cellular uptake differed among LNPs containing various types of PEGylated lipids, which was primarily attributed to the length of their acyl chain. Together, these insights underscore the pivotal role of nanoparticle characteristics and PEGylated lipids in the intramuscular route. This study not only fills crucial knowledge gaps but also provides significant directions for the effective delivery of mRNA via LNPs.",
+      "matched_quant_terms": [
+        "15%",
+        "25%",
+        "50%",
+        "1.5%",
+        "3%",
+        "0.5%",
+        "10%",
+        "0%",
+        "640 nm",
+        "780 nm",
+        "670 nm",
+        "680 nm",
+        "p < 0.01",
+        "p < 0.001",
+        "p < 0.0001",
+        "p < 0.05",
+        "p < 0.005",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.3,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study involves LNPs and mRNA but focuses on transfection efficiency and distribution rather than direct cargo release measurements. It lacks specific quantitative data on the release of mRNA from LNPs.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "A careful look at lipid nanoparticle characterization: analysis of benchmark formulations for encapsulation of RNA cargo size gradient.",
+      "authors": [
+        "Schober GB",
+        "Story S",
+        "Arya DP."
+      ],
+      "year": 2024,
+      "journal": "Scientific Reports",
+      "doi": "10.1038/s41598-024-52685-1",
+      "pmid": "38287070",
+      "source_dbs": [
+        "Europe PMC",
+        "OpenAlex"
+      ],
+      "abstract": "With the recent success of lipid nanoparticle (LNP) based SARS-CoV-2 mRNA vaccines, the potential for RNA therapeutics has gained widespread attention. LNPs are promising non-viral delivery vectors to protect and deliver delicate RNA therapeutics, which are ineffective and susceptible to degradation alone. While food and drug administration (FDA) approved formulations have shown significant promise, benchmark lipid formulations still require optimization and improvement. In addition, the translatability of these formulations for several different RNA cargo sizes has not been compared under the same conditions. Herein we analyze \"gold standard\" lipid formulations for encapsulation efficiency of various non-specific RNA cargo lengths representing antisense oligonucleotides (ASO), small interfering RNA (siRNA), RNA aptamers, and messenger RNA (mRNA), with lengths of 10 bases, 21 base pairs, 96 bases, 996 bases, and 1929 bases, respectively. We evaluate encapsulation efficiency as the percentage of input RNA encapsulated in the final LNP product (EE<sub>input</sub>%), which shows discrepancy with the traditional calculation of encapsulation efficiency (EE%). EE<sub>input</sub>% is shown to be < 50% for all formulations tested, when EE% is consistently > 85%. We also compared formulations for LNP size (Z-average) and polydispersity index (PDI). LNP size does not appear to be strongly influenced by cargo size, which is a counterintuitive finding. Thoughtful characterization of LNPs, in parallel with consideration of in vitro or in vivo behavior, will guide design and optimization for better understanding and improvement of future RNA therapeutics.",
+      "matched_quant_terms": [
+        "50%",
+        "85%",
+        "ng RNA",
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.2733,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses encapsulation efficiency of RNA in LNPs but does not provide direct measurements or studies on the release of cargo from LNPs after delivery, which is crucial for the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Formulation and Characterization of Novel Ionizable and Cationic Lipid Nanoparticles for the Delivery of Splice-Switching Oligonucleotides.",
+      "authors": [
+        "Ojansivu M",
+        "Barriga HMG",
+        "Holme MN",
+        "Morf S",
+        "Doutch JJ",
+        "Andaloussi SE",
+        "Kjellman T",
+        "Johnsson M",
+        "Barauskas J",
+        "Stevens MM."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1002/adma.202419538",
+      "pmid": "40091434",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Despite increasing knowledge about the mechanistic aspects of lipid nanoparticles (LNPs) as oligonucleotide carriers, the structure-function relationship in LNPs has been generally overlooked. Understanding this correlation is critical in the rational design of LNPs. Here, a materials characterization approach is utilized, applying structural information from small-angle X-ray scattering experiments to design novel LNPs focusing on distinct lipid organizations with a minimal compositional variation. The lipid phase structures are characterized in these LNPs and their corresponding bulk lipid mixtures with small-angle scattering techniques, and the LNP-cell interactions in vitro with respect to cytotoxicity, hemolysis, cargo delivery, cell uptake, and lysosomal swelling. An LNP is identified that outperforms Onpattro lipid composition using lipid components and molar ratios which differ from the gold standard clinical LNPs. The base structure of these LNPs has an inverse micellar phase organization, whereas the LNPs with inverted hexagonal phases are not functional, suggesting that this phase formation may not be needed for LNP-mediated oligonucleotide delivery. The importance of stabilizer choice for the LNP function is demonstrated and super-resolution microscopy highlights the complexity of the delivery mechanisms, where lysosomal swelling for the majority of LNPs is observed. This study highlights the importance of advanced characterization for the rational design of LNPs to enable the study of structure-function relationships.",
+      "matched_quant_terms": [
+        "100 nm",
+        "p < 0.05"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [
+        "RiboGreen assay"
+      ],
+      "score": 0.195,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs and their cargo delivery but lacks specific quantitative data on cargo release from LNPs. It mentions cargo loading efficiency but does not provide time-resolved release measurements or detailed release kinetics.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Lipid Nanoparticle Surface Engineering with Heparosan Polysaccharides for Safe and Effective mRNA Delivery &lt;i&gt;In Vitro&lt;/i&gt; and &lt;i&gt;In Vivo&lt;/i&gt;.",
+      "authors": [
+        "He Y",
+        "Wang L",
+        "Velayutham R",
+        "Valerio TI",
+        "Ricketts SD",
+        "Sun Y",
+        "Annan AC",
+        "Bowman J",
+        "Tran T",
+        "Mohammadnejad M",
+        "Liu K",
+        "Chen WR",
+        "Green DE",
+        "Fung KM",
+        "DeAngelis PL",
+        "Wilhelm S."
+      ],
+      "year": 2026,
+      "journal": null,
+      "doi": "10.1021/acsami.6c05213",
+      "pmid": "42117531",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNPs) are clinically established carriers for nucleic acid therapeutics and mRNA-based vaccines. Current LNP formulations often use poly(ethylene glycol) (PEG)-based surface modifications to enhance pharmacokinetics, colloidal stability, and shelf life. However, PEG moieties can elicit anti-PEG immune responses, reactogenicity, and hypersensitivity reactions. Here, we investigated heparosan (HEP), a naturally occurring, biodegradable polysaccharide, for mRNA-LNP surface engineering and mRNA delivery <i>in vitro</i> and <i>in vivo</i>. We synthesized a library of HEP-coated LNPs and systematically characterized their physicochemical properties, including nanoparticle size, polydispersity, ζ potential, and mRNA encapsulation efficiency. We evaluated the delivery performance using two different mRNA payloads in both cultured cells and mouse models. Using HEP-engineered mRNA-LNPs, we demonstrate efficacy comparable to that of PEG-modified counterparts, with minimal tissue damage and negligible immune activation. In summary, our results highlight HEP as an immunologically silent, biocompatible coating agent that enables the formulation of colloidally stable LNPs for safe and effective mRNA delivery <i>in vitro</i> and <i>in vivo</i>, offering a potential path toward next-generation PEG-free nanomedicines.",
+      "matched_quant_terms": [
+        "encapsulation efficiency"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses mRNA delivery using LNPs and includes quantitative measurements of encapsulation efficiency and physicochemical properties. However, it does not explicitly focus on the 'Cargo release' step.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Exploring the Challenges of Lipid Nanoparticle Development: The In Vitro-In Vivo Correlation Gap.",
+      "authors": [
+        "Lindsay S",
+        "Hussain M",
+        "Binici B",
+        "Perrie Y."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.3390/vaccines13040339",
+      "pmid": "40333261",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "<h4>Background/objectives</h4>The development of lipid nanoparticles (LNPs) as delivery platforms for nucleic acids has revolutionised possibilities for both therapeutic and vaccine applications. However, emerging studies highlight challenges in achieving reliable in vitro-in vivo correlation (IVIVC), which delays the translation of experimental findings into clinical applications. This study investigates these potential discrepancies by evaluating the physicochemical properties, in vitro efficacy (across three commonly used cell lines), and in vivo performance (mRNA expression and vaccine efficacy) of four LNP formulations.<h4>Methods</h4>LNPs composed of DSPC, cholesterol, a PEGylated lipid, and one of four ionizable lipids (SM-102, ALC-0315, MC3, or C12-200) were manufactured using microfluidics.<h4>Results</h4>All formulations exhibited comparable physicochemical properties, as expected (size 70-100 nm, low PDI, near-neutral zeta potential, and high mRNA encapsulation). In vitro studies demonstrated variable LNP-mediated mRNA expression in both immortalised and immune cells, with SM-102 inducing significantly higher protein expression (<i>p</i> < 0.05) than the other formulations in immortalised and immune cells. However, in vivo results revealed that ALC-0315 and SM-102-based LNPs achieved significantly (<i>p</i> < 0.05) higher protein expression without a significant difference between them, while MC3- and C12-200-based LNPs exhibited lower expression levels. As vaccine formulations, all LNPs elicited strong immune responses with no significant differences among them.<h4>Conclusions</h4>These findings highlight the complexities of correlating in vitro and in vivo outcomes in LNP development and demonstrate the importance of holistic evaluation strategies to optimise their clinical translation.",
+      "matched_quant_terms": [
+        "100 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNPs and their mRNA delivery but lacks specific quantitative measurements of cargo release. It focuses on mRNA expression rather than direct cargo release from LNPs, making it unclear if it meets the criteria.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Design, optimization, and evaluation of lyophilized lipid nanoparticles for mRNA-based pulmonary mucosal vaccination.",
+      "authors": [
+        "Lu Y",
+        "Yang Y",
+        "Yi J",
+        "Hong X",
+        "Lou J",
+        "Li M",
+        "Zheng A."
+      ],
+      "year": 2025,
+      "journal": null,
+      "doi": "10.1016/j.mtbio.2025.101813",
+      "pmid": "40475859",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Lipid nanoparticles (LNP) have emerged at the forefront of the delivery of RNA molecules during the COVID-19 pandemic, leading to a giant leap in RNA therapies. Despite their great success, the long-term storage and transportation of mRNA vaccines without ultra-low temperatures is still challenging due to their poor stability. Here, we demonstrated that LNP-mRNA could be lyophilized via a simple freeze‒drying process. This process produced a dry powder formulation that could maintain the physicochemical properties of LNP-mRNA after storage at 4 °C for at least two months. However, the shear forces generated during the lyophilization process may disrupt the structure of the LNP, affecting the efficacy of the vaccine. Therefore, a cholesterol analogue, β-sitosterol, and a type of phospholipid, DOPE, were utilized instead of cholesterol and DSPC to improve the transfection efficiency after freeze-drying. The optimized formulation of LNP exhibited an enhanced transfection effect both <i>in vitro</i> and in vivo. Additionally, intratracheal administration of reconstituted lyophilized LNPs could induce innate cellular, humoral and mucosal immunity in vivo, indicating that our LNP-mRNA may serve as an effective vaccine against COVID-19. In summary, our study revealed that lyophilization of LNPs could increase their stability and maintain their ability to be transfected both <i>in vitro</i> and in vivo, inducing strong immune responses.",
+      "matched_quant_terms": [
+        "1 %"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.5,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses LNP-mRNA stability and transfection efficiency but does not provide direct quantitative measurements of cargo release from LNPs. It focuses on lyophilization and transfection rather than the specific release mechanism.",
+      "caption_rescued": true,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Effect of Cholesterol Content of Lipid Composition in mRNA-LNPs on the Protein Expression in the Injected Site and Liver After Local Administration in Mice.",
+      "authors": [
+        "Kawaguchi M",
+        "Noda M",
+        "Ono A",
+        "Kamiya M",
+        "Matsumoto M",
+        "Tsurumaru M",
+        "Mizukami S",
+        "Mukai H",
+        "Kawakami S."
+      ],
+      "year": 2023,
+      "journal": null,
+      "doi": "10.1016/j.xphs.2022.12.026",
+      "pmid": "36596392",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "Delivery of messenger RNA (mRNA) using lipid nanoparticles (LNPs) is expected to be applied to various diseases following the successful clinical use of the mRNA COVID-19 vaccines. This study aimed to evaluate the effect of the cholesterol molar percentage of mRNA-LNPs on protein expression in hepatocellular carcinoma-derived cells and in the liver after intramuscular or subcutaneous administration of mRNA-LNPs in mice. For mRNA-LNPs with cholesterol molar percentages reduced to 10 mol% and 20 mol%, we formulated neutral charge particles with a diameter of approximately 100 nm and polydispersity index (PDI) <0.25. After the intramuscular or subcutaneous administration of mRNA-LNPs with different cholesterol molar percentages in mice, protein expression in the liver decreased as the cholesterol molar percentage in mRNA-LNPs decreased from 40 mol% to 20 mol% and 10 mol%, suggesting that reducing the cholesterol molar percentage in mRNA-LNPs decreases protein expression in the liver. Furthermore, in HepG2 cells, protein expression decreased as cholesterol in mRNA-LNPs was reduced by 40 mol%, 20 mol%, and 10 mol%. These results suggest that the downregulated expression of mRNA-LNPs with low cholesterol content in the liver involves degradation in systemic circulating blood and decreased protein expression after hepatocyte distribution.",
+      "matched_quant_terms": [
+        "100 nm"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.4,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The study discusses mRNA-LNPs and their cholesterol content affecting protein expression, but it does not provide quantitative measurements of cargo release from the LNPs specifically.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    },
+    {
+      "title": "Breaking the final barrier: Evolution of cationic and ionizable lipid structure in lipid nanoparticles to escape the endosome.",
+      "authors": [
+        "Mrksich K",
+        "Padilla MS",
+        "Mitchell MJ."
+      ],
+      "year": 2024,
+      "journal": null,
+      "doi": "10.1016/j.addr.2024.115446",
+      "pmid": "39293650",
+      "source_dbs": [
+        "Europe PMC"
+      ],
+      "abstract": "In the past decade, nucleic acid therapies have seen a boon in development and clinical translation largely due to advances in nanotechnology that have enabled their safe and targeted delivery. Nanoparticles can protect nucleic acids from degradation by serum enzymes and can facilitate entry into cells. Still, achieving endosomal escape to allow nucleic acids to enter the cytoplasm has remained a significant barrier, where less than 5% of nanoparticles within the endo-lysosomal pathway are able to transfer their cargo to the cytosol. Lipid-based drug delivery vehicles, particularly lipid nanoparticles (LNPs), have been optimized to achieve potent endosomal escape, and thus have been the vector of choice in the clinic as demonstrated by their utilization in the COVID-19 mRNA vaccines. The success of LNPs is in large part due to the rational design of lipids that can specifically overcome endosomal barriers. In this review, we chart the evolution of lipid structure from cationic lipids to ionizable lipids, focusing on structure-function relationships, with a focus on how they relate to endosomal escape. Additionally, we examine recent advancements in ionizable lipid structure as well as discuss the future of lipid design.",
+      "matched_quant_terms": [
+        "5%"
+      ],
+      "matched_kinetic_terms": [],
+      "matched_signal_phrases": [],
+      "score": 0.06,
+      "llm_score": 0.3,
+      "llm_verdict": "borderline",
+      "llm_rationale": "The paper discusses endosomal escape of LNPs but does not provide quantitative measurements of cargo release. It focuses on lipid structure evolution rather than direct cargo release data.",
+      "caption_rescued": false,
+      "supplementary_rescued": false
+    }
+  ],
+  "message": null,
+  "updated_at": "2026-06-04T19:05:10.758410Z"
+}

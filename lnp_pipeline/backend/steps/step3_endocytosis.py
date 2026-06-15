@@ -55,7 +55,7 @@ SIGNAL_PHRASES = [
 ]
 
 
-async def run_search(progress_cb: ProgressCb | None = None) -> list[dict]:
+async def run_search(progress_cb: ProgressCb | None = None) -> dict[str, list[dict]]:
     return await run_step_search(
         boolean_query=BOOLEAN_QUERY,
         quant_keywords=QUANTITATIVE_FILTERS,

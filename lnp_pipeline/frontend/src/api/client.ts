@@ -1,5 +1,6 @@
 import type {
   ExportFormat,
+  ResultTab,
   RunResults,
   RunStatus,
   StepInfo,
@@ -37,6 +38,10 @@ export function getResults(run_id: string): Promise<RunResults> {
   return jget<RunResults>(`/api/runs/${run_id}/results`);
 }
 
-export function exportUrl(run_id: string, format: ExportFormat): string {
-  return `/api/runs/${run_id}/export?format=${format}`;
+export function exportUrl(
+  run_id: string,
+  format: ExportFormat,
+  which: ResultTab = "included"
+): string {
+  return `/api/runs/${run_id}/export?format=${format}&which=${which}`;
 }

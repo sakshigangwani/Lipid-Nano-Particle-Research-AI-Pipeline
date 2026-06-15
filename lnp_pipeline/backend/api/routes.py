@@ -37,6 +37,7 @@ class _RunState:
         self.state: Literal["running", "done", "error"] = "running"
         self.counts: PrismaCounts = PrismaCounts()
         self.papers: list[PaperRecord] = []
+        self.candidates: list[PaperRecord] = []
         self.message: str | None = None
         self.step_name: str = ""
 
@@ -53,6 +54,7 @@ def _persist(run: _RunState) -> None:
         "state": run.state,
         "counts": run.counts.model_dump(),
         "papers": [p.model_dump() for p in run.papers],
+        "candidates": [p.model_dump() for p in run.candidates],
         "message": run.message,
         "updated_at": datetime.utcnow().isoformat() + "Z",
     }
@@ -72,9 +74,10 @@ async def _execute_run(run_id: str, step_id: int) -> None:
                 run.counts = PrismaCounts(**counts)
                 _persist(run)
 
-        papers = await step_mod.run_search(progress_cb=progress)
+        result = await step_mod.run_search(progress_cb=progress)
         async with _LOCK:
-            run.papers = [PaperRecord(**p) for p in papers]
+            run.papers = [PaperRecord(**p) for p in result["included"]]
+            run.candidates = [PaperRecord(**p) for p in result["candidates"]]
             run.state = "done"
             _persist(run)
     except Exception as e:  # noqa: BLE001
@@ -115,6 +118,7 @@ def _load_run(run_id: str) -> _RunState:
     state.state = data.get("state", "done")
     state.counts = PrismaCounts(**(data.get("counts") or {}))
     state.papers = [PaperRecord(**p) for p in (data.get("papers") or [])]
+    state.candidates = [PaperRecord(**p) for p in (data.get("candidates") or [])]
     state.message = data.get("message")
     state.step_name = data.get("step_name", "")
     _RUNS[run_id] = state
@@ -142,6 +146,7 @@ async def run_results(run_id: str) -> RunResults:
         step_name=run.step_name,
         counts=run.counts,
         papers=run.papers,
+        candidates=run.candidates,
     )
 
 
@@ -184,7 +189,7 @@ def _csv_bytes(papers: list[PaperRecord]) -> bytes:
     return buf.getvalue().encode("utf-8")
 
 
-def _md_bytes(run: _RunState) -> bytes:
+def _md_bytes(run: _RunState, papers: list[PaperRecord]) -> bytes:
     lines: list[str] = []
     lines.append(f"# LNP literature run — {run.step_name}")
     lines.append("")
@@ -204,7 +209,7 @@ def _md_bytes(run: _RunState) -> bytes:
     lines.append("")
     lines.append("## Papers")
     lines.append("")
-    for i, p in enumerate(run.papers, start=1):
+    for i, p in enumerate(papers, start=1):
         link = f"https://doi.org/{p.doi}" if p.doi else ""
         title_md = f"[{p.title}]({link})" if link else p.title
         lines.append(f"### {i}. {title_md}")
@@ -233,13 +238,21 @@ def _md_bytes(run: _RunState) -> bytes:
 
 
 @router.get("/runs/{run_id}/export")
-async def export_run(run_id: str, format: Literal["csv", "json", "md"] = Query("csv")):
+async def export_run(
+    run_id: str,
+    format: Literal["csv", "json", "md"] = Query("csv"),
+    which: Literal["included", "candidates"] = Query("included"),
+):
     run = _load_run(run_id)
+    papers = run.candidates if which == "candidates" else run.papers
+    suffix = "_candidates" if which == "candidates" else ""
     if format == "csv":
         return StreamingResponse(
-            io.BytesIO(_csv_bytes(run.papers)),
+            io.BytesIO(_csv_bytes(papers)),
             media_type="text/csv",
-            headers={"Content-Disposition": f'attachment; filename="lnp_{run_id}.csv"'},
+            headers={
+                "Content-Disposition": f'attachment; filename="lnp_{run_id}{suffix}.csv"'
+            },
         )
     if format == "json":
         payload = RunResults(
@@ -248,6 +261,7 @@ async def export_run(run_id: str, format: Literal["csv", "json", "md"] = Query("
             step_name=run.step_name,
             counts=run.counts,
             papers=run.papers,
+            candidates=run.candidates,
         ).model_dump()
         body = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
         return StreamingResponse(
@@ -257,8 +271,10 @@ async def export_run(run_id: str, format: Literal["csv", "json", "md"] = Query("
         )
     if format == "md":
         return StreamingResponse(
-            io.BytesIO(_md_bytes(run)),
+            io.BytesIO(_md_bytes(run, papers)),
             media_type="text/markdown",
-            headers={"Content-Disposition": f'attachment; filename="lnp_{run_id}.md"'},
+            headers={
+                "Content-Disposition": f'attachment; filename="lnp_{run_id}{suffix}.md"'
+            },
         )
     raise HTTPException(status_code=400, detail="format must be csv|json|md")

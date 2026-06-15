@@ -41,7 +41,7 @@ async def run_step_search(
     step_name: str = "",
     step_description: str = "",
     progress_cb: ProgressCb | None = None,
-) -> list[dict]:
+) -> dict[str, list[dict]]:
     counts: dict = {
         "pubmed": 0,
         "europepmc": 0,
@@ -186,7 +186,11 @@ async def run_step_search(
     await _emit(progress_cb, dict(counts))
 
     # ─── Score + finalize ───
-    final: list[dict] = []
+    # `candidates` holds *every* paper that survived the deterministic regex
+    # gates and was sent to the LLM (the pre-LLM-scored set — e.g. the 86 in
+    # the funnel). `included` is the subset the LLM did not mark 'exclude'
+    # (e.g. the 48). The UI exposes both as separate tabs.
+    candidates: list[dict] = []
     for p, llm in zip(kinetic_passed, llm_results):
         sigs_text = p["_haystack_abstract"]
         if p.get("_caption_text"):
@@ -221,16 +225,16 @@ async def run_step_search(
                 or p.get("_supplementary_rescued_kinetic")
             ),
         }
-        final.append(record)
+        candidates.append(record)
 
-    final = [r for r in final if r["llm_verdict"] != "exclude"]
-    final.sort(
-        key=lambda r: (
+    def _sort_key(r: dict) -> tuple:
+        return (
             r["llm_score"] if r["llm_score"] is not None else -1.0,
             r["score"],
-        ),
-        reverse=True,
-    )
-    counts["final"] = len(final)
+        )
+
+    candidates.sort(key=_sort_key, reverse=True)
+    included = [r for r in candidates if r["llm_verdict"] != "exclude"]
+    counts["final"] = len(included)
     await _emit(progress_cb, dict(counts))
-    return final
+    return {"included": included, "candidates": candidates}
