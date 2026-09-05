@@ -12,6 +12,10 @@ URL = "https://api.semanticscholar.org/graph/v1/paper/search"
 TIMEOUT = httpx.Timeout(30.0, connect=10.0)
 
 FIELDS = "title,abstract,year,authors,externalIds,venue,journal"
+# API hard-caps `limit` at 100/request and offset+limit at 1000 total for
+# this endpoint; page with offset until either bound is hit.
+PAGE_SIZE = 100
+MAX_OFFSET = 1000
 
 
 @retry(
@@ -26,25 +30,40 @@ async def _get(client: httpx.AsyncClient, params: dict) -> dict:
     return r.json()
 
 
-async def search(query: str, max_results: int = 50) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": max_results}
+async def search(query: str) -> list[dict[str, Any]]:
+    payload = {"q": query, "n": "all"}
     cached = cache.load(DB, payload)
     if cached is not None:
         return cached
 
     headers = {"User-Agent": "lnp-pipeline/1.0"}
-    try:
-        async with httpx.AsyncClient(headers=headers) as client:
-            data = await _get(
-                client,
-                {"query": query, "limit": min(max_results, 100), "fields": FIELDS},
-            )
-    except httpx.HTTPError:
-        # Semantic Scholar rate-limits aggressively; degrade to empty rather than fail the run.
-        cache.save(DB, payload, [])
-        return []
+    items: list[dict] = []
+    offset = 0
+    async with httpx.AsyncClient(headers=headers) as client:
+        while offset < MAX_OFFSET:
+            try:
+                data = await _get(
+                    client,
+                    {
+                        "query": query,
+                        "limit": PAGE_SIZE,
+                        "offset": offset,
+                        "fields": FIELDS,
+                    },
+                )
+            except httpx.HTTPError:
+                # Semantic Scholar rate-limits aggressively; keep whatever we
+                # already collected rather than failing the whole run.
+                break
+            page = data.get("data", []) if data else []
+            if not page:
+                break
+            items.extend(page)
+            offset += len(page)
+            total = (data or {}).get("total")
+            if isinstance(total, int) and offset >= total:
+                break
 
-    items = data.get("data", []) if data else []
     records: list[dict[str, Any]] = []
     for it in items:
         authors = [a.get("name") for a in (it.get("authors") or []) if a.get("name")]

@@ -103,8 +103,8 @@ def _convert(w: dict) -> dict[str, Any]:
     }
 
 
-async def search(query: str, max_results: int = 200) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": max_results, "v": 2}
+async def search(query: str) -> list[dict[str, Any]]:
+    payload = {"q": query, "n": "all", "v": 2}
     cached = cache.load(DB, payload)
     if cached is not None:
         return cached
@@ -116,13 +116,12 @@ async def search(query: str, max_results: int = 200) -> list[dict[str, Any]]:
     async with httpx.AsyncClient(
         headers={"User-Agent": "lnp-pipeline/1.0 (mailto:lnp-pipeline@local)"},
     ) as client:
-        while cursor and len(records) < max_results:
-            page_size = min(PER_PAGE, max_results - len(records))
+        while cursor:
             data = await _get(
                 client,
                 {
                     "search": phrase_query,
-                    "per-page": page_size,
+                    "per-page": PER_PAGE,
                     "cursor": cursor,
                     "select": SELECT_FIELDS,
                 },
@@ -133,6 +132,5 @@ async def search(query: str, max_results: int = 200) -> list[dict[str, Any]]:
             records.extend(_convert(w) for w in page)
             cursor = ((data.get("meta") or {}).get("next_cursor")) or None
 
-    records = records[:max_results]
     cache.save(DB, payload, records)
     return records

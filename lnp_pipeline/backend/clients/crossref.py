@@ -10,6 +10,9 @@ from ..utils import cache
 DB = "crossref"
 URL = "https://api.crossref.org/works"
 TIMEOUT = httpx.Timeout(30.0, connect=10.0)
+# CrossRef's hard per-request cap on `rows`; page beyond it with a deep-paging
+# cursor (offset pagination is capped around 10k by the API).
+PAGE_SIZE = 1000
 
 
 @retry(
@@ -35,23 +38,36 @@ def _year_from_item(item: dict) -> int | None:
     return None
 
 
-async def search(query: str, max_results: int = 50) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": max_results}
+async def search(query: str) -> list[dict[str, Any]]:
+    payload = {"q": query, "n": "all"}
     cached = cache.load(DB, payload)
     if cached is not None:
         return cached
 
+    select = "DOI,title,abstract,author,container-title,issued,published-print,published-online,created"
+    items: list[dict] = []
     async with httpx.AsyncClient(headers={"User-Agent": "lnp-pipeline/1.0 (mailto:research@example.com)"}) as client:
-        data = await _get(
-            client,
-            {
-                "query": query,
-                "rows": max_results,
-                "select": "DOI,title,abstract,author,container-title,issued,published-print,published-online,created",
-            },
-        )
+        cursor = "*"
+        while cursor:
+            data = await _get(
+                client,
+                {
+                    "query": query,
+                    "rows": PAGE_SIZE,
+                    "cursor": cursor,
+                    "select": select,
+                },
+            )
+            message = (data or {}).get("message") or {}
+            page = message.get("items") or []
+            if not page:
+                break
+            items.extend(page)
+            next_cursor = message.get("next-cursor")
+            if not next_cursor or next_cursor == cursor:
+                break
+            cursor = next_cursor
 
-    items = ((data or {}).get("message") or {}).get("items", [])
     records: list[dict[str, Any]] = []
     for it in items:
         titles = it.get("title") or []

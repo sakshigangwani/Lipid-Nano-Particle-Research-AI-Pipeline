@@ -10,6 +10,8 @@ from ..utils import cache
 DB = "europepmc"
 URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 TIMEOUT = httpx.Timeout(30.0, connect=10.0)
+# Europe PMC's hard per-request cap; page beyond it via cursorMark.
+PAGE_SIZE = 1000
 
 
 @retry(
@@ -24,24 +26,41 @@ async def _get(client: httpx.AsyncClient, params: dict) -> dict:
     return r.json()
 
 
-async def search(query: str, max_results: int = 50) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": max_results}
-    cached = cache.load(DB, payload)
-    if cached is not None:
-        return cached
-
-    async with httpx.AsyncClient(headers={"User-Agent": "lnp-pipeline/1.0"}) as client:
+async def _fetch_all_hits(client: httpx.AsyncClient, query: str) -> list[dict]:
+    hits: list[dict] = []
+    cursor = "*"
+    while cursor:
         data = await _get(
             client,
             {
                 "query": query,
                 "format": "json",
                 "resultType": "core",
-                "pageSize": max_results,
+                "pageSize": PAGE_SIZE,
+                "cursorMark": cursor,
             },
         )
+        result_list = (data.get("resultList") or {}) if data else {}
+        page = result_list.get("result", [])
+        if not page:
+            break
+        hits.extend(page)
+        next_cursor = (data or {}).get("nextCursorMark")
+        if not next_cursor or next_cursor == cursor:
+            break
+        cursor = next_cursor
+    return hits
 
-    hits = (data.get("resultList") or {}).get("result", []) if data else []
+
+async def search(query: str) -> list[dict[str, Any]]:
+    payload = {"q": query, "n": "all"}
+    cached = cache.load(DB, payload)
+    if cached is not None:
+        return cached
+
+    async with httpx.AsyncClient(headers={"User-Agent": "lnp-pipeline/1.0"}) as client:
+        hits = await _fetch_all_hits(client, query)
+
     records: list[dict[str, Any]] = []
     for h in hits:
         authors_str = h.get("authorString") or ""

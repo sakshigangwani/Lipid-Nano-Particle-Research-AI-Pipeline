@@ -98,39 +98,63 @@ def _parse_pubmed_xml(xml_text: str) -> list[dict[str, Any]]:
     return out
 
 
-async def search(query: str, max_results: int = 50) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": max_results}
+# NCBI allows retmax up to 10000 per esearch call; page with retstart to get
+# the full result set beyond that.
+PAGE_SIZE = 10000
+# efetch is happiest with a few hundred IDs per call, not thousands at once.
+FETCH_CHUNK = 200
+
+
+async def search(query: str) -> list[dict[str, Any]]:
+    payload = {"q": query, "n": "all"}
     cached = cache.load(DB, payload)
     if cached is not None:
         return cached
 
     async with httpx.AsyncClient(headers={"User-Agent": "lnp-pipeline/1.0"}) as client:
-        esearch = await _get_json(
-            client,
-            ESEARCH,
-            {
-                "db": "pubmed",
-                "term": query,
-                "retmode": "json",
-                "retmax": max_results,
-                "sort": "relevance",
-            },
-        )
-        ids = (
-            esearch.get("esearchresult", {}).get("idlist", []) if esearch else []
-        )
+        ids: list[str] = []
+        retstart = 0
+        total_count: int | None = None
+        while total_count is None or retstart < total_count:
+            esearch = await _get_json(
+                client,
+                ESEARCH,
+                {
+                    "db": "pubmed",
+                    "term": query,
+                    "retmode": "json",
+                    "retstart": retstart,
+                    "retmax": PAGE_SIZE,
+                    "sort": "relevance",
+                },
+            )
+            result = esearch.get("esearchresult", {}) if esearch else {}
+            page_ids = result.get("idlist", [])
+            if total_count is None:
+                try:
+                    total_count = int(result.get("count", 0))
+                except (TypeError, ValueError):
+                    total_count = 0
+            if not page_ids:
+                break
+            ids.extend(page_ids)
+            retstart += len(page_ids)
+            await asyncio.sleep(0.2)
+
         if not ids:
             cache.save(DB, payload, [])
             return []
 
-        # Be polite to NCBI rate limits.
-        await asyncio.sleep(0.2)
-        xml_text = await _get_text(
-            client,
-            EFETCH,
-            {"db": "pubmed", "id": ",".join(ids), "retmode": "xml"},
-        )
+        records: list[dict[str, Any]] = []
+        for i in range(0, len(ids), FETCH_CHUNK):
+            chunk = ids[i : i + FETCH_CHUNK]
+            await asyncio.sleep(0.2)
+            xml_text = await _get_text(
+                client,
+                EFETCH,
+                {"db": "pubmed", "id": ",".join(chunk), "retmode": "xml"},
+            )
+            records.extend(_parse_pubmed_xml(xml_text))
 
-    records = _parse_pubmed_xml(xml_text)
     cache.save(DB, payload, records)
     return records

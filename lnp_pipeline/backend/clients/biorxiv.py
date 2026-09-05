@@ -19,6 +19,8 @@ DB = "biorxiv"
 # SRC:PPR (preprints only) and split bioRxiv vs medRxiv via the journal field.
 URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 TIMEOUT = httpx.Timeout(30.0, connect=10.0)
+# Europe PMC's hard per-request cap; page beyond it via cursorMark.
+PAGE_SIZE = 1000
 
 
 @retry(
@@ -31,6 +33,32 @@ async def _get(client: httpx.AsyncClient, params: dict) -> dict:
     r = await client.get(URL, params=params, timeout=TIMEOUT)
     r.raise_for_status()
     return r.json()
+
+
+async def _fetch_all_hits(client: httpx.AsyncClient, query: str) -> list[dict]:
+    hits: list[dict] = []
+    cursor = "*"
+    while cursor:
+        data = await _get(
+            client,
+            {
+                "query": query,
+                "format": "json",
+                "resultType": "core",
+                "pageSize": PAGE_SIZE,
+                "cursorMark": cursor,
+            },
+        )
+        result_list = (data.get("resultList") or {}) if data else {}
+        page = result_list.get("result", [])
+        if not page:
+            break
+        hits.extend(page)
+        next_cursor = (data or {}).get("nextCursorMark")
+        if not next_cursor or next_cursor == cursor:
+            break
+        cursor = next_cursor
+    return hits
 
 
 def _is_biorxiv_or_medrxiv(hit: dict) -> bool:
@@ -48,8 +76,8 @@ def _is_biorxiv_or_medrxiv(hit: dict) -> bool:
     return False
 
 
-async def search(query: str, max_results: int = 200) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": max_results}
+async def search(query: str) -> list[dict[str, Any]]:
+    payload = {"q": query, "n": "all"}
     cached = cache.load(DB, payload)
     if cached is not None:
         return cached
@@ -58,17 +86,8 @@ async def search(query: str, max_results: int = 200) -> list[dict[str, Any]]:
     scoped_query = f"({query}) AND SRC:PPR"
 
     async with httpx.AsyncClient(headers={"User-Agent": "lnp-pipeline/1.0"}) as client:
-        data = await _get(
-            client,
-            {
-                "query": scoped_query,
-                "format": "json",
-                "resultType": "core",
-                "pageSize": max_results,
-            },
-        )
+        hits = await _fetch_all_hits(client, scoped_query)
 
-    hits = (data.get("resultList") or {}).get("result", []) if data else []
     records: list[dict[str, Any]] = []
     for h in hits:
         if not _is_biorxiv_or_medrxiv(h):

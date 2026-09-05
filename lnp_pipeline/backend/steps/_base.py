@@ -16,7 +16,6 @@ from ..utils.llm import score_papers as llm_score_papers
 from ..utils.scoring import score_paper
 
 ProgressCb = Callable[[dict], Awaitable[None] | None]
-MAX_RESULTS_PER_DB = 200
 
 
 def _haystack(p: dict) -> str:
@@ -59,12 +58,12 @@ async def run_step_search(
     }
 
     results = await asyncio.gather(
-        pubmed.search(boolean_query, MAX_RESULTS_PER_DB),
-        europepmc.search(boolean_query, MAX_RESULTS_PER_DB),
-        semantic_scholar.search(boolean_query, MAX_RESULTS_PER_DB),
-        crossref.search(boolean_query, MAX_RESULTS_PER_DB),
-        openalex.search(boolean_query, MAX_RESULTS_PER_DB),
-        biorxiv.search(boolean_query, MAX_RESULTS_PER_DB),
+        pubmed.search(boolean_query),
+        europepmc.search(boolean_query),
+        semantic_scholar.search(boolean_query),
+        crossref.search(boolean_query),
+        openalex.search(boolean_query),
+        biorxiv.search(boolean_query),
         return_exceptions=True,
     )
     pm, epmc, ss, cr, oa, bx = [
