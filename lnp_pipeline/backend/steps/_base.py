@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import asyncio
+import logging
+from collections import Counter
 from typing import Awaitable, Callable
 
 from ..clients import biorxiv, crossref, europepmc, openalex, pubmed, semantic_scholar
@@ -14,6 +16,8 @@ from ..utils.filters import (
 from ..utils.fulltext import fetch_captions_for, paper_key
 from ..utils.llm import score_papers as llm_score_papers
 from ..utils.scoring import score_paper
+
+logger = logging.getLogger("lnp_pipeline.filtering")
 
 ProgressCb = Callable[[dict], Awaitable[None] | None]
 
@@ -83,12 +87,25 @@ async def run_step_search(
     counts["after_dedup"] = len(deduped)
     await _emit(progress_cb, dict(counts))
 
+    # ─── Debug-only rejection tally: why did a paper NOT make it to `included`? ───
+    # Every paper is bucketed into exactly one reason the first time it drops out.
+    rejection_reasons: Counter[str] = Counter()
+
     # ─── Pass 1: abstract-only filter, also track who's LNP-focused ───
+    # Some sources (notably CrossRef) frequently omit the abstract entirely.
+    # In that case title+journal alone is often too little text to judge LNP
+    # focus fairly, so we don't auto-reject — the paper already matched the
+    # LNP-related boolean query at the source, so we trust that and let it
+    # through to the quant/kinetic gates instead (which still have to pass).
     lnp_focused: list[dict] = []
     for p in deduped:
         text = _haystack(p)
-        if not is_lnp_focused(text):
+        has_abstract = bool((p.get("abstract") or "").strip())
+        if has_abstract and not is_lnp_focused(text):
+            rejection_reasons["not_lnp_focused"] += 1
             continue
+        if not has_abstract:
+            rejection_reasons["no_abstract_passed_on_trust"] += 1
         p["_haystack_abstract"] = text
         p["_matched_quant"] = find_quant_matches(text, quant_keywords)
         p["_matched_kinetic"] = find_kinetic_matches(text, kinetic_keywords)
@@ -154,14 +171,21 @@ async def run_step_search(
     await _emit(progress_cb, dict(counts))
 
     # ─── Apply gates using post-fallback matches ───
-    quant_passed = [p for p in lnp_focused if p["_matched_quant"]]
+    quant_passed: list[dict] = []
+    for p in lnp_focused:
+        if p["_matched_quant"]:
+            quant_passed.append(p)
+        else:
+            rejection_reasons["failed_quant_filter"] += 1
     counts["after_quant"] = len(quant_passed)
     await _emit(progress_cb, dict(counts))
 
-    kinetic_passed = [
-        p for p in quant_passed
-        if (not strict_kinetic) or p["_matched_kinetic"]
-    ]
+    kinetic_passed: list[dict] = []
+    for p in quant_passed:
+        if (not strict_kinetic) or p["_matched_kinetic"]:
+            kinetic_passed.append(p)
+        else:
+            rejection_reasons["failed_kinetic_filter"] += 1
     counts["after_kinetic"] = len(kinetic_passed)
     await _emit(progress_cb, dict(counts))
 
@@ -233,7 +257,94 @@ async def run_step_search(
         )
 
     candidates.sort(key=_sort_key, reverse=True)
-    included = [r for r in candidates if r["llm_verdict"] != "exclude"]
+    included = []
+    for r in candidates:
+        if r["llm_verdict"] != "exclude":
+            included.append(r)
+        else:
+            rejection_reasons["llm_excluded"] += 1
     counts["final"] = len(included)
     await _emit(progress_cb, dict(counts))
+
+    _log_rejection_summary(
+        step_name=step_name,
+        total_raw=counts["total_raw"],
+        after_dedup=counts["after_dedup"],
+        rejection_reasons=rejection_reasons,
+        final=counts["final"],
+    )
+
     return {"included": included, "candidates": candidates}
+
+
+def _log_rejection_summary(
+    *,
+    step_name: str,
+    total_raw: int,
+    after_dedup: int,
+    rejection_reasons: Counter[str],
+    final: int,
+) -> None:
+    """Debug-only breakdown of why papers were filtered out at each stage.
+
+    Writes a formatted report to backend/storage/debug/{step_name}_filter_report.json
+    (overwritten each run) so it's easy to open and review, in addition to
+    logging a summary line.
+    """
+    reasons_labeled = {
+        "not_lnp_focused": "Rejected: had an abstract, but abstract/title/journal text never mentions LNPs specifically",
+        "failed_quant_filter": "Rejected: no quantitative evidence found (even after caption/supplementary rescue)",
+        "failed_kinetic_filter": "Rejected: no time-course/kinetic evidence found (strict_kinetic step, even after rescue)",
+        "llm_excluded": "Rejected: passed all regex gates, but the LLM judged it off-topic/irrelevant",
+    }
+    total_rejected = sum(rejection_reasons.get(k, 0) for k in reasons_labeled)
+    no_abstract_passed = rejection_reasons.get("no_abstract_passed_on_trust", 0)
+    report = {
+        "step_name": step_name,
+        "total_raw_fetched": total_raw,
+        "after_dedup": after_dedup,
+        "total_rejected": total_rejected,
+        "final_included": final,
+        "not_a_rejection": {
+            "no_abstract_passed_on_trust": {
+                "count": no_abstract_passed,
+                "description": (
+                    "NOT rejected: source gave no abstract, so the LNP-focus text "
+                    "check was skipped and the paper was trusted through to the "
+                    "quant/kinetic gates (it still had to pass those to survive)."
+                ),
+            }
+        },
+        "rejected_by_reason": {
+            reason: {
+                "count": rejection_reasons.get(reason, 0),
+                "description": label,
+            }
+            for reason, label in reasons_labeled.items()
+        },
+    }
+
+    logger.info(
+        "Filter summary for '%s': raw=%d dedup=%d rejected=%d final=%d | breakdown=%s",
+        step_name,
+        total_raw,
+        after_dedup,
+        total_rejected,
+        final,
+        dict(rejection_reasons),
+    )
+
+    try:
+        import json
+        from pathlib import Path
+
+        debug_dir = Path(__file__).resolve().parent.parent / "storage" / "debug"
+        debug_dir.mkdir(parents=True, exist_ok=True)
+        safe_name = step_name.lower().replace(" ", "_") or "step"
+        report_path = debug_dir / f"{safe_name}_filter_report.json"
+        report_path.write_text(
+            json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+        logger.info("Wrote filter debug report to %s", report_path)
+    except OSError:
+        logger.exception("Failed to write filter debug report")

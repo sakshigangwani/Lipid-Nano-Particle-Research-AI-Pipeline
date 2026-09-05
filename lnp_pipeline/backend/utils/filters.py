@@ -73,20 +73,25 @@ def find_signal_phrases(text: str, phrases: list[str]) -> list[str]:
     return _scan_keywords(text or "", phrases)
 
 
+LNP_FOCUS_REGEXES: list[re.Pattern] = [
+    # "lipid nanoparticle(s)" / "lipid-nanoparticle" / "lipid nano-particle" / "lipidnanoparticle",
+    # optionally with an inserted qualifier like "mRNA-" or "siRNA-" in either order,
+    # e.g. "lipid-mRNA nanoparticle", "mRNA-lipid nanoparticle", "ionizable lipid nanoparticles".
+    re.compile(
+        r"\b(?:ionizable|ionisable)?[\s-]*"
+        r"(?:lipid[\s-]*(?:m?rna|si[\s-]?rna)?[\s-]*|(?:m?rna|si[\s-]?rna)[\s-]*lipid[\s-]*)"
+        r"nano[\s-]*particles?\b",
+        re.IGNORECASE,
+    ),
+    # Bare "LNP"/"LNPs" as a standalone token, regardless of surrounding punctuation
+    # (e.g. "LNPs,", "(LNP)", "LNP-mediated", "mRNA-LNP").
+    re.compile(r"(?<![A-Za-z])LNPs?(?![A-Za-z])"),
+    re.compile(r"\bionizable lipid\b|\bionisable lipid\b", re.IGNORECASE),
+]
+
+
 def is_lnp_focused(text: str) -> bool:
     """Sanity filter — paper must clearly be about LNPs, not another nanoparticle system."""
     if not text:
         return False
-    lowered = text.lower()
-    lnp_terms = [
-        "lipid nanoparticle",
-        "lipid nano-particle",
-        "lipid nano particle",
-        " lnp ",
-        " lnps ",
-        "ionizable lipid",
-        "ionisable lipid",
-        "mrna-lnp",
-        "mrna lnp",
-    ]
-    return any(t in f" {lowered} " for t in lnp_terms)
+    return any(pat.search(text) for pat in LNP_FOCUS_REGEXES)

@@ -1,0 +1,31 @@
+{
+  "step_name": "Cellular uptake",
+  "total_raw_fetched": 40324,
+  "after_dedup": 39982,
+  "total_rejected": 39906,
+  "final_included": 76,
+  "not_a_rejection": {
+    "no_abstract_passed_on_trust": {
+      "count": 28232,
+      "description": "NOT rejected: source gave no abstract, so the LNP-focus text check was skipped and the paper was trusted through to the quant/kinetic gates (it still had to pass those to survive)."
+    }
+  },
+  "rejected_by_reason": {
+    "not_lnp_focused": {
+      "count": 10788,
+      "description": "Rejected: had an abstract, but abstract/title/journal text never mentions LNPs specifically"
+    },
+    "failed_quant_filter": {
+      "count": 28716,
+      "description": "Rejected: no quantitative evidence found (even after caption/supplementary rescue)"
+    },
+    "failed_kinetic_filter": {
+      "count": 239,
+      "description": "Rejected: no time-course/kinetic evidence found (strict_kinetic step, even after rescue)"
+    },
+    "llm_excluded": {
+      "count": 163,
+      "description": "Rejected: passed all regex gates, but the LLM judged it off-topic/irrelevant"
+    }
+  }
+}
