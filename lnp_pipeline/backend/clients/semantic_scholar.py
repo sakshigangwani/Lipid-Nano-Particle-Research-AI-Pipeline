@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Any
 
 import httpx
@@ -18,6 +19,31 @@ PAGE_SIZE = 100
 MAX_OFFSET = 1000
 
 
+def _boolean_to_quoted_terms(q: str) -> str:
+    """Convert a PubMed-style boolean query into Semantic Scholar's syntax.
+
+    Per Semantic Scholar's own FAQ, their search "does not support boolean
+    operators or wildcards" but quoted text IS supported for exact-phrase
+    matching. So unlike CrossRef (no operators at all), we keep the quotes on
+    each phrase but strip the AND/OR keywords and parentheses — taking the
+    first (most specific) OR-alternative per AND-group, same as OpenAlex's
+    adapter — since there's no way to express "OR" once the operator itself
+    isn't honored.
+    """
+    parts = re.split(r"\bAND\b", q)
+    out: list[str] = []
+    for part in parts:
+        part = part.strip().strip("()").strip()
+        if not part:
+            continue
+        first = re.split(r"\bOR\b", part)[0].strip()
+        first = first.strip('"').strip()
+        if not first:
+            continue
+        out.append(f'"{first}"' if " " in first else first)
+    return " ".join(out)
+
+
 @retry(
     reraise=True,
     stop=stop_after_attempt(3),
@@ -31,7 +57,8 @@ async def _get(client: httpx.AsyncClient, params: dict) -> dict:
 
 
 async def search(query: str) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": "all"}
+    s2_query = _boolean_to_quoted_terms(query)
+    payload = {"q": s2_query, "n": "all", "v": 2}
     cached = cache.load(DB, payload)
     if cached is not None:
         return cached
@@ -45,7 +72,7 @@ async def search(query: str) -> list[dict[str, Any]]:
                 data = await _get(
                     client,
                     {
-                        "query": query,
+                        "query": s2_query,
                         "limit": PAGE_SIZE,
                         "offset": offset,
                         "fields": FIELDS,

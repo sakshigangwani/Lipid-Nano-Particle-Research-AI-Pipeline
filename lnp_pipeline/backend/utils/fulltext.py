@@ -38,9 +38,18 @@ TIMEOUT = httpx.Timeout(30.0, connect=10.0)
 
 # Hard cap on how many full-text fetches we'll do per run. Keeps wall-clock
 # bounded even when many papers fail the abstract-only filters.
-MAX_CAPTION_FETCHES = 80
+#
+# Was 80, which silently dropped genuinely rescuable papers whose abstract
+# lacks quant/kinetic evidence that only appears in a figure/table caption
+# (confirmed: a real paper sitting at position 549+ in the needs-rescue list
+# was never attempted at all, even though its actual caption text would have
+# passed both the quant and kinetic gates). With `needs_captions` routinely
+# running into the thousands for a broad step query, 80 covered only a small,
+# arbitrarily-ordered slice. Raised substantially so far more candidates get
+# a real shot — this does mean more Europe PMC full-text calls per run.
+MAX_CAPTION_FETCHES = 1000
 # How many full-text downloads to run in parallel against Europe PMC.
-CAPTION_CONCURRENCY = 5
+CAPTION_CONCURRENCY = 10
 
 
 @retry(
