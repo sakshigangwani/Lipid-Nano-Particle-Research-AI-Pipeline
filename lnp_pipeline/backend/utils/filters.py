@@ -87,6 +87,13 @@ LNP_FOCUS_REGEXES: list[re.Pattern] = [
     # (e.g. "LNPs,", "(LNP)", "LNP-mediated", "mRNA-LNP").
     re.compile(r"(?<![A-Za-z])LNPs?(?![A-Za-z])"),
     re.compile(r"\bionizable lipid\b|\bionisable lipid\b", re.IGNORECASE),
+    # "Lipoplex(es)" — a related lipid-nucleic acid particle class (often
+    # cationic-lipid based, historically the precursor term to modern
+    # ionizable-lipid LNPs). Papers using this term instead of "LNP"/"lipid
+    # nanoparticle" were previously invisible to every step's query and this
+    # focus check (confirmed: a real paper on lipoplex-delivered mRNA uptake
+    # scored 0 hits everywhere despite being squarely on-topic).
+    re.compile(r"\blipoplex(?:es)?\b", re.IGNORECASE),
 ]
 
 

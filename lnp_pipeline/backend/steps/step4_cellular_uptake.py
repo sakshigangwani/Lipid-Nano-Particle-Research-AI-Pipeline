@@ -25,10 +25,10 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle") '
+    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("cellular uptake" OR "internalization" OR "endocytosis") '
     'AND ("kinetics" OR "time course" OR "time-dependent" OR "time-resolved" '
-    'OR "rate constant") '
+    'OR "rate constant" OR "h after") '
     'AND ("flow cytometry" OR "confocal microscopy" OR "live cell imaging" '
     'OR "fluorescence microscopy")'
 )
@@ -53,6 +53,8 @@ KINETIC_FILTERS = [
     "uptake rate",
     "min incubation",
     "h incubation",
+    "h after",
+    "h post",
 ]
 
 SIGNAL_PHRASES = [

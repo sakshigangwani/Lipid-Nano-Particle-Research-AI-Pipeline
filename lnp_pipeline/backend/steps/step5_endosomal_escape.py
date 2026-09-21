@@ -19,7 +19,7 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle") '
+    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("endosomal escape" OR "endosome escape" OR "membrane disruption" '
     'OR "proton sponge" OR "Gal8" OR "galectin-8") '
     'AND ("efficiency" OR "kinetics" OR "rate" OR "fraction") '

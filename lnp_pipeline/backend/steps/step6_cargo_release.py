@@ -18,7 +18,7 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle") '
+    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("cargo release" OR "mRNA release" OR "payload release" '
     'OR "RNA release" OR "disassembly") '
     'AND ("efficiency" OR "fraction" OR "kinetics" OR "rate") '

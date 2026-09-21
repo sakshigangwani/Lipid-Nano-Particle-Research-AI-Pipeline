@@ -19,11 +19,11 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle") '
+    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("endocytosis" OR "clathrin-mediated endocytosis" OR "caveolae" '
     'OR "macropinocytosis" OR "internalization pathway") '
     'AND ("inhibitor" OR "dynasore" OR "filipin" OR "chlorpromazine" OR "EIPA") '
-    'AND ("kinetics" OR "time-dependent" OR "time course")'
+    'AND ("kinetics" OR "time-dependent" OR "time course" OR "h after")'
 )
 
 QUANTITATIVE_FILTERS = [
@@ -42,6 +42,8 @@ KINETIC_FILTERS = [
     "rate constant",
     "min incubation",
     "h incubation",
+    "h after",
+    "h post",
 ]
 
 SIGNAL_PHRASES = [

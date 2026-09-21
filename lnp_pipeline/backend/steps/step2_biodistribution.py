@@ -18,7 +18,7 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle") '
+    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("biodistribution" OR "organ accumulation" OR "pharmacokinetics" '
     'OR "tissue distribution" OR "IVIS") '
     'AND ("liver" OR "spleen" OR "lung" OR "tumor" OR "lymph node" OR "brain") '

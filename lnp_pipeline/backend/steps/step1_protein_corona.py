@@ -18,7 +18,7 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle") '
+    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("protein corona" OR "opsonization" OR "apolipoprotein" OR "ApoE" '
     'OR "serum protein adsorption") '
     'AND ("mass spectrometry" OR "proteomics" OR "LC-MS" OR "quantification" '

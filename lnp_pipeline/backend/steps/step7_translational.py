@@ -19,7 +19,7 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle") '
+    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("protein expression" OR "translation" OR "luciferase" '
     'OR "GFP" OR "transfection efficiency") '
     'AND ("mRNA" OR "modified mRNA" OR "self-amplifying RNA") '
