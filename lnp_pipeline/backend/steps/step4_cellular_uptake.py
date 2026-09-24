@@ -7,6 +7,7 @@ STEP_META = {
     "name": "Cellular uptake",
     "description": "Quantity and rate of LNP uptake by cells. Requires time-course + a quant metric + imaging/flow method.",
     "strict_kinetic": True,
+    "in_vitro_only": True,
 }
 
 KEYWORDS = [
@@ -25,7 +26,7 @@ KEYWORDS = [
 ]
 
 BOOLEAN_QUERY = (
-    '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
+    '("lipid nanoparticle" OR "LNP" OR "LNPs" OR "lipid nanoparticles" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("cellular uptake" OR "internalization" OR "endocytosis") '
     'AND ("kinetics" OR "time course" OR "time-dependent" OR "time-resolved" '
     'OR "rate constant" OR "h after") '
@@ -79,6 +80,7 @@ async def run_search(progress_cb: ProgressCb | None = None) -> dict[str, list[di
         kinetic_keywords=KINETIC_FILTERS,
         signal_phrases=SIGNAL_PHRASES,
         strict_kinetic=STEP_META["strict_kinetic"],
+        in_vitro_only=STEP_META["in_vitro_only"],
         step_name=STEP_META["name"],
         step_description=STEP_META["description"],
         progress_cb=progress_cb,

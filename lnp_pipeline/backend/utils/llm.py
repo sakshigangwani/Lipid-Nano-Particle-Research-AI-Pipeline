@@ -8,9 +8,9 @@ from typing import Any
 import httpx
 
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
-DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
 MAX_CONCURRENCY = 5
-ABSTRACT_CHAR_CAP = 4000
+ABSTRACT_CHAR_CAP = 8000
 
 
 def _system_prompt(step_name: str, step_description: str, strict_kinetic: bool) -> str:

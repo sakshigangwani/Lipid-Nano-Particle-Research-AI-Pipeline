@@ -5,12 +5,13 @@ import logging
 from collections import Counter
 from typing import Awaitable, Callable
 
-from ..clients import biorxiv, crossref, europepmc, openalex, pubmed, semantic_scholar
+from ..clients import arxiv, biorxiv, crossref, europepmc, openalex, pubmed, semantic_scholar
 from ..utils.dedup import dedup_papers
 from ..utils.filters import (
     find_kinetic_matches,
     find_quant_matches,
     find_signal_phrases,
+    has_in_vivo_markers,
     is_lnp_focused,
 )
 from ..utils.fulltext import fetch_captions_for, paper_key
@@ -41,6 +42,7 @@ async def run_step_search(
     kinetic_keywords: list[str],
     signal_phrases: list[str],
     strict_kinetic: bool,
+    in_vitro_only: bool = False,
     step_name: str = "",
     step_description: str = "",
     progress_cb: ProgressCb | None = None,
@@ -52,6 +54,7 @@ async def run_step_search(
         "crossref": 0,
         "openalex": 0,
         "biorxiv": 0,
+        "arxiv": 0,
         "total_raw": 0,
         "after_dedup": 0,
         "after_quant": 0,
@@ -68,9 +71,10 @@ async def run_step_search(
         crossref.search(boolean_query),
         openalex.search(boolean_query),
         biorxiv.search(boolean_query),
+        arxiv.search(boolean_query),
         return_exceptions=True,
     )
-    pm, epmc, ss, cr, oa, bx = [
+    pm, epmc, ss, cr, oa, bx, ax = [
         r if not isinstance(r, Exception) else [] for r in results
     ]
     counts["pubmed"] = len(pm)
@@ -79,7 +83,8 @@ async def run_step_search(
     counts["crossref"] = len(cr)
     counts["openalex"] = len(oa)
     counts["biorxiv"] = len(bx)
-    combined: list[dict] = [*pm, *epmc, *ss, *cr, *oa, *bx]
+    counts["arxiv"] = len(ax)
+    combined: list[dict] = [*pm, *epmc, *ss, *cr, *oa, *bx, *ax]
     counts["total_raw"] = len(combined)
     await _emit(progress_cb, dict(counts))
 
@@ -106,6 +111,14 @@ async def run_step_search(
             continue
         if not has_abstract:
             rejection_reasons["no_abstract_passed_on_trust"] += 1
+        # In-vitro-only steps reject papers whose abstract shows whole-animal
+        # markers (mice, rats, in vivo, mg/kg dosing, IV/IP/IM routes, etc.).
+        # Only applied when the abstract actually exists — a no-abstract
+        # record has nothing to judge study type from, so it's trusted
+        # through here too, same as the LNP-focus check above.
+        if in_vitro_only and has_abstract and has_in_vivo_markers(text):
+            rejection_reasons["excluded_in_vivo"] += 1
+            continue
         p["_haystack_abstract"] = text
         p["_matched_quant"] = find_quant_matches(text, quant_keywords)
         p["_matched_kinetic"] = find_kinetic_matches(text, kinetic_keywords)
@@ -293,6 +306,7 @@ def _log_rejection_summary(
     """
     reasons_labeled = {
         "not_lnp_focused": "Rejected: had an abstract, but abstract/title/journal text never mentions LNPs specifically",
+        "excluded_in_vivo": "Rejected: in_vitro_only step, abstract shows whole-animal/in vivo markers (mice, mg/kg dosing, IV/IP/IM route, etc.)",
         "failed_quant_filter": "Rejected: no quantitative evidence found (even after caption/supplementary rescue)",
         "failed_kinetic_filter": "Rejected: no time-course/kinetic evidence found (strict_kinetic step, even after rescue)",
         "llm_excluded": "Rejected: passed all regex gates, but the LLM judged it off-topic/irrelevant",

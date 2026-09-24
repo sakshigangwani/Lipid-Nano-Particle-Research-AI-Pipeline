@@ -27,6 +27,7 @@ class PrismaCounts(BaseModel):
     crossref: int = 0
     openalex: int = 0
     biorxiv: int = 0
+    arxiv: int = 0
     total_raw: int = 0
     after_dedup: int = 0
     after_quant: int = 0

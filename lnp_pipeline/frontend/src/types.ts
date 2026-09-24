@@ -12,6 +12,7 @@ export interface PrismaCounts {
   crossref: number;
   openalex: number;
   biorxiv: number;
+  arxiv: number;
   total_raw: number;
   after_dedup: number;
   after_quant: number;

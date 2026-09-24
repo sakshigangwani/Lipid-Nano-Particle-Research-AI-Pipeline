@@ -13,6 +13,7 @@ const DBS: Array<{ key: keyof PrismaCounts; label: string }> = [
   { key: "openalex", label: "OpenAlex" },
   { key: "semantic_scholar", label: "Sem. Scholar" },
   { key: "biorxiv", label: "bioRxiv" },
+  { key: "arxiv", label: "arXiv" },
 ];
 
 export default function PrismaCountsPanel({ counts, state, message }: Props) {

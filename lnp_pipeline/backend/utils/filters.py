@@ -102,3 +102,44 @@ def is_lnp_focused(text: str) -> bool:
     if not text:
         return False
     return any(pat.search(text) for pat in LNP_FOCUS_REGEXES)
+
+
+IN_VIVO_REGEXES: list[re.Pattern] = [
+    # Animal models / whole-organism studies.
+    re.compile(
+        r"\b(?:mice|mouse|murine|rats?|rodents?|rabbits?|"
+        r"non[\s-]?human primates?|nhp|zebrafish|xenograft|"
+        r"in[\s-]vivo)\b",
+        re.IGNORECASE,
+    ),
+    # Whole-animal dosing/administration routes, distinct from cell-culture
+    # dosing (e.g. "treated with 10 nM" in vitro vs. "administered 1 mg/kg").
+    re.compile(
+        r"\b(?:intravenous(?:ly)?|intramuscular(?:ly)?|intratumoral(?:ly)?|"
+        r"intraperitoneal(?:ly)?|subcutaneous(?:ly)?|"
+        r"\d+(?:\.\d+)?\s?mg\s?/\s?kg)\b",
+        re.IGNORECASE,
+    ),
+]
+
+IN_VITRO_REGEXES: list[re.Pattern] = [
+    re.compile(
+        r"\b(?:in[\s-]vitro|cell\s?line|cultured\s+cells?|"
+        r"hela|hek293|cho\s+cells?|primary\s+cells?)\b",
+        re.IGNORECASE,
+    ),
+]
+
+
+def has_in_vivo_markers(text: str) -> bool:
+    """True if the text describes whole-animal / in vivo work."""
+    if not text:
+        return False
+    return any(pat.search(text) for pat in IN_VIVO_REGEXES)
+
+
+def has_in_vitro_markers(text: str) -> bool:
+    """True if the text describes cell-culture / in vitro work."""
+    if not text:
+        return False
+    return any(pat.search(text) for pat in IN_VITRO_REGEXES)
