@@ -85,11 +85,6 @@ export default function PrismaCountsPanel({ counts, state, message }: Props) {
           <div className="v">{counts.after_dedup}</div>
           <div className="l">unique</div>
         </div>
-        <div className="funnel-arrow">→ quant</div>
-        <div className="funnel-stage">
-          <div className="v">{counts.after_quant}</div>
-          <div className="l">quant</div>
-        </div>
         <div className="funnel-arrow">→ kinetic</div>
         <div className="funnel-stage">
           <div className="v">{counts.after_kinetic}</div>

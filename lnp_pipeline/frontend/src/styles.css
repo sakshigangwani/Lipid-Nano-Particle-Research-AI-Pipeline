@@ -775,7 +775,6 @@ html, body {
   border: 1px solid transparent;
   font-family: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
 }
-.chip-quant { background: #e0f2fe; color: #075985; border-color: #bae6fd; }
 .chip-kinetic { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
 .chip-signal { background: #fef3c7; color: #92400e; border-color: #fde68a; }
 
@@ -828,7 +827,6 @@ html, body {
   height: 100%;
   border-radius: 3px;
 }
-.bar-fill.q { background: #38bdf8; }
 .bar-fill.k { background: #a855f7; }
 .bar-fill.s { background: #f59e0b; }
 .bar-fill.d { background: #14b8a6; }

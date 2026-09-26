@@ -2,16 +2,6 @@ from __future__ import annotations
 
 import re
 
-QUANT_REGEXES: list[re.Pattern] = [
-    re.compile(r"\b\d+(?:\.\d+)?\s?%", re.IGNORECASE),
-    re.compile(r"\b\d+(?:\.\d+)?\s?(?:nm|nM|µM|uM|mM|µg|ug|mg|ng|pg|kDa|Da)\b"),
-    re.compile(r"\b\d+(?:\.\d+)?\s?(?:fold|-fold)\b", re.IGNORECASE),
-    re.compile(r"\bIC50\b|\bEC50\b|\bKd\b|\bKa\b", re.IGNORECASE),
-    re.compile(r"\b\d+(?:\.\d+)?\s?(?:particles|molecules|copies)\s?/\s?cell\b", re.IGNORECASE),
-    re.compile(r"\bp\s?[<>=]\s?0?\.\d+\b", re.IGNORECASE),
-    re.compile(r"\b\d+(?:\.\d+)?\s?±\s?\d+(?:\.\d+)?\b"),
-]
-
 KINETIC_REGEXES: list[re.Pattern] = [
     re.compile(r"\bt[\s\-]?1/2\b|\bhalf[-\s]?life\b", re.IGNORECASE),
     re.compile(r"\brate\s+constant\b|\bk\s?on\b|\bk\s?off\b", re.IGNORECASE),
@@ -53,13 +43,6 @@ def _scan_keywords(text: str, keywords: list[str]) -> list[str]:
             seen.add(key)
             found.append(kw)
     return found
-
-
-def find_quant_matches(text: str, extra_keywords: list[str] | None = None) -> list[str]:
-    matches = _scan(text or "", QUANT_REGEXES)
-    if extra_keywords:
-        matches += [m for m in _scan_keywords(text or "", extra_keywords) if m not in matches]
-    return matches
 
 
 def find_kinetic_matches(text: str, extra_keywords: list[str] | None = None) -> list[str]:
@@ -143,3 +126,27 @@ def has_in_vitro_markers(text: str) -> bool:
     if not text:
         return False
     return any(pat.search(text) for pat in IN_VITRO_REGEXES)
+
+
+REVIEW_REGEXES: list[re.Pattern] = [
+    # Title-level review markers ("...: A Review", "Review of...", etc.).
+    re.compile(r"\breview\b", re.IGNORECASE),
+    re.compile(r"\bcurrent\s+(?:knowledge|understanding|perspectives?|challenges)\b", re.IGNORECASE),
+    re.compile(r"\bwe\s+(?:review|evaluate\s+current|summarize|discuss\s+current)\b", re.IGNORECASE),
+    re.compile(r"\bthis\s+review\b", re.IGNORECASE),
+    re.compile(r"\blessons\s+from\b", re.IGNORECASE),
+]
+
+
+def is_review_article(text: str) -> bool:
+    """Best-effort detector for review/perspective articles (as opposed to
+    primary research with original experimental data). None of our source
+    APIs reliably expose an article-type field, so this leans on title and
+    framing-language cues instead. Used to relax the kinetic/primary-data
+    requirement for reviews, which by nature summarize others' data rather
+    than reporting their own — a review can still be a genuinely useful,
+    on-topic result even with zero kinetic terms of its own.
+    """
+    if not text:
+        return False
+    return any(pat.search(text) for pat in REVIEW_REGEXES)

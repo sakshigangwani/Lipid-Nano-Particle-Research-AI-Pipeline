@@ -15,7 +15,6 @@ export interface PrismaCounts {
   arxiv: number;
   total_raw: number;
   after_dedup: number;
-  after_quant: number;
   after_kinetic: number;
   caption_rescued: number;
   llm_scored: number;
@@ -43,9 +42,10 @@ export interface PaperRecord {
   pmid: string | null;
   source_dbs: string[];
   abstract: string | null;
-  matched_quant_terms: string[];
   matched_kinetic_terms: string[];
   matched_signal_phrases: string[];
+  semantic_kinetic_match: boolean;
+  is_review: boolean;
   score: number;
   llm_score: number | null;
   llm_verdict: LLMVerdict;

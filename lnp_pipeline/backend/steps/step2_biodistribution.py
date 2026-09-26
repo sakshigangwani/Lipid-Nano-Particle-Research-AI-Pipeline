@@ -25,16 +25,6 @@ BOOLEAN_QUERY = (
     'AND ("in vivo" OR "mouse" OR "mice" OR "rat" OR "non-human primate")'
 )
 
-QUANTITATIVE_FILTERS = [
-    "% injected dose",
-    "%ID/g",
-    "%ID per gram",
-    "radiance",
-    "p/s/cm",
-    "ng/g tissue",
-    "luminescence",
-]
-
 KINETIC_FILTERS = [
     "time course",
     "post-injection",
@@ -58,7 +48,6 @@ SIGNAL_PHRASES = [
 async def run_search(progress_cb: ProgressCb | None = None) -> dict[str, list[dict]]:
     return await run_step_search(
         boolean_query=BOOLEAN_QUERY,
-        quant_keywords=QUANTITATIVE_FILTERS,
         kinetic_keywords=KINETIC_FILTERS,
         signal_phrases=SIGNAL_PHRASES,
         strict_kinetic=STEP_META["strict_kinetic"],

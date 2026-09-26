@@ -26,9 +26,9 @@ const EMPTY_COUNTS: PrismaCounts = {
   crossref: 0,
   openalex: 0,
   biorxiv: 0,
+  arxiv: 0,
   total_raw: 0,
   after_dedup: 0,
-  after_quant: 0,
   after_kinetic: 0,
   caption_rescued: 0,
   llm_scored: 0,
@@ -340,7 +340,7 @@ export default function App() {
         <div className="footer-note">
           Lipid Nanoparticle Literature Pipeline
           <span className="sep">·</span>
-          Quantitative + kinetic evidence retrieval
+          Kinetic evidence retrieval
         </div>
       </div>
     </>

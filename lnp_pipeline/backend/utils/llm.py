@@ -17,7 +17,10 @@ def _system_prompt(step_name: str, step_description: str, strict_kinetic: bool) 
     kinetic_clause = (
         "The paper MUST contain time-resolved/kinetic data (rates, half-lives, "
         "time courses, t1/2). Papers without explicit time-dependent measurements "
-        "are 'exclude'."
+        "are 'exclude'. EXCEPTION: if the user message marks the paper as a "
+        "REVIEW ARTICLE, this kinetic requirement does not apply — judge it only "
+        "on topical relevance to the step, since a review synthesizes other "
+        "papers' data rather than reporting its own."
         if strict_kinetic
         else "Time-resolved data is a strong plus but not strictly required."
     )
@@ -27,8 +30,7 @@ def _system_prompt(step_name: str, step_description: str, strict_kinetic: bool) 
         f"step '{step_name}' ({step_description}).\n\n"
         "A paper is 'include' only if it (a) is about lipid nanoparticles "
         "specifically (not generic nanoparticles, liposomes for other purposes, "
-        "polymeric NPs, etc.), (b) contains quantitative measurements "
-        f"(numbers, %, units, concentrations), and (c) studies the '{step_name}' "
+        f"polymeric NPs, etc.), and (b) studies the '{step_name}' "
         f"step of the LNP journey. {kinetic_clause}\n\n"
         "Return JSON ONLY in this exact shape:\n"
         '{"score": <float 0..1>, "verdict": "include"|"borderline"|"exclude", '
@@ -44,8 +46,10 @@ def _user_prompt(paper: dict) -> str:
         abstract = abstract[:ABSTRACT_CHAR_CAP] + " …[truncated]"
     journal = paper.get("journal") or ""
     year = paper.get("year") or ""
+    review_line = "Article type: REVIEW ARTICLE\n" if paper.get("_is_review") else ""
     return (
         f"Title: {title}\n"
+        f"{review_line}"
         f"Journal: {journal}  Year: {year}\n"
         f"Abstract: {abstract or '(no abstract)'}"
     )

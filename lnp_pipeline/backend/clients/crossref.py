@@ -103,6 +103,11 @@ async def search(query: str) -> list[dict[str, Any]]:
 
     select = "DOI,title,abstract,author,container-title,issued,published-print,published-online,created"
     items: list[dict] = []
+    # Track whether any page ever came back successfully. A failure on the
+    # very first page (rate-limited, outage, etc.) must not be cached as a
+    # genuine "zero results" — that would poison every future run with a
+    # false empty result for this query, even after the outage passes.
+    fetched_anything = False
     async with httpx.AsyncClient(
         headers={"User-Agent": f"lnp-pipeline/1.0 (mailto:{POLITE_MAILTO})"}
     ) as client:
@@ -127,6 +132,7 @@ async def search(query: str) -> list[dict[str, Any]]:
                 # have rather than losing it all to the caller's blanket
                 # except-and-treat-as-empty handling.
                 break
+            fetched_anything = True
             message = (data or {}).get("message") or {}
             page = message.get("items") or []
             if not page:
@@ -136,6 +142,9 @@ async def search(query: str) -> list[dict[str, Any]]:
             if not next_cursor or next_cursor == cursor:
                 break
             cursor = next_cursor
+
+    if not fetched_anything:
+        return []
 
     records: list[dict[str, Any]] = []
     for it in items:

@@ -11,11 +11,10 @@ function verdictClass(v: LLMVerdict): string {
 }
 
 function scoreBreakdown(p: PaperRecord) {
-  const q = (Math.min(p.matched_quant_terms.length, 5) / 5) * 0.3;
-  const k = (Math.min(p.matched_kinetic_terms.length, 5) / 5) * 0.3;
-  const s = (Math.min(p.matched_signal_phrases.length, 4) / 4) * 0.3;
+  const k = (Math.min(p.matched_kinetic_terms.length, 5) / 5) * 0.45;
+  const s = (Math.min(p.matched_signal_phrases.length, 4) / 4) * 0.45;
   const d = (Math.min(Math.max(p.source_dbs.length - 1, 0), 3) / 3) * 0.1;
-  return { q, k, s, d };
+  return { k, s, d };
 }
 
 function Bar({
@@ -23,12 +22,12 @@ function Bar({
   value,
   cap,
 }: {
-  kind: "q" | "k" | "s" | "d";
+  kind: "k" | "s" | "d";
   value: number;
   cap: number;
 }) {
   const pct = Math.min(100, (value / cap) * 100);
-  const label = { q: "Quant", k: "Kinetic", s: "Signal", d: "Multi-DB" }[kind];
+  const label = { k: "Kinetic", s: "Signal", d: "Multi-DB" }[kind];
   return (
     <div className="bar-row">
       <span className="bar-label">{label}</span>
@@ -46,7 +45,7 @@ export default function PaperRow({ paper }: Props) {
   const pmidUrl = paper.pmid
     ? `https://pubmed.ncbi.nlm.nih.gov/${paper.pmid}/`
     : null;
-  const { q, k, s, d } = scoreBreakdown(paper);
+  const { k, s, d } = scoreBreakdown(paper);
 
   const titleHtml = doiUrl ? (
     <a href={doiUrl} target="_blank" rel="noreferrer">
@@ -63,10 +62,18 @@ export default function PaperRow({ paper }: Props) {
       <div className="study-header">
         <div className="study-title">{titleHtml}</div>
         <div className="badges">
+          {paper.is_review && (
+            <span
+              className="fig-badge"
+              title="Review article — synthesizes other papers' data rather than reporting its own; exempt from the kinetic-evidence requirement"
+            >
+              review
+            </span>
+          )}
           {paper.caption_rescued && (
             <span
               className="fig-badge"
-              title="Rescued by figure/table captions — abstract didn't have the quant/kinetic match"
+              title="Rescued by figure/table captions — abstract didn't have the kinetic match"
             >
               fig
             </span>
@@ -74,9 +81,17 @@ export default function PaperRow({ paper }: Props) {
           {paper.supplementary_rescued && (
             <span
               className="fig-badge suppl"
-              title="Rescued by supplementary material — abstract didn't have the quant/kinetic match, but the paper's supplementary file content did"
+              title="Rescued by supplementary material — abstract didn't have the kinetic match, but the paper's supplementary file content did"
             >
               suppl
+            </span>
+          )}
+          {paper.semantic_kinetic_match && (
+            <span
+              className="fig-badge suppl"
+              title="Kinetic evidence found via semantic similarity, not an exact keyword/regex match"
+            >
+              semantic
             </span>
           )}
           <span className={verdictClass(paper.llm_verdict)}>
@@ -175,7 +190,6 @@ export default function PaperRow({ paper }: Props) {
               )}
             </div>
             <MatchedTerms
-              quant={paper.matched_quant_terms}
               kinetic={paper.matched_kinetic_terms}
               signal={paper.matched_signal_phrases}
             />
@@ -185,9 +199,8 @@ export default function PaperRow({ paper }: Props) {
               <span className="label">Composite score</span>
               <span className="value">{paper.score.toFixed(2)}</span>
             </div>
-            <Bar kind="q" value={q} cap={0.3} />
-            <Bar kind="k" value={k} cap={0.3} />
-            <Bar kind="s" value={s} cap={0.3} />
+            <Bar kind="k" value={k} cap={0.45} />
+            <Bar kind="s" value={s} cap={0.45} />
             <Bar kind="d" value={d} cap={0.1} />
             <div
               style={{
@@ -198,7 +211,7 @@ export default function PaperRow({ paper }: Props) {
                 lineHeight: 1.4,
               }}
             >
-              Quant / kinetic / signal each cap at 0.30; multi-database
+              Kinetic / signal each cap at 0.45; multi-database
               corroboration at 0.10.
             </div>
           </div>

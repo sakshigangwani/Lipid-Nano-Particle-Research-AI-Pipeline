@@ -23,16 +23,10 @@ BOOLEAN_QUERY = (
     'AND ("endocytosis" OR "clathrin-mediated endocytosis" OR "caveolae" '
     'OR "macropinocytosis" OR "internalization pathway") '
     'AND ("inhibitor" OR "dynasore" OR "filipin" OR "chlorpromazine" OR "EIPA") '
-    'AND ("kinetics" OR "time-dependent" OR "time course" OR "h after")'
+    'AND ("kinetics" OR "time-dependent" OR "time course" OR "h after" OR "h post" '
+    'OR "internalization rate" OR "uptake rate" OR "rate constant" '
+    'OR "min incubation" OR "h incubation")'
 )
-
-QUANTITATIVE_FILTERS = [
-    "% inhibition",
-    "% uptake",
-    "fold reduction",
-    "MFI",
-    "mean fluorescence intensity",
-]
 
 KINETIC_FILTERS = [
     "time-dependent",
@@ -60,7 +54,6 @@ SIGNAL_PHRASES = [
 async def run_search(progress_cb: ProgressCb | None = None) -> dict[str, list[dict]]:
     return await run_step_search(
         boolean_query=BOOLEAN_QUERY,
-        quant_keywords=QUANTITATIVE_FILTERS,
         kinetic_keywords=KINETIC_FILTERS,
         signal_phrases=SIGNAL_PHRASES,
         strict_kinetic=STEP_META["strict_kinetic"],

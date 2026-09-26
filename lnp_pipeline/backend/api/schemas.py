@@ -30,7 +30,6 @@ class PrismaCounts(BaseModel):
     arxiv: int = 0
     total_raw: int = 0
     after_dedup: int = 0
-    after_quant: int = 0
     after_kinetic: int = 0
     caption_rescued: int = 0
     llm_scored: int = 0
@@ -54,9 +53,10 @@ class PaperRecord(BaseModel):
     pmid: Optional[str] = None
     source_dbs: list[str] = []
     abstract: Optional[str] = None
-    matched_quant_terms: list[str] = []
     matched_kinetic_terms: list[str] = []
     matched_signal_phrases: list[str] = []
+    semantic_kinetic_match: bool = False
+    is_review: bool = False
     score: float = 0.0
     llm_score: Optional[float] = None
     llm_verdict: Literal["include", "borderline", "exclude", "skipped", "error"] = "skipped"

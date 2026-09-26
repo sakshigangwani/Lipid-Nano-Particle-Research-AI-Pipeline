@@ -22,18 +22,8 @@ BOOLEAN_QUERY = (
     '("lipid nanoparticle" OR "LNP" OR "ionizable lipid nanoparticle" OR "lipoplex") '
     'AND ("endosomal escape" OR "endosome escape" OR "membrane disruption" '
     'OR "proton sponge" OR "Gal8" OR "galectin-8") '
-    'AND ("efficiency" OR "kinetics" OR "rate" OR "fraction") '
     'AND ("mRNA" OR "siRNA" OR "cargo" OR "cytosolic delivery")'
 )
-
-QUANTITATIVE_FILTERS = [
-    "% escape",
-    "escape efficiency",
-    "fold increase",
-    "puncta per cell",
-    "Gal8-GFP",
-    "cytosolic fraction",
-]
 
 KINETIC_FILTERS = [
     "time-dependent",
@@ -59,7 +49,6 @@ SIGNAL_PHRASES = [
 async def run_search(progress_cb: ProgressCb | None = None) -> dict[str, list[dict]]:
     return await run_step_search(
         boolean_query=BOOLEAN_QUERY,
-        quant_keywords=QUANTITATIVE_FILTERS,
         kinetic_keywords=KINETIC_FILTERS,
         signal_phrases=SIGNAL_PHRASES,
         strict_kinetic=STEP_META["strict_kinetic"],

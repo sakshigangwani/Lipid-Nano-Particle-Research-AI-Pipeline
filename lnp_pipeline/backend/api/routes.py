@@ -163,7 +163,6 @@ def _csv_bytes(papers: list[PaperRecord]) -> bytes:
             "doi",
             "pmid",
             "source_dbs",
-            "matched_quant_terms",
             "matched_kinetic_terms",
             "matched_signal_phrases",
             "abstract",
@@ -180,7 +179,6 @@ def _csv_bytes(papers: list[PaperRecord]) -> bytes:
                 p.doi or "",
                 p.pmid or "",
                 "; ".join(p.source_dbs),
-                "; ".join(p.matched_quant_terms),
                 "; ".join(p.matched_kinetic_terms),
                 "; ".join(p.matched_signal_phrases),
                 (p.abstract or "").replace("\n", " "),
@@ -203,7 +201,6 @@ def _md_bytes(run: _RunState, papers: list[PaperRecord]) -> bytes:
         f"Semantic Scholar: {c.semantic_scholar}  ·  CrossRef: {c.crossref}"
     )
     lines.append(f"- After dedup: **{c.after_dedup}**")
-    lines.append(f"- After quantitative filter: **{c.after_quant}**")
     lines.append(f"- After kinetic filter: **{c.after_kinetic}**")
     lines.append(f"- Final: **{c.final}**")
     lines.append("")
@@ -224,8 +221,6 @@ def _md_bytes(run: _RunState, papers: list[PaperRecord]) -> bytes:
             lines.append(" · ".join(meta))
         lines.append("")
         lines.append(f"**Score:** {p.score}  ·  **Sources:** {', '.join(p.source_dbs)}")
-        if p.matched_quant_terms:
-            lines.append(f"**Quant:** {', '.join(p.matched_quant_terms)}")
         if p.matched_kinetic_terms:
             lines.append(f"**Kinetic:** {', '.join(p.matched_kinetic_terms)}")
         if p.matched_signal_phrases:
