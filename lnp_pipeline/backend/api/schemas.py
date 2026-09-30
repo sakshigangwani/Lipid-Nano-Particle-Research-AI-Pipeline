@@ -63,6 +63,7 @@ class PaperRecord(BaseModel):
     llm_rationale: str = ""
     caption_rescued: bool = False
     supplementary_rescued: bool = False
+    kinetic_unverified: bool = False
 
 
 class RunResults(BaseModel):

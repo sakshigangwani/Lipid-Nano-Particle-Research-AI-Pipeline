@@ -39,6 +39,11 @@ async def _get_text(client: httpx.AsyncClient, url: str, params: dict) -> str:
     return r.text
 
 
+def _text(el: ET.Element) -> str:
+    """All text inside an element, including inline markup like <sub>/<i>."""
+    return " ".join("".join(el.itertext()).split())
+
+
 def _parse_pubmed_xml(xml_text: str) -> list[dict[str, Any]]:
     # Minimal XML parsing; avoid heavy deps.
     import xml.etree.ElementTree as ET
@@ -51,8 +56,11 @@ def _parse_pubmed_xml(xml_text: str) -> list[dict[str, Any]]:
 
     for art in root.findall(".//PubmedArticle"):
         title_el = art.find(".//ArticleTitle")
+        # itertext(), not .text: .text stops at the first inline child tag, so
+        # an abstract containing e.g. "EG<sub>9</sub>" or "<i>in vivo</i>" was
+        # silently truncated at that point.
         abstract_parts = [
-            (e.text or "") for e in art.findall(".//Abstract/AbstractText")
+            _text(e) for e in art.findall(".//Abstract/AbstractText")
         ]
         abstract = " ".join(p for p in abstract_parts if p).strip() or None
         journal = art.findtext(".//Journal/Title")
@@ -85,7 +93,7 @@ def _parse_pubmed_xml(xml_text: str) -> list[dict[str, Any]]:
 
         out.append(
             {
-                "title": (title_el.text or "").strip() if title_el is not None else "",
+                "title": _text(title_el) if title_el is not None else "",
                 "abstract": abstract,
                 "journal": journal,
                 "year": year,
@@ -106,7 +114,8 @@ FETCH_CHUNK = 200
 
 
 async def search(query: str) -> list[dict[str, Any]]:
-    payload = {"q": query, "n": "all"}
+    # v2: records cached before the itertext() fix have truncated abstracts.
+    payload = {"q": query, "n": "all", "v": 2}
     cached = cache.load(DB, payload)
     if cached is not None:
         return cached

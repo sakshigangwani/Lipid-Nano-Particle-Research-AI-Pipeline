@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import re
 from collections import Counter
 from typing import Awaitable, Callable
 
@@ -14,6 +15,7 @@ from ..utils.filters import (
     has_in_vivo_markers,
     is_lnp_focused,
     is_review_article,
+    reports_topic_measurement,
 )
 from ..utils.fulltext import fetch_captions_for, paper_key
 from ..utils.llm import score_papers as llm_score_papers
@@ -45,6 +47,7 @@ async def run_step_search(
     in_vitro_only: bool = False,
     step_name: str = "",
     step_description: str = "",
+    unverified_topic_patterns: list[re.Pattern] | None = None,
     progress_cb: ProgressCb | None = None,
 ) -> dict[str, list[dict]]:
     counts: dict = {
@@ -163,6 +166,7 @@ async def run_step_search(
         bundle = captions_map.get(paper_key(p))
         if not bundle:
             continue
+        p["_fulltext"] = bundle
         caps = bundle.get("captions") or ""
         suppl = bundle.get("supplementary") or ""
         if not caps and not suppl:
@@ -177,7 +181,6 @@ async def run_step_search(
             if new_k:
                 p["_matched_kinetic"] = new_k
                 p[f"_{source_label}_rescued_kinetic"] = True
-                p["_caption_text"] = extra
 
         if not p["_matched_kinetic"]:
             # Regex still came up empty — queue the combined text for a
@@ -194,14 +197,14 @@ async def run_step_search(
             if matches:
                 p["_matched_kinetic"] = matches
                 p["_semantic_kinetic"] = True
-                p["_caption_text"] = p.get("_caption_text") or "semantically matched via caption/supplementary text"
+                p["_semantic_fulltext_rescued"] = True
 
     rescued = sum(
         1
         for p in needs_captions
         if p.get("_caption_rescued_kinetic")
         or p.get("_supplementary_rescued_kinetic")
-        or (p.get("_semantic_kinetic") and p.get("_caption_text"))
+        or p.get("_semantic_fulltext_rescued")
     )
     counts["caption_rescued"] = rescued
     await _emit(progress_cb, dict(counts))
@@ -211,25 +214,70 @@ async def run_step_search(
     # than reporting their own, so requiring kinetic terms in a review's own
     # abstract would reject genuinely useful, on-topic review articles for
     # having no primary data to have kinetics in.
+    #
+    # Papers with no full text available are a special case: their abstract is
+    # the only thing we could check, and abstracts routinely omit the time
+    # course that's in the figures (e.g. "3-fold increase in cellular uptake"
+    # with the 15-240 min uptake curve only in Fig. 2). Absence of kinetic
+    # words there isn't evidence of absence. If the step opts in via
+    # `unverified_topic_patterns`, such a paper still reaches the LLM when its
+    # abstract shows the step's topic was measured (a numeric result, or the
+    # topic paired with a measurement word like "assessed"/"flow cytometry") — flagged
+    # `_kinetic_unverified` so the LLM and UI know kinetics weren't checked.
     kinetic_passed: list[dict] = []
     for p in lnp_focused:
         if (not strict_kinetic) or p["_matched_kinetic"] or p["_is_review"]:
+            kinetic_passed.append(p)
+        elif (
+            unverified_topic_patterns
+            and not p.get("_fulltext")
+            and reports_topic_measurement(p["_haystack_abstract"], unverified_topic_patterns)
+        ):
+            p["_kinetic_unverified"] = True
+            rejection_reasons["kinetic_unverified_passed"] += 1
             kinetic_passed.append(p)
         else:
             rejection_reasons["failed_kinetic_filter"] += 1
     counts["after_kinetic"] = len(kinetic_passed)
     await _emit(progress_cb, dict(counts))
 
+    # ─── Full-text context for every paper the LLM will judge ───
+    # Previously only papers whose *abstract failed* the kinetic regex ever had
+    # captions fetched, so a paper whose abstract passed was judged on the
+    # abstract alone — even when its real uptake data (e.g. "uptake at 1, 6 and
+    # 24 h") lived only in a figure caption, leading to wrong LLM excludes.
+    # Fetch captions/supplementary for the rest of the survivors too (cached on
+    # disk, so re-runs are free) and fold them into the kinetic matches so the
+    # deterministic score reflects figure evidence as well.
+    needs_context = [p for p in kinetic_passed if not p.get("_fulltext")]
+    context_map = await fetch_captions_for(needs_context)
+    for p in needs_context:
+        bundle = context_map.get(paper_key(p))
+        if not bundle:
+            continue
+        p["_fulltext"] = bundle
+        combined = "\n\n".join(
+            filter(None, [p["_haystack_abstract"], bundle.get("captions"), bundle.get("supplementary")])
+        )
+        extra_k = find_kinetic_matches(combined, kinetic_keywords)
+        p["_matched_kinetic"] = p["_matched_kinetic"] + [
+            k for k in extra_k if k not in p["_matched_kinetic"]
+        ]
+
     # ─── OpenAI LLM relevance pass over the surviving set ───
-    # If a paper was caption-rescued, give the LLM the captions too so its
-    # verdict is consistent with the regex evidence.
+    # Captions and supplementary text are passed as separate labelled fields
+    # (not merged into the abstract) so the prompt can tell the model where
+    # each piece of evidence came from.
     llm_inputs = []
     for p in kinetic_passed:
-        if p.get("_caption_text"):
-            joined = (p.get("abstract") or "") + "\n\n" + p["_caption_text"]
-            llm_inputs.append({**p, "abstract": joined})
-        else:
-            llm_inputs.append(p)
+        bundle = p.get("_fulltext") or {}
+        llm_inputs.append(
+            {
+                **p,
+                "captions": bundle.get("captions") or "",
+                "supplementary": bundle.get("supplementary") or "",
+            }
+        )
     llm_results = await llm_score_papers(
         llm_inputs,
         step_name=step_name,
@@ -246,9 +294,10 @@ async def run_step_search(
     # (e.g. the 48). The UI exposes both as separate tabs.
     candidates: list[dict] = []
     for p, llm in zip(kinetic_passed, llm_results):
-        sigs_text = p["_haystack_abstract"]
-        if p.get("_caption_text"):
-            sigs_text = sigs_text + "\n\n" + p["_caption_text"]
+        bundle = p.get("_fulltext") or {}
+        sigs_text = "\n\n".join(
+            filter(None, [p["_haystack_abstract"], bundle.get("captions"), bundle.get("supplementary")])
+        )
         sigs = find_signal_phrases(sigs_text, signal_phrases)
         record = {
             "title": p.get("title") or "",
@@ -273,6 +322,7 @@ async def run_step_search(
             "llm_rationale": llm.get("llm_rationale", ""),
             "caption_rescued": bool(p.get("_caption_rescued_kinetic")),
             "supplementary_rescued": bool(p.get("_supplementary_rescued_kinetic")),
+            "kinetic_unverified": bool(p.get("_kinetic_unverified")),
         }
         candidates.append(record)
 
@@ -325,6 +375,7 @@ def _log_rejection_summary(
     }
     total_rejected = sum(rejection_reasons.get(k, 0) for k in reasons_labeled)
     no_abstract_passed = rejection_reasons.get("no_abstract_passed_on_trust", 0)
+    kinetic_unverified = rejection_reasons.get("kinetic_unverified_passed", 0)
     report = {
         "step_name": step_name,
         "total_raw_fetched": total_raw,
@@ -340,7 +391,16 @@ def _log_rejection_summary(
                     "kinetic gate (it still had to pass that, for strict_kinetic "
                     "steps, to survive)."
                 ),
-            }
+            },
+            "kinetic_unverified_passed": {
+                "count": kinetic_unverified,
+                "description": (
+                    "NOT rejected: no kinetic terms in the abstract and no full "
+                    "text available to check, but the abstract shows the "
+                    "step's topic was measured, so it was sent to "
+                    "the LLM flagged as kinetics-unverified."
+                ),
+            },
         },
         "rejected_by_reason": {
             reason: {

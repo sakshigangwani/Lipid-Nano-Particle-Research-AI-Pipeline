@@ -86,6 +86,14 @@ export default function PaperRow({ paper }: Props) {
               suppl
             </span>
           )}
+          {paper.kinetic_unverified && (
+            <span
+              className="fig-badge suppl"
+              title="No full text available, so kinetic data couldn't be checked — passed because the abstract shows this step was measured"
+            >
+              unverified
+            </span>
+          )}
           {paper.semantic_kinetic_match && (
             <span
               className="fig-badge suppl"

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 from ._base import ProgressCb, run_step_search
 
 STEP_META = {
@@ -27,7 +29,8 @@ KEYWORDS = [
 
 BOOLEAN_QUERY = (
     '("lipid nanoparticle" OR "LNP" OR "LNPs" OR "lipid nanoparticles" OR "ionizable lipid nanoparticle" OR "lipoplex") '
-    'AND ("cellular uptake" OR "internalization" OR "endocytosis" OR "transfection")'
+    'AND ("cellular uptake" OR "internalization" OR "endocytosis" OR "transfection" '
+    'OR "endosomal escape" OR "endosome escape" OR "internalization pathway")'
 )
 
 KINETIC_FILTERS = [
@@ -41,6 +44,16 @@ KINETIC_FILTERS = [
     "h incubation",
     "h after",
     "h post",
+]
+
+# When a paper has no full text to check, it can still reach the LLM (flagged
+# kinetics-unverified) if its abstract shows one of these topics was measured —
+# a numeric result, or the topic paired with a measurement word like "assessed"
+# or "flow cytometry". See run_step_search.
+UNVERIFIED_TOPIC_PATTERNS = [
+    re.compile(r"\b(?:cellular|cell)\s+uptake\b", re.IGNORECASE),
+    re.compile(r"\binternali[sz]ation\b|\binternali[sz]ed\b", re.IGNORECASE),
+    re.compile(r"\buptake\s+(?:by|in|into|of)\b", re.IGNORECASE),
 ]
 
 SIGNAL_PHRASES = [
@@ -67,5 +80,6 @@ async def run_search(progress_cb: ProgressCb | None = None) -> dict[str, list[di
         in_vitro_only=STEP_META["in_vitro_only"],
         step_name=STEP_META["name"],
         step_description=STEP_META["description"],
+        unverified_topic_patterns=UNVERIFIED_TOPIC_PATTERNS,
         progress_cb=progress_cb,
     )

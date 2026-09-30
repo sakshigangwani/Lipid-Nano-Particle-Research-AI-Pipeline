@@ -52,6 +52,7 @@ export interface PaperRecord {
   llm_rationale: string;
   caption_rescued: boolean;
   supplementary_rescued: boolean;
+  kinetic_unverified?: boolean;
 }
 
 export interface RunResults {

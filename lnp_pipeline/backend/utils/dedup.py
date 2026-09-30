@@ -37,9 +37,14 @@ def dedup_papers(papers: list[dict]) -> list[dict]:
     out: list[dict] = []
 
     def merge(existing: dict, new: dict) -> dict:
-        for key in ("abstract", "journal", "year", "pmid", "doi"):
+        for key in ("journal", "year", "pmid", "doi"):
             if not existing.get(key) and new.get(key):
                 existing[key] = new[key]
+        # Keep the longest abstract, not the first one seen: sources differ in
+        # completeness (one may be truncated or missing structured sections),
+        # and the filters and LLM only ever see the surviving copy.
+        if len(new.get("abstract") or "") > len(existing.get("abstract") or ""):
+            existing["abstract"] = new["abstract"]
         if len(new.get("authors") or []) > len(existing.get("authors") or []):
             existing["authors"] = new["authors"]
         existing_dbs = set(existing.get("source_dbs") or [])

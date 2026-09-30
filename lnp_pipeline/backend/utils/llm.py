@@ -11,6 +11,8 @@ OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
 MAX_CONCURRENCY = 5
 ABSTRACT_CHAR_CAP = 8000
+CAPTIONS_CHAR_CAP = 6000
+SUPPLEMENTARY_CHAR_CAP = 2000
 
 
 def _system_prompt(step_name: str, step_description: str, strict_kinetic: bool) -> str:
@@ -32,26 +34,47 @@ def _system_prompt(step_name: str, step_description: str, strict_kinetic: bool) 
         "specifically (not generic nanoparticles, liposomes for other purposes, "
         f"polymeric NPs, etc.), and (b) studies the '{step_name}' "
         f"step of the LNP journey. {kinetic_clause}\n\n"
+        "Evidence may come from the abstract OR, when provided, the figure/table "
+        "captions and supplementary material taken from the paper's full text. "
+        "Abstracts often omit experimental detail that only appears in figures, "
+        "so treat measurements described in captions (e.g. 'uptake measured at "
+        "1, 6 and 24 h by flow cytometry', 'fluorescence over 18 h') as valid "
+        "evidence, including valid time-resolved/kinetic evidence.\n\n"
         "Return JSON ONLY in this exact shape:\n"
         '{"score": <float 0..1>, "verdict": "include"|"borderline"|"exclude", '
         '"rationale": "<<=240 chars, plain English, cite specific evidence from '
-        'the abstract>"}'
+        'the abstract or captions>"}'
     )
+
+
+def _truncate(text: str, cap: int) -> str:
+    text = (text or "").strip()
+    return text[:cap] + " …[truncated]" if len(text) > cap else text
 
 
 def _user_prompt(paper: dict) -> str:
     title = paper.get("title") or "(no title)"
-    abstract = (paper.get("abstract") or "").strip()
-    if len(abstract) > ABSTRACT_CHAR_CAP:
-        abstract = abstract[:ABSTRACT_CHAR_CAP] + " …[truncated]"
+    abstract = _truncate(paper.get("abstract") or "", ABSTRACT_CHAR_CAP)
+    captions = _truncate(paper.get("captions") or "", CAPTIONS_CHAR_CAP)
+    supplementary = _truncate(paper.get("supplementary") or "", SUPPLEMENTARY_CHAR_CAP)
     journal = paper.get("journal") or ""
     year = paper.get("year") or ""
     review_line = "Article type: REVIEW ARTICLE\n" if paper.get("_is_review") else ""
+    if paper.get("_kinetic_unverified"):
+        review_line += (
+            "Note: FULL TEXT UNAVAILABLE. Kinetic data could not be checked because "
+            "only the abstract is accessible, and abstracts often omit time courses "
+            "shown in figures. If the abstract shows this step was measured, "
+            "do not 'exclude' solely for lacking time-resolved data in the "
+            "abstract; use 'borderline' (or 'include' if other evidence is strong).\n"
+        )
     return (
         f"Title: {title}\n"
         f"{review_line}"
         f"Journal: {journal}  Year: {year}\n"
         f"Abstract: {abstract or '(no abstract)'}"
+        + (f"\n\nFigure/table captions (from full text):\n{captions}" if captions else "")
+        + (f"\n\nSupplementary material (from full text):\n{supplementary}" if supplementary else "")
     )
 
 

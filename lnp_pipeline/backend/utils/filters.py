@@ -6,8 +6,17 @@ KINETIC_REGEXES: list[re.Pattern] = [
     re.compile(r"\bt[\s\-]?1/2\b|\bhalf[-\s]?life\b", re.IGNORECASE),
     re.compile(r"\brate\s+constant\b|\bk\s?on\b|\bk\s?off\b", re.IGNORECASE),
     re.compile(r"\btime[-\s]?(?:course|dependent|resolved|lapse)\b", re.IGNORECASE),
-    re.compile(r"\bkinetics?\b", re.IGNORECASE),
-    re.compile(r"\b\d+(?:\.\d+)?\s?(?:s|sec|min|h|hr|hour|hours|day|days)\b"),
+    # No leading \b: must also match compounds like "pharmacokinetics",
+    # "toxicokinetics" ("cellular pharmacokinetics" is a common way uptake
+    # papers describe time-resolved uptake/release measurements).
+    re.compile(r"kinetics?\b|kinetically\b", re.IGNORECASE),
+    # Numeric durations. Allows a hyphen ("24-h incubation", "10-min"), full
+    # and plural unit words ("10 minutes", "48 hrs"), and weeks/months.
+    re.compile(
+        r"\b\d+(?:\.\d+)?\s?-?\s?(?:s|secs?|seconds?|min|mins|minutes?|h|hrs?|hours?|"
+        r"days?|wks?|weeks?|months?)\b",
+        re.IGNORECASE,
+    ),
     re.compile(r"\bAUC\b|\bclearance\b|\bplasma half[-\s]?life\b", re.IGNORECASE),
     re.compile(r"\bover\s+time\b|\bas\s+a\s+function\s+of\s+time\b", re.IGNORECASE),
 ]
@@ -50,6 +59,37 @@ def find_kinetic_matches(text: str, extra_keywords: list[str] | None = None) -> 
     if extra_keywords:
         matches += [m for m in _scan_keywords(text or "", extra_keywords) if m not in matches]
     return matches
+
+
+# A reported quantitative result: "3-fold", "65%", "2.5 fold".
+_QUANT_RESULT_RE = re.compile(r"\b\d+(?:\.\d+)?\s?(?:-?\s?fold\b|%)", re.IGNORECASE)
+
+
+# Words indicating the topic was actually measured/studied, not just mentioned
+# in passing ("...was not due to impaired cellular uptake" after mechanistic
+# studies, "uptake was assessed by flow cytometry").
+_MEASUREMENT_CUE_RE = re.compile(
+    r"flow\s+cytometr|confocal|microscop|measur|assess|quantif|evaluat|examin|"
+    r"investigat|analy[sz]|reveal|track|monitor|determin",
+    re.IGNORECASE,
+)
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+")
+
+
+def reports_topic_measurement(text: str, topic_patterns: list[re.Pattern]) -> bool:
+    """True if the text shows the step's topic was actually measured: either it
+    mentions the topic and reports a numeric result (fold-change or %), or a
+    single sentence pairs the topic with a measurement word. Used to decide
+    whether a paper whose abstract lacks kinetic wording is still worth an LLM
+    look when its full text can't be checked."""
+    if not text or not any(p.search(text) for p in topic_patterns):
+        return False
+    if _QUANT_RESULT_RE.search(text):
+        return True
+    return any(
+        _MEASUREMENT_CUE_RE.search(s) and any(p.search(s) for p in topic_patterns)
+        for s in _SENTENCE_SPLIT_RE.split(text)
+    )
 
 
 def find_signal_phrases(text: str, phrases: list[str]) -> list[str]:

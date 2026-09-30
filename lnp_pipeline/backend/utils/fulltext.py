@@ -4,11 +4,12 @@ quantitative/kinetic evidence.
 
 Workflow per paper:
   1. Resolve a PMCID via Europe PMC's search endpoint (by DOI, falling back to PMID).
-  2. Hit `/{PMCID}/fullTextXML` and parse <fig>/<table-wrap> <caption> blocks
+  2. Hit `/{PMCID}/fullTextXML` (falling back to NCBI efetch db=pmc for
+     non-open-access PMC articles such as author manuscripts) and parse <fig>/<table-wrap> <caption> blocks
      and <supplementary-material> blocks.
   3. Return both bundles separately so downstream can attribute the rescue.
 
-Both lookups are cached on disk under storage/cache/fulltext_v2/* so re-runs are
+Both lookups are cached on disk under storage/cache/fulltext_v3/* so re-runs are
 free. Anything that fails (closed-access paper, no PMCID, parse error) returns
 empty strings — the pipeline simply doesn't get a rescue for that paper.
 
@@ -19,6 +20,8 @@ Strictly closed-access papers with no PMC mirror remain abstract-only.
 from __future__ import annotations
 
 import asyncio
+import os
+import time
 import xml.etree.ElementTree as ET
 from typing import Any
 
@@ -34,6 +37,16 @@ from . import cache
 
 SEARCH_URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 FULLTEXT_URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML"
+# Fallback: Europe PMC's fullTextXML only serves its open-access subset and
+# returns HTTP 500 for everything else — including NIH author manuscripts that
+# have a PMCID and are freely readable in PMC. NCBI's efetch (db=pmc) serves
+# those, so we try it whenever Europe PMC won't give us the XML.
+NCBI_EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
+NCBI_API_KEY = os.getenv("NCBI_API_KEY", "").strip()
+# NCBI allows 3 requests/s without an API key, 10/s with one.
+NCBI_MIN_INTERVAL = 0.11 if NCBI_API_KEY else 0.35
+CACHE_NS = "fulltext_v3"
+LEGACY_CACHE_NS = "fulltext_v2"
 TIMEOUT = httpx.Timeout(30.0, connect=10.0)
 
 # Hard cap on how many full-text fetches we'll do per run. Keeps wall-clock
@@ -47,7 +60,7 @@ TIMEOUT = httpx.Timeout(30.0, connect=10.0)
 # running into the thousands for a broad step query, 80 covered only a small,
 # arbitrarily-ordered slice. Raised substantially so far more candidates get
 # a real shot — this does mean more Europe PMC full-text calls per run.
-MAX_CAPTION_FETCHES = 1000
+MAX_CAPTION_FETCHES = 10000
 # How many full-text downloads to run in parallel against Europe PMC.
 CAPTION_CONCURRENCY = 10
 
@@ -64,14 +77,42 @@ async def _get_json(client: httpx.AsyncClient, url: str, params: dict) -> dict:
     return r.json()
 
 
+async def _get_epmc_fulltext(client: httpx.AsyncClient, pmcid: str) -> str:
+    """Europe PMC full-text XML, or "" when it isn't in their open-access
+    subset. Europe PMC signals that with HTTP 500 (not 404), so a 500 here is
+    an expected miss, not a transient error — no retry."""
+    r = await client.get(FULLTEXT_URL.format(pmcid=pmcid), timeout=TIMEOUT)
+    if r.status_code in (404, 500):
+        return ""
+    r.raise_for_status()
+    return r.text
+
+
+_ncbi_lock = asyncio.Lock()
+_ncbi_last_call = 0.0
+
+
+async def _ncbi_throttle() -> None:
+    global _ncbi_last_call
+    async with _ncbi_lock:
+        wait = NCBI_MIN_INTERVAL - (time.monotonic() - _ncbi_last_call)
+        if wait > 0:
+            await asyncio.sleep(wait)
+        _ncbi_last_call = time.monotonic()
+
+
 @retry(
     reraise=True,
-    stop=stop_after_attempt(2),
-    wait=wait_exponential_jitter(initial=1, max=6),
+    stop=stop_after_attempt(3),
+    wait=wait_exponential_jitter(initial=1, max=8),
     retry=retry_if_exception_type((httpx.HTTPError,)),
 )
-async def _get_text(client: httpx.AsyncClient, url: str) -> str:
-    r = await client.get(url, timeout=TIMEOUT)
+async def _get_ncbi_fulltext(client: httpx.AsyncClient, pmcid: str) -> str:
+    await _ncbi_throttle()
+    params = {"db": "pmc", "id": pmcid.removeprefix("PMC"), "rettype": "xml"}
+    if NCBI_API_KEY:
+        params["api_key"] = NCBI_API_KEY
+    r = await client.get(NCBI_EFETCH_URL, params=params, timeout=TIMEOUT)
     if r.status_code == 404:
         return ""
     r.raise_for_status()
@@ -87,14 +128,12 @@ async def _resolve_pmcid(
         query = f"DOI:{doi}"
     else:
         query = f"EXT_ID:{pmid} AND SRC:MED"
-    try:
-        data = await _get_json(
-            client,
-            SEARCH_URL,
-            {"query": query, "format": "json", "resultType": "lite", "pageSize": 1},
-        )
-    except httpx.HTTPError:
-        return None
+    # HTTP errors propagate so the caller can skip caching a transient failure.
+    data = await _get_json(
+        client,
+        SEARCH_URL,
+        {"query": query, "format": "json", "resultType": "lite", "pageSize": 1},
+    )
     hits = (data.get("resultList") or {}).get("result", []) if data else []
     if not hits:
         return None
@@ -154,45 +193,83 @@ def _extract_from_xml(xml_text: str) -> dict[str, str]:
     }
 
 
+def _cache_key(doi: str | None, pmid: str | None) -> dict[str, str]:
+    return {"doi": (doi or "").lower(), "pmid": pmid or ""}
+
+
+def _as_bundle(cached: Any) -> dict[str, str] | None:
+    if isinstance(cached, dict) and "captions" in cached and "supplementary" in cached:
+        return {
+            "captions": cached.get("captions") or "",
+            "supplementary": cached.get("supplementary") or "",
+        }
+    return None
+
+
+def _load_cached(doi: str | None, pmid: str | None) -> dict[str, str] | None:
+    key = _cache_key(doi, pmid)
+    hit = _as_bundle(cache.load(CACHE_NS, key))
+    if hit is not None:
+        return hit
+    # Reuse non-empty results from the pre-NCBI-fallback cache. Empty ones are
+    # ignored on purpose: many were author manuscripts Europe PMC refused to
+    # serve, which the NCBI fallback can now retrieve.
+    legacy = _as_bundle(cache.load(LEGACY_CACHE_NS, key))
+    if legacy and (legacy["captions"] or legacy["supplementary"]):
+        return legacy
+    return None
+
+
 async def _fetch_one(
     client: httpx.AsyncClient,
     sem: asyncio.Semaphore,
     doi: str | None,
     pmid: str | None,
 ) -> dict[str, str]:
-    cache_key = {"doi": (doi or "").lower(), "pmid": pmid or ""}
-    cached = cache.load("fulltext_v2", cache_key)
-    if isinstance(cached, dict) and "captions" in cached and "supplementary" in cached:
-        return {
-            "captions": cached.get("captions") or "",
-            "supplementary": cached.get("supplementary") or "",
-        }
+    cached = _load_cached(doi, pmid)
+    if cached is not None:
+        return cached
 
     result = {"captions": "", "supplementary": ""}
     async with sem:
         try:
             pmcid = await _resolve_pmcid(client, doi, pmid)
             if pmcid:
-                xml_text = await _get_text(client, FULLTEXT_URL.format(pmcid=pmcid))
-                result = _extract_from_xml(xml_text)
+                result = _extract_from_xml(await _get_epmc_fulltext(client, pmcid))
+                if not (result["captions"] or result["supplementary"]):
+                    result = _extract_from_xml(await _get_ncbi_fulltext(client, pmcid))
         except Exception:  # noqa: BLE001
-            result = {"captions": "", "supplementary": ""}
-    cache.save("fulltext_v2", cache_key, result)
+            # Transient failure (timeout, 5xx, rate limit): don't cache it, or
+            # the paper would be marked "no full text" forever. Only genuine
+            # misses (no PMCID, 404, unparseable XML) get cached as empty.
+            return result
+    cache.save(CACHE_NS, _cache_key(doi, pmid), result)
     return result
 
 
 async def fetch_captions_for(
     papers: list[dict[str, Any]],
 ) -> dict[str, dict[str, str]]:
-    """Returns {paper_key: {"captions": ..., "supplementary": ...}} for up to
-    MAX_CAPTION_FETCHES papers. Either side of the inner dict can be empty.
+    """Returns {paper_key: {"captions": ..., "supplementary": ...}}. Either side
+    of the inner dict can be empty.
+
+    Papers already in the on-disk cache are always included — a cache hit costs
+    nothing, so only papers that need a real network fetch count toward
+    MAX_CAPTION_FETCHES. (Previously the cap was applied to the raw list, so a
+    paper whose captions were already cached could still be skipped purely
+    because of its position in the list.)
 
     The key matches the value returned by `paper_key(p)` below; callers look
     results up via that helper so the keying logic stays in one place.
     """
     if not papers:
         return {}
-    selected = papers[:MAX_CAPTION_FETCHES]
+    cached: list[dict[str, Any]] = []
+    uncached: list[dict[str, Any]] = []
+    for p in papers:
+        hit = _load_cached(p.get("doi"), p.get("pmid")) is not None
+        (cached if hit else uncached).append(p)
+    selected = cached + uncached[:MAX_CAPTION_FETCHES]
     sem = asyncio.Semaphore(CAPTION_CONCURRENCY)
     async with httpx.AsyncClient(
         headers={"User-Agent": "lnp-pipeline/1.0"},
