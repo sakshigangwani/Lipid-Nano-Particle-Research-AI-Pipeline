@@ -1,6 +1,13 @@
 import { useState } from "react";
-import type { LLMVerdict, PaperRecord } from "../types";
+import type { LLMVerdict, PaperRecord, StudyType } from "../types";
 import MatchedTerms from "./MatchedTerms";
+
+const STUDY_LABELS: Record<StudyType, string> = {
+  in_vitro: "in vitro",
+  in_vivo: "in vivo",
+  both: "in vitro + in vivo",
+  unclassified: "unclassified",
+};
 
 interface Props {
   paper: PaperRecord;
@@ -62,6 +69,36 @@ export default function PaperRow({ paper }: Props) {
       <div className="study-header">
         <div className="study-title">{titleHtml}</div>
         <div className="badges">
+          {paper.study_type && paper.study_type !== "unclassified" && (
+            <span
+              className="fig-badge study"
+              title={
+                paper.study_type_source === "llm"
+                  ? "Study type, decided by the LLM from the abstract and captions"
+                  : "Study type, from keyword matching (LLM classification unavailable for this paper)"
+              }
+            >
+              {STUDY_LABELS[paper.study_type]}
+            </span>
+          )}
+          {paper.access === "open" && (
+            <a
+              className="fig-badge oa"
+              href={paper.oa_url ?? undefined}
+              target="_blank"
+              rel="noreferrer"
+              title={`Open access${paper.oa_status ? ` (${paper.oa_status})` : ""}${
+                paper.oa_url ? " — click for the free full text" : ""
+              }`}
+            >
+              open access
+            </a>
+          )}
+          {paper.access === "closed" && (
+            <span className="fig-badge closed" title="Closed access (paywalled), per OpenAlex">
+              closed
+            </span>
+          )}
           {paper.is_review && (
             <span
               className="fig-badge"

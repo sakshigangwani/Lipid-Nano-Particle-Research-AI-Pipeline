@@ -57,6 +57,11 @@ class PaperRecord(BaseModel):
     matched_signal_phrases: list[str] = []
     semantic_kinetic_match: bool = False
     is_review: bool = False
+    study_type: Literal["in_vitro", "in_vivo", "both", "unclassified"] = "unclassified"
+    study_type_source: Literal["llm", "keywords"] = "keywords"
+    access: Literal["open", "closed", "unknown"] = "unknown"
+    oa_status: Optional[str] = None  # OpenAlex: gold/green/hybrid/bronze/diamond/closed
+    oa_url: Optional[str] = None
     score: float = 0.0
     llm_score: Optional[float] = None
     llm_verdict: Literal["include", "borderline", "exclude", "skipped", "error"] = "skipped"

@@ -1,7 +1,10 @@
 import type {
+  AccessFilter,
+  EvidenceFilter,
   ExportFormat,
   ResultTab,
   RunResults,
+  StudyFilter,
   RunStatus,
   StepInfo,
 } from "../types";
@@ -41,7 +44,10 @@ export function getResults(run_id: string): Promise<RunResults> {
 export function exportUrl(
   run_id: string,
   format: ExportFormat,
-  which: ResultTab = "included"
+  which: ResultTab = "included",
+  studyType: StudyFilter = "all",
+  access: AccessFilter = "all",
+  evidence: EvidenceFilter = "all"
 ): string {
-  return `/api/runs/${run_id}/export?format=${format}&which=${which}`;
+  return `/api/runs/${run_id}/export?format=${format}&which=${which}&study_type=${studyType}&access=${access}&evidence=${evidence}`;
 }

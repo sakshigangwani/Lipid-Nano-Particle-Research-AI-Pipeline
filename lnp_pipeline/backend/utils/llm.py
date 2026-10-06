@@ -11,6 +11,7 @@ OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
 MAX_CONCURRENCY = 5
 ABSTRACT_CHAR_CAP = 8000
+STUDY_TYPES = {"in_vitro", "in_vivo", "both", "unclassified"}
 CAPTIONS_CHAR_CAP = 6000
 SUPPLEMENTARY_CHAR_CAP = 2000
 
@@ -40,8 +41,25 @@ def _system_prompt(step_name: str, step_description: str, strict_kinetic: bool) 
         "so treat measurements described in captions (e.g. 'uptake measured at "
         "1, 6 and 24 h by flow cytometry', 'fluorescence over 18 h') as valid "
         "evidence, including valid time-resolved/kinetic evidence.\n\n"
+        "Separately, classify the paper's study type (independent of the verdict):\n"
+        "- 'in_vitro': experiments in cultured cells, cell lines, primary cells, "
+        "organoids, ex vivo tissue, or biological fluids such as plasma/serum "
+        "outside a living organism.\n"
+        "- 'in_vivo': experiments in living animals (mice, rats, NHPs, zebrafish, "
+        "etc.) or humans/patients, including dosing, biodistribution, efficacy or "
+        "expression measured in the organism. Infer this from context even if no "
+        "species is named (e.g. delivery to the retina, liver, or tumors after "
+        "injection).\n"
+        "- 'both': the paper reports both in vitro and in vivo experiments.\n"
+        "- 'unclassified': no biological experiments (purely computational, "
+        "simulation, physicochemical or formulation characterization), or too "
+        "little information to tell (e.g. title only).\n"
+        "For a REVIEW ARTICLE, classify by the kind of evidence it mainly "
+        "discusses. With no abstract, use the title and captions if they make "
+        "the study type clear; otherwise 'unclassified'.\n\n"
         "Return JSON ONLY in this exact shape:\n"
         '{"score": <float 0..1>, "verdict": "include"|"borderline"|"exclude", '
+        '"study_type": "in_vitro"|"in_vivo"|"both"|"unclassified", '
         '"rationale": "<<=240 chars, plain English, cite specific evidence from '
         'the abstract or captions>"}'
     )
@@ -115,10 +133,13 @@ async def _score_one(
             if verdict not in {"include", "borderline", "exclude"}:
                 verdict = "borderline"
             rationale = str(parsed.get("rationale", "")).strip()[:400]
+            study_type = str(parsed.get("study_type", "")).lower().replace("-", "_").replace(" ", "_")
             return {
                 "llm_score": round(score, 3),
                 "llm_verdict": verdict,
                 "llm_rationale": rationale,
+                # None = no usable answer; the pipeline falls back to keywords.
+                "llm_study_type": study_type if study_type in STUDY_TYPES else None,
             }
         except Exception as e:  # noqa: BLE001
             return {
@@ -143,7 +164,8 @@ async def score_papers(
     step_description: str,
     strict_kinetic: bool,
 ) -> list[dict]:
-    """Returns a list aligned with `papers`, each {llm_score, llm_verdict, llm_rationale}.
+    """Returns a list aligned with `papers`, each {llm_score, llm_verdict,
+    llm_rationale, llm_study_type} (llm_study_type absent on skip/error).
 
     If OPENAI_API_KEY is missing or the list is empty, returns 'skipped' entries
     so the pipeline still produces a valid response.

@@ -632,6 +632,25 @@ html, body {
   cursor: help;
 }
 
+.fig-badge.study {
+  background: #e3edf8;
+  color: #1f4b7a;
+  border-color: #b3cbe6;
+}
+
+.fig-badge.oa {
+  background: #fdf1dc;
+  color: #7a4a06;
+  border-color: #ecc98c;
+  text-decoration: none;
+}
+
+.fig-badge.closed {
+  background: #eef0f3;
+  color: #4a5361;
+  border-color: #cfd4db;
+}
+
 .fig-badge.suppl {
   background: #ede4f7;
   color: #4c2a85;

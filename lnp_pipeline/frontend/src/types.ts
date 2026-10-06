@@ -46,6 +46,11 @@ export interface PaperRecord {
   matched_signal_phrases: string[];
   semantic_kinetic_match: boolean;
   is_review: boolean;
+  study_type: StudyType;
+  study_type_source?: "llm" | "keywords";
+  access: AccessType;
+  oa_status: string | null;
+  oa_url: string | null;
   score: number;
   llm_score: number | null;
   llm_verdict: LLMVerdict;
@@ -68,5 +73,14 @@ export interface RunResults {
 
 export type ResultTab = "included" | "candidates";
 
+export type StudyType = "in_vitro" | "in_vivo" | "both" | "unclassified";
+// "both" papers appear under both In vitro and In vivo.
+export type StudyFilter = "all" | "in_vitro" | "in_vivo" | "unclassified";
+
+export type AccessType = "open" | "closed" | "unknown";
+export type AccessFilter = "all" | AccessType;
+// "supplementary_only": evidence found only in supporting/supplementary material.
+export type EvidenceFilter = "all" | "supplementary_only";
+
 export type SortKey = "score" | "year" | "title";
-export type ExportFormat = "csv" | "json" | "md";
+export type ExportFormat = "xlsx" | "csv" | "json" | "md";

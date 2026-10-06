@@ -11,13 +11,54 @@ import ResultsTable from "./components/ResultsTable";
 import RunButton from "./components/RunButton";
 import StepPicker from "./components/StepPicker";
 import type {
+  AccessFilter,
+  EvidenceFilter,
   ExportFormat,
+  PaperRecord,
   PrismaCounts,
   ResultTab,
   RunResults,
   RunState,
   StepInfo,
+  StudyFilter,
 } from "./types";
+
+const STUDY_FILTERS: [StudyFilter, string][] = [
+  ["all", "All study types"],
+  ["in_vitro", "In vitro"],
+  ["in_vivo", "In vivo"],
+  ["unclassified", "Unclassified"],
+];
+
+const ACCESS_FILTERS: [AccessFilter, string][] = [
+  ["all", "All access"],
+  ["open", "Open access"],
+  ["closed", "Closed access"],
+  ["unknown", "Access unknown"],
+];
+
+function matchesAccessFilter(p: PaperRecord, f: AccessFilter): boolean {
+  // Older saved runs may lack the field until the backend backfills it.
+  return f === "all" || (p.access ?? "unknown") === f;
+}
+
+const EVIDENCE_FILTERS: [EvidenceFilter, string][] = [
+  ["all", "All evidence sources"],
+  ["supplementary_only", "Supporting materials only"],
+];
+
+// Kinetic evidence found only in supplementary material: the abstract and
+// figure captions alone did not pass.
+function matchesEvidenceFilter(p: PaperRecord, f: EvidenceFilter): boolean {
+  return f === "all" || p.supplementary_rescued;
+}
+
+// Papers reporting both in vitro and in vivo work appear under both filters.
+function matchesStudyFilter(p: PaperRecord, f: StudyFilter): boolean {
+  if (f === "all") return true;
+  if (f === "unclassified") return p.study_type === "unclassified";
+  return p.study_type === f || p.study_type === "both";
+}
 
 const EMPTY_COUNTS: PrismaCounts = {
   pubmed: 0,
@@ -74,6 +115,9 @@ export default function App() {
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<Date | null>(null);
   const [activeTab, setActiveTab] = useState<ResultTab>("included");
+  const [studyFilter, setStudyFilter] = useState<StudyFilter>("all");
+  const [accessFilter, setAccessFilter] = useState<AccessFilter>("all");
+  const [evidenceFilter, setEvidenceFilter] = useState<EvidenceFilter>("all");
   const pollRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -247,10 +291,26 @@ export default function App() {
 
             {results &&
               (() => {
-                const tabPapers =
+                const allTabPapers =
                   activeTab === "candidates"
                     ? results.candidates
                     : results.papers;
+                // Each filter row's counts reflect the other rows' selections.
+                const passes = (
+                  p: PaperRecord,
+                  skip: "study" | "access" | "evidence" | null
+                ) =>
+                  (skip === "study" || matchesStudyFilter(p, studyFilter)) &&
+                  (skip === "access" || matchesAccessFilter(p, accessFilter)) &&
+                  (skip === "evidence" ||
+                    matchesEvidenceFilter(p, evidenceFilter));
+                const tabPapers = allTabPapers.filter((p) => passes(p, null));
+                const countFor = (
+                  skip: "study" | "access" | "evidence",
+                  match: (p: PaperRecord) => boolean
+                ) =>
+                  allTabPapers.filter((p) => passes(p, skip) && match(p))
+                    .length;
                 const tabTitle =
                   activeTab === "candidates"
                     ? "Candidates (pre-LLM)"
@@ -286,6 +346,66 @@ export default function App() {
                       </button>
                     </div>
 
+                    <div className="result-tabs">
+                      {STUDY_FILTERS.map(([key, label]) => (
+                        <button
+                          key={key}
+                          className={`filter-btn ${
+                            studyFilter === key ? "active" : ""
+                          }`}
+                          onClick={() => setStudyFilter(key)}
+                        >
+                          {label} ·{" "}
+                          {countFor("study", (p) => matchesStudyFilter(p, key))}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="result-tabs">
+                      {ACCESS_FILTERS.map(([key, label]) => (
+                        <button
+                          key={key}
+                          className={`filter-btn ${
+                            accessFilter === key ? "active" : ""
+                          }`}
+                          onClick={() => setAccessFilter(key)}
+                        >
+                          {label} ·{" "}
+                          {countFor("access", (p) => matchesAccessFilter(p, key))}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="result-tabs">
+                      {EVIDENCE_FILTERS.map(([key, label]) => (
+                        <button
+                          key={key}
+                          className={`filter-btn ${
+                            evidenceFilter === key ? "active" : ""
+                          }`}
+                          onClick={() => setEvidenceFilter(key)}
+                          title={
+                            key === "supplementary_only"
+                              ? "Papers whose kinetic evidence was found only in supporting/supplementary material — the abstract and figure captions alone did not pass"
+                              : undefined
+                          }
+                        >
+                          {label} ·{" "}
+                          {countFor("evidence", (p) =>
+                            matchesEvidenceFilter(p, key)
+                          )}
+                        </button>
+                      ))}
+                    </div>
+
+                    {evidenceFilter === "supplementary_only" && (
+                      <div className="tab-hint">
+                        Papers that only passed because their kinetic evidence
+                        was found in supporting/supplementary material. The
+                        abstract and figure captions alone did not show it.
+                      </div>
+                    )}
+
                     {activeTab === "candidates" && (
                       <div className="tab-hint">
                         Every paper that passed the keyword / quantitative /
@@ -308,13 +428,20 @@ export default function App() {
                       >
                         Export
                       </span>
-                      {(["csv", "json", "md"] as ExportFormat[]).map((f) => (
+                      {(["xlsx", "csv", "json", "md"] as ExportFormat[]).map((f) => (
                         <a
                           key={f}
                           className="btn-ghost"
-                          href={exportUrl(results.run_id, f, activeTab)}
+                          href={exportUrl(
+                            results.run_id,
+                            f,
+                            activeTab,
+                            studyFilter,
+                            accessFilter,
+                            evidenceFilter
+                          )}
                         >
-                          {f.toUpperCase()}
+                          {f === "xlsx" ? "Excel" : f.toUpperCase()}
                         </a>
                       ))}
                       <div className="spacer" />

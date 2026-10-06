@@ -168,6 +168,75 @@ def has_in_vitro_markers(text: str) -> bool:
     return any(pat.search(text) for pat in IN_VITRO_REGEXES)
 
 
+# Study-type classification (separate from the in_vitro_only gate above, which
+# is deliberately aggressive). Here "mouse"/"murine"/"rat" alone don't count as
+# in vivo — they routinely describe cell sources ("murine macrophage cell line
+# RAW 264.7", "mouse BMDCs") — only plural animal subjects, dosing routes and
+# explicit in vivo wording do.
+_STUDY_IN_VIVO_REGEXES: list[re.Pattern] = [
+    re.compile(
+        r"\b(?:in[\s-]vivo|mice|rats|rabbits|pigs|dogs|animals?\s+models?|"
+        r"non[\s-]?human\s+primates?|nhps?|macaques?|zebrafish|xenografts?|"
+        r"tumou?r[\s-]bearing|biodistribution|clinical\s+trials?|patients|"
+        r"healthy\s+volunteers|participants)\b",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(?:intravenous(?:ly)?|intramuscular(?:ly)?|intratumou?ral(?:ly)?|"
+        r"intraperitoneal(?:ly)?|subcutaneous(?:ly)?|intranasal(?:ly)?|"
+        r"intradermal(?:ly)?|intratracheal(?:ly)?|i\.v\.|i\.m\.|i\.p\.|s\.c\.|"
+        r"tail[\s-]vein|\d+(?:\.\d+)?\s?mg\s?/\s?kg)",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"\b(?:(?:mouse|murine|rat|rodent|animal|porcine|primate)\s+models?|"
+        r"orthotopic|tumou?r\s+(?:growth|regression|inhibition)|"
+        r"survival\s+(?:rate|time|benefit)|systemic(?:ally)?\s+administ\w*)\b",
+        re.IGNORECASE,
+    ),
+]
+
+_STUDY_IN_VITRO_REGEXES: list[re.Pattern] = [
+    re.compile(
+        r"\b(?:in[\s-]vitro|ex[\s-]vivo|cell[\s-]?lines?|cultured\s+(?:cells?|\w+\s+cells?)|"
+        r"cell\s+cultures?|primary\s+(?:human\s+|murine\s+|mouse\s+)?"
+        r"(?:cells?|hepatocytes|macrophages|t[\s-]cells|neurons)|transfected\s+cells|"
+        r"organoids?|spheroids?|(?:human\s+)?(?:plasma|serum)\s+incubation|"
+        r"incubat\w*\s+(?:in|with)\s+(?:human\s+|mouse\s+|fetal\s+bovine\s+)?(?:plasma|serum))\b",
+        re.IGNORECASE,
+    ),
+    # Cell-level assays and readouts.
+    re.compile(
+        r"\b(?:bone[\s-]marrow[\s-]derived|(?:macrophage|cellular|cell)\s+uptake|"
+        r"uptake\s+(?:by|in|into)\s+(?:\w+\s+){0,2}cells|transfection\s+efficiency|"
+        r"cytotoxicity|cell\s+viability|mtt|cck[\s-]?8|flow\s+cytometry|"
+        r"confocal|live[\s-]cell\s+imaging)\b",
+        re.IGNORECASE,
+    ),
+    # Common named cell lines in LNP work.
+    re.compile(
+        r"\b(?:hela|hek[\s-]?293t?|hepg2|huh[\s-]?7|a549|raw\s?264\.7|jurkat|dc2\.4|"
+        r"thp[\s-]?1|mcf[\s-]?7|caco[\s-]?2|cho(?:[\s-]k1)?\s+cells|bmdcs?|bmdms?|"
+        r"ipscs?|huvecs?|b16(?:[\s-]?f10)?|ct26|4t1|nih[\s-]?3t3|vero)\b",
+        re.IGNORECASE,
+    ),
+]
+
+def classify_study_type(text: str) -> str:
+    """Classify text as "in_vitro", "in_vivo", "both" or "unclassified"."""
+    if not text:
+        return "unclassified"
+    vivo = any(p.search(text) for p in _STUDY_IN_VIVO_REGEXES)
+    vitro = any(p.search(text) for p in _STUDY_IN_VITRO_REGEXES)
+    if vivo and vitro:
+        return "both"
+    if vivo:
+        return "in_vivo"
+    if vitro:
+        return "in_vitro"
+    return "unclassified"
+
+
 REVIEW_REGEXES: list[re.Pattern] = [
     # Title-level review markers ("...: A Review", "Review of...", etc.).
     re.compile(r"\breview\b", re.IGNORECASE),

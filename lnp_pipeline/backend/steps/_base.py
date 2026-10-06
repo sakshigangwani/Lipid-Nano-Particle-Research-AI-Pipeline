@@ -10,6 +10,7 @@ from ..clients import arxiv, biorxiv, crossref, europepmc, openalex, pubmed, sem
 from ..utils.dedup import dedup_papers
 from ..utils.embeddings import find_kinetic_semantic_matches
 from ..utils.filters import (
+    classify_study_type,
     find_kinetic_matches,
     find_signal_phrases,
     has_in_vivo_markers,
@@ -19,6 +20,7 @@ from ..utils.filters import (
 )
 from ..utils.fulltext import fetch_captions_for, paper_key
 from ..utils.llm import score_papers as llm_score_papers
+from ..utils.open_access import resolve_open_access
 from ..utils.scoring import score_paper
 
 logger = logging.getLogger("lnp_pipeline.filtering")
@@ -278,11 +280,15 @@ async def run_step_search(
                 "supplementary": bundle.get("supplementary") or "",
             }
         )
-    llm_results = await llm_score_papers(
-        llm_inputs,
-        step_name=step_name,
-        step_description=step_description,
-        strict_kinetic=strict_kinetic,
+    # Open-access lookup runs alongside LLM scoring; it only needs identifiers.
+    llm_results, access_results = await asyncio.gather(
+        llm_score_papers(
+            llm_inputs,
+            step_name=step_name,
+            step_description=step_description,
+            strict_kinetic=strict_kinetic,
+        ),
+        resolve_open_access(kinetic_passed),
     )
     counts["llm_scored"] = sum(1 for r in llm_results if r.get("llm_score") is not None)
     await _emit(progress_cb, dict(counts))
@@ -293,12 +299,23 @@ async def run_step_search(
     # the funnel). `included` is the subset the LLM did not mark 'exclude'
     # (e.g. the 48). The UI exposes both as separate tabs.
     candidates: list[dict] = []
-    for p, llm in zip(kinetic_passed, llm_results):
+    for p, llm, access in zip(kinetic_passed, llm_results, access_results):
         bundle = p.get("_fulltext") or {}
         sigs_text = "\n\n".join(
             filter(None, [p["_haystack_abstract"], bundle.get("captions"), bundle.get("supplementary")])
         )
         sigs = find_signal_phrases(sigs_text, signal_phrases)
+        # The LLM decides study type (it reads the abstract and captions in
+        # context). Keywords are only a fallback when the LLM was skipped or
+        # errored: abstract first, then captions/supplementary, since full text
+        # often mentions the other model in passing (methods boilerplate, cited work).
+        study_type = llm.get("llm_study_type")
+        study_type_source = "llm"
+        if study_type is None:
+            study_type_source = "keywords"
+            study_type = classify_study_type(p["_haystack_abstract"])
+            if study_type == "unclassified":
+                study_type = classify_study_type(sigs_text)
         record = {
             "title": p.get("title") or "",
             "authors": p.get("authors") or [],
@@ -312,6 +329,11 @@ async def run_step_search(
             "matched_signal_phrases": sigs,
             "semantic_kinetic_match": bool(p.get("_semantic_kinetic")),
             "is_review": bool(p.get("_is_review")),
+            "study_type": study_type,
+            "study_type_source": study_type_source,
+            "access": access["access"],
+            "oa_status": access["oa_status"],
+            "oa_url": access["oa_url"],
             "score": score_paper(
                 p.get("_matched_kinetic") or [],
                 sigs,
